@@ -3,6 +3,7 @@ layout: post
 title:  The Environment
 date:   2016-06-09 06:03:11 -0400
 categories: china
+comments: true
 ---
 So many of my experiences in Hangzhou are relatively small excursions: individually, they aren't worth an entire blog post, but they amount to quite a bit when added up! At the same time, a "Miscellaneous" blog post should honestly be saved for the end of a trip, so I'll try my best to theme this one as more nature-related. Indeed, the vast majority of Hangzhou's attractions are outdoors--a characteristic that I greatly admire!
 

@@ -3,6 +3,7 @@ layout: post
 title:  Hello World
 date:   2015-10-01 20:40:43 -0400
 categories: blogging
+comments: true
 ---
 What is this blog about? Who is Neill Robson? *The Rattle*?! I'll try to cover some of those burning questions right here--probably just as much for my benefit as yours. 
 

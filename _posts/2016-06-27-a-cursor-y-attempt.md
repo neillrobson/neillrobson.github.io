@@ -3,6 +3,7 @@ layout: post
 title:  A Cursor-y Attempt
 date:   2016-06-27 15:17:45 -0400
 categories: programming
+comments: true
 ---
 In April 2016, I participated in my first-ever video game design competition: Ludum Dare. The experience of developing and publishing a video game from scratch within a 48-hour time frame (!) was exhilarating and enlightening, and I couldn't wait to see how it turned out. Unfortunately, right before the results were announced, I conveniently boarded a plane to China, and subsequently completely forgot about the competition and my entry until returning to the US.
 
