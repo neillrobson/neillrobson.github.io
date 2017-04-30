@@ -1,0 +1,29 @@
+- title: Kadro Solutions
+  description: >
+    As a cooperative education employee, I enhanced a proprietary e-Commerce
+    management framework to provide a Web-accessible administrative interface to
+    various buisness clients. Tasks ranged from database design in Microsoft SQL
+    Server and Java EE to engineering responsive front-end interfaces with
+    Bootstrap.
+  image: kadro.png
+
+- title: Hangzhou, China
+  description: >
+    I had the opportunity to study abroad for six weeks at Zhejiang University
+    in Hangzhou, China, where I studied energy production and distribution,
+    social geography, and Mandarin Chinese.
+  image: china.jpg
+
+- title: NC State University
+  description: >
+    I am currently pursuing a Bachelor's degree in Computer Science, as well as
+    participating as a Goodnight Scholar and Computer Science Student
+    Ambassador.
+  image: ncsu.png
+
+- title: Raleigh Charter High School
+  description: >
+    My high school experience was transformative in defining and developing my
+    interdisciplinary intrests, and I am still active there as a volunteer
+    today. Class of 2015!
+  image: rchs.gif

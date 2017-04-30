@@ -1,0 +1,28 @@
+- title: Web Design
+  description: >
+    As the printing press of the 21st century, it's no wonder the Internet
+    continues to capture my fascination. I'm passionate about fostering
+    effective, efficient, and accessible communication online.
+  icon: fa-globe
+
+- title: Theatre
+  description: >
+    To show is infinitely better than to tell! Whether the occasion calls for
+    improvised role-playing or a full-blown performance, I'm always eager to set
+    aside my more introverted nature and connect with others through acting.
+  image: theatre.jpg
+
+- title: Chinese
+  description: >
+    无论你从哪里来，我还想跟你当朋友！ The global community in which we live is
+    ripe with potential for sharing lessons and innovations across barriers of
+    language and culture. I love studying Mandarin Chinese for this reason.
+  icon: fa-language
+
+- title: Piano
+  description: >
+    Life can be much more complicated than words can express, and music is how I
+    release and examine those lingering thoughts within me. If a jingle or ode
+    can be used to more effectively convey a point, you can count on me finding
+    it!
+  icon: fa-music

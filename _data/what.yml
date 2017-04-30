@@ -1,0 +1,24 @@
+- title: A Cursor-y Attempt
+  description: >
+    This video game represents my first entry into the triannual Ludum Dare
+    48-hour game design competition. Learning how to envision, implement, and
+    publish a product in such a short timeframe was an invaluable experience!
+  image: ld35.png
+
+- title: OEIS Entry
+  description: >
+    As a high school side project, I spent time solving problems on <a
+    href="https://projecteuler.net">Project Euler</a> in the J programming
+    language. There was one problem I never figured out, but it led to the
+    discovery of a new integer sequence that is now published under my name.
+    Not all who wander are lost, I suppose!
+  image: oeis.png
+
+- title: Rural NC Service Work
+  description: >
+    My passion for computer science would have never existed without a few
+    college students coming to my middle school and introducing the field. To
+    travel across my home state and provide the same opportunities to
+    disadvantaged middle school students was an incredible privilege and
+    blessing!
+  image: asbnc.jpg

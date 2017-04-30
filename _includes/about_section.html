@@ -1,0 +1,21 @@
+<section class="section-container">
+  <h2>{{ include.title }}</h2>
+  <div class="item-container">
+    {% for entry in include.data %}
+    <div class="item capped-box">
+      {% if entry.image or entry.icon %}
+      <div class="graphic">
+        {% if entry.image %}
+        <img src="/assets/home/{{ entry.image }}">
+        {% elsif entry.icon %}
+        <i class="fa {{ entry.icon }} fa-5x"></i>
+        {% endif %}
+      </div>
+      <hr>
+      {% endif %}
+      <h3>{{ entry.title }}</h3>
+      <p>{{ entry.description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>

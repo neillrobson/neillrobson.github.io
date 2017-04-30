@@ -1,0 +1,14 @@
+# Site settings
+title: "The Rattle"
+subtitle: "A Cautionary Tail"
+author: "Neill Leonard Robson"
+
+url: "https://neillrobson.com"
+permalink: /blog/:year/:month/:day/:title/
+google-analytics: UA-97090131-1
+
+email: neillrobson811@gmail.com
+twitter_username: RNanoware
+github_username: RNanoware
+linkedin_username: neillrobson
+facebook_username: neill.robson
