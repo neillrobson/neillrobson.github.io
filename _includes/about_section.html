@@ -2,7 +2,7 @@
   <h2>{{ include.title }}</h2>
   <div class="item-container">
     {% for entry in include.data %}
-    <div class="item capped-box">
+    <div class="item capped-box{% if entry.link %} capped-box-link{% endif %}">
       {% if entry.link %}
       <a class="item-link" href="{{ entry.link }}"><span></span></a>
       {% endif %}

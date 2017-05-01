@@ -151,6 +151,10 @@ blockquote {
   padding: 16px;
   border-radius: 4px;
   border-top: 3px solid $alt-color;
+
+  &.capped-box-link:hover {
+    background-color: darken($article-bg-color, 2%);
+  }
 }
 
 .small-ornament, .big-ornament {
