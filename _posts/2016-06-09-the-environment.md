@@ -34,11 +34,13 @@ Hangzhou is also known for its enormous and beautiful botanical gardens, of whic
 Although they may be known for their flowers, the botanical gardens certainly aren't known for their wildlife!
 
 ![boat](/assets/images/2016/06/P_20160518_102527.jpg)
+
 ![circle door](/assets/images/2016/06/P_20160518_104013.jpg)
 
 Doors are always a favorite posing spot for us. 
 
 ![lake, no lilies](/assets/images/2016/06/P_20160518_105418-1.jpg)
+
 ![rock garden](/assets/images/2016/06/P_20160518_111110.jpg)
 
 When you can't grow flowers, you can always fall back on your splendid rock collection!
