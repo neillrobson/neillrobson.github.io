@@ -178,9 +178,27 @@ blockquote {
 }
 
 header {
+  text-align: center;
   margin-bottom: 1em;
 
-  p {
+  .nav {
+    @include hover-anchor;
+
+    .left {
+      display: block;
+      float: left;
+      width: 1.5em;
+      text-align: center;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  }
+
+  .date {
     margin-top: 1em;
   }
 }
