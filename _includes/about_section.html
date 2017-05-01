@@ -3,6 +3,9 @@
   <div class="item-container">
     {% for entry in include.data %}
     <div class="item capped-box">
+      {% if entry.link %}
+      <a class="item-link" href="{{ entry.link }}"><span></span></a>
+      {% endif %}
       {% if entry.image or entry.icon %}
       <div class="graphic">
         {% if entry.image %}
@@ -14,7 +17,7 @@
       <hr>
       {% endif %}
       <h3>{{ entry.title }}</h3>
-      <p>{{ entry.description }}</p>
+      <p class="item-description">{{ entry.description }}</p>
     </div>
     {% endfor %}
   </div>
