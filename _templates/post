@@ -1,9 +1,8 @@
 ---
-layout: {{ layout }}
-title: "{{ title }}"
-date: {{ date }}
-author:
-keywords: ""
-description: ""
+layout: post
+title:
+date: yyyy-mm-dd hh:mm:ss
+categories:
+comments:
 ---
 <!--more-->
