@@ -18,6 +18,9 @@ $(function() {
     document.location.hash = hash;
     document.documentElement.scrollTop = scrollReset;
 
+    hash = "#" + hash.substring(1)
+      .replace(/[!"#$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&");
+
     $('html, body').animate({
       scrollTop: $(hash).offset().top
     }, 1000);
