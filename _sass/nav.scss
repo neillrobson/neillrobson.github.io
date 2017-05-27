@@ -141,7 +141,7 @@ nav {
   }
 }
 
-:target::before {
+.add-nav-offset-to-targets *:target::before {
   content: "";
   display: block;
   height: $nav-bar-height;
