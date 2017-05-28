@@ -8,15 +8,15 @@ $(function() {
   }).on('click', function(event) {
     event.preventDefault();
     var hash = this.hash;
-    /* 
-     * These three lines ensure that the CSS :target selector is set without
-     * scrolling the viewport prematurely.
-     * Useful for when the :target selector is used to append an invisible div to
-     * offset a fixed header.
+    /*
+     * These lines ensure that the CSS :target selector is set without scrolling
+     * the viewport prematurely. Useful for when the :target selector is used to
+     * append an invisible div to offset a fixed header.
      */
-    var scrollReset = document.documentElement.scrollTop;
+    var win = $(window);
+    var scrollReset = win.scrollTop();
     document.location.hash = hash;
-    document.documentElement.scrollTop = scrollReset;
+    win.scrollTop(scrollReset);
 
     hash = "#" + hash.substring(1)
       .replace(/[!"#$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&");
