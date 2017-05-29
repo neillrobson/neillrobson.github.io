@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Access vs. Ownership
-date: 2017-05-13
+date: 2017-05-29
 categories: lifestyle
-comments: false
+comments: true
 ---
 Recently I came across advertising online for a new co-living experiment taking
 place in Los Angeles. The name of the startup is PodShare. Essentially, the goal
