@@ -25,7 +25,7 @@ nav {
   background-color: $article-bg-color;
   border-bottom: 1px solid $bg-color-darker;
   transition: height $nav-button-transition-time;
-  z-index: 1;
+  z-index: 10;
 
   @include hover-anchor;
 }
