@@ -12,3 +12,35 @@ twitter_username: RNanoware
 github_username: RNanoware
 linkedin_username: neillrobson
 facebook_username: neill.robson
+
+prose:
+  siteurl: "https://neillrobson.com"
+  media: "assets"
+  metadata:
+    _posts:
+      - name: "layout"
+        field:
+          element: "hidden"
+          value: "post"
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+      - name: "date"
+        field:
+          element: "text"
+          value: CURRENT_DATETIME
+      - name: "categories"
+        field:
+          element: "multiselect"
+          label: "Categories"
+          alterable: true
+          options:
+            - name: "Blogging"
+              value: "blogging"
+            - name: "China"
+              value: "china"
+            - name: "Lifestyle"
+              value: "lifestyle"
+            - name: "Programming"
+              value: "programming"
