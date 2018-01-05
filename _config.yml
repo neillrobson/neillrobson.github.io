@@ -30,17 +30,9 @@ prose:
         field:
           element: "text"
           value: CURRENT_DATETIME
-      - name: "categories"
+      - name: "category"
         field:
-          element: "multiselect"
-          label: "Categories"
+          element: "select"
+          label: "Category"
           alterable: true
-          options:
-            - name: "Blogging"
-              value: "blogging"
-            - name: "China"
-              value: "china"
-            - name: "Lifestyle"
-              value: "lifestyle"
-            - name: "Programming"
-              value: "programming"
+          options: "https://neillrobson.com/categories.jsonp"
