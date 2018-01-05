@@ -1,24 +1,18 @@
-# Papyrus - Jekyll Theme
+# Neill Robson's Website
 
-Papyrus is a responsive three-column Jekyll theme with classic styling and careful typographic details.
+Source code for the personal website and blog of Neill Robson.
 
-Loosely based on the [Onelight Atom Theme](https://github.com/atom/one-light-ui).
-
-## Install and Test
+## Local Development
 
 1. Download or clone the repo
-  - `git clone git@github.com:hugoferreira/papyrus-theme.git`
+  - `git clone git@github.com:rnanoware/website.git`
 2. Enter the folder
-  - `cd papyrus-theme/`
+  - `cd website/`
 3. Start Jekyll server
-  - `jekyll serve --watch`
+  - `jekyll serve`
 4. Access via
-  - http://127.0.0.1:4000/papyrus-theme/
+  - http://127.0.0.1:4000/
 
-## Demo
+## Live Site
 
-- http://hugosereno.eu
-
-## Preview
-
-![Theme preview](/assets/screenshot.png)
+- https://neillrobson.com
