@@ -5,5 +5,8 @@ published: false
 title: The Bullet Journal Journey
 categories:
   - lifestyle
+comments: true
+category:
+  - lifestyle
 ---
 Sometime around the beginning of the year in 2016, I was looking for a new way to organize my sundry appointments, activities, and thoughts.
