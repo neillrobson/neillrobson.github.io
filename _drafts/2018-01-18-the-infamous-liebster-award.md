@@ -106,6 +106,9 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
 
 ## Facts Delivered
 
+1. My favorite ingredient in any dish (where it is appropriate, of course) is the caper.
+2. 
+
 ## Questions Asked
 
 ## Blogs Nominated
