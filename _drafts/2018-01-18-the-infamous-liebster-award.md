@@ -11,7 +11,7 @@ As an encouragement to continue sharing my thoughts and experiences online, a pe
 
 First and foremost, I highly recommend that you check out the blog of my nominator, [Further Up and Further In](https://volarconmigo.wordpress.com/2018/01/07/liebster-award/) by La Creadora Fantasma. Like myself, LCF is just beginning to learn how to record her own thoughts and inspire others through online publishing, and I am eager to watch her blossom both professionally and creatively through this experience. Keep it up!
 
-As it turns out, the "rules" of nomination for the Liebster Award are slightly different from year to year: since 2018 just recently kicked off its opening act, I'll try and satisfy both the rules given to me by my nominator and the new rules published by the originator.
+As it turns out, the "rules" of nomination for the Liebster Award are slightly different from year to year: since 2018 just recently kicked off its opening act, I'll try and satisfy both the rules given to me by my nominator and the new rules published by the originator. The links to both rulesets are given above.
 
 Let's go!
 
