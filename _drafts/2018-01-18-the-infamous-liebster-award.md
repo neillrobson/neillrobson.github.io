@@ -49,13 +49,36 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
 
     I think I'll have to go with the only choice on the list that isn't, biologically speaking, tea: the variety of potentials in herbal drinks are what cause me to choose it as my favorite. Of course, one can create concoctions of tea leaves infused with herbs and spices as well, making it a perfectly valid option on the list, although I suppose it is a bit of a cop-out response as I'm making it encompass every option.
     
-    If I had to choose a type of tea leaf, I would probably choose green tea, because of my lovely experience with Longjing tea in Hangzhou, Zhejiang, China (which you can read more about [here]({{webroot}}/blog/2016/06/15/the-tea/).
+    If I had to choose a type of tea leaf, I would probably choose green tea, because of my lovely experience with Longjing tea in Hangzhou, Zhejiang, China (which you can read more about [here]({{webroot}}/blog/2016/06/15/the-tea/)).
 
 4. What was your favorite song as a small kid?
+
+    I don't remember having a single favorite song. However, there were several songs that stood out as hallmarks of my musical "coming-of-age":
+    
+    The first song I remember falling in love with as a performance piece (on the piano) was [Clocks by Coldplay](https://www.youtube.com/watch?v=d020hcWA_Wg).
+    
+    The first song I ever purchased was [Still Alive by Jonathan Coulton](https://www.youtube.com/watch?v=Y6ljFaKRTrI). I also ended up parodying this song as a goodbye gift for the music teacher who directed the theatre production that was pivotal in maturing me emotionally and socially.
+    
+    Speaking of that show, I am quite fond of several songs in the soundtrack of [HONK Jr](https://www.youtube.com/playlist?list=PLnbBAvpTGon8EN_eh_zALsb7dxPy-ttnd).
+    
+    The first song I ever performed for a romantic interest was [The Pout-Pout Fish](https://www.youtube.com/watch?v=gynYtBmYlnk).
+    
+    And by far the most important, this song has grown up with me since elementary school as a vivid reminder of God's relationship with me. Even as an adult it brings tears to my eyes remembering all the situations God carried me through with [this song](https://www.youtube.com/watch?v=cROXxgPMzHA) in my mind.
+    
 5. What is the best joke you’ve ever heard?
+
+	> I hate telling puns to kleptomaniacs; they always take things literally.
 6. Do you know what a viola is?
+
+	Yeah... Isn't it a string instrument that specializes in producing tones between the ranges of a violin and cello? I'm purposely not going to look up whether I'm right or not to preserve the innocence of my potentially incorrect and offensive answer.
+    
 7. Have you ever been out of the country? If so, where?
+
+	I've been to China (Shameless plug! Read more about the experience on this blog!) and the Caribbean. I would only consider the former experience to be a true "cultural immersion," as the trip to the Caribbean was simply a week-long vacation to a beautiful (but somewhat isolated) resort. It was a wonderful experience nonetheless!
+    
 8. What are some inside family quotes that you’ll never forget?
+
+	In my younger and more self-conscious years, I hated the word "play" when it came to my social interactions with friends. My dad would sometimes reference a "play date" in which I participated, or asked if I would invite some classmates over to "play" after I finished my homework. 
 9. Best board game? Best video game?
 10. How do you feel about autocorrect when texting?
 11. If someone gave you a free, two-way ticket to Mars would you go?
