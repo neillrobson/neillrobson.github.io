@@ -98,9 +98,11 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
     
 10. How do you feel about autocorrect when texting?
 
-    I've personally turned it off on my phone, because I like to make a habit of proofreading whatever I write (even if it's just a text message). However, I also readily admit that this practice decreases the efficiency of my communication with others and that the misunderstandings arising from 
+    I've personally turned it off on my phone, because I like to make a habit of proofreading whatever I write (even if it's just a text message). However, I also readily admit that this practice decreases the efficiency of my communication with others and that the misunderstandings arising from autocorrect are sometimes more valuable lessons than simply fixing typos in the first place. It all depends on your audience, I suppose!
+    
 11. If someone gave you a free, two-way ticket to Mars would you go?
 
+    Actually, I think I would! Now, I would still want a year or so to get all of my affairs in order and make sure that my family and friends are all comfortable (!) with the decision. But considering the scientific and psychological advances that humanity would approach through such an experience, if some space-exploring entity deemed me fit to take such a journey, I would happily spend a significant part of my life exploring God's creation in a way that no one else to this day has been privileged to do.
 
 ## Facts Delivered
 
