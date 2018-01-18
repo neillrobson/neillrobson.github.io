@@ -108,7 +108,7 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
 
 1. My favorite ingredient in any dish (where it is appropriate, of course) is the caper.
 2. I drove my date to the senior prom in my grandfather's 1995 Oldsmobile Cutlass Ciera.
-3. 
+3. I've remapped my keyboard so that the `capslock` key acts as `esc` when tapped and as `ctrl` when held down along with another key. My left `ctrl` key is mapped to `capslock`.
 
 ## Questions Asked
 
