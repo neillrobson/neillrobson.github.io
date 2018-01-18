@@ -17,3 +17,6 @@ Let's go!
 
 ## On Blogging
 
+Why do I write blogs?
+
+My journey began when I took a trip abroad to Hangzhou, China, and was seeking a way to memorialize that unique experience and share it with friends and family back home. Being a quixotic techie with a dogged proclivity to independence, I threw together a self-hosted website on which I built a resume page in spartan HTML/CSS and a [Ghost blog](https://ghost.org/) for recording my time in China. 
