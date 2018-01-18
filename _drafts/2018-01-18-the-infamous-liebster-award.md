@@ -47,6 +47,9 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
 
 3. Herbal, green, black, or white tea?
 
+    I think I'll have to go with the only choice on the list that isn't, biologically speaking, tea: the variety of potentials in herbal drinks are what cause me to choose it as my favorite. Of course, one can create concoctions of tea leaves infused with herbs and spices as well, making it a perfectly valid option on the list, although I suppose it is a bit of a cop-out response as I'm making it encompass every option.
+    
+    If I had to choose a type of tea leaf, I would probably choose green tea, because of my lovely experience with Longjing tea in Hangzhou, Zhejiang, China (which you can read more about [here]({{webroot}}/blog/2016/06/15/the-tea/).
 
 4. What was your favorite song as a small kid?
 5. What is the best joke you’ve ever heard?
