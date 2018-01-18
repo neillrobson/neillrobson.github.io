@@ -92,8 +92,13 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
     
 9. Best board game? Best video game?
 
+    Although I've never played a full session before, I have always venerated the Japanese board game [Go](https://en.wikipedia.org/wiki/Go_(game)) for its simplicity and stunning depth of strategy. There is only one type of piece, and they never move once placed, yet it took exponentially more computing power for artificial intelligence to beat a human at Go than it did for the sundry rules and moves in Chess.
+    
+    Best video game is, without the shadow of a doubt, [The Witness](http://store.steampowered.com/app/210970/The_Witness/). It is a marvellous tapestry outlining human intelligence and philosophy, and a shining example of nonverbal communication. It is the one video game that I believe would have engaged C.S. Lewis, Steve Jobs, and Douglas Hofstadter alike.
     
 10. How do you feel about autocorrect when texting?
+
+    I've personally turned it off on my phone, because I like to make a habit of proofreading whatever I write (even if it's just a text message). However, I also readily admit that this practice decreases the efficiency of my communication with others and that the misunderstandings arising from 
 11. If someone gave you a free, two-way ticket to Mars would you go?
 
 
