@@ -78,8 +78,21 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
     
 8. What are some inside family quotes that you’ll never forget?
 
-	In my younger and more self-conscious years, I hated the word "play" when it came to my social interactions with friends. My dad would sometimes reference a "play date" in which I participated, or asked if I would invite some classmates over to "play" after I finished my homework. 
+	In my younger and more self-conscious years, I hated the word "play" when it came to my social interactions with friends. My dad would sometimes reference a "play date" in which I participated, or asked if I would invite some classmates over to "play" after I finished my homework. My answer was invariably, "No! It isn't called 'playing'! It's 'hanging out'!"
+    
+    Well, my dad took a while to get the picture, but he somehow found the compassion and patience to accept my ridicules and attempt to change his perfectly appropriate vocabulary. Bless his heart; that pursuit had deleterious consequences.
+    
+    One evening, as a friend and I were enjoying dinner, I asked my dad if my friend could just stay overnight so we could have more time together. Eager to encourage my social interactions (of which I did not have many), my dad readily called up my friend's parents to organize the evening. "Hi Rick," he began. "This is Forrest, Neill's dad. I was wondering if you would be willing-- uh, I mean, could Jacob and Neill have a--"
+    
+    Dad was struggling to find the socially acceptable term for the request: he was sure that "sleep-over" was considered lame by the younger crowd. What was the word for "hanging out" overnight? Finally, in a well-intentioned epiphany of vocabulary, my dad sputtered,
+    
+    > ...Could Jacob and Neill have a **HANG**-over tonight?!
+    
+    Needless to say, Jacob did not spend the night at the Robson household that evening.
+    
 9. Best board game? Best video game?
+
+    
 10. How do you feel about autocorrect when texting?
 11. If someone gave you a free, two-way ticket to Mars would you go?
 
