@@ -15,7 +15,7 @@ As it turns out, the "rules" of nomination for the Liebster Award are slightly d
 
 Let's go!
 
-## On Blogging
+## Intention Explained
 
 Why do I write blogs?
 
@@ -23,3 +23,12 @@ My journey began when I took a trip abroad to Hangzhou, China, and was seeking a
 
 But, technologies aside, why do I still strive to immortalize my thoughts in text, and publish them online for the world to see? In truth, my motivation comes down to my love for storytelling: using narratives in every form to build connections with others. From the color palletes of the websites I build to the tension of the piano's vibrations, from the worlds invented through extemporized theatrical performance to those themes shared through a video game, I am in love with communication--especially through non-traditional media. Building a website and contribuing to a blog is one way I believe that I can combine my two somewhat divergent passions--software development and narrative creation--into a single product.
 
+I also like being able to save and revise drafts of my thoughts: a practice that most other forms of online social media don't necessarily allow!
+
+## Questions Answered
+
+## Facts Delivered
+
+## Questions Asked
+
+## Blogs Nominated
