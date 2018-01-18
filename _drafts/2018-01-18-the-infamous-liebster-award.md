@@ -42,7 +42,12 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
     So, long story short: In a perfect world, Linux. In this world, Microsoft!
 
 2. If you could play any instrument (other than one you already play), what would it be?
+
+    I would definitely choose an instrument that I could carry with me, and perferrably one with which I could sing along. A guitar, despite its simplicity, would be ideal for these requirements! But since portability is more important to me than the ability to sing, I would also seriously consider a harmonica, because it could be a meditation and respite that could literally fit in my pocket.
+
 3. Herbal, green, black, or white tea?
+
+
 4. What was your favorite song as a small kid?
 5. What is the best joke you’ve ever heard?
 6. Do you know what a viola is?
