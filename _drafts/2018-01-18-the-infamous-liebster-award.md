@@ -137,3 +137,9 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
 ### _a.k.a. The Plot Twist_
 
 Having poured so much effort into this blog so far, I am ashamed to leave it incomplete due to a single negative perspective found online. However, as a matter of respect for other content producers and young professionals trying to establish a personal brand online, I have decided not to distribute any nominations for the Liebster award. 
+
+Why did I make this decision?
+
+Upon attempting to find eleven blogs with under two hundred followers (as the rules specify), I stumbled upon [this conversation](https://en.forums.wordpress.com/topic/for-liebster-awards-how-do-i-find-out-how-many-followers-a-blog-has?replies=5) that condemned "blog awards" as amateurish attempts to artificially raise SEO. Even blogs with valuable and unique content can have their reputation undermined by getting caught up in chain-based blog awards. Regardless of one's intention in posting, partaking in such activities gives the appearance of one floundering for quality material.
+
+I will still publish this post as it is, because I respect the person who awarded me the Liebster and wish to support her in her first steps into blogging. However, I do not want to put anyone else under duress by 
