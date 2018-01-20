@@ -116,7 +116,7 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
 8. The latest I have ever stayed awake is 3am: I was infuriated because I could not connect to a Raspberry Pi headless (without a monitor). I have never pulled a true all-nighter.
 9. I prefer colder climates over warmer ones: not because I like being outside in the cold, but because I love the feeling and smell of indoor heating (stove, fireplace, etc) more than the atmosphere made by indoor cooling (fans, air conditioning).
 10. One of my childhood comfort foods was white rice with cupcake sprinkles mixed in.
-11. 
+11. I used to be terrified of my elementary school's janitor, because he was from China and could not speak English well. Being unable to communicate was a prodigious fear for me, so I never talked to him.
 
 ## Questions Asked
 
