@@ -120,4 +120,16 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
 
 ## Questions Asked
 
+1. If you could replace all the water on Earth with one other homogeneous chemical substance--with the assurance that life on Earth could still survive exactly as it does now by drinking that chemical--what substance would you choose and why?
+2. What are three adjectives that your worst enemy would use to describe you?
+3. You're going to a desert island and you get to take one book with you, but I get to rip out my choice of 50% of the pages before giving it to you. What book do you choose?
+4. All world governments are now replaced with arbitrary Fortune 500 companies. You have your choice of living under any one of them. Which do you choose?
+5. You're sentenced to death row, and given the choice of your last meal. What do you choose?
+6. What is your favorite constant number? Zero, One, Pi, Euler's Constant, the Imaginary Number? Constant of permittivity or permeability? Something else?
+7. Describe the last experience that made you laugh without those around you finding it amusing.
+8. Describe the last experience where everyone else found something hilarious that you didn't get.
+9. From now on, you are only allowed to listen to one genre of music. Which genre do you choose?
+10. Which conspiracy theory do you most want/hope to be true? Why?
+11. Set a timer for four hours from now (or whenever you are not working on the blog post you are currently writing). When the timer rings, immediately paste the contents of your computer's clipboard, save them, and explain their context as the answer to this final question.
+
 ## Blogs Nominated
