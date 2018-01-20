@@ -132,4 +132,8 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
 10. Which conspiracy theory do you most want/hope to be true? Why?
 11. Set a timer for four hours from now (or whenever you are not working on the blog post you are currently writing). When the timer rings, immediately paste the contents of your computer's clipboard, save them, and explain their context as the answer to this final question.
 
-## Blogs Nominated
+## Nominations
+
+### _a.k.a. The Plot Twist_
+
+Having poured so much effort into this blog so far, I am ashamed to leave it incomplete due to a single negative perspective found online. However, as a matter of respect for other content producers and young professionals trying to establish a personal brand online, I have decided not to distribute any nominations for the Liebster award. 
