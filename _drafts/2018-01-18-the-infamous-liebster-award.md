@@ -112,7 +112,10 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
 4. My first paying job was acting as the cow mascot for Chick-fil-A. I had to quit because I grew too tall for the suit.
 5. The first programming language I took classes and achieved fluency in is [J](http://jsoftware.com/). My teacher was [Henry Rich](https://www.linkedin.com/in/henry-rich-5b7503131/).
 6. When I took an ideology test in high school, measuring my political views on a spectrum of -72 (left/liberal) to +72 (right/conservative), I received a stunning +2. Since then, my views haven't changed much: last time I took the test, I had migrated to +6.
-7. 
+7. I have never crashed a motor vehicle (knock on wood!).
+8. The latest I have ever stayed awake is 3am: I was infuriated because I could not connect to a Raspberry Pi headless (without a monitor). I have never pulled a true all-nighter.
+9. I prefer colder climates over warmer ones: not because I like being outside in the cold, but because I love the feeling and smell of indoor heating (stove, fireplace, etc) more than the atmosphere made by indoor cooling (fans, air conditioning).
+10. 
 
 ## Questions Asked
 
