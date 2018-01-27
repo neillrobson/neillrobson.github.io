@@ -42,8 +42,8 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
 
     From a practical perspective, I actually find myself leaning slightly toward Microsoft. Although I am perhaps least familiar with system administration and software development on Windows, I find Microsoft's recent actions as a company pleasantly surprising and admirable. They seem eager to make their products accessible and open both to developers (who desire clear documentation and transparent sources) and end users (who desire dependability and elegant functionality). Microsoft doesn't exhibit the vertical integration of their products and services that Apple does (allowing Apple to provide beautiful interfaces to their customers), but in relaxing their hold on the reins, Microsoft forms better relationships with their developer community. Microsoft still keeps much of their software closed-source, but without doing so they would struggle to make ends meet in order to deliver the high-quality services that end users have come to expect.
     
-![Microsoft logo circa 2018]({{site.baseurl}}/assets/images/2018/01/the-infamous-liebster-award/Microsoft-logo_rgb_c-gray.png)
-_A pretty (flat) logo_
+    ![Microsoft logo circa 2018]({{site.baseurl}}/assets/images/2018/01/the-infamous-liebster-award/Microsoft-logo_rgb_c-gray.png)
+    _A pretty (flat) logo_
 
     So, long story short: In a perfect world, Linux. In this world, Microsoft!
 
