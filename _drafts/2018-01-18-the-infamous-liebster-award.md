@@ -126,6 +126,10 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
 2. I drove my date to the senior prom in my grandfather's 1995 Oldsmobile Cutlass Ciera.
 3. I've remapped my keyboard so that the `capslock` key acts as `esc` when tapped and as `ctrl` when held down along with another key. My left `ctrl` key is mapped to `capslock`.
 4. My first paying job was acting as the cow mascot for Chick-fil-A. I had to quit because I grew too tall for the suit.
+
+    ![A Chick-fil-A cow mascot]({{site.baseurl}}/assets/images/2018/01/the-infamous-liebster-award/chick-fil-a-cow-day-2013.jpg)
+    _Is that me?! Wouldn't you like to know..._
+
 5. The first programming language I took classes and achieved fluency in is [J](http://jsoftware.com/). My teacher was [Henry Rich](https://www.linkedin.com/in/henry-rich-5b7503131/).
 6. When I took an ideology test in high school, measuring my political views on a spectrum of -72 (left/liberal) to +72 (right/conservative), I received a stunning +2. Since then, my views haven't changed much: last time I took the test, I had migrated to +6.
 7. I have never crashed a motor vehicle (knock on wood!).
