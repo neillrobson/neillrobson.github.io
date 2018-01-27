@@ -127,7 +127,7 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
 5. You're sentenced to death row, and given the choice of your last meal. What do you choose?
 6. What is your favorite constant number? Zero, One, Pi, Euler's Constant, the Imaginary Number? Constant of permittivity or permeability? Something else?
 7. Describe the last experience that made you laugh without those around you finding it amusing.
-8. Describe the last experience where everyone else found something hilarious that you didn't get.
+8. Describe the last experience where everyone else found something hilarious that you didn't understand.
 9. From now on, you are only allowed to listen to one genre of music. Which genre do you choose?
 10. Which conspiracy theory do you most want/hope to be true? Why?
 11. Set a timer for four hours from now (or whenever you are not working on the blog post you are currently writing). When the timer rings, immediately paste the contents of your computer's clipboard, save them, and explain their context as the answer to this final question.
