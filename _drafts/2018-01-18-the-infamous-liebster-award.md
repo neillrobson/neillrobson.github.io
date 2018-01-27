@@ -65,6 +65,9 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
     
     The first song I ever purchased was [Still Alive by Jonathan Coulton](https://www.youtube.com/watch?v=Y6ljFaKRTrI). I also ended up parodying this song as a goodbye gift for the music teacher who directed the theatre production that was pivotal in maturing me emotionally and socially.
     
+    ![The protagonist of Portal]({{site.baseurl}}/assets/images/2018/01/the-infamous-liebster-award/chell.jpg)
+    _Fan art of Portal--the video game in which Jonathan Coulton's song was featured_
+    
     Speaking of that show, I am quite fond of several songs in the soundtrack of [HONK Jr](https://www.youtube.com/playlist?list=PLnbBAvpTGon8EN_eh_zALsb7dxPy-ttnd).
     
     The first song I ever performed for a romantic interest was [The Pout-Pout Fish](https://www.youtube.com/watch?v=gynYtBmYlnk).
