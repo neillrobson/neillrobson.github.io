@@ -134,6 +134,10 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
 6. When I took an ideology test in high school, measuring my political views on a spectrum of -72 (left/liberal) to +72 (right/conservative), I received a stunning +2. Since then, my views haven't changed much: last time I took the test, I had migrated to +6.
 7. I have never crashed a motor vehicle (knock on wood!).
 8. The latest I have ever stayed awake is 3am: I was infuriated because I could not connect to a Raspberry Pi headless (without a monitor). I have never pulled a true all-nighter.
+
+    ![The Raspberry Pi motherboard, shown to sacle.]({{site.baseurl}}/assets/images/2018/01/the-infamous-liebster-award/rpi.png)
+    _I've never tasted a real raspberry pie before: only the bitter tears of bootstrapping one._
+    
 9. I prefer colder climates over warmer ones: not because I like being outside in the cold, but because I love the feeling and smell of indoor heating (stove, fireplace, etc) more than the atmosphere made by indoor cooling (fans, air conditioning).
 10. One of my childhood comfort foods was white rice with cupcake sprinkles mixed in.
 11. I used to be terrified of my elementary school's janitor, because he was from China and could not speak English well. Being unable to communicate was a prodigious fear for me, so I never talked to him.
@@ -146,6 +150,10 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
 4. All world governments are now replaced with arbitrary Fortune 500 companies. You have your choice of living under any one of them. Which do you choose?
 5. You're sentenced to death row, and given the choice of your last meal. What do you choose?
 6. What is your favorite constant number? Zero, One, Pi, Euler's Constant, the Imaginary Number? Constant of permittivity or permeability? Something else?
+
+    ![Handwritten Latin and Greek alphabets]({{site.baseurl}}/assets/images/2018/01/the-infamous-liebster-award/math.jpg)
+    _My handwriting? Ha. I wish..._
+
 7. Describe the last experience that made you laugh without those around you finding it amusing.
 8. Describe the last experience where everyone else found something hilarious that you didn't understand.
 9. From now on, you are only allowed to listen to one genre of music. Which genre do you choose?
