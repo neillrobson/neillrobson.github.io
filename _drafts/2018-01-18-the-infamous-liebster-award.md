@@ -74,7 +74,7 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
     
 7. Have you ever been out of the country? If so, where?
 
-	I've been to China (Shameless plug! Read more about the experience on this blog!) and the Caribbean. I would only consider the former experience to be a true "cultural immersion," as the trip to the Caribbean was simply a week-long vacation to a beautiful (but somewhat isolated) resort. It was a wonderful experience nonetheless!
+	I've been to China (Shameless plug! Read more about the experience on this blog!) and the Caribbean. I would only consider the former experience to be true "cultural immersion," as the trip to the Caribbean was simply a week-long vacation to a beautiful (but somewhat isolated) resort. It was a wonderful experience nonetheless!
     
 8. What are some inside family quotes that you’ll never forget?
 
