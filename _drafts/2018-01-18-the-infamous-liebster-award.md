@@ -136,7 +136,7 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
 
 ### _a.k.a. The Plot Twist_
 
-Having poured so much effort into this blog so far, I am ashamed to leave it incomplete due to a single negative perspective found online. However, as a matter of respect for other content producers and young professionals trying to establish a personal brand online, I have decided not to distribute any nominations for the Liebster award. 
+Having poured so much effort into this blog so far, I am ashamed to leave it incomplete due to a single negative perspective found on the Internet. However, as a matter of respect for other content producers and young professionals trying to establish a personal brand online, I have decided not to distribute any nominations for the Liebster award. 
 
 Why did I make this decision?
 
