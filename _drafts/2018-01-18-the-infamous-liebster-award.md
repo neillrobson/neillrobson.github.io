@@ -84,7 +84,7 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
     
     One evening, as a friend and I were enjoying dinner, I asked my dad if my friend could just stay overnight so we could have more time together. Eager to encourage my social interactions (of which I did not have many), my dad readily called up my friend's parents to organize the evening. "Hi Rick," he began. "This is Forrest, Neill's dad. I was wondering if you would be willing-- uh, I mean, could Jacob and Neill have a--"
     
-    Dad was struggling to find the socially acceptable term for the request: he was sure that the phrase "sleep-over" was considered lame by the younger crowd. What was the word for "hanging out" overnight? Finally, in a well-intentioned epiphany of vocabulary, my dad sputtered,
+    Dad was struggling to find the socially acceptable term for the request: he was sure that the phrase "sleep-over" was eschewed by the younger crowd. What was the word for "hanging out" overnight? Finally, in a well-intentioned epiphany of vocabulary, my dad sputtered,
     
     > ...Could Jacob and Neill have a **HANG**-over tonight?!
     
