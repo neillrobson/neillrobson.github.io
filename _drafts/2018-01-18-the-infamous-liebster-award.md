@@ -92,7 +92,7 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
     
 9. Best board game? Best video game?
 
-    Although I've never played a full session before, I have always venerated the Japanese board game [Go](https://en.wikipedia.org/wiki/Go_game) for its simplicity and stunning depth of strategy. There is only one type of piece, and they never move once placed, yet it took exponentially more computing power for artificial intelligence to beat a human at Go than it did for the sundry rules and moves in Chess.
+    Although I've never played a full session before, I have always venerated the Japanese board game [Go](https://en.wikipedia.org/wiki/Go_game) for its simplicity and stunning depth of strategy. There is only one type of piece, and they never move once placed, yet it took exponentially more computing power for artificial intelligence to beat a human at Go than it did for the game of Chess, with its sundry rules and moves.
     
     Best video game is, without the shadow of a doubt, [The Witness](http://store.steampowered.com/app/210970/The_Witness/). It is a marvellous tapestry outlining human intelligence and philosophy, and a shining example of nonverbal communication. It is the one video game that I believe would have engaged C.S. Lewis, Steve Jobs, and Douglas Hofstadter alike.
     
