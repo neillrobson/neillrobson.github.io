@@ -5,7 +5,7 @@ comments: false
 published: false
 title: The Infamous Liebster Award
 ---
-As an encouragement to continue sharing my thoughts and experiences online, a person near and dear to my heart nominated me for [the Libster Award](https://theglobalaussie.com/liebster-award-2018/).
+As an encouragement to continue sharing my thoughts and experiences online, a person near and dear to my heart nominated me for [the Liebster Award](https://theglobalaussie.com/liebster-award-2018/).
 
 ![Liebster Award Logo](https://theglobalaussie.com/wp-content/uploads/2017/12/More-Flowers.png)
 
@@ -19,7 +19,7 @@ Let's go!
 
 Why do I write blogs?
 
-My journey began when I took a trip abroad to Hangzhou, China, and was seeking a way to memorialize that unique experience and share it with friends and family back home. Being a quixotic techie with a dogged proclivity to independence, I threw together a self-hosted website on which I built a resume page in spartan HTML/CSS and a [Ghost blog](https://ghost.org/) for recording my time in China. Since then, I've spent much more time investing in the website's technology rather than its content (form over function--an incorrigible flaw against which I battle), and have most recently settled on a [Jekyll site](https://jekyllrb.com/) hosted on [Github](https://github.com/) (a platform to help software developers track their code and collaborate) and managed with [Prose](http://prose.io/).
+My journey began when I took a trip abroad to Hangzhou, China, and was seeking a way to memorialize that unique experience and share it with friends and family back home. Being a quixotic techie with a dogged proclivity toward independence, I threw together a self-hosted website on which I built a resume page in spartan HTML/CSS and a [Ghost blog](https://ghost.org/) for recording my time in China. Since then, I've spent much more time investing in the website's technology rather than its content (form over function--an incorrigible flaw against which I battle), and have most recently settled on a [Jekyll site](https://jekyllrb.com/) hosted on [Github](https://github.com/) (a platform to help software developers track their code and collaborate) and managed with [Prose](http://prose.io/).
 
 But, technologies aside, why do I still strive to immortalize my thoughts in text, and publish them online for the world to see? In truth, my motivation comes down to my love for storytelling: using narratives in every form to build connections with others. From the color palletes of the websites I build to the tension of the piano's vibrations, from the worlds invented through extemporized theatrical performance to those themes shared through a video game, I am in love with communication--especially through non-traditional media. Building a website and contribuing to a blog is one way I believe that I can combine my two somewhat divergent passions--software development and narrative creation--into a single product.
 
@@ -142,4 +142,4 @@ Why did I make this decision?
 
 Upon attempting to find eleven blogs with under two hundred followers (as the rules specify), I stumbled upon [this conversation](https://en.forums.wordpress.com/topic/for-liebster-awards-how-do-i-find-out-how-many-followers-a-blog-has?replies=5) that condemned "blog awards" as amateurish attempts to artificially raise SEO. Even blogs with valuable and unique content can have their reputation undermined by getting caught up in chain-based blog awards. Regardless of one's intention in posting, partaking in such activities gives the appearance of one floundering for quality material.
 
-I will still publish this post as it is, because I respect the person who awarded me the Liebster and wish to support her in her first steps into blogging. However, I do not want to put anyone else under duress by 
+I will still publish this post as it is, because I respect the person who awarded me the Liebster and wish to support her in her first steps into blogging. However, I do not want to put anyone else under duress by
