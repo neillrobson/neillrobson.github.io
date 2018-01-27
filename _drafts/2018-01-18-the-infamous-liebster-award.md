@@ -33,7 +33,7 @@ I will now attempt to answer the eleven inquiries of my nominator, La Creadora F
 
     You're killing me already! My knee-jerk response is Linux, because I've grown up using various Linux distributions for most of my journey so far as a computer scientist and I value the power and freedom of a community in which everyone is able to contribute to the functional development of the software system. 
 
-    That said, as I continue to learn grow in my understanding of various computer technologies, companies, and cultures, I am also beginning to take into account the pragmatic realities of the field. "Open Source" does not necessarily imply an open and inclusive development community. It doesn't always yield accessible software, and the provided products and services often fail to bring food to the table of their contributors. There is a time for everything, and a season for every activity under the heavens[^1]; free and open-source software has an important place in our community, but it is not the answer to all technological woes.
+    That said, as I continue to grow in my understanding of various computer technologies, companies, and cultures, I am also beginning to take into account the pragmatic realities of the field. "Open Source" does not necessarily imply an open and inclusive development community. It doesn't always yield accessible software, and the provided products and services often fail to bring food to the table of their contributors. There is a time for everything, and a season for every activity under the heavens[^1]; free and open-source software has an important place in our community, but it is not the answer to all technological woes.
 
     [^1]: Ecclesiastes 3:1.
 
