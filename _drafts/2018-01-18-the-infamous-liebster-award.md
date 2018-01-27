@@ -142,4 +142,8 @@ Why did I make this decision?
 
 Upon attempting to find eleven blogs with under two hundred followers (as the rules specify), I stumbled upon [this conversation](https://en.forums.wordpress.com/topic/for-liebster-awards-how-do-i-find-out-how-many-followers-a-blog-has?replies=5) that condemned "blog awards" as amateurish attempts to artificially raise SEO rankings. Even blogs with valuable and unique content can have their reputation undermined by getting caught up in chain-based blog awards. Regardless of one's intention in posting, partaking in such activities gives the appearance of one floundering for quality material.
 
-I will still publish this post as it is, because I respect the person who awarded me the Liebster and wish to support her in her first steps into blogging. However, I do not want to put anyone else under duress by
+I will still publish this post as it is, because I respect the person who awarded me the Liebster and wish to support her in her first steps into blogging. However, I do not want to put anyone else under duress by publicly pressuring them to publish content that they do not feel is consistent with their online persona or professional image.
+
+(As an aside, I am well aware of the irony of my decision, given that my blog likely has under 10 readers and is far from "public pressure"!)
+
+That being said, I encourage anyone reading this blog who feels comfortable responding to the aforementioned questions--whether by commenting, blogging, posting on social media, or even shooting me an email--to take a chance and codify your thoughts! Sharing our lives with others through written language is a stimulating challenge and a wonderful blessing from God, and if nothing else I hope that this discursive draft has inspired a few others to transform thoughts into words.
