@@ -1,5 +1,8 @@
 {% if site.data.info.colophon %}
   <div class="row colophon">
-    <center>{{ site.data.info.colophon | markdownify }}</center>
+    <center>
+      Content is © {{ 'now' | date: '%Y' }} by Neill Robson.
+      {{ site.data.info.colophon | markdownify }}
+    </center>
   </div>
 {% endif %}
