@@ -2,7 +2,7 @@
 layout: post
 date: '2018-01-28 14:30 -0500'
 comments: true
-published: false
+published: true
 title: The Infamous Liebster Award
 category:
   - blogging
