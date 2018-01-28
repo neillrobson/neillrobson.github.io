@@ -6,6 +6,9 @@ author: "Neill Leonard Robson"
 url: "https://neillrobson.com"
 permalink: /blog/:year/:month/:day/:title/
 google-analytics: UA-97090131-1
+repository: RNanoware/website
+plugins:
+  - jekyll-feed
 
 email: neillrobson811@gmail.com
 twitter_username: RNanoware
