@@ -2,7 +2,7 @@
 layout: post
 date: '2018-02-24 10:13 -0500'
 comments: true
-published: false
+published: true
 title: 'Book Review: The Circle, by Dave Eggers'
 category:
   - literature
