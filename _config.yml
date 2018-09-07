@@ -10,11 +10,11 @@ repository: RNanoware/website
 plugins:
   - jekyll-feed
 
-email: neillrobson811@gmail.com
+email: neill@neillrobson.com
 twitter_username: RNanoware
 github_username: neillrobson
 linkedin_username: neillrobson
-facebook_username: neill.robson
+facebook_username: neill.l.robson
 
 prose:
   siteurl: "https://neillrobson.com"
