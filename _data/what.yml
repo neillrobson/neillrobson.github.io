@@ -16,11 +16,7 @@
   image: oeis.png
   link: http://oeis.org/A246064
 
-- title: Rural NC Service Work
+- title: Diversity and Decorum: Research Paper
   description: >
-    My passion for computer science would have never existed without a few
-    college students coming to my middle school and introducing the field. To
-    travel across my home state and provide the same opportunities to
-    disadvantaged middle school students was an incredible privilege and
-    blessing!
-  image: asbnc.jpg
+    Over the summer of 2018 I had the privilege of working under Dr. Emerson Murphy-Hill at NC State University, researching cultural bias in open source software development. The resulting paper illustrates the efficacy of written social policies in mitigating the gender gap. I had the privilege of presenting this research at ESEC/FSE 2018.
+  link: https://2018.fseconference.org/track/fse-2018-Student-Research-Competition
