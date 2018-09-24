@@ -1,28 +1,15 @@
-- title: Web Design
+- title: Software Engineering
   description: >
-    As the printing press of the 21st century, it's no wonder the Internet
-    continues to capture my fascination. I'm passionate about fostering
-    effective, efficient, and accessible communication online.
-  icon: fa-globe
+    Give me a task. If I can't accomplish it with a program... well, I'll probably die trying! Some of my favorite languages for personal projects are J and Haxe, but I am also proficient in Java, PHP, C, and Javascript, among others.
+  icon: fa-laptop-code
 
-- title: Theatre
+- title: Education
   description: >
-    To show is infinitely better than to tell! Whether the occasion calls for
-    improvised role-playing or a full-blown performance, I'm always eager to set
-    aside my more introverted nature and connect with others through acting.
+    Nothing excites me quite like the light in a friend's eyes as they have that epiphany that comes with effective computer communication. For as long as I've been studying software, I've sought out ways to share that passion with other students and peers. At NC State, I serve as an outreach coordinator for middle-school-level Computer Science workshops with STARS Computing Corps.
   image: theatre.jpg
+  link: https://stars.ncsu.edu/
 
-- title: Chinese
+- title: Storytelling
   description: >
-    无论你从哪里来，我还想跟你当朋友！ The global community in which we live is
-    ripe with potential for sharing lessons and innovations across barriers of
-    language and culture. I love studying Mandarin Chinese for this reason.
+    The centerpiece of my fascination with computers is their capacity to help us express ourselves in unique ways, such as the visual layouts of websites and the interactive nature of video games. Outside of computing, I also enjoy participating in community theatre, playing the piano, and reading.
   icon: fa-language
-
-- title: Piano
-  description: >
-    Life can be much more complicated than words can express, and music is how I
-    release and examine those lingering thoughts within me. If a jingle or ode
-    can be used to more effectively convey a point, you can count on me finding
-    it!
-  icon: fa-music
