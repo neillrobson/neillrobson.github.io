@@ -1,10 +1,6 @@
 - title: Kadro Solutions
   description: >
-    As a cooperative education employee, I enhanced a proprietary e-Commerce
-    management framework to provide a Web-accessible administrative interface to
-    various buisness clients. Tasks ranged from database design in Microsoft SQL
-    Server and Java EE to engineering responsive front-end interfaces with
-    Bootstrap.
+    As a cooperative education employee, I developed custom modules for the Magento 2 e-Commerce framework to improve business- and customer-facing digital shopping experiences. Responsibilities also included maintaining a proprietary inventory management framework in enterprise Java.
   image: kadro.png
   link: http://www.kadro.com/
 
@@ -22,11 +18,3 @@
     Ambassador.
   image: ncsu.png
   link: https://www.ncsu.edu/
-
-- title: Raleigh Charter High School
-  description: >
-    My high school experience was transformative in defining and developing my
-    interdisciplinary intrests, and I am still active there as a volunteer
-    today. Class of 2015!
-  image: rchs.gif
-  link: http://raleighcharterhs.org/
