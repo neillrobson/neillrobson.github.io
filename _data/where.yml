@@ -1,6 +1,9 @@
 - title: Kadro Solutions
   description: >
-    As a cooperative education employee, I developed custom modules for the Magento 2 e-Commerce framework to improve business- and customer-facing digital shopping experiences. Responsibilities also included maintaining a proprietary inventory management framework in enterprise Java.
+    As a cooperative education employee, I developed custom modules for the
+    Magento 2 e-Commerce framework to improve business- and customer-facing
+    digital shopping experiences. Responsibilities also included maintaining a
+    proprietary inventory management framework in enterprise Java.
   image: kadro.png
   link: http://www.kadro.com/
 
@@ -14,7 +17,8 @@
 - title: NC State University
   description: >
     I am currently pursuing a Bachelor's degree in Computer Science, as well as
-    participating as a Goodnight Scholar and Computer Science Student
-    Ambassador.
+    participating as a <a href="https://goodnight.ncsu.edu/">Goodnight
+    Scholar</a> and <a href="https://www.csc.ncsu.edu/ambassadors/">Computer
+    Science Student Ambassador</a>.
   image: ncsu.png
   link: https://www.ncsu.edu/
