@@ -5,9 +5,9 @@ Source code for the personal website and blog of Neill Robson.
 ## Local Development
 
 1. Download or clone the repo
-  - `git clone git@github.com:rnanoware/website.git`
+  - `git clone git@github.com:neillrobson/neillrobson.github.io.git`
 2. Enter the folder
-  - `cd website/`
+  - `cd neillrobson.github.io/`
 3. Start Jekyll server
   - `jekyll serve`
 4. Access via
