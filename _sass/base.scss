@@ -44,7 +44,6 @@ body {
   article > p:first-child {
     &:first-letter {
       color: $alt-color-darker;
-      display: inline-block;
       float: left;
       font-size: 3.2em;
       line-height: 0.7em;
