@@ -1,64 +1,9 @@
 <footer class="footer text-light text-center py-2">
-  <small class="copyright">Template Copyright &copy; <a class="text-light" href="https://themes.3rdwavemedia.com/" target="_blank">3rd Wave Media</a></small>
+  <small class="copyright">
+    Template Copyright &copy; <a class="text-light" href="https://themes.3rdwavemedia.com/" target="_blank">3rd Wave Media</a>
+    <br />
+    Content is &copy; {{ 'now' | date: '%Y' }} Neill Robson.
+    <br />
+    This site is hosted at <a class="text-light" href="https://github.com" target="_blank">Github</a> and created with <a class="text-light" href="https://jekyllrb.com" target="_blank">Jekyll</a>.
+  </small>
 </footer>
-
-<!--
-<footer>
-  <div class="container">
-    {% if include.bio %}
-      <div class="row biography">
-        <div class="col-sm-4">
-          <h2>Who I Am</h2>
-          <p>{{ site.data.info.biography | markdownify }}</p>
-        </div>
-        <div class="col-sm-4">
-          <h2>What This Is</h2>
-          <p>{{ site.data.info.description | markdownify }}</p>
-        </div>
-        <div class="col-sm-4">
-          <h2>Where I Am</h2>
-            <div>
-              <a href="{{ "/" | relative_url }}">https://neillrobson.com</a>
-            </div>
-            {% if site.email %}
-            <div>
-              <a href="mailto:{{ site.email }}">
-                <span class="username">{{ site.email }}</span>
-              </a>
-            </div>
-            {% endif %}
-            {% if site.github_username %}
-            <div>
-              <a href="https://github.com/{{ site.github_username }}">
-                <span class="username">github//{{ site.github_username }}</span>
-              </a>
-            </div>
-            {% endif %}
-            {% if site.twitter_username %}
-            <div>
-              <a href="https://twitter.com/{{ site.twitter_username }}">
-                <span class="username">twitter//{{ site.twitter_username }}</span>
-              </a>
-            </div>
-            {% endif %}
-            {% if site.linkedin_username %}
-            <div>
-              <a href="https://id.linkedin.com/in/{{ site.linkedin_username }}">
-                <span class="username">linkedin//{{ site.linkedin_username }}</span>
-              </a>
-            </div>
-            {% endif %}
-            {% if site.facebook_username %}
-            <div>
-              <a href="https://www.facebook.com/{{ site.facebook_username }}">
-                <span class="username">facebook//{{ site.facebook_username }}</span>
-              </a>
-            </div>
-            {% endif %}
-        </div>
-      </div>
-    {% endif %}
-    {% include colophon.html %}
-  </div>
-</footer>
--->
