@@ -25,3 +25,11 @@ fs.copySync('node_modules/flickity/dist/flickity.pkgd.min.js',
 // Font Awesome
 fs.copySync('node_modules/@fortawesome/fontawesome-free/js/all.min.js',
     'assets/plugins/fontawesome.min.js');
+
+// ImagesLoaded
+fs.copySync('node_modules/imagesloaded/imagesloaded.pkgd.min.js',
+    'assets/plugins/imagesloaded.pkgd.min.js');
+
+// Isotope Layout
+fs.copySync('node_modules/isotope-layout/dist/isotope.pkgd.min.js',
+    'assets/plugins/isotope.pkgd.min.js');
