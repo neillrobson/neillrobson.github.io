@@ -2,87 +2,12 @@
 layout: default
 ---
 <header class="header">
-
-	<div class="top-bar theme-bg-primary-darken">
-
-		<div class="container-fluid">
-
-			<nav class="navbar navbar-expand-lg navbar-dark position-relative">
-
-
-				<ul class="social-list list-inline mb-0">
-					<li class="list-inline-item"><a class="text-white" href="#"><i class="fab fa-twitter fa-fw"></i></a>
-					</li>
-					<li class="list-inline-item"><a class="text-white" href="#"><i
-								class="fab fa-linkedin-in fa-fw"></i></a></li>
-					<li class="list-inline-item"><a class="text-white" href="#"><i
-								class="fab fa-github-alt fa-fw"></i></a></li>
-					<li class="list-inline-item"><a class="text-white" href="#"><i
-								class="fab fa-stack-overflow fa-fw"></i></a></li>
-					<li class="list-inline-item"><a class="text-white" href="#"><i class="fab fa-codepen fa-fw"></i></a>
-					</li>
-				</ul>
-				<!--//social-list-->
-
-
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-					aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse text-uppercase" id="navigation">
-					<ul class="navbar-nav ml-lg-auto">
-						<li class="nav-item mr-lg-3">
-							<a class="nav-link" href="index.html">About</a>
-						</li>
-						<li class="nav-item mr-lg-3">
-							<a class="nav-link" href="projects.html">Projects </a>
-						</li>
-						<li class="nav-item active mr-lg-3">
-							<a class="nav-link" href="talks.html">Talks <span class="sr-only">(current)</span></a>
-						</li>
-						<li class="nav-item mr-lg-3">
-							<a class="nav-link" href="blog.html">Blog</a>
-						</li>
-						<li class="nav-item mr-lg-3">
-							<a class="nav-link" href="resume.html">Resume</a>
-						</li>
-						<li class="nav-item mr-lg-3">
-							<a class="nav-link" href="contact.html">Contact</a>
-						</li>
-						<li class="nav-item dropdown mr-0">
-							<a class="nav-link dropdown-toggle" href="#" id="navigationLink" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">
-								Pages
-							</a>
-							<div class="dropdown-menu dropdown-menu-right text-capitalize shadow-lg"
-								aria-labelledby="navigationLink">
-								<a class="dropdown-item" href="project.html">Project Case Study (1 Column)</a>
-								<a class="dropdown-item" href="project-alt.html">Project Case Study (2 Columns)</a>
-								<a class="dropdown-item" href="blog-post.html">Blog Post</a>
-							</div>
-						</li>
-
-					</ul>
-					<span id="slide-line"></span>
-				</div>
-
-
-
-			</nav>
-
-		</div>
-		<!--//container-->
-
-	</div>
-	<!--//top-bar-->
-
+	{% include top-bar.html %}
 	<div class="header-intro theme-bg-primary text-white py-5">
 		<div class="container">
 			<h2 class="page-heading mb-3">Talks</h2>
 			<div class="page-heading-tagline">Want me to talk at your event? <br class="d-md-none"> <a
 					class="link-on-bg" href="contact.html">Get in touch</a></div>
-
 		</div>
 		<!--//container-->
 	</div>
@@ -202,9 +127,9 @@ layout: default
 {% include hire-me.html %}
 
 <!--Page Specific JS -->
-<script type="text/javascript" src="/assets/plugins/imagesloaded.pkgd.min.js"></script>
-<script type="text/javascript" src="/assets/plugins/isotope.pkgd.min.js"></script>
+<script defer type="text/javascript" src="/assets/plugins/imagesloaded.pkgd.min.js"></script>
+<script defer type="text/javascript" src="/assets/plugins/isotope.pkgd.min.js"></script>
 
 <!-- Custom JS -->
-<script type="text/javascript" src="/assets/js/main.js"></script>
-<script type="text/javascript" src="/assets/js/isotope-custom.js"></script>
+<script defer type="text/javascript" src="/assets/js/main.js"></script>
+<script defer type="text/javascript" src="/assets/js/isotope-custom.js"></script>
