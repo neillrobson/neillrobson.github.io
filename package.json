@@ -1,0 +1,32 @@
+{
+  "name": "neillrobson.github.io",
+  "version": "1.0.0",
+  "description": "Source code for the personal website and blog of Neill Robson.",
+  "private": true,
+  "scripts": {
+    "build": "node -r esm build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neillrobson/neillrobson.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neillrobson/neillrobson.github.io/issues"
+  },
+  "homepage": "https://github.com/neillrobson/neillrobson.github.io#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.8.1",
+    "bootstrap": "^4.3.1",
+    "flickity": "^2.2.0",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^5.1.0",
+    "esm": "^3.2.22",
+    "fs-extra": "^7.0.1"
+  }
+}

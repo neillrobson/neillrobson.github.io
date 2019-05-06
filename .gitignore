@@ -3,3 +3,4 @@ _site
 .jekyll-metadata
 *.swp
 _Instance
+node_modules
