@@ -1,0 +1,78 @@
+bio: >
+  I should really write something captivating here.
+
+skills:
+  overview: >
+    Yeah, I'm pretty skilled, I think.
+  blocks:
+    - title: Frontend
+      image: /assets/images/frontend-icon.svg
+      items:
+        - HTML
+        - CSS
+        - JavaScript
+        - Making up stuff
+    - title: Backend
+      image: /assets/images/backend-icon.svg
+      items:
+        - HTML
+        - CSS
+        - JavaScript
+        - Making up stuff
+    - title: Others
+      image: /assets/images/other-skills-icon.svg
+      items:
+        - HTML
+        - CSS
+        - JavaScript
+        - Making up stuff
+          
+clients:
+  - link: /projects
+    image: /assets/images/logos/logo-1.svg
+  - link: /projects
+    image: /assets/images/logos/logo-2.svg
+  - link: /projects
+    image: /assets/images/logos/logo-3.svg
+  - link: /projects
+    image: /assets/images/logos/logo-4.svg
+  - link: /projects
+    image: /assets/images/logos/logo-5.svg
+  - link: /projects
+    image: /assets/images/logos/logo-6.svg
+
+testimonials:
+  - reference: Adam Wells
+    position: Product Manager, Google
+    image: /assets/images/clients/profile-1.jpg
+    link: https://linkedin.com
+    text: >
+      Neill is a decent guy, I guess. He asked me to write this for him, lol.
+  - reference: Adam Wells
+    position: Product Manager, Google
+    image: /assets/images/clients/profile-2.jpg
+    link: https://linkedin.com
+    text: >
+      Neill is a decent guy, I guess. He asked me to write this for him, lol.
+  - reference: Adam Wells
+    position: Product Manager, Google
+    image: /assets/images/clients/profile-3.jpg
+    link: https://linkedin.com
+    text: >
+      Neill is a decent guy, I guess. He asked me to write this for him, lol.
+  - reference: Adam Wells
+    position: Product Manager, Google
+    image: /assets/images/clients/profile-4.jpg
+    link: https://linkedin.com
+    text: >
+      Neill is a decent guy, I guess. He asked me to write this for him, lol.
+
+features:
+  - link: https://reddit.com
+    image: /assets/images/logos/press-logo-1.png
+  - link: https://reddit.com
+    image: /assets/images/logos/press-logo-2.png
+  - link: https://reddit.com
+    image: /assets/images/logos/press-logo-3.png
+  - link: https://reddit.com
+    image: /assets/images/logos/press-logo-4.png
