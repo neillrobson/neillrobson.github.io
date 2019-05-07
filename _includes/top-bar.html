@@ -2,11 +2,18 @@
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-dark position-relative">
       <ul class="social-list list-inline mb-0">
-        <li class="list-inline-item"><a class="text-white" href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
-        <li class="list-inline-item"><a class="text-white" href="#"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
-        <li class="list-inline-item"><a class="text-white" href="#"><i class="fab fa-github-alt fa-fw"></i></a></li>
-        <li class="list-inline-item"><a class="text-white" href="#"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
-        <li class="list-inline-item"><a class="text-white" href="#"><i class="fab fa-codepen fa-fw"></i></a></li>
+        {% if site.twitter_username %}
+          <li class="list-inline-item"><a class="text-white" href="https://twitter.com/{{ site.twitter_username }}"><i class="fab fa-twitter fa-fw"></i></a></li>
+        {% endif %}
+        {% if site.linkedin_username %}
+          <li class="list-inline-item"><a class="text-white" href="https://www.linkedin.com/in/{{ site.linkedin_username }}/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+        {% endif %}
+        {% if site.github_username %}
+          <li class="list-inline-item"><a class="text-white" href="https://github.com/{{ site.github_username }}"><i class="fab fa-github-alt fa-fw"></i></a></li>
+        {% endif %}
+        {% if site.stackoverflow_id_number %}
+          <li class="list-inline-item"><a class="text-white" href="https://stackoverflow.com/users/{{ site.stackoverflow_id_number }}"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
+        {% endif %}
       </ul>
       <!--//social-list-->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
@@ -38,6 +45,8 @@
               </li>
             {% endif %}
           {% endfor %}
+          <!-- Markup for a dropdown nav item -->
+          <!--
           <li class="nav-item dropdown mr-0">
             <a class="nav-link dropdown-toggle" href="#" id="navigationLink" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">
@@ -49,6 +58,7 @@
               <a class="dropdown-item" href="/blog-post.html">Blog Post</a>
             </div>
           </li>
+        -->
 
         </ul>
         <span id="slide-line"></span>
