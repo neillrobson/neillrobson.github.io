@@ -1,18 +1,72 @@
 ---
-layout: listing
+layout: default
 ---
-{% assign categories = site.categories | sort %}
-{% for category in categories %}
-{% comment %}
-  Category is an array with two elements: the first is the name of the
-  category, and the second is an array of posts.
-{% endcomment %}
-{% assign name = category | first %}
-{% assign posts = category | last %}
-<h3>On {{ name }}</h3>
-<p>
-  {% for post in posts %}
-  <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>{% if forloop.last == false %},&nbsp;{% endif %}
-  {% endfor %}
-</p>
-{% endfor %}
+<header class="header">
+	{% include top-bar.html %}
+	<div class="header-intro theme-bg-primary text-white py-5">
+		<div class="container position-relative">
+			<div class="media flex-column flex-md-row">
+				<img class="profile-medium d-inline-block rounded-circle mr-md-4 align-self-center mb-2 mb-lg-0"
+					src="assets/images/profile.jpg" alt="">
+				<div class="media-body align-self-center">
+					<h2 class="page-heading mb-2">Steve Doe's Blog</h2>
+					<div class="page-heading-tagline mb-3">I write about web development and life as a developer. <br
+							class="d-lg-block d-none">You can follow me via the various channels below:</div>
+					<ul class="social-list-square list-inline mb-0">
+						<li class="list-inline-item mb-3 mb-lg-0"><a href="#"><i
+									class="fab fa-twitter fa-fw text-white"></i></a></li>
+
+						<li class="list-inline-item mb-3 mb-lg-0"><a href="#"><i
+									class="fab fa-linkedin-in fa-fw text-white"></i></a></li>
+						<li class="list-inline-item mb-3 mb-lg-0"><a href="#"><i
+									class="fab fa-github-alt fa-fw text-white"></i></a></li>
+						<li class="list-inline-item mb-3 mb-lg-0"><a href="#"><i
+									class="fab fa-stack-overflow fa-fw text-white"></i></a></li>
+						<li class="list-inline-item mb-3 mb-lg-0"><a href="#"><i
+									class="fab fa-medium-m fa-fw text-white"></i></a></li>
+						<li class="list-inline-item mb-3 mb-lg-0"><a href="#"><i
+									class="fab fa-codepen fa-fw text-white"></i></a></li>
+
+
+
+					</ul>
+					<!--//social-list-->
+				</div>
+			</div>
+
+
+		</div>
+		<!--//container-->
+	</div>
+	<!--//header-intro-->
+
+</header>
+<!--//header-->
+
+{% assign featured_post = site.posts | first %}
+{% assign recent_posts = site.posts | slice: 1, 9 %}
+
+<section class="section pt-5">
+	<div class="container blog-cards">
+
+		<div class="row">
+			{% include featured-post-card.html post=featured_post %}
+
+			{% for recent_post in recent_posts %}
+				{% include regular-post-card.html post=recent_post %}
+			{% endfor %}
+			
+			<div class="col-12 mb-5">
+				<a class="btn-blog-more btn btn-primary btn-block text-white font-weight-bold">TODO: Load more posts...</a>
+			</div>
+
+		</div>
+	</div>
+	<!--//container-->
+</section>
+<!--//section-->
+
+{% include hire-me.html %}
+
+<!-- Custom JS -->
+<script defer type="text/javascript" src="/assets/js/main.js"></script>

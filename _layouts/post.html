@@ -1,23 +1,182 @@
 ---
-layout: blog
+layout: default
 ---
-<div class="row">
-  <header class="col-xs-12">
-    <p class="nav">
-      <a class="left" href="{{ "/blog" | relative_url }}"><i class="fa fa-chevron-left"></i></a>
-    </p>
-    <h1>{{ page.title }}</h1>
-    <p class="date">{{ page.date | date: "%-d %b %Y" }}</p>
-  </header>
-</div>
-<div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-8 offset-md-1">
-    <article lang="en">
-      {{ content }}
-    </article>
-    {% if jekyll.environment == "production" and page.comments %}
-      {% include disqus.html %}
-    {% endif %}
+<header class="header" id="blog-post-top">
+  {% include top-bar.html %}
+  <div class="header-intro theme-bg-primary text-white py-5">
+    <div class="container text-center">
+      <h2 class="page-heading mb-1">{{ page.title }}</h2>
+      <div class="page-heading-tagline mx-auto mb-3">CHANGE ME</div>
+      <img class="profile-small d-inline-block rounded-circle mb-3" src="assets/images/profile.jpg" alt="">
+      <ul class="page-heading-post-meta list-inline mb-0">
+        <li class="list-inline-item mr-3"><i class="far fa-clock mr-2"></i>{{ page.date | date: '%B %-d, %Y' }}</li>
+        <li class="list-inline-item"><i class="fas fa-comment mr-2"></i><a href="#comments-block">8 CHANGE ME</a></li>
+      </ul>
+    </div>
+    <!--//container-->
   </div>
-</div>
+  <!--//header-intro-->
+</header>
+<!--//header-->
+
+<section class="single-post-wrapper single-col-max-width py-5 px-4 mx-auto">
+  {{ content }}
+
+  <nav class="post-nav d-flex justify-content-between">
+    <div class="nav-previous"><a href="#" rel="prev"><i class="fas fa-long-arrow-alt-left mr-1"></i>Previous <span
+          class="d-none d-md-inline">Post</span></a></div>
+    <div class="nav-next"><a href="#" rel="next">Next <span class="d-none d-md-inline">Post</span><i
+          class="fas fa-long-arrow-alt-right ml-1"></i></a></div>
+  </nav>
+
+  <div class="author-block my-5 bg-white p-3 p-l-5">
+    <div class="media flex-column flex-md-row">
+      <img class="author-profile profile-small d-inline-block rounded-circle mr-md-4 mb-2 mb-lg-0"
+        src="assets/images/profile.jpg" alt="">
+      <div class="author-info media-body">
+        <h4 class="mb-2 font-weight-bold">Steve Doe</h4>
+        <div class="mb-3">I'm a full stack developer with a passion for software development and UX. You can follow me
+          via the various channels below:</div>
+        <ul class="social-list-color list-inline mb-0">
+          <li class="list-inline-item mb-3"><a class="twitter rounded-circle" href="#"><i
+                class="fab fa-twitter fa-fw"></i></a></li>
+
+          <li class="list-inline-item mb-3"><a class="linkedin rounded-circle" href="#"><i
+                class="fab fa-linkedin-in fa-fw"></i></a></li>
+          <li class="list-inline-item mb-3"><a class="github rounded-circle" href="#"><i
+                class="fab fa-github-alt fa-fw"></i></a></li>
+          <li class="list-inline-item mb-3"><a class="stack-overflow rounded-circle" href="#"><i
+                class="fab fa-stack-overflow fa-fw"></i></a></li>
+          <li class="list-inline-item mb-3"><a class="medium rounded-circle" href="#"><i
+                class="fab fa-medium-m fa-fw"></i></a></li>
+          <li class="list-inline-item mb-3"><a class="codepen rounded-circle" href="#"><i
+                class="fab fa-codepen fa-fw"></i></a></li>
+
+
+          <!--<li class="list-inline-item mb-3"><a class="facebook" href="#"><i class="fab fa-facebook-f fa-fw"></i></a></li>-->
+
+          <!--<li class="list-inline-item"><a class="instagram" href="#"><i class="fab fa-instagram fa-fw"></i></a></li>-->
+        </ul>
+        <!--//social-list-->
+      </div>
+    </div>
+  </div>
+
+  {% if jekyll.environment == "production" and page.comments %}
+    {% include disqus.html %}
+  {% endif %}
+
+</section>
+<!--//single-post-wrapper-->
+
+
+<section class="section pt-5 related-projects-section bg-white">
+  <div class="container">
+    <h3 class="section-title font-weight-bold text-center mb-4">You May Also Like...</h3>
+    <div class="blog-cards blog-cards-related">
+      <div class="row">
+        <div class="col-12 col-lg-4 mb-5">
+          <div class="card rounded-0 border-0 shadow-sm eq-height">
+            <div class="card-img-container position-relative">
+              <img class="card-img-top rounded-0" src="assets/images/blog/blog-post-thumb-2.jpg" alt="">
+              <div class="card-img-overlay overlay-mask text-center p-0">
+                <div class="overlay-mask-content text-center w-100 position-absolute">
+                  <a class="btn btn-primary" href="blog-post.html">Read more</a>
+                </div>
+                <a class="overlay-mask-link position-absolute w-100 h-100" href="blog-post.html"></a>
+              </div>
+            </div>
+            <div class="card-body pb-4">
+
+              <h4 class="card-title mb-2"><a href="blog-post.html">React, Bootstrap, and Angular- The Basics</a></h4>
+              <div class="card-text">
+
+                <div class="excerpt"> Blog post intro goes here. Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit. Quisque vel sapien quis nulla dictum euismod...</div>
+              </div>
+
+            </div>
+            <div class="card-footer border-0">
+              <ul class="meta list-inline mb-0">
+                <li class="list-inline-item mr-3"><i class="far fa-clock mr-2"></i>June 18, 2018</li>
+                <li class="list-inline-item"><i class="fas fa-comment mr-2"></i><a href="#">8 Comments</a></li>
+              </ul>
+            </div>
+          </div>
+          <!--//card-->
+        </div>
+        <div class="col-12 col-lg-4 mb-5">
+          <div class="card rounded-0 border-0 shadow-sm eq-height">
+            <div class="card-img-container position-relative">
+              <img class="card-img-top rounded-0" src="assets/images/blog/blog-post-thumb-4.jpg" alt="">
+              <div class="card-img-overlay overlay-mask  text-center p-0">
+                <div class="overlay-mask-content text-center w-100 position-absolute">
+                  <a class="btn btn-primary" href="blog-post.html">Read more</a>
+                </div>
+                <a class="overlay-mask-link position-absolute w-100 h-100" href="blog-post.html"></a>
+              </div>
+            </div>
+            <div class="card-body pb-4">
+
+              <h4 class="card-title mb-2"><a href="blog-post.html">Learn React Components</a></h4>
+              <div class="card-text">
+                <div class="excerpt"> Blog post intro goes here. Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit. Quisque vel sapien quis nulla dictum euismod...</div>
+              </div>
+            </div>
+            <div class="card-footer border-0">
+              <ul class="meta list-inline mb-0">
+                <li class="list-inline-item mr-3"><i class="far fa-clock mr-2"></i>Apr 25, 2018</li>
+                <li class="list-inline-item"><i class="fas fa-comment mr-2"></i><a href="#">18 Comments</a></li>
+              </ul>
+            </div>
+          </div>
+          <!--//card-->
+        </div>
+
+        <div class="col-12 col-lg-4 mb-5">
+          <div class="card rounded-0 border-0 shadow-sm eq-height">
+            <div class="card-img-container position-relative">
+              <img class="card-img-top rounded-0" src="assets/images/blog/blog-post-thumb-5.jpg" alt="">
+              <div class="card-img-overlay overlay-mask  text-center p-0">
+                <div class="overlay-mask-content text-center w-100 position-absolute">
+                  <a class="btn btn-primary" href="blog-post.html">Read more</a>
+                </div>
+                <a class="overlay-mask-link position-absolute w-100 h-100" href="blog-post.html"></a>
+              </div>
+            </div>
+            <div class="card-body pb-4">
+
+              <h4 class="card-title mb-2"><a href="blog-post.html">
+                  A Guide to Becoming a Full-Stack Developer</a></h4>
+              <div class="card-text">
+
+                <div class="excerpt"> Blog post intro goes here. Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit. Quisque vel sapien quis nulla dictum euismod...</div>
+              </div>
+            </div>
+            <div class="card-footer border-0">
+              <ul class="meta list-inline mb-0">
+                <li class="list-inline-item mr-2"><i class="far fa-clock mr-2"></i>Mar 15, 2018</li>
+                <li class="list-inline-item"><i class="fas fa-comment mr-2"></i><a href="#">63 Comments</a></li>
+              </ul>
+            </div>
+          </div>
+          <!--//card-->
+        </div>
+      </div>
+      <!--//row-->
+    </div>
+
+  </div>
+  <!--//container-->
+</section>
+
+{% include hire-me.html %}
+
+<!--Page Specific JS -->
+<script defer type="text/javascript" src="/assets/plugins/highlight/highlight.pack.min.js"></script>
+
+<!-- Custom JS -->
+<script defer type="text/javascript" src="/assets/js/main.js"></script>
+<script defer type="text/javascript" src="/assets/js/code-highlight.js"></script>

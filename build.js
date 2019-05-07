@@ -9,7 +9,7 @@ fs.copySync('node_modules/jquery/dist/jquery.min.js',
     'assets/plugins/jquery.min.js');
 
 // Popper.js
-fs.copySync('node_modules/popper.js/dist/popper.min.js',
+fs.copySync('node_modules/popper.js/dist/umd/popper.min.js',
     'assets/plugins/popper.min.js');
 
 // Bootstrap
@@ -33,3 +33,9 @@ fs.copySync('node_modules/imagesloaded/imagesloaded.pkgd.min.js',
 // Isotope Layout
 fs.copySync('node_modules/isotope-layout/dist/isotope.pkgd.min.js',
     'assets/plugins/isotope.pkgd.min.js');
+
+// Highlight JS
+fs.copySync('node_modules/highlightjs/highlight.pack.min.js',
+    'assets/plugins/highlight/highlight.pack.min.js');
+fs.copySync('node_modules/highlightjs/styles',
+    'assets/plugins/highlight/styles');
