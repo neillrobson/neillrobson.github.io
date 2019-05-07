@@ -33,12 +33,6 @@ prose:
         field:
           element: "text"
           value: CURRENT_DATETIME
-      - name: "category"
-        field:
-          element: "multiselect"
-          label: "Category"
-          alterable: true
-          options: "https://neillrobson.com/categories.jsonp"
       - name: "comments"
         field:
           element: "checkbox"
