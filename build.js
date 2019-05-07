@@ -39,3 +39,7 @@ fs.copySync('node_modules/highlightjs/highlight.pack.min.js',
     'assets/plugins/highlight/highlight.pack.min.js');
 fs.copySync('node_modules/highlightjs/styles',
     'assets/plugins/highlight/styles');
+
+// jQuery Validation
+fs.copySync('node_modules/jquery-validation/dist/jquery.validate.min.js',
+    'assets/plugins/jquery-validation/jquery.validate.min.js');
