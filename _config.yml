@@ -10,6 +10,11 @@ repository: neillrobson/neillrobson.github.io
 plugins:
   - jekyll-feed
 
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:title/
+
 email: neill@neillrobson.com
 twitter_username: RNanoware
 github_username: neillrobson
