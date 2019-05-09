@@ -43,3 +43,16 @@ prose:
           element: "checkbox"
           label: "Comments"
           value: false
+
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE
+  - gulpfile.esm.js
+
+keep_files:
+  - assets
