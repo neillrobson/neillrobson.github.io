@@ -4,7 +4,8 @@
   "description": "Source code for the personal website and blog of Neill Robson.",
   "private": true,
   "scripts": {
-    "build": "node -r esm build.js"
+    "build": "gulp build",
+    "watch": "gulp watch"
   },
   "repository": {
     "type": "git",
@@ -34,7 +35,10 @@
     "esm": "^3.2.22",
     "fs-extra": "^7.0.1",
     "gulp": "^4.0.2",
+    "gulp-flatten": "^0.4.0",
+    "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
-    "node-sass": "^4.12.0"
+    "node-sass": "^4.12.0",
+    "node-sass-tilde-importer": "^1.0.2"
   }
 }
