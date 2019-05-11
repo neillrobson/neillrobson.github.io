@@ -16,10 +16,19 @@ collections:
     permalink: /:collection/:title/
 
 email: neill@neillrobson.com
-twitter_username: RNanoware
-github_username: neillrobson
-linkedin_username: neillrobson
-facebook_username: neill.l.robson
+social:
+  - name: Twitter
+    url: https://twitter.com/RNanoware
+    icon: fab fa-twitter
+  - name: GitHub
+    url: https://github.com/neillrobson
+    icon: fab fa-github-alt
+  - name: LinkedIn
+    url: https://www.linkedin.com/in/neillrobson/
+    icon: fab fa-linkedin-in
+  - name: Stack Overflow
+    url: https://stackoverflow.com/users/2977638
+    icon: fab fa-stack-overflow
 
 prose:
   siteurl: "https://neillrobson.com"
