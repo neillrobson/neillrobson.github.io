@@ -17,6 +17,9 @@ collections:
 
 email: neill@neillrobson.com
 social:
+  - name: Email
+    url: mailto:neill@neillrobson.com
+    icon: fas fa-envelope
   - name: Twitter
     url: https://twitter.com/RNanoware
     icon: fab fa-twitter

@@ -84,6 +84,13 @@
 			}
 			
 		}
+		&.email {
+			background-color: $email-color;
+			&:hover {
+				background-color: darken($email-color, 10%);
+			}
+			
+		}
 	}
 }
 
