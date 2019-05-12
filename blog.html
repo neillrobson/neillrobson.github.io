@@ -13,9 +13,14 @@ layout: default
 					<div class="page-heading-tagline mb-3">I tend to write miscellaneous thoughts here. <br
 							class="d-lg-block d-none">Looking for something specific? Try one of these channels:</div>
 					<ul class="social-list-square list-inline mb-0">
-						{% for item in site.social %}
-						<li class="list-inline-item mb-3 mb-lg-0"><a href="{{ item.url }}"><i
-									class="{{ item.icon }} fa-fw text-white"></i></a></li>
+						{% for item in site.data.contact.social %}
+						{% assign key = item[0] %}
+						{% assign value = item[1] %}
+						<li class="list-inline-item mb-3 mb-lg-0">
+							<a href="{{ value.url }}" target="_blank">
+								<i class="{{ value.icon }} fa-fw text-white"></i>
+							</a>
+						</li>
 						{% endfor %}
 					</ul>
 					<!--//social-list-->

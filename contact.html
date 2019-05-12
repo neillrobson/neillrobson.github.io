@@ -33,9 +33,11 @@ layout: default
 					<h6 class="font-weight-bold text-center mb-3">You can find me on the following channels</h6>
 
 					<ul class="social-list-color list-inline mb-0">
-						{% for item in site.social %}
-						<li class="list-inline-item mb-3"><a class="{{ item.name | slugify }}" href="{{ item.url }}" target="_blank"><i
-									class="{{ item.icon }} fa-fw"></i></a></li>
+						{% for item in site.data.contact.social %}
+						{% assign key = item[0] %}
+						{% assign value = item[1] %}
+						<li class="list-inline-item mb-3"><a class="{{ key }}" href="{{ value.url }}" target="_blank"><i
+									class="{{ value.icon }} fa-fw"></i></a></li>
 						{% endfor %}
 					</ul>
 					<!--//social-list-->
