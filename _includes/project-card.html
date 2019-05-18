@@ -10,18 +10,19 @@
     {% endcapture %}
     {% assign tags_html = tags_html | append: tag_html %}
 {% endfor %}
-<div class="isotope-item col-12 col-lg-4 {{ filter_slugs | join: ' ' }}">
+<div class="isotope-item col-12 col-lg-4 {{ filter_slugs }}">
     <div class="card rounded-0 border-0 shadow-sm mb-5">
         <div class="card-img-container position-relative">
             <img class="card-img-top rounded-0" src="{{ project.cover-image }}" alt="">
+            {% if project.logo-image %}
             <div class="card-img-overlay overlay-logo text-center">
                 <div class="project-logo"><img class="img-fluid w-50"
                         src="{{ project.logo-image }}"></div>
             </div>
+            {% endif %}
             <a class="card-img-overlay overlay-content text-left p-lg-4" href="{{ project.url }}">
                 <h5 class="card-title font-weight-bold">Client: {{ project.client }}</h5>
-                <p class="card-text">Project summary goes here. Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit. Quisque vel sapien quis nulla dictum euismod...</p>
+                <p class="card-text">{{ project.content | strip_html | truncatewords: 30, '...' }}</p>
             </a>
         </div>
         <div class="card-body pb-0">
