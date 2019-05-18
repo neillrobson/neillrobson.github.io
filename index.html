@@ -55,10 +55,10 @@ layout: default
 
 <section class="section-proof section bg-white py-5">
     <div class="container">
-        <h3 class="section-title font-weight-bold text-center mb-5">Great clients I've worked with</h3>
-        <div class="logos row mb-5">
+        <h3 class="section-title font-weight-bold text-center mb-5">Where I've Been</h3>
+        <div class="logos d-flex flex-row justify-content-around align-items-center flex-wrap mb-5">
             {% for client in site.data.index.clients %}
-            <div class="logo px-3 col-6 col-md-4 col-lg-2 mr-0 px-md-5 px-lg-4"><a class="logo-link"
+            <div class="logo px-3 col-6 col-md-4 col-lg-3 mr-0 px-md-5 px-lg-4 text-center"><a class="logo-link"
                     href="{{ client.link }}"><img class="img-fluid svg-ie-fix" src="{{ client.image }}"></a>
             </div>
             {% endfor %}
@@ -67,6 +67,7 @@ layout: default
 
     </div>
 
+    {% if site.data.index.testimonials.size > 0 %}
     <div class="container-fluid">
 
         <div class="testimonials">
@@ -100,6 +101,7 @@ layout: default
         <!--//container-fluid-->
     </div>
     <!--//testimonials-->
+    {% endif %}
 
 
 </section>
@@ -174,9 +176,9 @@ layout: default
 <section class="section-press py-5 bg-white">
     <div class="container">
         <h3 class="section-title font-weight-bold text-center mb-5">Featured in</h3>
-        <div class="press-logos row">
+        <div class="press-logos d-flex flex-row justify-content-around align-items-center flex-wrap">
             {% for feature in site.data.index.features %}
-            <div class="align-self-center press-logo px-4 px-lg-3 col-6 col-lg-3 mr-0 px-md-5 px-lg-5 mb-3 mb-lg-0"><a
+            <div class="align-self-center press-logo px-4 px-lg-3 col-6 col-lg-4 mr-0 px-md-5 px-lg-5 mb-3 mb-lg-0"><a
                     class="logo-link" href="{{ feature.link }}" target="_blank"><img class="img-fluid svg-ie-fix"
                         src="{{ feature.image }}"></a></div>
             {% endfor %}

@@ -1,80 +1,57 @@
 bio: >
-  I am an undergraduate student studying Computer Science with a concentration
-  in Video Game Development at
-  <a class="link-on-bg" href="https://ncsu.edu">NC State University</a>.
+  I am an undergraduate student at
+  <a class="link-on-bg" href="https://ncsu.edu">NC State University</a>
+  studying computer science. I am passionate about improving communication
+  and self-expression using technology.
 
 skills:
   overview: >
-    Yeah, I'm pretty skilled, I think.
+    Aside from making bullet lists, I have a few tricks up my sleeve...
   blocks:
-    - title: Frontend
+    - title: Web Development
       image: /assets/images/frontend-icon.svg
       items:
-        - HTML
-        - CSS
-        - JavaScript
-        - Making up stuff
-    - title: Backend
+        - PHP
+        - <a href="https://magento.com/">Magento 2</a>
+        - HTML/CSS/JS
+        - TypeScript
+        - Jekyll
+        - WebGL
+    - title: Data Analysis
       image: /assets/images/backend-icon.svg
       items:
-        - HTML
-        - CSS
-        - JavaScript
-        - Making up stuff
-    - title: Others
+        - SQL
+        - R
+        - <a href="https://www.jsoftware.com/">J</a>
+        - Java
+        - <a href="https://haxe.org/">Haxe</a>
+        - C/C++
+    - title: Soft Skills
       image: /assets/images/other-skills-icon.svg
       items:
-        - HTML
-        - CSS
-        - JavaScript
-        - Making up stuff
+        - Public Speaking
+        - Documentation
+        - Teaching
+        - Development Operations
           
 clients:
-  - link: /projects
-    image: /assets/images/logos/logo-1.svg
-  - link: /projects
-    image: /assets/images/logos/logo-2.svg
-  - link: /projects
-    image: /assets/images/logos/logo-3.svg
-  - link: /projects
-    image: /assets/images/logos/logo-4.svg
-  - link: /projects
-    image: /assets/images/logos/logo-5.svg
-  - link: /projects
-    image: /assets/images/logos/logo-6.svg
+  - link: https://www.kadro.com
+    image: /assets/images/logos/kadro.svg
+  - link: https://ncsu.edu
+    image: /assets/images/logos/ncsu.svg
+  - link: http://www.zju.edu.cn/english/
+    image: /assets/images/logos/zhejiang.svg
 
 testimonials:
-  - reference: Adam Wells
-    position: Product Manager, Google
-    image: /assets/images/clients/profile-1.jpg
-    link: https://linkedin.com
-    text: >
-      Neill is a decent guy, I guess. He asked me to write this for him, lol.
-  - reference: Adam Wells
-    position: Product Manager, Google
-    image: /assets/images/clients/profile-2.jpg
-    link: https://linkedin.com
-    text: >
-      Neill is a decent guy, I guess. He asked me to write this for him, lol.
-  - reference: Adam Wells
-    position: Product Manager, Google
-    image: /assets/images/clients/profile-3.jpg
-    link: https://linkedin.com
-    text: >
-      Neill is a decent guy, I guess. He asked me to write this for him, lol.
-  - reference: Adam Wells
-    position: Product Manager, Google
-    image: /assets/images/clients/profile-4.jpg
-    link: https://linkedin.com
-    text: >
-      Neill is a decent guy, I guess. He asked me to write this for him, lol.
+  # - reference: Adam Wells
+  #   position: Product Manager, Google
+  #   image: /assets/images/clients/profile-1.jpg
+  #   link: https://linkedin.com
+  #   text: >
+  #     Neill is a decent guy, I guess. He asked me to write this for him, lol.
 
 features:
-  - link: https://reddit.com
-    image: /assets/images/logos/press-logo-1.png
-  - link: https://reddit.com
-    image: /assets/images/logos/press-logo-2.png
-  - link: https://reddit.com
-    image: /assets/images/logos/press-logo-3.png
-  - link: https://reddit.com
-    image: /assets/images/logos/press-logo-4.png
+  - link: https://goodnight.ncsu.edu/2017/11/goodnight-spotlight-neill-robson/
+    image: /assets/images/logos/goodnight.jpg
+  - link: https://www.csc.ncsu.edu/ambassadors/ambassador_profile.php?id=170
+    image: /assets/images/logos/ncsu.svg
