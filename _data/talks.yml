@@ -1,3 +1,4 @@
+# Remember to enable this page in _config.yml and _data/nav.yml if you plan to use it!
 - title: YouTube Video
   embed: https://www.youtube.com/embed/RS36gBEp8OI?rel=0
   date: 2018-06-10

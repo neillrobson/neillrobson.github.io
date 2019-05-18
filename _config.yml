@@ -47,6 +47,7 @@ exclude:
   - README.md
   - LICENSE
   - gulpfile.esm.js
+  - talks.html # We don't have any content for this guy at the moment.
 
 keep_files:
   - assets
