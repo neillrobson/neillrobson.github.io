@@ -10,7 +10,7 @@ layout: default
       <img class="profile-small d-inline-block rounded-circle mb-3" src="assets/images/profile.jpg" alt="">
       <ul class="page-heading-post-meta list-inline mb-0">
         <li class="list-inline-item mr-3"><i class="far fa-clock mr-2"></i>{{ page.date | date: '%B %-d, %Y' }}</li>
-        <li class="list-inline-item"><i class="fas fa-comment mr-2"></i><a href="#comments-block">8 CHANGE ME</a></li>
+        <li class="list-inline-item"><i class="fas fa-comment mr-2"></i><a href="{{ page.url | prepend: site.url | append: '#disqus_thread' }}">Comments</a></li>
       </ul>
     </div>
     <!--//container-->

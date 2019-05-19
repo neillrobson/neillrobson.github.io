@@ -2,4 +2,8 @@
 <script defer type="text/javascript" src="/assets/plugins/jquery.min.js"></script>
 <script defer type="text/javascript" src="/assets/plugins/popper.min.js"></script> 
 <script defer type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
-<script defer type="text/javascript" src="/assets/js/back-to-top.js"></script>    
+<script defer type="text/javascript" src="/assets/js/back-to-top.js"></script>
+
+{% if jekyll.environment == "production" %}
+<script async id="dsq-count-scr" src="//{{ site.disqus-shortname }}.disqus.com/count.js"></script>
+{% endif %}

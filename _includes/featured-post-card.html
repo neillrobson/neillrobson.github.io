@@ -12,14 +12,14 @@
 
             <h4 class="card-title mb-2"><a href="{{ post.url }}">{{ post.title }}</a></h4>
             <div class="card-text">
-                <div class="excerpt mb-3">{{ post.excerpt }}</div>
+                <div class="excerpt mb-3">{{ post.excerpt | strip_html }}</div>
                 <a class="btn btn-primary d-none d-md-inline-block" href="{{ post.url }}">Read more</a>
             </div>
         </div>
         <div class="card-footer border-0 d-md-none">
             <ul class="meta list-inline mb-0">
                 <li class="list-inline-item mr-3"><i class="far fa-clock mr-2"></i>{{ post.date | date: '%B %-d, %Y' }}</li>
-                <li class="list-inline-item"><i class="fas fa-comment mr-2"></i><a href="#">8 CHANGE ME</a>
+                <li class="list-inline-item"><i class="fas fa-comment mr-2"></i><a href="{{ post.url | prepend: site.url | append: '#disqus_thread' }}">Comments</a>
                 </li>
             </ul>
         </div>

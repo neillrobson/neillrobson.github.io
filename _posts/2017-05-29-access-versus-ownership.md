@@ -8,7 +8,7 @@ comments: true
 Recently I came across advertising online for a new co-living experiment taking
 place in Los Angeles. The name of the startup is PodShare. Essentially, the goal
 is to provide customers with location-independent access to a minimal set of
-resources necessary to live and work effectively in an urban environment. A bunk
+resources necessary to live and work effectively in an urban environment. <!--more--> A bunk
 on a wooden frame, a charging station, and a chalkboard identifying the
 inhabitant are included in the package; doors, locks, and curtains are not.
 Aside from the bed itself, all areas within a PodShare location are public: the

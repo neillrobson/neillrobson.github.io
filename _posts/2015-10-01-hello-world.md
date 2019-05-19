@@ -7,6 +7,8 @@ comments: true
 ---
 What is this blog about? Who is Neill Robson? *The Rattle*?! I'll try to cover some of those burning questions right here--probably just as much for my benefit as yours. 
 
+<!--more-->
+
 ## Who and What
 
 >Starting a conversation is trivial. Holding one, on the other hand... <cite>Neill Robson</cite>

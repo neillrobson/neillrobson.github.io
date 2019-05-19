@@ -6,6 +6,7 @@ author: "Neill Robson"
 url: "https://neillrobson.com"
 permalink: /blog/:year/:month/:day/:title/
 google-analytics: UA-97090131-1
+disqus-shortname: neillrobson
 repository: neillrobson/neillrobson.github.io
 plugins:
   - jekyll-feed
@@ -51,3 +52,5 @@ exclude:
 
 keep_files:
   - assets
+
+excerpt_separator: <!--more-->
