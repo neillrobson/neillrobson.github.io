@@ -2,7 +2,9 @@
 layout: post
 title: Access vs. Ownership
 date: 2017-05-29
-categories: lifestyle
+tags:
+  - personal
+  - lifestyle
 comments: true
 ---
 Recently I came across advertising online for a new co-living experiment taking

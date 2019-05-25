@@ -4,8 +4,9 @@ date: '2018-02-24 10:13 -0500'
 comments: true
 published: true
 title: 'Book Review: The Circle, by Dave Eggers'
-category:
+tags:
   - literature
+  - personal
 ---
 For the first time I can remember in a long while, I did not have the endurance to make it through a book. _The Circle_ was patronizing, immature, and (as others have already mentioned) offered nothing new to the conversation. <!--more--> Halfway through the book, I could not recall a single plot development that could not be recreated precisely (often down to the phrasing of the words) from current news or social media. Some speculative literature provides an insightful reflection on human nature; others grant an escape from the world's worries; Eggers manages to to neither in his work, using such an explicit and leaden pen that one might draw parallels to reading one's own social media feed.
 

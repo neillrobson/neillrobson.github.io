@@ -2,7 +2,11 @@
 layout: post
 title:  The Middle Country
 date:   2016-05-19 05:15:29 -0400
-categories: china
+tags:
+  - china
+  - travel
+  - personal
+author: neill
 comments: true
 ---
 Who would have guessed that one day I would be saying hello from China?

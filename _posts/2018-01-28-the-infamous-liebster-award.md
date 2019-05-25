@@ -4,8 +4,10 @@ date: '2018-01-28 14:30 -0500'
 comments: true
 published: true
 title: The Infamous Liebster Award
-category:
+tags:
   - blogging
+  - personal
+  - family
 ---
 As an encouragement to continue sharing my thoughts and experiences online, a person near and dear to my heart nominated me for [the Liebster Award](https://theglobalaussie.com/liebster-award-2018/).
 

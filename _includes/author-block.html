@@ -1,0 +1,22 @@
+<!-- Pass the author in as an include parameter -->
+<div class="author-block my-5 bg-white p-3 p-l-5">
+    <div class="media flex-column flex-md-row">
+        <img class="author-profile profile-small d-inline-block rounded-circle mr-md-4 mb-2 mb-lg-0"
+            src="{{ author.profile }}" alt="">
+        <div class="author-info media-body">
+            <h4 class="mb-2 font-weight-bold">{{ author.name }}</h4>
+            <div class="mb-3">{{ author.blurb }}</div>
+            <ul class="social-list-color list-inline mb-0">
+                {% for item in author.social %}
+                {% assign key = item[0] %}
+                {% assign value = item[1] %}
+                <li class="list-inline-item mb-3">
+                    <a class="{{ key }} rounded-circle" href="{{ value.url }}" target="_blank">
+                        <i class="{{ value.icon }} fa-fw"></i>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

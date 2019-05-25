@@ -1,0 +1,24 @@
+neill:
+  name: Neill Robson
+  profile: /assets/images/profile.jpg
+  blurb: >
+    I am a software engineer with a passion for storytelling. You can follow me
+    via the various channels below.
+  email: neill@neillrobson.com
+  phone: +1 919-841-7306
+  social:
+    email:
+      url: mailto:neill@neillrobson.com
+      icon: fas fa-envelope
+    twitter:
+      url: https://twitter.com/RNanoware
+      icon: fab fa-twitter
+    github:
+      url: https://github.com/neillrobson
+      icon: fab fa-github-alt
+    linkedin:
+      url: https://www.linkedin.com/in/neillrobson/
+      icon: fab fa-linkedin-in
+    stack-overflow:
+      url: https://stackoverflow.com/users/2977638
+      icon: fab fa-stack-overflow

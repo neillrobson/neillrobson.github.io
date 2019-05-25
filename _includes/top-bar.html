@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-dark position-relative">
       <ul class="social-list list-inline mb-0">
-        {% for item in site.data.contact.social %}
+        {% for item in site.data.people.neill.social %}
           {% assign key = item[0] %}
           {% assign value = item[1] %}
           <li class="list-inline-item"><a class="text-white" href="{{ value.url }}" target="_blank"><i class="{{ value.icon }} fa-fw"></i></a></li>
