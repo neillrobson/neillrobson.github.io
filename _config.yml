@@ -49,6 +49,7 @@ exclude:
   - LICENSE
   - gulpfile.esm.js
   - talks.html # We don't have any content for this guy at the moment.
+  - resume.html # Too flashy, and no easy way to convert between HTML and PDF.
 
 keep_files:
   - assets
