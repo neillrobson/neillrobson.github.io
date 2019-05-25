@@ -68,12 +68,25 @@
 		margin-bottom: 3rem;
 		
 	}
-	.section-title {
+	h1, h2, h3, h4, h5, h6, .section-title {
 		color: $theme-text-color-primary;
 		margin-bottom: 2rem;
 	}
 	.section-row {
 		margin-bottom: 6rem;
+	}
+	img {
+		display: block;
+		max-width: 100%;
+		max-height: 75vh;
+		margin: 0 auto;
+
+		+ em {
+			display: block;
+			text-align: center;
+			font-size: 90%;
+			color: $theme-text-color-light;
+		}
 	}
 }
 
