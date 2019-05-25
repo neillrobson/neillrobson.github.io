@@ -3,6 +3,7 @@ layout: post
 date: '2018-02-24 10:13 -0500'
 comments: true
 published: true
+banner: https://imgix.bustle.com/mic/63037580ec8fc6eae8638297af97ac2f8d211374319ef8d68fe40321b50024f4.jpg?w=1020&h=576&fit=crop&crop=faces&auto=format&q=70
 title: 'Book Review: The Circle, by Dave Eggers'
 tags:
   - literature

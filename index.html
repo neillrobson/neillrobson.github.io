@@ -135,8 +135,9 @@ layout: default
             {% for post in recent_posts %}
             <div class="col-12 col-lg-6">
                 <div class="card rounded-0 border-0 shadow-sm mb-5">
+                    {% if post.banner %}
                     <div class="card-img-container position-relative">
-                        <img class="card-img-top rounded-0" src="assets/images/blog/blog-post-thumb-1.jpg" alt="">
+                        <img class="card-img-top rounded-0" src="{{ post.banner }}" alt="">
                         <div class="card-img-overlay overlay-mask overlay-logo text-center p-0">
                             <div class="overlay-mask-content text-center w-100 position-absolute">
                                 <a class="btn btn-primary" href="{{ post.url }}">Read more</a>
@@ -144,6 +145,7 @@ layout: default
                             <a class="overlay-mask-link position-absolute w-100 h-100" href="{{ post.url }}"></a>
                         </div>
                     </div>
+                    {% endif %}
                     <div class="card-body pb-4">
 
                         <h4 class="card-title text-truncate mb-2"><a href="{{ post.url }}">{{ post.title }}</a></h4>
@@ -153,7 +155,7 @@ layout: default
                                 <li class="list-inline-item"><i class="fas fa-comment mr-2"></i><a href="#">4
                                         CHANGE ME</a></li>
                             </ul>
-                            <div class="excerpt">{{ post.excerpt }}</div>
+                            <div class="excerpt">{{ post.excerpt | strip_html }}</div>
                         </div>
                     </div>
                 </div>

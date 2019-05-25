@@ -165,16 +165,18 @@
 	.card-img-container {
 		overflow: hidden;
 		background: $theme-text-color-primary;
+		max-height: 200px;
+
 		.card-img-top {
 			@include opacity(1);
+			@include center-scale(1);
 			@include transition(all 0.6s ease-in-out);
 		}
 		
 		&:hover {
 			.card-img-top {
-				@include scale(1.05);
+				@include center-scale(1.05);
 				@include opacity(0.2);
-				
 			}
 			.overlay-mask  {
                 display: block;
@@ -212,11 +214,6 @@
 		}
 		
 	}
-}
-
-/* Press section */
-.press-logos {
-
 }
 
 /* CTA section */

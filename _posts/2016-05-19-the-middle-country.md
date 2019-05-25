@@ -2,6 +2,7 @@
 layout: post
 title:  The Middle Country
 date:   2016-05-19 05:15:29 -0400
+banner: /assets/images/2016/05/P_20160513_092511.jpg
 tags:
   - china
   - travel

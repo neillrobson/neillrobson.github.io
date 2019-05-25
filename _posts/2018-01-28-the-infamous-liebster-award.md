@@ -1,6 +1,7 @@
 ---
 layout: post
 date: '2018-01-28 14:30 -0500'
+banner: https://theglobalaussie.com/wp-content/uploads/2017/12/More-Flowers.png
 comments: true
 published: true
 title: The Infamous Liebster Award

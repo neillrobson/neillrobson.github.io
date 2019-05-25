@@ -2,6 +2,7 @@
 layout: post
 title: Access vs. Ownership
 date: 2017-05-29
+banner: /assets/images/2017/05/access-vs-ownership/clean-pods.jpg
 tags:
   - personal
   - lifestyle

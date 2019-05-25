@@ -2,6 +2,7 @@
 layout: post
 title:  The Environment
 date:   2016-06-09 06:03:11 -0400
+banner: /assets/images/2016/06/P_20160525_144035.jpg
 tags:
   - china
   - travel

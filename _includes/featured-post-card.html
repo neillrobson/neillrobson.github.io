@@ -2,7 +2,8 @@
 {% assign post=include.post %}
 <div class="col-12">
     <div class="featured-card d-md-table card rounded-0 border-0 shadow-sm mb-5">
-        <div class="featured-card-image card-img-container position-relative d-md-table-cell">
+        <div class="featured-card-image card-img-container position-relative d-md-table-cell"
+                style="background-image:url('{{ post.banner }}')">
             <span class="badge badge-success mb-2 position-absolute">Featured</span>
             <div class="card-img-overlay overlay-mask text-center p-0">
                 <a class="overlay-mask-link position-absolute w-100 h-100" href="{{ post.url }}"></a>
