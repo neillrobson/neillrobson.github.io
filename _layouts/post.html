@@ -7,7 +7,9 @@ layout: default
   <div class="header-intro theme-bg-primary text-white py-5">
     <div class="container text-center">
       <h2 class="page-heading mb-1">{{ page.title }}</h2>
-      <div class="page-heading-tagline mx-auto mb-3">CHANGE ME</div>
+      {% if page.subtitle %}
+      <div class="page-heading-tagline mx-auto mb-3">{{ page.subtitle }}</div>
+      {% endif %}
       {% if author %}
       <img class="profile-small d-inline-block rounded-circle mb-3" src="{{ author.profile }}" alt="">
       {% endif %}
