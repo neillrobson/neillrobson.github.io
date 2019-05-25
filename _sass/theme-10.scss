@@ -55,9 +55,7 @@ $theme-colors: (
   "secondary":  $theme-text-color-secondary, 
 );
 
-/*************************** Import Bootstrap  *****************************/
-@import "~bootstrap/scss/bootstrap.scss";
-
+@import "plugins.scss";
 
 /*************************** Theme Styles Section ****************************/
 @import "theme/styles.scss"

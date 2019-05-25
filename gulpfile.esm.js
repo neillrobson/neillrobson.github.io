@@ -41,10 +41,7 @@ function bsReload(done) {
 }
 
 function clean() {
-    return Promise.all([
-        fs.emptyDir('./_site'),
-        fs.emptyDir('./_sass/bootstrap')
-    ]);
+    return fs.emptyDir('./_site');
 }
 
 function compileSass() {
@@ -65,6 +62,13 @@ function copyJs(src, dest) {
         .pipe(browsersync.stream());
 }
 
+function copyFonts() {
+    return gulp
+        .src("./node_modules/@fortawesome/fontawesome-free/webfonts/*")
+        .pipe(gulp.dest("./_site/assets/webfonts"))
+        .pipe(browsersync.stream());
+}
+
 const loadPluginJs = gulp.parallel.apply(
     null, Object.entries(pluginFiles).map(e => copyJs.bind(null, ...e)));
 
@@ -75,7 +79,7 @@ function jekyll() {
 
 function watchFiles() {
     gulp.watch("./_sass/**/*", compileSass);
-    gulp.watch( "./node_modules/**/*", loadPluginJs);
+    gulp.watch( "./node_modules/**/*", gulp.parallel(loadPluginJs, copyFonts));
     gulp.watch([
         "./_includes/**/*",
         "./_pages/**/*",
@@ -88,7 +92,7 @@ function watchFiles() {
     ], gulp.series(jekyll, bsReload));
 }
 
-const build = gulp.series(clean, gulp.parallel(compileSass, loadPluginJs), jekyll);
+const build = gulp.series(clean, gulp.parallel(compileSass, copyFonts, loadPluginJs), jekyll);
 const watch = gulp.parallel(bsInit, watchFiles);
 
 export {

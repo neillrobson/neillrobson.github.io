@@ -108,3 +108,32 @@
 	margin: 0 auto;
 }
 
+$quote-icon-size: 3rem;
+
+blockquote {
+	@extend .blockquote;
+	@extend .theme-blockquote;
+	@extend .text-center;
+
+	&::before {
+		@extend %fa-icon;
+		@extend .fas;
+		@extend .fa-inverse;
+		@extend .text-white;
+		@extend .fa-xs;
+		height: $quote-icon-size;
+		width: $quote-icon-size;
+		border-radius: $quote-icon-size;
+		line-height: $quote-icon-size;
+		content: fa-content($fa-var-quote-right);
+		background-color: $theme-text-color-secondary;
+	}
+
+	p {
+		@extend .font-italic;
+	}
+
+	cite {
+		@extend .blockquote-footer;
+	}
+}
