@@ -2,6 +2,10 @@ language: ruby
 rvm:
   - 2.5.3
 
+branches:
+  only:
+    - develop
+
 before_install:
   - npm install
 
