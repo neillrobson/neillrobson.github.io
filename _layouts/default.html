@@ -10,10 +10,6 @@
 
   {% include footer.html %}
 
-  {% if jekyll.environment == "development" %}
-    {% include style-switcher.html %}
-  {% endif %}
-  
   <!-- Javascript -->
   {% include scripts.html %}
   
@@ -28,6 +24,10 @@
       ga('create', '{{ site.google-analytics }}', 'auto');
       ga('send', 'pageview');
     </script>
+  {% endif %}
+
+  {% if jekyll.environment == "development" %}
+    {% include style-switcher.html %}
   {% endif %}
 </body>
 
