@@ -6,7 +6,9 @@ layout: default
 	<div class="header-intro theme-bg-primary text-white py-5">
 		<div class="container position-relative">		        
 			<h2 class="page-heading mb-2">{{ page.title }}</h2>
-			<div class="page-heading-tagline">CHANGE ME</div>
+			{% if page.subtitle %}
+			<div class="page-heading-tagline">{{ page.subtitle }}</div>
+			{% endif %}
 			{% if page.logo-image %}
 			<div class="page-heading-logo font-weight-bold position-absolute mt-4 mt-md-0"><img class="client-logo" src="{{ page.logo-image }}"></div>
 			{% endif %}

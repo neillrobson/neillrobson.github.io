@@ -1,5 +1,6 @@
 ---
 title: Diversity and Decorum in Open Source Communities
+subtitle: Research paper
 client: NC State University
 cover-image: /assets/images/projects/femaleoctocat.png
 tags: 
