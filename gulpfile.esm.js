@@ -73,8 +73,9 @@ const loadPluginJs = gulp.parallel.apply(
     null, Object.entries(pluginFiles).map(e => copyJs.bind(null, ...e)));
 
 function jekyll() {
+    let bundle = process.platform === 'win32' ? "bundle.bat" : "bundle";
     return cp.spawn(
-        "bundle.bat", ["exec", "jekyll", "build"], { stdio: "inherit" });
+        bundle, ["exec", "jekyll", "build"], { stdio: "inherit" });
 }
 
 function watchFiles() {
