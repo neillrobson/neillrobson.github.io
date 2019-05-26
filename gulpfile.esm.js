@@ -89,7 +89,8 @@ function watchFiles() {
         "./_layouts/**/*",
         "./_drafts/**/*",
         "./_data/**/*",
-        "./*.html"
+        "./*.html",
+        "./assets/**/*"
     ], gulp.series(jekyll, bsReload));
 }
 
