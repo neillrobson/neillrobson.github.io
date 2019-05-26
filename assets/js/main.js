@@ -4,20 +4,26 @@ $(document).ready(function() {
 	// Menu has active item
 	//Ref: https://codepen.io/digistate/pen/OXXjXM
 	 
+	debugger;
 	$nav = $("#navigation"),
 	$slideLine = $("#slide-line"),
 	$currentItem = $("#navigation li.active");
-	
 
-	$(window).on('resize load', function() {
-		
+	function refresh() {
 		if ($currentItem[0]) {
 			$slideLine.css({
 			  "width": $currentItem.width(),
 			  "left": $currentItem.position().left
 			});
+		} else {
+			// Disapear
+			$slideLine.width(0);
 		}
-	});
+	}
+
+	refresh();
+
+	$(window).on('resize load', refresh);
 	
 	// Underline transition
 	$nav.find("li").hover(
@@ -29,18 +35,7 @@ $(document).ready(function() {
 		  });
 		},
 		// Hover out
-		function(){
-		  if ($currentItem[0]) {
-		    // Go back to current
-		    $slideLine.css({
-		      "width": $currentItem.width(),
-		      "left": $currentItem.position().left
-		    });
-		  } else {
-		    // Disapear
-		    $slideLine.width(0);
-		  }
-		}
+		refresh
 	);
     
 
