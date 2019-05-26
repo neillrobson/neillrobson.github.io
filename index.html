@@ -152,8 +152,11 @@ layout: default
                         <div class="card-text">
                             <ul class="meta list-inline mb-1">
                                 <li class="list-inline-item mr-3"><i class="far fa-clock mr-2"></i>{{ post.date | date: '%B %-d, %Y' }}</li>
-                                <li class="list-inline-item"><i class="fas fa-comment mr-2"></i><a href="#">4
-                                        CHANGE ME</a></li>
+                                {% if post.comments %}
+                                <li class="list-inline-item">
+                                    <i class="fas fa-comment mr-2"></i><a href="{{ post.url | prepend: site.url | append: '#disqus_thread' }}">Comments</a>
+                                </li>
+                                {% endif %}
                             </ul>
                             <div class="excerpt">{{ post.excerpt | strip_html }}</div>
                         </div>

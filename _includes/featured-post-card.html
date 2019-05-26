@@ -20,8 +20,11 @@
         <div class="card-footer border-0 d-md-none">
             <ul class="meta list-inline mb-0">
                 <li class="list-inline-item mr-3"><i class="far fa-clock mr-2"></i>{{ post.date | date: '%B %-d, %Y' }}</li>
-                <li class="list-inline-item"><i class="fas fa-comment mr-2"></i><a href="{{ post.url | prepend: site.url | append: '#disqus_thread' }}">Comments</a>
+                {% if post.comments %}
+                <li class="list-inline-item">
+                    <i class="fas fa-comment mr-2"></i><a href="{{ post.url | prepend: site.url | append: '#disqus_thread' }}">Comments</a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>
