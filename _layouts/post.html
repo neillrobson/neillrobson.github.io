@@ -30,10 +30,22 @@ layout: default
   {{ content }}
 
   <nav class="post-nav d-flex justify-content-between">
-    <div class="nav-previous"><a href="#" rel="prev"><i class="fas fa-long-arrow-alt-left mr-1"></i>Previous <span
-          class="d-none d-md-inline">Post</span></a></div>
-    <div class="nav-next"><a href="#" rel="next">Next <span class="d-none d-md-inline">Post</span><i
-          class="fas fa-long-arrow-alt-right ml-1"></i></a></div>
+    <div class="nav-previous">
+      {% if page.previous.url %}
+      <a href="{{ page.previous.url }}" rel="prev">
+        <i class="fas fa-long-arrow-alt-left mr-1"></i>Previous
+        <span class="d-none d-md-inline">Post</span>
+      </a>
+      {% endif %}
+    </div>
+    <div class="nav-next">
+      {% if page.next.url %}
+      <a href="{{ page.next.url }}" rel="next">
+        Next
+        <span class="d-none d-md-inline">Post</span><i class="fas fa-long-arrow-alt-right ml-1"></i>
+      </a>
+      {% endif %}
+    </div>
   </nav>
 
   {% if author %}
