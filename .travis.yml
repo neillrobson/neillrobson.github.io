@@ -1,0 +1,17 @@
+language: ruby
+rvm:
+  - 2.5.3
+
+before_install:
+  - npm install
+
+script: gulp
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: TODO
+  local_dir: _site
+  target_branch: master
+  on:
+    branch: develop
