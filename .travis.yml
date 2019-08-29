@@ -1,6 +1,4 @@
 language: ruby
-rvm:
-  - 2.5.3
 
 env:
   - JEKYLL_ENV=production
