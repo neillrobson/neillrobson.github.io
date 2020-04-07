@@ -19,15 +19,15 @@
   },
   "homepage": "https://github.com/neillrobson/neillrobson.github.io#readme",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.10.2",
-    "bootstrap": "^4.3.1",
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "bootstrap": "^4.4.1",
     "flickity": "^2.2.1",
-    "highlightjs": "^9.12.0",
+    "highlightjs": "^9.16.2",
     "imagesloaded": "^4.1.4",
     "isotope-layout": "^3.0.6",
     "jquery": "^3.4.1",
     "jquery-validation": "^1.19.1",
-    "popper.js": "^1.15.0"
+    "popper.js": "^1.16.1"
   },
   "devDependencies": {
     "@types/fs-extra": "^5.1.0",
@@ -38,7 +38,7 @@
     "gulp-flatten": "^0.4.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "node-sass-tilde-importer": "^1.0.2"
   }
 }
