@@ -25,7 +25,7 @@
     "highlightjs": "^9.16.2",
     "imagesloaded": "^4.1.4",
     "isotope-layout": "^3.0.6",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jquery-validation": "^1.19.1",
     "popper.js": "^1.16.1"
   },
