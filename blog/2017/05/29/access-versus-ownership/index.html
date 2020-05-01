@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  
+  
+  
+
+  <title>Access vs. Ownership</title>
+  
+  <!-- Meta -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="
+
+  
+  
+    
+      
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+ ..." />
+  <meta name="keywords" content="" />
+  <meta name="author" content="Neill Robson">
+  <link type="application/atom+xml" rel="alternate" href="https://neillrobson.com/feed.xml" title="The Rattle" />
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+
+  <!-- Canonical and RSS links -->
+  <link rel="canonical" href="https://neillrobson.com/blog/2017/05/29/access-versus-ownership/">
+  <link rel="alternate" type="application/rss+xml" title="The Rattle" href="https://neillrobson.com/feed.xml" />
+
+  <!-- Google Font -->
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+  
+  <!-- Plugins CSS -->
+  <link rel="stylesheet" href="/assets/plugins/flickity/flickity.min.css">
+  
+  <!-- Theme CSS -->  
+  <link id="theme-style" rel="stylesheet" href="/assets/css/theme-12.css">
+</head>
+
+
+<body>
+  <div id="content-container">
+    
+<header class="header" id="blog-post-top">
+  <div class="top-bar theme-bg-primary-darken">
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark position-relative">
+      <ul class="social-list list-inline mb-0">
+        
+          
+          
+          <li class="list-inline-item"><a class="text-white" href="mailto:neill@neillrobson.com" target="_blank"><i class="fas fa-envelope fa-fw"></i></a></li>
+        
+          
+          
+          <li class="list-inline-item"><a class="text-white" href="https://twitter.com/RNanoware" target="_blank"><i class="fab fa-twitter fa-fw"></i></a></li>
+        
+          
+          
+          <li class="list-inline-item"><a class="text-white" href="https://github.com/neillrobson" target="_blank"><i class="fab fa-github-alt fa-fw"></i></a></li>
+        
+          
+          
+          <li class="list-inline-item"><a class="text-white" href="https://www.linkedin.com/in/neillrobson/" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+        
+          
+          
+          <li class="list-inline-item"><a class="text-white" href="https://stackoverflow.com/users/2977638" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
+        
+      </ul>
+      <!--//social-list-->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+        aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-uppercase" id="navigation">
+        <ul class="navbar-nav ml-lg-auto">
+          
+            
+            
+              <li class="nav-item mr-lg-3">
+                <a href="/" class="nav-link">
+                  About
+                </a>
+              </li>
+            
+          
+            
+            
+              <li class="nav-item mr-lg-3">
+                <a href="/projects" class="nav-link">
+                  Projects
+                </a>
+              </li>
+            
+          
+            
+            
+              <li class="nav-item mr-lg-3 active">
+                <a href="/blog" class="nav-link">
+                  Blog <span class="sr-only">(current)</span>
+                </a>
+              </li>
+            
+          
+            
+            
+              <li class="nav-item mr-lg-3">
+                <a href="/contact" class="nav-link">
+                  Contact
+                </a>
+              </li>
+            
+          
+          <!-- Markup for a dropdown nav item -->
+          <!--
+          <li class="nav-item dropdown mr-0">
+            <a class="nav-link dropdown-toggle" href="#" id="navigationLink" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Remove Me
+            </a>
+            <div class="dropdown-menu dropdown-menu-right text-capitalize shadow-lg" aria-labelledby="navigationLink">
+              <a class="dropdown-item" href="/project.html">Project Case Study (1 Column)</a>
+              <a class="dropdown-item" href="/project-alt.html">Project Case Study (2 Columns)</a>
+              <a class="dropdown-item" href="/blog-post.html">Blog Post</a>
+            </div>
+          </li>
+        -->
+
+        </ul>
+        <span id="slide-line"></span>
+      </div>
+
+
+
+    </nav>
+
+  </div>
+  <!--//container-->
+
+</div>
+  <div class="header-intro theme-bg-primary text-white py-5">
+    <div class="container text-center">
+      <h2 class="page-heading mb-1">Access vs. Ownership</h2>
+      
+      
+      <ul class="page-heading-post-meta list-inline mb-0">
+        <li class="list-inline-item mr-3"><i class="far fa-clock mr-2"></i>May 29, 2017</li>
+        
+        <li class="list-inline-item"><i class="fas fa-comment mr-2"></i><a href="https://neillrobson.com/blog/2017/05/29/access-versus-ownership/#disqus_thread">Comments</a></li>
+        
+      </ul>
+    </div>
+    <!--//container-->
+  </div>
+  <!--//header-intro-->
+</header>
+<!--//header-->
+
+<section class="single-post-wrapper single-col-max-width py-5 px-4 mx-auto">
+  <p>Recently I came across advertising online for a new co-living experiment taking
+place in Los Angeles. The name of the startup is PodShare. Essentially, the goal
+is to provide customers with location-independent access to a minimal set of
+resources necessary to live and work effectively in an urban environment. <!--more--> A bunk
+on a wooden frame, a charging station, and a chalkboard identifying the
+inhabitant are included in the package; doors, locks, and curtains are not.
+Aside from the bed itself, all areas within a PodShare location are public: the
+refrigerator and cooking utilities are shared, workspaces are common, and the
+restrooms are handled dormitory-style. Maintaining a clean and safe environment
+is as much the residents’ job as it is the staff’s, in the sense that everyone’s
+space can be seen from all angles, creating an aura of community watch.</p>
+
+<p><img src="/assets/images/2017/05/access-vs-ownership/clean-pods.jpg" alt="PodShare bunk beds" />
+<em>A typical quiet afternoon amongst the pods</em></p>
+
+<p>If this description is hard to visualize, a good video providing an overview and
+history of the startup can be found
+<a href="https://www.youtube.com/watch?v=H_ILu-R-Nz8">here</a>.</p>
+
+<h2 id="the-bare-luxuries">The Bare Luxuries</h2>
+
+<p>My initial reaction to this foreign living concept could be described best as a
+shameful terror. Terror, because I couldn’t imagine living in a situation so
+hostile to privacy and ownership of space. Shame, because in the culture that is
+starting this movement towards “Housing as a Service,” I recognize values and
+visions that I myself hold dear. Would rejecting this development make me a
+hypocrite?</p>
+
+<p>In truth, the initiative of PodShare makes several steps toward a lifestyle that
+I have learned to esteem. To enjoy a content and fulfilling life in such an
+environment, you can’t have too much baggage: there aren’t many nooks large
+enough for one to unload their extra belongings, and there aren’t many ears
+patient enough for one to unload their ponderous past. “Podestrians,” as they
+are called, must minimize their possessions to the bare necessities. Wherever
+one life is lacking, another life is prepared and encouraged to fill the gap.</p>
+
+<p>The environmental benefits are also considerable. The most bare-bones apartment
+complex that could accommodate the same number of men and women would require at
+least three times the land area and an order of magnitude more capital
+resources, not to mention the marginal costs and inefficiencies associated with
+independent thermostats, water lines, and electric service. Furthermore,
+splitting the community into individual <em>houses</em> would practically necessitate
+the construction of a new subdivision: an impossibility in any principally urban
+environment.</p>
+
+<p>Taking the idea to an even larger scale, PodShare claims that if it were to
+expand its influence far enough, one would no longer need to book a hotel when
+travelling. After all, a bed in one location is a bed in <em>any</em> location with a
+vacancy–just check out of your hometown PodShare and catch a bus to your new
+location! How inconceivable that freedom is to the modern American citizen: the
+concept that moving across the country for a week, month, or indefinitely could
+be as simple as packing some carry-ons and catching a flight. Realtors,
+mortgages, and moving vans need not apply. Sell your house, and ditch that
+timeshare too: <strong>your bed <em>is</em> your timeshare now.</strong></p>
+
+<h2 id="ownerships-intrinsic-value">Ownership’s Intrinsic Value</h2>
+
+<p>PodShare challenges our very definitions of house and home. “The future is
+access, not ownership,” claims Elvina Beck, the founder of the company.
+Millennials invest in gym memberships, public transportation, and music
+streaming services rather than purchasing the physical capital necessary to
+enjoy these luxuries for ourselves. Why not extend that idea to our very homes?</p>
+
+<p><img src="/assets/images/2017/05/access-vs-ownership/community.jpg" alt="Elvina Beck" />
+<em>The occasional evening activity creates a sense of community. Hopefully nobody
+was looking to sleep tonight.</em></p>
+
+<p>I do agree that, in the general case, owning less can lead to living more. Our
+culture in the United States has lost much of that compassionate, cooperative
+nature that first brought society together when individuals would have failed
+living alone. To put less reliance on the grasp of one’s own two hands, and
+instead seek to be a strength in others’ weaknesses as they likewise provide
+what you may lack, fills one’s soul in a beautiful and irreplaceable manner.</p>
+
+<p>But to what extent must we deny our own desire for control over physical
+possessions to reap the intangible benefits of a cooperative lifestyle? Are
+there not memories, emotions, and even fragments of our identity engrained in
+our living spaces that could not exist without a sense of locality, of
+ownership?</p>
+
+<p>Motivational speaker <a href="http://www.simplybenglenn.com/">Ben Glenn</a> offers a
+powerful example of this concept. To this day, I can recall with vivid detail
+the Spring evening in 2009 when I witnessed him transform a black canvas into an
+breathtaking explosion of variegated color before our eyes. The audience
+journeyed with him step by step through the discovery process of artistic
+creation, and by the end of the experience we all felt as though we, too, owned
+the final work. Watching Ben share the exact same message at a different venue
+or via a different medium holds none of the same gravity for me, because my
+ownership and identity is contained in that one particular event, time, and
+place.</p>
+
+<p>Would I be satisfied if, rather than attending that 2009 conference, I simply
+received a recording of the event, to be viewed on demand at any location or
+time? More importantly, if I had never experienced the original, <em>would I even
+know what I was missing from the experience?</em></p>
+
+<p><img src="/assets/images/2017/05/access-vs-ownership/ben-glenn.jpg" alt="Ben Glenn" />
+<em>Ben may create the same drawing thousands of times, but the one he crafted when
+I was in attendance was uniquely mine. No recreation does it justice.</em></p>
+
+<p>I do not believe I could describe with any accuracy the psychological difference
+between owning a home and having geographically-independent access to shelter,
+but I can only imagine that the effect would be similar to replacing such an
+intimate artistic experience with a recording. Though the instrumental value of
+housing has been demonstrated to be extractable into an on-demand construct, the
+spirit of home feels tied intrinsically to geography. Stripping ourselves of
+that luxury may not leave us physically homeless, but surely impoverished in
+spirit. As Yi-Fu Tuan would perhaps characterize the change, we would be
+accumulating the freedom of <em>space</em> at the expense of the identity and security of
+<em>place</em>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<h2 id="a-divine-model">A Divine Model</h2>
+
+<p>For much of His ministry on earth, Jesus was truly homeless. “Foxes have dens
+and birds of the sky have nests, but the Son of Man has no place to lay His
+head,” Jesus stated in response to a scribe’s possibly naive proclamation of
+devotion.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> Were His disciples willing to give up not only the physical comforts
+of shelter, but the very identity tied to their earthly homes, in order to
+accept adoption into God’s kingdom by Christ’s sacrifice? In what capacity is my
+worldly identity preventing me from perceiving the transformation that God so
+desires to work in His child and slave?</p>
+
+<p>And on a deeper inspection of Christ’s life, giving up house did not mean giving
+up home. His ties to his earthly family were not lost: rather, He found His
+family multiplied to all who followed the will of His Father.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> He shared
+meals with brothers in the houses of the rich and poor, in the city and on the
+beach, with intimacy and with thousands. He invested none of His identity in an
+earthly dwelling, and yet He has arguably produced the greatest impact on
+history and society that any individual has ever effected.</p>
+
+<p>I’m not ashamed to admit that, given my upbringing and human nature, the idea of
+housing as evanescent “access” in contrast to home ownership scares me. But
+looking at the life of my King, as well as the consequences of our past and our
+hopes for the future, I believe that this physical and cultural transformation
+may have the potential for great salutary good, should we give it the proper
+thought and introspection.</p>
+
+<p>…And let’s be honest, PodShare has no plans for global domination by any
+extent: they still receive most of their business from millennial vagabonds and
+summer camps. We have ample time to reflect and discuss!</p>
+
+<p>What are your thoughts on this housing movement? Let me know in the comments
+below.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>For a fascinating and edifying discussion on this topic, see Tuan’s work
+<a href="https://www.upress.umn.edu/book-division/books/space-and-place">Space and Place</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Matthew 8:20, HCSB <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Matthew 12:49-50 <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+
+  <nav class="post-nav d-flex justify-content-between">
+    <div class="nav-previous">
+      
+      <a href="/blog/2016/06/15/the-tea/" rel="prev">
+        <i class="fas fa-long-arrow-alt-left mr-1"></i>Previous
+        <span class="d-none d-md-inline">Post</span>
+      </a>
+      
+    </div>
+    <div class="nav-next">
+      
+      <a href="/blog/2018/01/28/the-infamous-liebster-award/" rel="next">
+        Next
+        <span class="d-none d-md-inline">Post</span><i class="fas fa-long-arrow-alt-right ml-1"></i>
+      </a>
+      
+    </div>
+  </nav>
+
+  
+
+  
+    <div id="disqus_thread"></div>
+<script>
+/**
+ *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+ */
+var disqus_config = function () {
+this.page.url = "https://neillrobson.com/blog/2017/05/29/access-versus-ownership/";  // Your page's canonical URL variable
+this.page.identifier = "/blog/2017/05/29/access-versus-ownership"; // Your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://neillrobson.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+</section>
+<!--//single-post-wrapper-->
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+
+
+
+<section class="section-cta py-5 bg-primary text-white">
+    <div class="container">
+        <div class="text-center">
+            <img class="profile-small d-inline-block mx-auto rounded-circle mb-2" src="/assets/images/profile.jpg"
+                alt="">
+        </div>
+        <h3 class="section-title font-weight-bold text-center mb-2">Interested in hiring me for your project?</h3>
+        <div class="section-intro mx-auto text-center mb-3">
+            Looking for an experienced and passionate developer to join your team? To
+            start an
+            initial chat, just drop me an email at <a class="link-on-bg" href=""></a>
+            or use any of the links on the
+            <a class="link-on-bg" href="/contact">contact page</a>.
+        </div>
+        <div class="text-center">
+            <a class="theme-btn-on-bg btn" href="/contact">Let's Talk</a>
+        </div>
+    </div>
+    <!--//container-->
+</section>
+
+<!--Page Specific JS -->
+<script defer type="text/javascript" src="/assets/plugins/highlight/highlight.pack.min.js"></script>
+
+<!-- Custom JS -->
+<script defer type="text/javascript" src="/assets/js/main.js"></script>
+<script defer type="text/javascript" src="/assets/js/code-highlight.js"></script>
+  </div>
+
+  <footer class="footer text-light text-center py-2">
+  <small class="copyright">
+    Template &copy; <a class="text-light" href="https://themes.3rdwavemedia.com/" target="_blank">3rd Wave Media</a>.
+    Content &copy; 2020 Neill Robson.
+    <br />
+    This site is hosted at <a class="text-light" href="https://github.com" target="_blank">Github</a> and created with <a class="text-light" href="https://jekyllrb.com" target="_blank">Jekyll</a>.
+  </small>
+</footer>
+
+  <!-- Javascript -->
+  <script defer type="text/javascript" src="/assets/plugins/fontawesome/all.min.js"></script>
+<script defer type="text/javascript" src="/assets/plugins/jquery.min.js"></script>
+<script defer type="text/javascript" src="/assets/plugins/popper.min.js"></script> 
+<script defer type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+<script defer type="text/javascript" src="/assets/js/back-to-top.js"></script>
+
+<!--Page Specific JS -->
+<script defer type="text/javascript" src="/assets/plugins/imagesloaded.pkgd.min.js"></script>
+<script defer type="text/javascript" src="/assets/plugins/isotope.pkgd.min.js"></script>
+<script defer type="text/javascript" src="/assets/plugins/flickity/flickity.pkgd.min.js"></script>
+
+<!-- Custom JS -->
+<script defer type="text/javascript" src="/assets/js/main.js"></script>
+<script defer type="text/javascript" src="/assets/js/isotope-custom.js"></script>
+<script defer type="text/javascript" src="/assets/js/flickity-custom.js"></script>
+
+
+<script async id="dsq-count-scr" src="//neillrobson.disqus.com/count.js"></script>
+
+  
+  <!-- Google Analytics -->
+  
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-97090131-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+</body>
+
+</html>

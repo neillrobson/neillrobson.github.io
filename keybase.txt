@@ -1,0 +1,81 @@
+==================================================================
+https://keybase.io/nlrobson
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://neillrobson.com
+  * I am nlrobson (https://keybase.io/nlrobson) on keybase.
+  * I have a public key with fingerprint 0881 8497 C84A BF1E 496D  A00F AFE9 E6AE 1CE5 C628
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101b95f9f3b606ac5477bfab0e877cd9f44948a7d3d93fce1124dd3739d79d7196a0a",
+      "fingerprint": "08818497c84abf1e496da00fafe9e6ae1ce5c628",
+      "host": "keybase.io",
+      "key_id": "afe9e6ae1ce5c628",
+      "kid": "0101b95f9f3b606ac5477bfab0e877cd9f44948a7d3d93fce1124dd3739d79d7196a0a",
+      "uid": "e2de506b4f6f94412f6f5f891e936e19",
+      "username": "nlrobson"
+    },
+    "merkle_root": {
+      "ctime": 1515160612,
+      "hash_meta": "b19bdca651ab749e1db5d60b97f05fce8341d6485955ac7ca938e617bbba7ee5",
+      "seqno": 1890498
+    },
+    "revoke": {
+      "sig_ids": [
+        "ab40350bc33e960e6461b7973b675fc2e82f1db977ca3c28bb8fd1d21e9a085d0f"
+      ]
+    },
+    "service": {
+      "hostname": "neillrobson.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1515160614,
+  "expire_in": 157680000,
+  "prev": "72486267e2a48b232bb917b8d12d1e0c9af871bb0474c03874c3c2fe1e1f48b1",
+  "seqno": 22,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.76
+Comment: https://keybase.io/crypto
+
+yMK9AnicrVNbaB1FGD6JF9Jj04oPIajYdvEUYk7jzO7sXI61qKioYE9TaSm2cjqz
+82+ynsue7G6OhhpaQx7ES9EHxYAQqr0oQTBatLEV2oNVVFqRgkkEHyIYMaTeqhGE
+gLOhRRAf3V1m2J3v/77v/2bn4/arMtmWu4am7rh3ef/qli+aQ4OZR4ujG/dZKtRD
+VmGfVYaVCSoa4qRUDrRVsBBGWAnXF76jKKLScwljypcKAWfM08InRBAumXa0cHwP
+MLaJ1g5zhGbmwYJKJK285Qe1PojqUVBLUlrOMSeCeZxI5WMggmqJkC99EEAlYA9c
+j9rcFPaHcVphzCkZQ08Qmm/mpbRi7z/w/7PvwRU6sDW4iCriU18Qgm0zuz4XGIRD
+AYsUGENUk1Uw6FolClUc1qzhvFWFqFyBUhSGSRqulwQpBLvmNr6wbRqUcX+pCok0
+lQoLpT1JXSwVIwKwVq6mSAnmI9e45A7BmhLuCteVHvOkcDhQzJRSkgG4xkcMA7XQ
+KHCBiODGQQSNsAypeBz0mdhiq7Dbkoogx0XKcxwQFAElFCsmmEmLGSEbuO0bcWGy
+ko5nc6W4r7G2TcMScVcj33psOBWLGoG3Qp7u05X+IahcjqDHC6vGVD0Kk9ALK2ax
+P0nqcSGNJhmqp+gnQJUu85RUUNPmRzEVDYjiwERYwAb579RI3oIn60EEpSBFuIxy
+ZK5UBxqGktmEU5sysCXhynZspYQJiWtsawzIE9LnDCuFCCMecrgZTZM+YMC+KcD/
+xGibDUpkn+E04dVkMhiBNdw8vefqTEs2c+01rekJymRXXX/lXH2/tS0zXtzy0f1n
+zq778s/clrmbcnOL7x265Z3r3rCO5z7ccWT75OTmO3fuPXBs6rmRo8+fa7y6OPfM
+xpsf6n3/g9EzPdPL7060NwfW/qL2/7WwwBfXnNqVPTT+4MQL8zd0H5wZvXui/7ZP
+Pjs4+fvUdO/sgbcb69YunXg2e/zk46tf7FhPitPlcx3rR2bO20uFwsXTL/82/krr
+S13H9A+lfPPSWx2bn3p64Mavdx7dM93YFCW9j3zjnHr48Fn+2ljuwu57WkZmTlzY
+26nsn+9bOnL4u9s72Y7ZVWt+HWgfu7QwuGvsq2r3HxPd27/dxts+z93alf9pdpls
+Uj+2db5ZvNj16YbWsebUyfliPP/61ge6Npz/G1d0hAU=
+=O1am
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/nlrobson
+
+==================================================================
