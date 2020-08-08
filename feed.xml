@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://neillrobson.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://neillrobson.com/" rel="alternate" type="text/html" /><updated>2020-07-18T15:10:12+00:00</updated><id>https://neillrobson.com/feed.xml</id><title type="html">The Rattle</title><author><name>Neill Robson</name></author><entry><title type="html">Book Review: The Circle, by Dave Eggers</title><link href="https://neillrobson.com/blog/2018/02/24/book-review-the-circle-by-dave-eggers/" rel="alternate" type="text/html" title="Book Review: The Circle, by Dave Eggers" /><published>2018-02-24T15:13:00+00:00</published><updated>2018-02-24T15:13:00+00:00</updated><id>https://neillrobson.com/blog/2018/02/24/book-review-the-circle-by-dave-eggers</id><content type="html" xml:base="https://neillrobson.com/blog/2018/02/24/book-review-the-circle-by-dave-eggers/">&lt;p&gt;For the first time I can remember in a long while, I did not have the endurance to make it through a book. &lt;em&gt;The Circle&lt;/em&gt; was patronizing, immature, and (as others have already mentioned) offered nothing new to the conversation. &lt;!--more--&gt; Halfway through the book, I could not recall a single plot development that could not be recreated precisely (often down to the phrasing of the words) from current news or social media. Some speculative literature provides an insightful reflection on human nature; others grant an escape from the world’s worries; Eggers manages to to neither in his work, using such an explicit and leaden pen that one might draw parallels to reading one’s own social media feed.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://neillrobson.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://neillrobson.com/" rel="alternate" type="text/html" /><updated>2020-08-08T14:45:22+00:00</updated><id>https://neillrobson.com/feed.xml</id><title type="html">The Rattle</title><author><name>Neill Robson</name></author><entry><title type="html">Book Review: The Circle, by Dave Eggers</title><link href="https://neillrobson.com/blog/2018/02/24/book-review-the-circle-by-dave-eggers/" rel="alternate" type="text/html" title="Book Review: The Circle, by Dave Eggers" /><published>2018-02-24T15:13:00+00:00</published><updated>2018-02-24T15:13:00+00:00</updated><id>https://neillrobson.com/blog/2018/02/24/book-review-the-circle-by-dave-eggers</id><content type="html" xml:base="https://neillrobson.com/blog/2018/02/24/book-review-the-circle-by-dave-eggers/">&lt;p&gt;For the first time I can remember in a long while, I did not have the endurance to make it through a book. &lt;em&gt;The Circle&lt;/em&gt; was patronizing, immature, and (as others have already mentioned) offered nothing new to the conversation. &lt;!--more--&gt; Halfway through the book, I could not recall a single plot development that could not be recreated precisely (often down to the phrasing of the words) from current news or social media. Some speculative literature provides an insightful reflection on human nature; others grant an escape from the world’s worries; Eggers manages to to neither in his work, using such an explicit and leaden pen that one might draw parallels to reading one’s own social media feed.&lt;/p&gt;
 
 &lt;p&gt;The third-person limited point of view tries desperately to inspire the reader’s empathy towards the protagonist, but the narrative thrashes between vapid predictability and deplorable decision-making. Typically, a character’s weaknesses and vulnerabilities evoke some measure of compassion from the audience, but I found no such sympathy for a protagonist so passive and malleable to her own surroundings.&lt;/p&gt;
 
@@ -45,7 +45,7 @@
 
     &lt;p&gt;You’re killing me already! My knee-jerk response is Linux, because I’ve grown up using various Linux distributions for most of my journey so far as a computer scientist and I value the power and freedom of a community in which everyone is able to contribute to the functional development of the software system.&lt;/p&gt;
 
-    &lt;p&gt;That said, as I continue to grow in my understanding of various computer technologies, companies, and cultures, I am also beginning to take into account the pragmatic realities of the field. “Open Source” does not necessarily imply an open and inclusive development community. It doesn’t always yield accessible software, and the provided products and services often fail to bring food to the table of their contributors. There is a time for everything, and a season for every activity under the heavens&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;; free and open-source software has an important place in our community, but it is not the answer to all technological woes.&lt;/p&gt;
+    &lt;p&gt;That said, as I continue to grow in my understanding of various computer technologies, companies, and cultures, I am also beginning to take into account the pragmatic realities of the field. “Open Source” does not necessarily imply an open and inclusive development community. It doesn’t always yield accessible software, and the provided products and services often fail to bring food to the table of their contributors. There is a time for everything, and a season for every activity under the heavens&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;; free and open-source software has an important place in our community, but it is not the answer to all technological woes.&lt;/p&gt;
 
     &lt;p&gt;From a practical perspective, I actually find myself leaning slightly toward Microsoft. Although I am perhaps least familiar with system administration and software development on Windows, I find Microsoft’s recent actions as a company pleasantly surprising and admirable. They seem eager to make their products accessible and open both to developers (who desire clear documentation and transparent sources) and end users (who desire dependability and elegant functionality). Microsoft doesn’t exhibit the vertical integration of their products and services that Apple does (allowing Apple to provide beautiful interfaces to their customers), but in relaxing their hold on the reins, Microsoft forms better relationships with their developer community. Microsoft still keeps much of their software closed-source, but without doing so they would struggle to make ends meet in order to deliver the high-quality services that end users have come to expect.&lt;/p&gt;
 
@@ -205,10 +205,10 @@
 &lt;p&gt;(As an aside, I am well aware of the irony of my decision, given that my blog likely has under 10 readers and is far from “public pressure”!)&lt;/p&gt;
 
 &lt;p&gt;That being said, I encourage anyone reading this blog who feels comfortable responding to the aforementioned questions–whether by commenting, blogging, posting on social media, or even shooting me an email–to take a chance and codify your thoughts! Sharing our lives with others through written language is a stimulating challenge and a wonderful blessing from God, and if nothing else I hope that this discursive draft has inspired a few others to transform thoughts into words.&lt;/p&gt;
-&lt;div class=&quot;footnotes&quot;&gt;
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
   &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;Ecclesiastes 3:1. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Ecclesiastes 3:1. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;</content><author><name>Neill Robson</name></author><category term="blogging" /><category term="personal" /><category term="family" /><summary type="html">As an encouragement to continue sharing my thoughts and experiences online, a person near and dear to my heart nominated me for the Liebster Award.</summary></entry><entry><title type="html">Access vs. Ownership</title><link href="https://neillrobson.com/blog/2017/05/29/access-versus-ownership/" rel="alternate" type="text/html" title="Access vs. Ownership" /><published>2017-05-29T00:00:00+00:00</published><updated>2017-05-29T00:00:00+00:00</updated><id>https://neillrobson.com/blog/2017/05/29/access-versus-ownership</id><content type="html" xml:base="https://neillrobson.com/blog/2017/05/29/access-versus-ownership/">&lt;p&gt;Recently I came across advertising online for a new co-living experiment taking
@@ -320,14 +320,14 @@ spirit of home feels tied intrinsically to geography. Stripping ourselves of
 that luxury may not leave us physically homeless, but surely impoverished in
 spirit. As Yi-Fu Tuan would perhaps characterize the change, we would be
 accumulating the freedom of &lt;em&gt;space&lt;/em&gt; at the expense of the identity and security of
-&lt;em&gt;place&lt;/em&gt;.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;em&gt;place&lt;/em&gt;.&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;a-divine-model&quot;&gt;A Divine Model&lt;/h2&gt;
 
 &lt;p&gt;For much of His ministry on earth, Jesus was truly homeless. “Foxes have dens
 and birds of the sky have nests, but the Son of Man has no place to lay His
 head,” Jesus stated in response to a scribe’s possibly naive proclamation of
-devotion.&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; Were His disciples willing to give up not only the physical comforts
+devotion.&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; Were His disciples willing to give up not only the physical comforts
 of shelter, but the very identity tied to their earthly homes, in order to
 accept adoption into God’s kingdom by Christ’s sacrifice? In what capacity is my
 worldly identity preventing me from perceiving the transformation that God so
@@ -335,7 +335,7 @@ desires to work in His child and slave?&lt;/p&gt;
 
 &lt;p&gt;And on a deeper inspection of Christ’s life, giving up house did not mean giving
 up home. His ties to his earthly family were not lost: rather, He found His
-family multiplied to all who followed the will of His Father.&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; He shared
+family multiplied to all who followed the will of His Father.&lt;sup id=&quot;fnref:3&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; He shared
 meals with brothers in the houses of the rich and poor, in the city and on the
 beach, with intimacy and with thousands. He invested none of His identity in an
 earthly dwelling, and yet He has arguably produced the greatest impact on
@@ -355,17 +355,17 @@ summer camps. We have ample time to reflect and discuss!&lt;/p&gt;
 &lt;p&gt;What are your thoughts on this housing movement? Let me know in the comments
 below.&lt;/p&gt;
 
-&lt;div class=&quot;footnotes&quot;&gt;
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
   &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot;&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
       &lt;p&gt;For a fascinating and edifying discussion on this topic, see Tuan’s work
-&lt;a href=&quot;https://www.upress.umn.edu/book-division/books/space-and-place&quot;&gt;Space and Place&lt;/a&gt;. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&quot;https://www.upress.umn.edu/book-division/books/space-and-place&quot;&gt;Space and Place&lt;/a&gt;. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:2&quot;&gt;
-      &lt;p&gt;Matthew 8:20, HCSB &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Matthew 8:20, HCSB &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:3&quot;&gt;
-      &lt;p&gt;Matthew 12:49-50 &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:3&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Matthew 12:49-50 &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;</content><author><name>Neill Robson</name></author><category term="personal" /><category term="lifestyle" /><summary type="html">Recently I came across advertising online for a new co-living experiment taking place in Los Angeles. The name of the startup is PodShare. Essentially, the goal is to provide customers with location-independent access to a minimal set of resources necessary to live and work effectively in an urban environment.</summary></entry><entry><title type="html">The Tea</title><link href="https://neillrobson.com/blog/2016/06/15/the-tea/" rel="alternate" type="text/html" title="The Tea" /><published>2016-06-15T08:16:38+00:00</published><updated>2016-06-15T08:16:38+00:00</updated><id>https://neillrobson.com/blog/2016/06/15/the-tea</id><content type="html" xml:base="https://neillrobson.com/blog/2016/06/15/the-tea/">&lt;blockquote&gt;
