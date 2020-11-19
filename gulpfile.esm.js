@@ -29,6 +29,12 @@ function bsInit(done) {
             baseDir: './_site'
         },
         port: 3000
+    }, (err, bs) => {
+        bs.addMiddleware("*", (req, res) => {
+            const content_404 = fs.readFileSync(path.join(__dirname, '_site/404.html'));
+            res.write(content_404);
+            res.end();
+        });
     });
     done();
 }
