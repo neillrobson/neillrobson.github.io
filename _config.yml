@@ -16,29 +16,6 @@ collections:
     output: true
     permalink: /:collection/:title/
 
-prose:
-  siteurl: "https://neillrobson.com"
-  media: "assets"
-  metadata:
-    _posts:
-      - name: "layout"
-        field:
-          element: "hidden"
-          value: "post"
-      - name: "title"
-        field:
-          element: "text"
-          label: "Title"
-      - name: "date"
-        field:
-          element: "text"
-          value: CURRENT_DATETIME
-      - name: "comments"
-        field:
-          element: "checkbox"
-          label: "Comments"
-          value: false
-
 exclude:
   - node_modules
   - package.json
