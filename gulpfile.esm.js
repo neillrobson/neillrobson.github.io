@@ -11,6 +11,7 @@ import node_sass_tilde_importer from 'node-sass-tilde-importer';
 const pluginFiles = {
     'jquery/dist/jquery.min.js': '.',
     'popper.js/dist/umd/popper.min.js': '.',
+    'popper.js/dist/umd/popper.min.js.map': '.',
     'bootstrap/dist/js/*': 'bootstrap/js',
     'flickity/dist/*.min.*': 'flickity',
     '@fortawesome/fontawesome-free/js/all.min.js': 'fontawesome',
@@ -80,7 +81,7 @@ function jekyll() {
 
 function watchFiles() {
     gulp.watch("./_sass/**/*", compileSass);
-    gulp.watch( "./node_modules/**/*", gulp.parallel(loadPluginJs, copyFonts));
+    gulp.watch("./node_modules/**/*", gulp.parallel(loadPluginJs, copyFonts));
     gulp.watch([
         "./_includes/**/*",
         "./_pages/**/*",
