@@ -1,33 +1,35 @@
 /* ============= Theme Mixins ============= */
 @mixin opacity ($opacity: 0.5) {
-	-webkit-opacity: 	$opacity;
-	-moz-opacity: 		$opacity;
-	opacity: 		$opacity;
+  -webkit-opacity: $opacity;
+  -moz-opacity:    $opacity;
+  opacity:         $opacity;
 }
 
 @mixin scale ($factor) {
-	-webkit-transform: scale($factor);
-	-moz-transform: 	 scale($factor);
-	-ms-transform: 		 scale($factor);
-	-o-transform: 		 scale($factor);
+  -webkit-transform: scale($factor);
+  -moz-transform:    scale($factor);
+  -ms-transform:     scale($factor);
+  -o-transform:      scale($factor);
+  transform:         scale($factor);
 }
 
 @mixin center-scale ($factor) {
   position: relative;
   top: 50%;
   left: 50%;
-	-webkit-transform: translateX(-50%) translateY(-50%) scale($factor);
-	-moz-transform: 	 translateX(-50%) translateY(-50%) scale($factor);
-	-ms-transform: 		 translateX(-50%) translateY(-50%) scale($factor);
-	-o-transform: 		 translateX(-50%) translateY(-50%) scale($factor);
+  -webkit-transform: translateX(-50%) translateY(-50%) scale($factor);
+  -moz-transform:    translateX(-50%) translateY(-50%) scale($factor);
+  -ms-transform:     translateX(-50%) translateY(-50%) scale($factor);
+  -o-transform:      translateX(-50%) translateY(-50%) scale($factor);
+  transform:         translateX(-50%) translateY(-50%) scale($factor);
 }
 
 
 @mixin background-size ($string: contain) {
-    -webkit-background-size: $string;
-    -moz-background-size: $string;
-    -o-background-size: $string;
-    background-size: $string;
+  -webkit-background-size: $string;
+  -moz-background-size: $string;
+  -o-background-size: $string;
+  background-size: $string;
 }
 
 @mixin reset-box-sizing ($size:content-box) {
@@ -35,9 +37,9 @@
   *,
   *:before,
   *:after {
-    -webkit-box-sizing: $size;
-	-moz-box-sizing:    $size;
-	box-sizing:         $size;
+  -webkit-box-sizing: $size;
+  -moz-box-sizing:    $size;
+  box-sizing:         $size;
   }
 }
 
