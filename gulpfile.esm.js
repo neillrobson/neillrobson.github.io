@@ -5,7 +5,6 @@ import fs from 'fs-extra';
 import gulp from 'gulp';
 import path from 'path';
 import sass from 'gulp-sass';
-import node_sass from 'node-sass';
 import node_sass_tilde_importer from 'node-sass-tilde-importer';
 
 const pluginFiles = {
@@ -23,8 +22,6 @@ const pluginFiles = {
 };
 
 const browsersync = BS.create();
-
-sass.compiler = node_sass;
 
 function bsInit(done) {
     browsersync.init({
