@@ -10,6 +10,7 @@ branches:
 before_install:
   - gem update --system
   - gem install bundler
+  - nvm install --lts
   - npm install
   - npm install -g gulp-cli
 
