@@ -78,8 +78,10 @@ const loadPluginJs = gulp.parallel.apply(
 
 function jekyll() {
     let bundle = process.platform === 'win32' ? "bundle.bat" : "bundle";
-    return cp.spawn(
-        bundle, ["exec", "jekyll", "build"], { stdio: "inherit" });
+    let args = ["exec", "jekyll", "build"];
+    if (-1 < process.argv.indexOf("--drafts"))
+        args.push("--drafts");
+    return cp.spawn(bundle, args, { stdio: "inherit" });
 }
 
 function watchFiles() {
