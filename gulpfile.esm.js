@@ -101,7 +101,7 @@ function watchFiles() {
 }
 
 const build = gulp.series(clean, gulp.parallel(compileSass, copyFonts, loadPluginJs), jekyll);
-const watch = gulp.parallel(bsInit, watchFiles);
+const watch = gulp.series(build, gulp.parallel(bsInit, watchFiles));
 
 export {
     build,
