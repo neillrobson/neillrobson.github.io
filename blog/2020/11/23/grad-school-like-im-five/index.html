@@ -7,7 +7,7 @@
   
   
 
-  <title>Hello World</title>
+  <title>Grad School Like I'm Five: Buffer Overflow</title>
   
   <!-- Meta -->
   <meta charset="utf-8">
@@ -40,7 +40,7 @@
   <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
 
   <!-- Canonical and RSS links -->
-  <link rel="canonical" href="https://neillrobson.com/blog/2015/10/02/hello-world/">
+  <link rel="canonical" href="https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five/">
   <link rel="alternate" type="application/rss+xml" title="Neill Robson's Website" href="https://neillrobson.com/feed.xml" />
 
   <!-- Google Font -->
@@ -158,15 +158,15 @@
 </div>
   <div class="header-intro theme-bg-primary text-white py-5">
     <div class="container text-center">
-      <h2 class="page-heading mb-1">Hello World</h2>
+      <h2 class="page-heading mb-1">Grad School Like I'm Five: Buffer Overflow</h2>
       
       
       <img class="profile-small d-inline-block rounded-circle mb-3" src="/assets/images/profile.jpg" alt="">
       
       <ul class="page-heading-post-meta list-inline mb-0">
-        <li class="list-inline-item mr-3"><i class="far fa-clock mr-2"></i>October 2, 2015</li>
+        <li class="list-inline-item mr-3"><i class="far fa-clock mr-2"></i>November 23, 2020</li>
         
-        <li class="list-inline-item"><i class="fas fa-comment mr-2"></i><a href="https://neillrobson.com/blog/2015/10/02/hello-world/#disqus_thread">Comments</a></li>
+        <li class="list-inline-item"><i class="fas fa-comment mr-2"></i><a href="https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five/#disqus_thread">Comments</a></li>
         
       </ul>
     </div>
@@ -177,87 +177,108 @@
 <!--//header-->
 
 <section class="single-post-wrapper single-col-max-width py-5 px-4 mx-auto">
-  <p>What is this blog about? Who is Neill Robson? <em>The Rattle</em>?! I’ll try to cover some of those burning questions right here–probably just as much for my benefit as yours.</p>
+  <p>According to <a href="https://github.com">GitHub</a>, I’ve written approximately 6,000 lines of code over the course of the past four months (welcome to grad school!).
+The question is, can I explain all of the stuff I wrote? <!--more-->
+Over the next few blog posts, I’ll be trying to present a high-level overview of some of the most interesting concepts that I’ve learned this past semester.</p>
 
-<!--more-->
+<p>How high-level, you ask?</p>
 
-<h2 id="who-and-what">Who and What</h2>
+<p>The goal is to explain these concepts to a five-year-old.</p>
 
-<blockquote>
-  <p>Starting a conversation is trivial. Holding one, on the other hand… <cite>Neill Robson</cite></p>
-</blockquote>
+<p>Not only will this audience choice keep these blog posts short and sweet, it will also help me reassure myself that the boatloads of information I consumed throughout this semester did not simply fall out of my other ear!
+And, of course, I hope that you, the reader, find these snippets more entertaining to read than your average textbook chapter.</p>
 
-<p>Hi! I’m Neill Robson: the guy sitting on the other side of the Internet from you, trying to spark a conversation. Among other things, I am an aspiring software developer, college student, Christian, actor, musician, and reader; I suppose I’m adding “blogger” to that list now.</p>
+<p>For this inaugural episode, we will cover… <strong>Buffer Overflow</strong>!</p>
 
-<p>Currently I am attending <a href="http://ncsu.edu">North Carolina State University</a> as a freshman in Computer Science. Maybe I will pursue a M.S. in that field; perhaps I will pick up a minor in the Chinese language. Primarily, my current goal is to narrow down my interests into a specific career field that will cater to more than simply my own intellectual appetite–learning is fun, but knowledge is worthless unless it is being used to improve our communities and world.</p>
+<h1 id="the-problem">The Problem</h1>
 
-<p>My fascination with computers started at a very young age, when my grandfather (a retired EPA employee and hobbyist photographer) would send us his old computer machines whenever he bought a new one for photo editing. Those computers became my toys as a child; we hardly ever had video game consoles in the house, and our TV only had 5 or so channels, so I spent my childhood messing around with Windows 95 and the adolescent Internet.</p>
+<p>Imagine we’re sitting across from each other, with an empty table between us.
+The tabletop is wiped so clean, you can see the reflection of the overhead light in the white plastic.
+I give you a crayon, and I ask you to draw a cat.
+What do you do?
+If you’re following my instructions, you’ll probably start drawing a cat directly on the table.
+If I’m a self-respecting grown-up, I’ll probably respond by scolding you for drawing on furniture.
+But you were only doing what you were told to do!
+Grown-ups are so unfair, am I right?</p>
 
-<p>Many people have told me that I think like a computer, but I think that my fascination runs deeper than any genetic disposition. I’m enamored with the idea that a purely logical machine–controlled completely by electric signals and logical functions–can elicit an emotional, tangible response in the user, and by a developer’s prodding communicate profound and inconceivable ideas to large communities. One day I want to be an expert in that sort of communication, whether it be developing educational software, designing promotional websites for important causes, or even expanding the realm of game development as an art form.</p>
+<p>Okay, I’ll give you a piece of paper: unlined and white, a blank slate for your work of art.
+I set it down in front of you, and ask you once again to draw a cat.
+And you do!
+It’s a cool cat that you draw, and I’m impressed, so I ask you to draw another.
+And another.
+And another.</p>
 
-<p>I mentioned my interest in Chinese as well; this began as a offhanded decision in high school. I previously had no interest in language studies whatsoever (unless the language could talk to computers). However, I was required to take two years of a cultural language in high school, and desiring a challenge I chose Chinese (my other options all utilizing the Latin alphabet). Almost immediately, I fell in love with both the artistic language and nuanced culture of a society so different from the western world: one that developed independently of the global “mainstream” for millenia. Their linguistic view of the universe focused on spatial direction more than temporal location and numbers more than rhythm or rhyme. Something about their perspective just clicked so pleasantly with my own mind.</p>
+<p><img src="https://pics.me.me/hey-girl-isaw-you-coloring-inside-the-linesearlierandivejust-gotto-say-7937983.png" alt="Elementary-aged boy uttering a pickup line to girl" /></p>
 
-<p>As can be clearly seen, I can often be quite obtuse when writing my thoughts; this contrasts sharply with my typically silent, observational nature in real life. Starting a conversation is a simple as “Hello,” but holding one is quite difficult for me when so many thoughts swim about in my head… A blog, therefore, seemed like the perfect solution for letting those musings out!</p>
+<p>After a while, you mention how tired you are, and ask to go play with friends for a while.
+Happy with your work, I allow you to go, and I reach down to grab the paper with your fantastic cat drawings.
+There’s only one problem…</p>
 
-<h2 id="objectives">Objectives</h2>
+<p><img src="https://www.kenarry.com/wp-content/uploads/2014/09/how-to-get-dry-erase-marker-off-the-wall2.webp" alt="Whiteboard with dry erase markings on the wall" />
+<em>Mom’s face when she sees you’ve crossed the line</em></p>
 
-<blockquote>
-  <p>If you have built castles in the air, your work need not be lost; that is where they should be. Now put the foundations under them. <cite>Henry David Thoreau</cite></p>
-</blockquote>
+<p>You’ve drawn so many cats that you ran out of space on the paper and got markings on the table once again.
+With white paper on a white plastic table, who’s to blame you for overstepping those boundaries?</p>
 
-<p>Defining clear objectives is one of my great weaknesses. Even so, here are a few starting points–stakes in the ground, if you will–that will hopefully give purpose to the thoughts outlined in this blog:</p>
+<p>In a similar way, computers have a large table on which they can write and draw.
+Usually, someone like you and me will lay down pieces of paper for the computer, so that when it draws cats for the cat-drawing program, those cats won’t end up on the table or on anyone else’s paper sitting nearby.
+But the computer can’t tell the difference between your paper, my paper, its paper, or the table, so unless we are <em>very</em> specific about the size of what we tell it to draw, it has no problem drawing all over everyone else’s work.</p>
 
-<ul>
-  <li>
-    <p><strong>Document technical explorations &amp; discoveries</strong></p>
+<p>Not good.</p>
 
-    <p>All too often I find myself fluttering about the grand fields of modern technology, drowning blissfully in new concepts and innovations, then promptly forgetting it all as soon as I leave the desk. Without reflection, there is no retention; what’s more, no one will benefit from an epiphany forgotten. So, as both a ribbon on my own finger and a reference for others, I will try my hand at laying various intellectual pursuits down here to rest.</p>
-  </li>
-  <li>
-    <p><strong>Publish creative projects, old and new</strong></p>
+<p>On top of that, most people give computers enormous amounts of instructions in advance.
+Although I just told you to draw one cat at a time (maybe ten cats in all), professional computer people get paid lots of money to tell computers to draw <em>billions</em> of cats at once in the fastest way possible.
+It’s like your math teacher writing up a billion-problem multiplication drill the night before, handing it to you the next morning, and leaving.</p>
 
-    <p>Sometimes, criticism is important for growth. Shoot, what am I saying–there’s no place more hostile to the fruit of creativity than a vacuum! We all long for our art to be discovered, whether it be by an admirer or the harshest of critics; the exposure is what truly matters. Maybe that exposure will be found right here, on this portfolio of sorts.</p>
-  </li>
-  <li>
-    <p><strong>Collaborate and befriend</strong></p>
+<p><img src="https://www.1989generationinitiative.org/j/2020/07/times-table-worksheets-activity-shelter-multiplication-drill-counting-money-kindergarten.jpg" alt="five-minute multiplication drill" /></p>
 
-    <p>I may not be the most conversational person, it’s true. But I do love discussions; I love being able to grow together, incubate deep thought together, work together to make the world a better place. And just like with any other conversation, I haven’t the slightest idea where this one will lead, but I’d love to start it here and now.</p>
-  </li>
-</ul>
+<p>There’s no way to know in advance if you’ll write beyond the lines at some point in that greuling process!</p>
 
-<h2 id="the-rattle">The Rattle</h2>
+<h1 id="the-solution-">The Solution (?)</h1>
 
-<blockquote>
-  <p>Rattlesnakes would be a lot more dangerous if they didn’t have the rattle. <cite>Louis Sachar</cite></p>
-</blockquote>
+<p>So after cleaning the poor table of all your crayon marks, I decide to fix the problem by using a new type of paper.
+This paper, rather than being pure white, has a thick red border around the edges.
+We’ll call this border the “red zone.”
+Now, when you’re drawing, I can see when your crayon hits the red zone, and choose to change my instructions to you so that you don’t venture beyond that zone.
+(Of course, you could also use that red zone to guide yourself, but computers aren’t as smart as you are.)</p>
 
-<p>Before the post is tied up, I’ll go ahead and note the origin of this blog’s name.</p>
+<p>In a similar way, I can mark certain edges in the computer’s table (we call that table “memory” in the computer) as dangerous regions (red zones).
+Whenever a computer tries to write anything on that zone, the programmer can be notified and jump in to change the instructions (the “program”) so that the computer doesn’t venture past that edge any longer.</p>
 
-<p><em>Holes</em>, a novel by Louis Sachar, is a beautiful introduction to symbolic literature and analysis of fiction. Sachar taught me to love the “difficult” books–the classics and crazies that English teachers make students read to amuse themselves. As childish as certain parts of this young adult novel seem to me now, there are still certain parts that have profoundly affected my life philosophy.</p>
+<p><img src="https://www.simplemost.com/wp-content/uploads/2017/02/7275464206_72432c61cd_o_sidewalk-bumps.jpg" alt="Child stepping on sidewalk bumps" />
+<em>We have “red zones” in real life too. Sometimes they’re other colors, like yellow.</em></p>
 
-<p>Consider the classic rattlesnake: a poisonous serpent hiding in the dust and inflicting excruciating pain on the heels of its human victims. The dissonant rattle of the reptile’s tail inspires fear in nearly every heart of the animal kingdom. And yet, that very same sound is often our saving grace from a fatal wound. The rattle is only the snake’s warning, it’s voice; without it, the creature would have no means of communicating intention and motivation–other than attacking, of course.</p>
+<p>No one should be fooled that this strategy solves all of our problems, though.
+The red zone is not <em>preventing</em> our computer from drawing outside its region—only warning us of its error.
+Furthermore, I could easily instruct the computer (or you!) to draw something “new” far outside the bounds of the paper.
+For example, say I want you to draw a cloud in the sky above the various cats.
+In that case, you could draw that entire cloud without ever touching the red zone that I’ve designated.
+When I’m watching you, it’s easy to spot the error, but again, remember that most big-shot computer programmers send in tasks like billion-question multiplication quizzes in advance.
+They don’t bother to watch every calculation, but rely on looking at the red zone after the fact to see if their instructions need to be edited.</p>
 
-<p>There are many other examples of this disparity between a stimulus’s real and perceived purpose. Consider the sirens of a police car, the smell of sulfur in the home, or the seatbelt light in an airplane; the most turbulence often occurs in the minutes before landing. Some of the most profound blessings in our lives are the alarm bells that we are terrified to encounter.</p>
+<p>I could make larger red zones to catch more of these over-steps, but if I make the red zone too big, then no one would be able to draw anything <em>outside</em> of the massive red zone!</p>
 
-<p>Unfortunately, our response to communication can often take on a Pavlovian quality: we see, hear, sense a call to action, and immediately assume an attitude of inevitability and helplessness toward the impending doom. Often we skirt around a difficult truth, as if acknowledging the elephant in the room will somehow solidify and immortalize its existence.</p>
+<hr />
 
-<p>However, remove the rattle from the snake, and you have a machine of inevitable death. The rattle is a warning, a cautionary call, an act of mercy. Likewise, our words and actions can have incredible power to save if we overcome our fear of harsh warnings and heavy truths.</p>
+<p>So that’s buffer overflows and red zones in a nutshell.</p>
 
-<p>This is the fundamental resolve I have taken on this blog: to speak the truth in love, in a hope that my words will someday carry the power of a second chance.</p>
+<p>Those over the age of five might be interested in the open-source tool that I used during my studies to implement a red-zone-based buffer overflow detector.
+If so, definitely check out the <a href="https://dynamorio.org/">DynamoRIO</a> runtime code manipulation system and the <a href="https://github.com/Xuhpclab/DrCCTProf">DrCCTProf</a> call path profiling tool built atop DynamoRIO.
+I cannot yet release my own code to the public for viewing, as grades for the class are still being calculated, but pending the professor’s permission I will definitely update this blog post with links for interested parties!</p>
 
-<p>This is my rattle: my cautionary tail.</p>
+<p>I hope you found this little explanation entertaining and informational.</p>
 
 
   <nav class="post-nav d-flex justify-content-between">
     <div class="nav-previous">
       
+      <a href="/blog/2018/02/24/book-review-the-circle-by-dave-eggers/" rel="prev">
+        <i class="fas fa-long-arrow-alt-left mr-1"></i>Previous
+        <span class="d-none d-md-inline">Post</span>
+      </a>
+      
     </div>
     <div class="nav-next">
-      
-      <a href="/blog/2016/05/19/the-middle-country/" rel="next">
-        Next
-        <span class="d-none d-md-inline">Post</span><i class="fas fa-long-arrow-alt-right ml-1"></i>
-      </a>
       
     </div>
   </nav>
@@ -328,8 +349,8 @@
  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
  */
 var disqus_config = function () {
-this.page.url = "https://neillrobson.com/blog/2015/10/02/hello-world/";  // Your page's canonical URL variable
-this.page.identifier = "/blog/2015/10/02/hello-world"; // Your page's unique identifier variable
+this.page.url = "https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five/";  // Your page's canonical URL variable
+this.page.identifier = "/blog/2020/11/23/grad-school-like-im-five"; // Your page's unique identifier variable
 };
 
 (function() { // DON'T EDIT BELOW THIS LINE
@@ -365,11 +386,6 @@ s.setAttribute('data-timestamp', +new Date());
   
 
   
-    
-    
-    
-    
-  
 
   
   
@@ -412,60 +428,6 @@ s.setAttribute('data-timestamp', +new Date());
   
 
 
-
-<section class="section pt-5 related-projects-section bg-white">
-  <div class="container">
-    <h3 class="section-title font-weight-bold text-center mb-4">You May Also Like...</h3>
-    <div class="blog-cards blog-cards-related">
-      <div class="row">
-        
-      <!-- Pass the post in as an include parameter -->
-
-<div class="col-12 col-md-6 col-lg-4 mb-5">
-    <div class="card rounded-0 border-0 shadow-sm eq-height">
-        
-        <div class="card-img-container position-relative">
-            <img class="card-img-top rounded-0" src="https://theglobalaussie.com/wp-content/uploads/2017/12/More-Flowers.png" alt="">
-            <div class="card-img-overlay overlay-mask text-center p-0">
-                <div class="overlay-mask-content text-center w-100 position-absolute">
-                    <a class="btn btn-primary" href="/blog/2018/01/28/the-infamous-liebster-award/">Read more</a>
-                </div>
-                <a class="overlay-mask-link position-absolute w-100 h-100" href="/blog/2018/01/28/the-infamous-liebster-award/"></a>
-            </div>
-        </div>
-        
-        <div class="card-body pb-4">
-
-            <h4 class="card-title mb-2"><a href="/blog/2018/01/28/the-infamous-liebster-award/">The Infamous Liebster Award</a></h4>
-            <div class="card-text">
-
-                <div class="excerpt">As an encouragement to continue sharing my thoughts and experiences online, a person near and dear to my heart nominated me for the Liebster Award.
-
-</div>
-            </div>
-
-        </div>
-        <div class="card-footer border-0">
-            <ul class="meta list-inline mb-0">
-                <li class="list-inline-item mr-3"><i class="far fa-clock mr-2"></i>January 28, 2018</li>
-                
-                <li class="list-inline-item">
-                    <i class="fas fa-comment mr-2"></i><a href="https://neillrobson.com/blog/2018/01/28/the-infamous-liebster-award/#disqus_thread">Comments</a>
-                </li>
-                
-            </ul>
-        </div>
-    </div>
-    <!--//card-->
-</div>
-    
-      </div>
-      <!--//row-->
-    </div>
-
-  </div>
-  <!--//container-->
-</section>
 
 
 <section class="section-cta py-5 bg-primary text-white">
