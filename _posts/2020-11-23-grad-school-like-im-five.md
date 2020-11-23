@@ -1,14 +1,14 @@
 ---
 layout: post
 comments: true
-banner: 'https://www.imperva.com/learn/wp-content/uploads/sites/13/2018/01/buffer-overflow.png'
+banner: https://www.imperva.com/learn/wp-content/uploads/sites/13/2018/01/buffer-overflow.png
 title: 'Grad School Like I''m Five: Buffer Overflow'
 author: neill
 tags:
-  - college
-  - software
+- college
+- software
+date: 2020-11-23 15:25 -0500
 ---
-
 According to [GitHub](https://github.com), I've written approximately 6,000 lines of code over the course of the past four months (welcome to grad school!).
 The question is, can I explain all of the stuff I wrote? <!--more-->
 Over the next few blog posts, I'll be trying to present a high-level overview of some of the most interesting concepts that I've learned this past semester.
