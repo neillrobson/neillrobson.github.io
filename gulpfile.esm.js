@@ -4,7 +4,7 @@ import flatten from 'gulp-flatten';
 import fs from 'fs-extra';
 import gulp from 'gulp';
 import path from 'path';
-import sass from 'gulp-sass';
+import sass from 'gulp-dart-sass';
 import node_sass_tilde_importer from 'node-sass-tilde-importer';
 
 const pluginFiles = {
