@@ -2,6 +2,8 @@
 
 Source code for the personal website and blog of Neill Robson.
 
+[![Deployment status badge](https://github.com/neillrobson/neillrobson.github.io/workflows/Publish%20Website/badge.svg)](https://github.com/neillrobson/neillrobson.github.io/actions)
+
 ## Local Development
 
 1. Download or clone the repo
