@@ -10,6 +10,11 @@ repository: neillrobson/neillrobson.github.io
 plugins:
   - jekyll-feed
 
+pagination:
+  enabled: true
+  per_page: 2
+  sort_reverse: true
+
 collections:
   projects:
     output: true

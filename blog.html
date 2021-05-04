@@ -1,62 +1,46 @@
 ---
 layout: default
+pagination:
+  enabled: true
 ---
-<header class="header">
-	{% include top-bar.html %}
-	<div class="header-intro theme-bg-primary text-white py-5">
-		<div class="container position-relative">
-			<div class="media flex-column flex-md-row">
-				<img class="profile-medium d-inline-block rounded-circle mr-md-4 align-self-center mb-2 mb-lg-0"
-					src="/assets/images/profile.jpg" alt="">
-				<div class="media-body align-self-center">
-					<h2 class="page-heading mb-2">{{ site.author }}'s Blog</h2>
-					<div class="page-heading-tagline mb-3">I tend to write miscellaneous thoughts here. <br
-							class="d-lg-block d-none">Looking for something specific? Try one of these channels:</div>
-					<ul class="social-list-square list-inline mb-0">
-						{% for item in site.data.people.neill.social %}
-						{% assign key = item[0] %}
-						{% assign value = item[1] %}
-						<li class="list-inline-item mb-3 mb-lg-0">
-							<a href="{{ value.url }}" target="_blank">
-								<i class="{{ value.icon }} fa-fw text-white"></i>
-							</a>
-						</li>
-						{% endfor %}
-					</ul>
-					<!--//social-list-->
-				</div>
-			</div>
-
-
-		</div>
-		<!--//container-->
-	</div>
-	<!--//header-intro-->
-
-</header>
-<!--//header-->
-
-{% assign featured_post = site.posts | first %}
-{% assign recent_posts = site.posts | slice: 1, 9 %}
-
-<section class="section pt-5">
-	<div class="container blog-cards">
-
-		<div class="row">
-			{% include featured-post-card.html post=featured_post %}
-
-			{% for recent_post in recent_posts %}
-				{% include regular-post-card.html post=recent_post %}
+<div class="container header">
+	<div class="main">
+		<a id="logo" href="/">
+			<img class="avatar rounded" src="/assets/images/profile.jpg" alt="Neill Robson" />
+			{{ site.title }}
+		</a>
+		<div class="nav">
+			{% for link in site.data.nav %}
+			<a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a>
 			{% endfor %}
-			
-			<div class="col-12 mb-5">
-				<a href="/archive" class="btn-blog-more btn btn-primary btn-block text-white font-weight-bold">View all posts</a>
-			</div>
-
 		</div>
 	</div>
-	<!--//container-->
-</section>
-<!--//section-->
+</div>
 
-{% include hire-me.html %}
+<div class="container">
+	<div class="main">
+		{% for post in paginator.posts %}
+		<div class="entry">
+			<a class="small date left margin" href="{{post.url}}">{{post.date | date: '%B %-d, %Y'}}</a>
+			<h1>{{ post.title }}</h1>
+			<p>{{ post.excerpt | strip_html }}</p>
+			{% for tag in post.tags %}
+			<a class="small tag" href="/tagged/{{ tag }}">{{tag}}</a>
+			{% endfor %}
+			<div class="clear"></div>
+		</div>
+		{% endfor %}
+		{% if paginator.total_pages > 1 %}
+		<div class="pagination">
+			{% if paginator.previous_page %}
+			<a href="{{ paginator.previous_page_path | prepend: site.baseurl }}">&larr; Newer</a>
+			{% endif %}
+			Page {{ paginator.page }} of {{ paginator.total_pages }}
+			{% if paginator.next_page %}
+			<a href="{{ paginator.next_page_path | prepend: site.baseurl }}">Older &rarr;</a>
+			{% endif %}
+		</div>
+		{% endif %}
+		<!-- footer -->
+	</div>
+</div>

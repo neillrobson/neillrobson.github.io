@@ -1,37 +1,39 @@
 <head>
   {% comment %}
-    Prioritize page-level data. Provide a reasonable default if the current
-    location is a page, but doesn't have the given data specified. Default to
-    site-level data if necessary.
+  Prioritize page-level data. Provide a reasonable default if the current
+  location is a page, but doesn't have the given data specified. Default to
+  site-level data if necessary.
   {% endcomment %}
-  {% capture title %}{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}{% endcapture %}
-  {% capture description %}{% if page.description %}{{ page.description }}{% elsif page.title %}{{ content | raw_content }}{% else %}{{ site.data.info.description }}{% endif %}{% endcapture %}
-  {% capture keywords %}{% if page.keywords %}{{ page.keywords }}{% elsif page.title %}{{""}}{% else %}{{ site.data.info.keywords }}{% endif %}{% endcapture %}
 
-  <title>{{ title }}</title>
-  
-  <!-- Meta -->
+  {% capture title %}{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}{% endcapture %}
+  {% capture description %}
+  {% if page.description %}{{ page.description }}
+  {% elsif page.title %}{{ page.title }}
+  {% else %}{{ site.data.info.description }}
+  {% endif %}
+  {% endcapture %}
+  {% capture keywords %}
+  {% if page.keywords %}{{ page.keywords }}
+  {% elsif page.title %}{{ page.title }}
+  {% else %}{{ site.data.info.keywords }}
+  {% endif %}
+  {% endcapture %}
+
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{ description | strip_html | condense_spaces | truncate:150 }}" />
+  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{- description | strip_html | condense_spaces | truncate:150 -}}" />
   <meta name="keywords" content="{{ keywords | strip_html | condense_spaces }}" />
   <meta name="author" content="{{ site.author }}">
   {% feed_meta %}
-  
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+  <meta name="twitter:card" content="summary">
+  <meta property="og:type" content="website">
+  <meta name="twitter:title" property="og:title" itemprop="title name" content="{{ title }}">
+  <meta name="twitter:description" property="og:description" itemprop="description" content="{{ description }}">
+  <link rel="shortcut icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/assets/css/style.css">
 
   <!-- Canonical and RSS links -->
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}" />
-
-  <!-- Google Font -->
-  <link href='//fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-  
-  <!-- Plugins CSS -->
-  <link rel="stylesheet" href="/assets/plugins/flickity/flickity.min.css">
-  
-  <!-- Theme CSS -->  
-  <link id="theme-style" rel="stylesheet" href="/assets/css/theme-12.css">
 </head>
