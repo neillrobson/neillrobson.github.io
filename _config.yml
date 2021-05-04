@@ -1,6 +1,8 @@
 # Site settings
 title: "Neill Robson's Website"
 author: "Neill Robson"
+description: >
+  The blog and portfolio of a software developer.
 
 url: "https://neillrobson.com"
 permalink: /blog/:year/:month/:day/:title/
