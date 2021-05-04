@@ -1,52 +1,12 @@
 ---
 layout: default
 ---
+<p>Let's connect! Here are several places I can be found online:</p>
 
-<header class="header">
-
-	{% include top-bar.html %}
-
-	<div class="header-intro theme-bg-primary text-white py-5">
-		<div class="container">
-			<h2 class="page-heading mb-0">Contact</h2>
-
-		</div>
-		<!--//container-->
-	</div>
-	<!--//header-intro-->
-
-</header>
-<!--//header-->
-
-<section class="section py-5">
-	<div class="container">
-		<div class="row">
-			<div class="contact-intro col-lg-8 mx-lg-auto mb-5 text-center">
-
-				<img class="profile-small d-inline-block mx-auto rounded-circle mb-3" src="/assets/images/profile.jpg"
-					alt="">
-
-				<div class="speech-bubble bg-white p-4 p-lg-5 shadow-sm">
-					<p class="text-left mb-3">I would love to get to know you better! Please feel free to use the links below to get in touch. Want to know how I work and what I
-						can offer? Check out my <a href="/projects">project case studies</a>.</p>
-					<h6 class="font-weight-bold text-center mb-3">You can find me on the following channels</h6>
-
-					<ul class="social-list-color list-inline mb-0">
-						{% for item in site.data.people.neill.social %}
-						{% assign key = item[0] %}
-						{% assign value = item[1] %}
-						<li class="list-inline-item mb-3"><a class="{{ key }}" href="{{ value.url }}" target="_blank"><i
-									class="{{ value.icon }} fa-fw"></i></a></li>
-						{% endfor %}
-					</ul>
-					<!--//social-list-->
-				</div>
-
-			</div>
-
-		</div>
-		<!--//row-->
-	</div>
-	<!--//container-->
-</section>
-<!--//section-->
+<div class="social-list-color" style="display: flex; justify-content: space-evenly">
+{% for item in site.data.people.neill.social %}
+{% assign key = item[0] %}
+{% assign value = item[1] %}
+<a class="{{ key }}" href="{{ value.url }}" target="_blank"><i class="{{ value.icon }} fa-fw"></i></a>
+{% endfor %}
+</div>

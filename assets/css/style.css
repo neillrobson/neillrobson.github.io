@@ -108,17 +108,27 @@ div {
 .column .caption {margin-bottom: 6px}
 
 .column.two {
-  width: 50%;
-  padding-right: 12px;
+  width: 48.5%;
+  /* (100 - 3 * 1)/2 */
+  margin-right: 3%;
 }
 
 .column.three {
-  width: 33%;
-  padding-right: 24px;
+  width: 31.333%;
+  /* (100 - 3 * 2)/3 */
+  margin-right: 3%;
 }
 
-.column.two + .column.two {
-  padding: 0 0 0 12px;
+.column.four {
+  width: 22.75%;
+  /* (100 - 3 * 3)/4 */
+  margin-right: 3%;
+}
+
+.column.two:nth-child(2n),
+.column.three:nth-child(3n),
+.column.four:nth-child(4n) {
+  margin-right: 0;
 }
 
 .column h1,
@@ -319,7 +329,7 @@ iframe {width: 100%;}
 .nav {line-height: 20px;padding-bottom: 4px}
 .nav a {margin-right: 6px;font-size: 14px;background: none;text-shadow: none;}
 
-.nav a[href="/feed.rss"],
+.nav a[href="/feed.xml"],
 .nav a[href="/search"] {
   float: right;
   color: #000;
