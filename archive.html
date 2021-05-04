@@ -1,39 +1,10 @@
 ---
 layout: default
 ---
-<header class="header">
-    {% include top-bar.html %}
-    <div class="header-intro theme-bg-primary text-white py-5">
-        <div class="container">
-            <h2 class="page-heading mb-0">Blog Archive</h2>
-        </div>
-    </div>
-</header>
-
-<section class="section pt-5">
-    <div class="container">
-        {% for post in site.posts %}
-            {% assign currentdate = post.date | date: '%B %Y' %}
-            {% if currentdate != date %}
-                {% unless forloop.first %}
-                    </div>
-                {% endunless %}
-                <h3 class="archive-date-header text-center text-sm-left">{{ currentdate }}</h3>
-                <div class="archive-month-container d-flex flex-wrap">
-                {% assign date = currentdate %}
-            {% endif %}
-            <div class="archive-card shadow-sm">
-                <div class="archive-text">
-                    <h4 class="title">{{ post.title }}</h4>
-                    <p class="excerpt">{{ post.excerpt | strip_html }}</p>
-                </div>
-                <a class="archive-overlay" href="{{ post.url }}">
-                    <p class="date">{{ post.date | date: '%b %d, %Y' }}</p>
-                </a>
-            </div>
-            {% if forloop.last %}
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-</section>
+<h1>Archive</h1>
+<div>
+{% for post in site.posts %}
+    <a href="{{post.url}}">{{post.title}}</a>&nbsp;<span class="small">{{post.date | date: '%B %-d, %Y'}}</span>
+    <br />
+{% endfor %}
+</div>
