@@ -1,64 +1,13 @@
 ---
 layout: default
 ---
-<header class="header">
-	{% include top-bar.html %}
-	<div class="header-intro theme-bg-primary text-white py-5">
-		<div class="container position-relative">		        
-			<h2 class="page-heading mb-2">{{ page.title }}</h2>
-			{% if page.subtitle %}
-			<div class="page-heading-tagline">{{ page.subtitle }}</div>
-			{% endif %}
-			{% if page.logo-image %}
-			<div class="page-heading-logo font-weight-bold position-absolute mt-4 mt-md-0"><img class="client-logo" src="{{ page.logo-image }}"></div>
-			{% endif %}
-		</div><!--//container-->
-	</div><!--//header-intro-->
-	
-</header><!--//header-->
-	
-<section class="project-wrapper single-col-max-width py-5 px-4 mx-auto">
-	{{ content }}
-</section><!--//project-wrapper-->
-
-{% assign minCommonTags = 2 %}
-{% assign relatedProjectCounter = 0 %}
-{% assign relatedProjectHtml = '' %}
-
-{% for project in site.projects %}
-	{% assign sameTagCount = 0 %}
-	{% for tag in project.tags %}
-		{% if project.url != page.url %}
-			{% if page.tags contains tag %}
-				{% assign sameTagCount = sameTagCount | plus: 1 %}
-			{% endif %}
-		{% endif %}
-	{% endfor %}
-
-	{% if sameTagCount >= minCommonTags %}
-		{% assign relatedProjectCounter = relatedProjectCounter | plus: 1 %}
-		{% capture card %}
-			{% include project-card.html project=project %}
-		{% endcapture %}
-		{% assign relatedProjectHtml = relatedProjectHtml | append: card %}
-		{% if relatedProjectCounter >= 3 %}
-			{% break %}
-		{% endif %}
+<div class="entry">
+	<a href="{{page.url}}">
+	<h1>{{ page.title }}</h1>
+	</a>
+	{% if page.cover-image %}
+	<img class="three column" src="{{page.cover-image}}" />
 	{% endif %}
-{% endfor %}
-
-{% if relatedProjectCounter > 0 %}
-<section class="section pt-5 related-projects-section bg-white">
-	<div class="container">
-		<h3 class="section-title font-weight-bold text-center mb-4">Other Project Case Studies</h3>
-		<div class="project-cards row">
-			{{ relatedProjectHtml }}
-		</div><!--//row-->
-	</div><!--//container-->
-</section>
-{% endif %}
-
-{% include hire-me.html %}
-
-<!-- Custom JS -->
-<script defer type="text/javascript" src="/assets/js/main.js"></script>
+	{{ page.content }}
+	<div class="clear"></div>
+</div>
