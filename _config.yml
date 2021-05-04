@@ -7,13 +7,14 @@ permalink: /blog/:year/:month/:day/:title/
 google-analytics: UA-97090131-1
 disqus-shortname: neillrobson
 repository: neillrobson/neillrobson.github.io
-plugins:
-  - jekyll-feed
 
 pagination:
   enabled: true
   per_page: 2
   sort_reverse: true
+
+tag_page_layout: tag_page
+tag_page_dir: tag
 
 collections:
   projects:
@@ -30,8 +31,6 @@ exclude:
   - LICENSE
   - gulpfile.esm.js
   - vendor
-  - talks.html # We don't have any content for this guy at the moment.
-  - resume.html # Too flashy, and no easy way to convert between HTML and PDF.
 
 keep_files:
   - assets

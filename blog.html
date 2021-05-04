@@ -9,7 +9,7 @@ pagination:
 	<h1>{{ post.title }}</h1>
 	<p>{{ post.excerpt | strip_html }}</p>
 	{% for tag in post.tags %}
-	<a class="small tag" href="/tagged/{{ tag }}">{{tag}}</a>
+	<a class="small tag" href="/tag/{{ tag }}">{{tag}}</a>
 	{% endfor %}
 	<div class="clear"></div>
 </div>

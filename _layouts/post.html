@@ -11,14 +11,16 @@ layout: default
   <br />
   <p>
     {% for tag in page.tags %}
-    <a class="small tag" href="/tagged/{{ tag }}">{{tag}}</a>
+    <a class="small tag" href="/tag/{{ tag }}">{{tag}}</a>
     {% endfor %}
   </p>
   {% endif %}
 
   <div class="clear"></div>
 
-  <!-- TODO: Add Disqus -->
+  {% if jekyll.environment == "production" and page.comments %}
+    {% include disqus.html %}
+  {% endif %}
 
   {% if page.previous.url or page.next.url %}
   <hr class="full" />
