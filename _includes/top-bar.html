@@ -1,67 +1,13 @@
-<div class="top-bar theme-bg-primary-darken">
-  <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-dark position-relative">
-      <ul class="social-list list-inline mb-0">
-        {% for item in site.data.people.neill.social %}
-          {% assign key = item[0] %}
-          {% assign value = item[1] %}
-          <li class="list-inline-item"><a class="text-white" href="{{ value.url }}" target="_blank"><i class="{{ value.icon }} fa-fw"></i></a></li>
-        {% endfor %}
-      </ul>
-      <!--//social-list-->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-        aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse text-uppercase" id="navigation">
-        <ul class="navbar-nav ml-lg-auto">
-          {% for link in site.data.nav %}
-            {% if link.url.size < 2 %}
-              {% assign linkurl = link.url %}
-              {% assign pageurl = page.url %}
-            {% else %}
-              {% capture linkurl %}{{ link.url | slice: 1, link.url.size }}{% endcapture %}
-              {% capture pageurl %}{{ page.url | slice: 1, linkurl.size }}{% endcapture %}
-            {% endif %}
-            {% if pageurl == linkurl %}
-              <li class="nav-item mr-lg-3 active">
-                <a href="{{ link.url | relative_url }}" class="nav-link">
-                  {{ link.title }} <span class="sr-only">(current)</span>
-                </a>
-              </li>
-            {% else %}
-              <li class="nav-item mr-lg-3">
-                <a href="{{ link.url | relative_url }}" class="nav-link">
-                  {{ link.title }}
-                </a>
-              </li>
-            {% endif %}
-          {% endfor %}
-          <!-- Markup for a dropdown nav item -->
-          <!--
-          <li class="nav-item dropdown mr-0">
-            <a class="nav-link dropdown-toggle" href="#" id="navigationLink" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
-              Remove Me
-            </a>
-            <div class="dropdown-menu dropdown-menu-right text-capitalize shadow-lg" aria-labelledby="navigationLink">
-              <a class="dropdown-item" href="/project.html">Project Case Study (1 Column)</a>
-              <a class="dropdown-item" href="/project-alt.html">Project Case Study (2 Columns)</a>
-              <a class="dropdown-item" href="/blog-post.html">Blog Post</a>
-            </div>
-          </li>
-        -->
-
-        </ul>
-        <span id="slide-line"></span>
-      </div>
-
-
-
-    </nav>
-
-  </div>
-  <!--//container-->
-
+<div class="container header">
+	<div class="main">
+		<a id="logo" href="/">
+			<img class="avatar rounded" src="/assets/images/profile.jpg" alt="Neill Robson" />
+			{{ site.title }}
+		</a>
+		<div class="nav">
+			{% for link in site.data.nav %}
+			<a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a>
+			{% endfor %}
+		</div>
+	</div>
 </div>
