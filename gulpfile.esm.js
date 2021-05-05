@@ -50,7 +50,7 @@ function clean() {
 
 function compileSass() {
     return gulp
-        .src("./_sass/*.scss")
+        .src("./src/_sass/*.scss")
         .pipe(sass({
             importer: node_sass_tilde_importer
         }))
@@ -85,19 +85,9 @@ function jekyll() {
 }
 
 function watchFiles() {
-    gulp.watch("./_sass/**/*", compileSass);
+    gulp.watch("./src/_sass/**/*", compileSass);
     gulp.watch("./node_modules/**/*", gulp.parallel(loadPluginJs, copyFonts));
-    gulp.watch([
-        "./_includes/**/*",
-        "./_pages/**/*",
-        "./_posts/**/*",
-        "./_projects/**/*",
-        "./_layouts/**/*",
-        "./_drafts/**/*",
-        "./_data/**/*",
-        "./*.html",
-        "./assets/**/*"
-    ], gulp.series(jekyll, bsReload));
+    gulp.watch("./src/**/*", gulp.series(jekyll, bsReload));
 }
 
 const build = gulp.series(clean, gulp.parallel(compileSass, copyFonts, loadPluginJs), jekyll);

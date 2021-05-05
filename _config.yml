@@ -10,6 +10,8 @@ google-analytics: UA-97090131-1
 disqus-shortname: neillrobson
 repository: neillrobson/neillrobson.github.io
 
+source: src
+
 pagination:
   enabled: true
   per_page: 2
