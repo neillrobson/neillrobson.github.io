@@ -1,7 +1,9 @@
-import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
-import '../node_modules/@fortawesome/fontawesome-free/js/all.js';
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faLinkedinIn, faGithubAlt, faTwitter, faStackOverflow } from '@fortawesome/free-brands-svg-icons';
 
 import './style.css';
 import './social.scss';
 
-console.log("Hello, world!");
+library.add(faEnvelope, faGithubAlt, faLinkedinIn, faStackOverflow, faTwitter);
+dom.watch();

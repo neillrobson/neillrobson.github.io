@@ -19,9 +19,6 @@
     "url": "https://github.com/neillrobson/neillrobson.github.io/issues"
   },
   "homepage": "https://github.com/neillrobson/neillrobson.github.io#readme",
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.1"
-  },
   "devDependencies": {
     "@babel/core": "^7.14.0",
     "@babel/preset-env": "^7.14.1",
@@ -36,5 +33,10 @@
     "style-loader": "^2.0.0",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.6.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3"
   }
 }
