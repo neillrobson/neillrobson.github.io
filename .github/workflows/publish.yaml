@@ -43,8 +43,8 @@ jobs:
       - name: Install Node dependencies
         run: npm install
 
-      - name: Build website with Gulp
-        run: npx gulp
+      - name: Build website with Webpack and Jekyll
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
