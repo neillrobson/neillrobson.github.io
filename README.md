@@ -7,19 +7,37 @@ Source code for the personal website and blog of Neill Robson.
 ## Local Development
 
 1. Download or clone the repo
-```
-git clone git@github.com:neillrobson/neillrobson.github.io.git
-```
+
+    ```
+    git clone git@github.com:neillrobson/neillrobson.github.io.git
+    ```
+
 2. Enter the folder
-```
-cd neillrobson.github.io/
-```
-3. Build, run, and watch with Gulp
-```
-gulp build
-gulp watch
-```
-4. Access via http://127.0.0.1:4000/
+
+    ```
+    cd neillrobson.github.io/
+    ```
+
+3. Install dependencies
+
+    ```
+    bundle install
+    npm install
+    ```
+
+4. Run development server
+
+    ```
+    npm start
+    ```
+
+5. Access via http://localhost:3000/
+
+6. Check production build
+
+    ```
+    npm run build
+    ```
 
 ## Live Site
 
