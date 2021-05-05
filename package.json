@@ -4,8 +4,9 @@
   "description": "Source code for the personal website and blog of Neill Robson.",
   "private": true,
   "scripts": {
+    "clean": "shx rm -rf _site && shx mkdir _site",
     "build": "gulp build",
-    "watch": "gulp watch"
+    "start": "npm run clean && concurrently -k -n \"WEBPACK,JEKYLL,BROWSER-SYNC\" -c \"bgBlue.bold,bgRed.bold,bgCyan.bold\" \"webpack -w --mode=development\" \"bundle exec jekyll build --watch\" \"browser-sync _site -w --no-open\""
   },
   "repository": {
     "type": "git",
@@ -19,26 +20,21 @@
   },
   "homepage": "https://github.com/neillrobson/neillrobson.github.io#readme",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.1",
-    "bootstrap": "^4.5.3",
-    "flickity": "^2.2.1",
-    "highlightjs": "^9.16.2",
-    "imagesloaded": "^4.1.4",
-    "isotope-layout": "^3.0.6",
-    "jquery": "^3.5.1",
-    "jquery-validation": "^1.19.3",
-    "popper.js": "^1.16.1"
+    "@fortawesome/fontawesome-free": "^5.15.1"
   },
   "devDependencies": {
-    "@types/fs-extra": "^9.0.0",
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.1",
+    "babel-loader": "^8.2.2",
     "browser-sync": "^2.26.13",
-    "esm": "^3.2.25",
-    "fs-extra": "^9.0.0",
-    "gulp": "^4.0.2",
-    "gulp-dart-sass": "^1.0.2",
-    "gulp-flatten": "^0.4.0",
-    "kind-of": ">=6.0.3",
-    "minimist": ">=1.2.3",
-    "node-sass-tilde-importer": "^1.0.2"
+    "concurrently": "^6.0.2",
+    "css-loader": "^5.2.4",
+    "file-loader": "^6.2.0",
+    "sass": "^1.32.12",
+    "sass-loader": "^11.0.1",
+    "shx": "^0.3.3",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0"
   }
 }
