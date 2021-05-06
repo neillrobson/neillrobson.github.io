@@ -4,7 +4,7 @@ title: Layout & Typography
 comments: false
 ---
 
-{>|} ![A book cover looks great in the margin](https://c1.staticflickr.com/5/4096/4780208213_25074f6779.jpg)
+{|<} ![Our Friend the Atom](https://c1.staticflickr.com/5/4096/4780208213_25074f6779.jpg "A book cover looks great in the margin")
 
 NEW YORK – Text set in all caps gets converted to small-caps by default. This means that acronyms like BBC don’t stand out relative to the rest of the text. Acronyms even work with accents like ÀÊØ. A possessive [acronym](/) like CNN's opinion works as well. What about the FCC! The so called (BBC). Also I automatically convert three dots to an ellipsis... « Hello » there should have non-breaking spaces between the punctuation and the word...
 

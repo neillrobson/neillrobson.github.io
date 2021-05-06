@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
   margin: 0;
@@ -98,6 +103,8 @@ div {
   border-left: 4px solid rgba(0, 0, 0, 0.2);
   background: rgba(0, 0, 0, 0.05);
 }
+
+.margin blockquote figure,
 .margin blockquote p {
   margin: 0;
 }
@@ -107,6 +114,7 @@ div {
   margin-top: 6px;
 }
 
+.margin figure,
 .margin p {
   font-style: italic;
   font-family: Georgia;
@@ -189,6 +197,7 @@ div {
 
 /* TEXT */
 
+figure,
 p,
 li {
   font-family: Georgia, serif;
@@ -218,12 +227,6 @@ blockquote {
   padding: 0 0 0 12px;
   color: #777;
 }
-
-/*
-p .small-caps,
-li .small-caps {
-  font-family: "Georgia Pro SC";
-}*/
 
 big {
   color: #000;
@@ -319,12 +322,6 @@ p code {
   margin-left: -2px;
   display: inline-block;
 }
-/*
-p code:before,
-p code:after {
-  letter-spacing: -0.2em;
-  content: "\00a0";
-}*/
 
 pre code {
   display: block;
@@ -414,6 +411,8 @@ img {
 .wide .image_container {
   margin: 0 auto;
 }
+
+.wide figure,
 .wide p {
   margin-top: 0;
 }
@@ -660,6 +659,7 @@ input#search:focus {
   }
 
   .entry .margin .caption,
+  .entry .margin figure,
   .entry .margin p {
     margin-bottom: 6px;
     text-align: left;
