@@ -43,7 +43,7 @@ Does out text actually get struck out? Looks like it does. Hello is a designer a
 5. How can I get this to work on windows?
 6. Any other ways you can make this script better?
 
-![Taken from the Bedroom Society, a collection of sheets.](http://mineisyours.net.au/content/01-articles/01-monday/01-klo/01.jpg)
+![Man and woman displaying clothes](https://blotcdn.com/blog_fc54c8bae2b940e481010ca7e865fe7a/_image_cache/1465955503582/0oa7mc-01.jpg "Taken from the Bedroom Society, a collection of sheets.")
 
 I just added RSS feeds to each blog. A link to your feed is in the footer of your blog. Here is [my feed](/feed.rss). While I was in the mood for XML I added a [site map](/sitemap.xml) to each blog and a [robots.txt](/robots.txt) file so Google can index your posts easily. Here is while I was in the mood for XML I added to each blog and file so Google can index your posts easily.
 
@@ -61,11 +61,11 @@ Hello is a designer and writer. Recent work has touched on a range of topics, in
 
 <div class="clear"></div>
 
-{<>} ![Apple's clothing line has a massive caption and it should break onto multiple lines recent work has touched on a range of topics, including the relationship of movement.](http://i.imgur.com/Ekoxk8M.jpg)
+{<>} ![Landscape 1](http://i.imgur.com/Ekoxk8M.jpg "Apple's clothing line has a massive caption and it should break onto multiple lines recent work has touched on a range of topics, including the relationship of movement.")
 
-{<>} ![Apple's clothing line.](http://i.imgur.com/hv6i8GR.jpg)
+{<>} ![Landscape 2](http://i.imgur.com/hv6i8GR.jpg)
 
-{<>} ![Apple's clothing line.](http://i.imgur.com/hx8VJoV.jpg)
+{<>} ![Landscape 3](http://i.imgur.com/hx8VJoV.jpg "Another landscape, shorter caption.")
 
 ## What about other?
 
@@ -75,11 +75,11 @@ I just added RSS feeds to each blog. A link to your feed is in the footer of you
 
 > While I was in the mood for XML I added a file so Google can index your posts easily. Here is while I was in the mood for XML I added to each blog and file so Google can index your posts easily.
 
-{<<} ![Apple's clothing line.](http://24.media.tumblr.com/c80b855b5a6da1a6e858ab611c971bd7/tumblr_n6cyjko3gH1qz6f9yo5_1280.jpg)
+{<<} ![Woman sitting at computer](http://24.media.tumblr.com/c80b855b5a6da1a6e858ab611c971bd7/tumblr_n6cyjko3gH1qz6f9yo5_1280.jpg "Apple's clothing line.")
 
 ### Options
 
-{|<} ![What about a long image](http://i.imgur.com/0CkJXx5.gif)
+{|<} ![Color palette](http://i.imgur.com/0CkJXx5.gif "What about a long image")
 
 You can pass an options object to influence the type of color it produces. The options object accepts the following properties. Controls the hue of the generated color. You can pass a string representing a color name: `red`, `orange`, `yellow`, `green`, `blue`, `purple`, `pink` and `monochrome` are currently supported.
 
@@ -134,7 +134,7 @@ I want to use black for the body text but when I do the titles don’t have enou
 
 I also check with YouTube to determine the video's aspect ratio? I just added RSS feeds to each blog. A link to your feed is in the footer of your blog. Here is [my feed](/feed.rss). While I was in the mood for XML I added a [site map](/sitemap.xml) to each blog and a [robots.txt](/robots.txt) file so Google can index your posts easily…
 
-<div class="left three column">![The cover of Ulysses](http://upload.wikimedia.org/wikipedia/commons/c/c0/UlyssesCover.jpg)</div>
+{|||} ![Ulysses book cover](http://upload.wikimedia.org/wikipedia/commons/c/c0/UlyssesCover.jpg "The cover of Ulysses")
 
 I just added RSS feeds to each blog. A link to your feed is in the footer of your blog. Here is [my feed](/feed.rss). While I was in the mood for XML I added a [site map](/sitemap.xml) to each blog and a [robots.txt](/robots.txt) file so Google can index your posts easily.
 

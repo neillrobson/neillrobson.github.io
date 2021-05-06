@@ -31,6 +31,7 @@ body {
 
 small,
 .small,
+figcaption,
 .caption {
   font-size: 13px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -38,6 +39,7 @@ small,
   font-weight: 500;
 }
 
+figcaption,
 .caption {
   line-height: 18px;
   display: block;
@@ -47,9 +49,12 @@ small,
 }
 
 /* 29.3333 / 1.2933333 */
+.wide.left figcaption,
 .wide.left .caption {
   margin-left: 22.680412113%;
 }
+
+.wide.right figcaption,
 .wide.right .caption {
   margin-right: 22.680412113%;
 }
@@ -162,6 +167,7 @@ div {
   float: left;
 }
 
+.column figcaption,
 .column .caption {
   margin-bottom: 6px;
 }
@@ -660,6 +666,7 @@ input#search:focus {
   }
 
   .entry .margin .caption,
+  .entry .margin figcaption,
   .entry .margin figure,
   .entry .margin p {
     margin-bottom: 6px;
@@ -672,6 +679,8 @@ input#search:focus {
     width: 100%;
     margin: 0;
   }
+
+  .wide.left figcaption,
   .wide.left .caption {
     margin-left: 0;
   }
