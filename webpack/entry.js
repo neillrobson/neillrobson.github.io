@@ -4,6 +4,7 @@ import { faLinkedinIn, faGithubAlt, faTwitter, faStackOverflow } from '@fortawes
 
 import './style.css';
 import './social.scss';
+import './autumn.css';
 
 library.add(faEnvelope, faGithubAlt, faLinkedinIn, faStackOverflow, faTwitter);
 dom.watch();

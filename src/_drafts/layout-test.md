@@ -12,9 +12,9 @@ Accents all work perfectly in Georgia. Al­brecht Dürer, François Truf­faut, 
 
 "Hanging quotes and smart quotes." Blot will convert primes and basic quotes automatically. All you have to do is type using primes (\') and inch marks (\") and "everything" looks lovely. "Better than a 65'6" whale." – Captain Ahab. "It's my '#1' choice!" – 12" Foam Finger from '93. You can put acronyms and quotes safely inside code blocks too:
 
-```javascript
+~~~javascript
 foo("bar"); // Won't have smart quotes or auto ACR...
-```
+~~~
 
 While I was in the mood for XML I added a site map to each blog and a text file so Google can index your posts easily. Does out text actually get struck out? Looks like it does. Hello is a designer and writer. Recent work has touched on a range of topics, including the relationship of movement and interaction, the history of visual identity and branding in the arts, and the future of the museum in the digital age. His essay on the rise of graphic design MFA programs, "School Days" was dope?
 
@@ -61,7 +61,7 @@ Hello is a designer and writer. Recent work has touched on a range of topics, in
 
 <div class="clear"></div>
 
-{<>} ![Apple's clothing line has a fucking massive caption and it should break onto multiple lines recent work has touched on a range of topics, including the relationship of movement.](http://i.imgur.com/Ekoxk8M.jpg)
+{<>} ![Apple's clothing line has a massive caption and it should break onto multiple lines recent work has touched on a range of topics, including the relationship of movement.](http://i.imgur.com/Ekoxk8M.jpg)
 
 {<>} ![Apple's clothing line.](http://i.imgur.com/hv6i8GR.jpg)
 
@@ -83,7 +83,7 @@ I just added RSS feeds to each blog. A link to your feed is in the footer of you
 
 You can pass an options object to influence the type of color it produces. The options object accepts the following properties. Controls the hue of the generated color. You can pass a string representing a color name: `red`, `orange`, `yellow`, `green`, `blue`, `purple`, `pink` and `monochrome` are currently supported.
 
-```javascript
+~~~javascript
 // Returns a hex code for an attractive color
 randomColor();
 
@@ -98,7 +98,7 @@ randomColor({
   luminosity: "dark",
   hue: "blue",
 });
-```
+~~~
 
 ### To do
 
@@ -144,7 +144,7 @@ How about vimeo embeds? While I was in the mood for XML I added a site map to ea
 
 ## A few ideas for marking up layout
 
-```
+~~~
 {left} Float left inside text column {/left}
 {right} Float right inside text column {/right}
 
@@ -154,11 +154,11 @@ How about vimeo embeds? While I was in the mood for XML I added a site map to ea
 
 {right margin} Occupy left margin {/right margin}
 {left margin} Occup right margin {/left margin}
-```
+~~~
 
 To make things nice and memorable here's some ideas for shorthand:
 
-```
+~~~
 {|<} Left - float inside margins on left side
 {>|} Right - float inside margins on right side
 
@@ -198,4 +198,4 @@ To make things nice and memorable here's some ideas for shorthand:
 
 it's difficult to remember which is which
 {>||} ![A book cover looks great in the margin](/foo.jpg)
-```
+~~~
