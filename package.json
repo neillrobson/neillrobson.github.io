@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "shx rm -rf _site && shx mkdir _site",
     "build": "npm run clean && webpack --mode=production && bundle exec jekyll build",
-    "start": "npm run clean && concurrently -k -n \"WEBPACK,JEKYLL,BROWSER-SYNC\" -c \"bgBlue.bold,bgRed.bold,bgCyan.bold\" \"webpack -w --mode=development\" \"bundle exec jekyll build --watch\" \"browser-sync _site -w --no-open\""
+    "start": "npm run clean && concurrently -k -n \"WEBPACK,JEKYLL,BROWSER-SYNC\" -c \"bgBlue.bold,bgRed.bold,bgCyan.bold\" \"webpack -w --mode=development\" \"bundle exec jekyll build --drafts --watch\" \"browser-sync _site -w --no-open\""
   },
   "repository": {
     "type": "git",

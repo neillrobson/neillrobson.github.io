@@ -12,6 +12,9 @@ repository: neillrobson/neillrobson.github.io
 
 source: src
 
+# See _plugins
+markdown: NeillKramdown
+
 pagination:
   enabled: true
   per_page: 2
