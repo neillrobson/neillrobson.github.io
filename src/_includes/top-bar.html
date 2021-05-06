@@ -1,13 +1,17 @@
-<div class="container header">
-	<div class="main">
-		<a id="logo" href="/">
-			<img class="avatar rounded" src="/assets/images/profile.jpg" alt="Neill Robson" />
-			{{ site.title }}
-		</a>
-		<div class="nav">
-			{% for link in site.data.nav %}
-			<a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a>
-			{% endfor %}
-		</div>
-	</div>
+<div class="header">
+  <div class="main">
+    <a id="logo" href="/">
+      <img
+        class="avatar rounded"
+        src="/assets/images/profile.jpg"
+        alt="Neill Robson"
+      />
+      {{ site.title }}
+    </a>
+    <div class="nav">
+      {% for link in site.data.nav %}
+      <a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a>
+      {% endfor %}
+    </div>
+  </div>
 </div>

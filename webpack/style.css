@@ -1,3 +1,9 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
 body {
   font: 17px / 24px "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-rendering: optimizeLegibility;
@@ -7,6 +13,7 @@ body {
   -moz-font-feature-settings: “liga” on;
   color: #232323;
   word-wrap: break-word;
+  padding: 0 20px;
 }
 
 .clear {
@@ -49,7 +56,6 @@ body {
 }
 
 div {
-  margin: 0 auto;
   overflow: visible;
   position: relative;
 }
@@ -58,13 +64,14 @@ div {
   margin-top: 48px;
   margin-bottom: 72px;
 }
-.main {
-  max-width: 60%;
-  min-width: 600px;
-}
+
 .container {
-  max-width: 1000px;
+  min-height: 100%;
+  display: grid;
+  grid-template: auto 1fr auto / minmax(0, 600px);
+  justify-content: center;
 }
+
 .entry {
   margin: 72px 0 120px;
 }
@@ -626,11 +633,6 @@ input#search:focus {
 }
 
 @media screen and (max-width: 976px) {
-  .main {
-    max-width: 600px;
-    min-width: 0;
-  }
-
   .entry .margin {
     position: relative;
     top: auto;
