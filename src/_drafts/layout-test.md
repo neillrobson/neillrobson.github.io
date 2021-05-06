@@ -49,17 +49,13 @@ I just added RSS feeds to each blog. A link to your feed is in the footer of you
 
 Hello is a designer and writer. Recent work has touched on a range of topics, including the relationship of movement and interaction, the history of visual identity and branding in the arts, and the future of the museum in the digital age. His essay on the rise of graphic design MFA programs, "School Days," was published in the Walker Art Center's Graphic Design: Now in Production catalogue in 2011.
 
-<div class="column two">
-<h3>MFA galleries</h3>
-<p>His essay on the rise of graphic design MFA programs, "School Days," was published in the Walker Art Center's Graphic Design: Now in Production catalogue in 2011.</p>
-</div>
+{||}
+### MFA galleries
+His essay on the rise of graphic design MFA programs, "School Days," was published in the Walker Art Center's Graphic Design: Now in Production catalogue in 2011.
 
-<div class="column two">
-<h3>How about a heading?</h3>
-<p>A link to your feed is in the footer of your blog. Here is [my feed](/feed.rss). While I was in the mood for XML I added a [site map](/sitemap.xml) to each blog and a [robots.txt](/robots.txt) file so Google can index your posts.</p>
-</div>
-
-<div class="clear"></div>
+{||}
+### How about a heading?
+A link to your feed is in the footer of your blog. Here is [my feed](/feed.rss). While I was in the mood for XML I added a [site map](/sitemap.xml) to each blog and a [robots.txt](/robots.txt) file so Google can index your posts.
 
 {<>} ![Landscape 1](http://i.imgur.com/Ekoxk8M.jpg "Apple's clothing line has a massive caption and it should break onto multiple lines recent work has touched on a range of topics, including the relationship of movement.")
 

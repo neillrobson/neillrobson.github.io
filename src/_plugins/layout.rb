@@ -7,7 +7,7 @@ class Kramdown::Parser::NeillKramdown < Kramdown::Parser::Kramdown
         @block_parsers.unshift(:layout_tag)
     end
 
-    LAYOUT_TAG = /^#{OPT_SPACE}\{([<>\|]{1,2})\} ?/
+    LAYOUT_TAG = /^#{OPT_SPACE}\{([<>\|]{1,3})\} ?/
 
     CLASSES = {
         '<<' => 'wide left',
@@ -16,7 +16,9 @@ class Kramdown::Parser::NeillKramdown < Kramdown::Parser::Kramdown
         '<' => 'inside left',
         '>' => 'inside right',
         '|<' => 'margin left',
-        '>|' => 'margin right'
+        '>|' => 'margin right',
+        '||' => 'column two',
+        '|||' => 'column three',
     }
 
     # Note that @src is a Kramdown StringScanner, which is just a Ruby
