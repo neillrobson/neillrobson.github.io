@@ -3,26 +3,33 @@ layout: default
 pagination:
   enabled: true
 ---
-{% for post in paginator.posts %}
-<div class="entry">
-	<a class="small date left margin" href="{{post.url}}">{{post.date | date: '%B %-d, %Y'}}</a>
-	<h1>{{ post.title }}</h1>
-	<p>{{ post.excerpt | newline_to_br | strip_newlines | replace: '<br />', ' ' | strip_html | strip | truncatewords: 100 }}</p>
-	{% for tag in post.tags %}
-	<a class="small tag" href="/tag/{{ tag }}">{{tag}}</a>
-	{% endfor %}
-	<div class="clear"></div>
-</div>
-{% endfor %}
 
+{% for post in paginator.posts %}
+    <div class="entry">
+        <a class="small date left margin" href="{{post.url}}">{{post.date | date: '%B %-d, %Y'}}</a>
+        <h1>{{ post.title }}</h1>
+        <p>
+            {{ post.excerpt | newline_to_br | strip_newlines | replace: '<br />', ' ' |
+    strip_html | strip | truncatewords: 100 }}
+        </p>
+        {% for tag in post.tags %}
+            <a class="small tag" href="/tag/{{ tag }}">{{tag}}</a>
+        {% endfor %}
+        <div class="clear"></div>
+    </div>
+{% endfor %}
 {% if paginator.total_pages > 1 %}
-<div class="pagination">
-	{% if paginator.previous_page %}
-	<a href="{{ paginator.previous_page_path | prepend: site.baseurl }}">&larr; Newer</a>
-	{% endif %}
-	Page {{ paginator.page }} of {{ paginator.total_pages }}
-	{% if paginator.next_page %}
-	<a href="{{ paginator.next_page_path | prepend: site.baseurl }}">Older &rarr;</a>
-	{% endif %}
-</div>
+    <div class="pagination">
+        {% if paginator.previous_page %}
+            <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}">&larr; Newer</a>
+        {% endif %}
+        Page
+        {{ paginator.page }}
+        of
+        {{ paginator.total_pages }}
+        {% if
+  paginator.next_page %}
+            <a href="{{ paginator.next_page_path | prepend: site.baseurl }}">Older &rarr;</a>
+        {% endif %}
+    </div>
 {% endif %}
