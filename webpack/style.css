@@ -314,6 +314,11 @@ hr {
 
 /* CODE */
 
+pre,
+.highlight {
+  overflow-x: auto;
+}
+
 code {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   margin: 0;
@@ -333,8 +338,8 @@ p code {
 pre code {
   display: block;
   padding: 12px 18px;
-  margin: -11px 0 -13px -18px;
   background-color: rgba(0, 0, 0, 0.02);
+  overflow-x: auto;
 }
 
 /* TABLES */
@@ -726,56 +731,4 @@ input#search:focus {
   .header {
     margin: 9px 0;
   }
-}
-
-/* The theme used by the syntax highlighting app */
-.hljs {
-  display: block;
-  overflow-x: auto;
-}
-.hljs-comment,
-.hljs-quote,
-.hljs-variable {
-  color: #008000;
-}
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-built_in,
-.hljs-name,
-.hljs-tag {
-  color: #00f;
-}
-.hljs-string,
-.hljs-title,
-.hljs-section,
-.hljs-attribute,
-.hljs-literal,
-.hljs-template-tag,
-.hljs-template-variable,
-.hljs-type,
-.hljs-addition {
-  color: #a31515;
-}
-.hljs-deletion,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-meta {
-  color: #2b91af;
-}
-.hljs-doctag {
-  color: #808080;
-}
-.hljs-attr {
-  color: #f00;
-}
-.hljs-symbol,
-.hljs-bullet,
-.hljs-link {
-  color: #00b0e8;
-}
-.hljs-emphasis {
-  font-style: italic;
-}
-.hljs-strong {
-  font-weight: bold;
 }
