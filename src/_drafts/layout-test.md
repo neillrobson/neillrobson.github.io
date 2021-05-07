@@ -2,6 +2,7 @@
 layout: post
 title: Layout & Typography
 comments: false
+katex: true
 ---
 
 {|<} ![Our Friend the Atom](https://c1.staticflickr.com/5/4096/4780208213_25074f6779.jpg "A book cover looks great in the margin")
