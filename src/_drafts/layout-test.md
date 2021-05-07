@@ -12,9 +12,9 @@ Accents all work perfectly in Georgia. Al­brecht Dürer, François Truf­faut, 
 
 "Hanging quotes and smart quotes." Blot will convert primes and basic quotes automatically. All you have to do is type using primes (\') and inch marks (\") and "everything" looks lovely. "Better than a 65'6" whale." – Captain Ahab. "It's my '#1' choice!" – 12" Foam Finger from '93. You can put acronyms and quotes safely inside code blocks too:
 
-~~~javascript
+```javascript
 foo("bar"); // Won't have smart quotes or auto ACR...
-~~~
+```
 
 While I was in the mood for XML I added a site map to each blog and a text file so Google can index your posts easily. Does out text actually get struck out? Looks like it does. Hello is a designer and writer. Recent work has touched on a range of topics, including the relationship of movement and interaction, the history of visual identity and branding in the arts, and the future of the museum in the digital age. His essay on the rise of graphic design MFA programs, "School Days" was dope?
 
@@ -132,6 +132,10 @@ I also check with YouTube to determine the video's aspect ratio? I just added RS
 
 {|||} ![Ulysses book cover](http://upload.wikimedia.org/wikipedia/commons/c/c0/UlyssesCover.jpg "The cover of Ulysses")
 
+{|||} ![Ulysses book cover](http://upload.wikimedia.org/wikipedia/commons/c/c0/UlyssesCover.jpg "The cover of Ulysses")
+
+{|||} ![Ulysses book cover](http://upload.wikimedia.org/wikipedia/commons/c/c0/UlyssesCover.jpg "The cover of Ulysses")
+
 I just added RSS feeds to each blog. A link to your feed is in the footer of your blog. Here is [my feed](/feed.rss). While I was in the mood for XML I added a [site map](/sitemap.xml) to each blog and a [robots.txt](/robots.txt) file so Google can index your posts easily.
 
 Thank you Twitter and your emoji project. Also, I made the descenders on links more pretty – look how they don’t overlap with the underline. The emoji extractor ignores some unicode characters, like these ones and the ones before those ones.
@@ -140,7 +144,7 @@ How about vimeo embeds? While I was in the mood for XML I added a site map to ea
 
 ## A few ideas for marking up layout
 
-~~~
+```
 {left} Float left inside text column {/left}
 {right} Float right inside text column {/right}
 
@@ -150,7 +154,7 @@ How about vimeo embeds? While I was in the mood for XML I added a site map to ea
 
 {right margin} Occupy left margin {/right margin}
 {left margin} Occup right margin {/left margin}
-~~~
+```
 
 To make things nice and memorable here's some ideas for shorthand:
 

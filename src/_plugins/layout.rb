@@ -1,6 +1,6 @@
-require 'kramdown/parser/kramdown'
+require 'kramdown/parser/gfm'
 
-class Kramdown::Parser::NeillKramdown < Kramdown::Parser::Kramdown
+class Kramdown::Parser::NeillKramdown < Kramdown::Parser::GFM
 
     def initialize(source, options)
         super

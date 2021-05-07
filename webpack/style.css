@@ -190,9 +190,9 @@ div {
   margin-right: 3%;
 }
 
-.column.two:nth-child(2n),
-.column.three:nth-child(3n),
-.column.four:nth-child(4n) {
+.column.two + .column.two,
+.column.three + .column.three + .column.three,
+.column.four + .column.four + .column.four + .column.four {
   margin-right: 0;
 }
 
