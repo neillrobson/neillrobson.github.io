@@ -30,7 +30,7 @@ layout: default
   <a class="halfWidth left previousEntry" href="{{page.previous.url}}">
     <h5>Previous post</h5>
     <span class="title">{{page.previous.title}}</span>
-    <span class="summary">{{page.previous.excerpt | strip_html}}</span>
+    <span class="summary">{{page.previous.excerpt | newline_to_br | strip_newlines | replace: '<br />', ' ' | strip_html | strip | truncatewords: 50 }}</span>
   </a>
   {% endif %}
 
@@ -38,7 +38,7 @@ layout: default
   <a class="left halfWidth nextEntry" href="{{page.next.url}}">
     <h5>Next post</h5>
     <span class="title">{{page.next.title}}</span>
-    <span class="summary">{{page.next.excerpt | strip_html}}</span>
+    <span class="summary">{{page.next.excerpt | newline_to_br | strip_newlines | replace: '<br />', ' ' | strip_html | strip | truncatewords: 50 }}</span>
   </a>
   {% endif %}
 
