@@ -27,6 +27,7 @@
     "concurrently": "^6.0.2",
     "css-loader": "^5.2.4",
     "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^1.6.0",
     "sass": "^1.32.12",
     "sass-loader": "^11.0.1",
     "shx": "^0.3.3",

@@ -1,55 +1,57 @@
 <head>
     {% comment %}
-  Prioritize page-level data. Provide a reasonable default if the current
-  location is a page, but doesn't have the given data specified. Default to
-  site-level data if necessary.
-  {% endcomment %}
+    Prioritize page-level data. Provide a reasonable default if the current
+    location is a page, but doesn't have the given data specified. Default to
+    site-level data if necessary.
+    {% endcomment %}
 
-  {% capture title %}{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}{% endcapture %}
-  {%- capture description -%}{% if page.description %}{{ page.description }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
-  {%- capture keywords -%}{% if page.keywords %}{{ page.keywords }}{% else %}{{ site.keywords }}{% endif %}{% endcapture %}
+    {% capture title %}{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}{% endcapture %}
+    {%- capture description -%}{% if page.description %}{{ page.description }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
+    {%- capture keywords -%}{% if page.keywords %}{{ page.keywords }}{% else %}{{ site.keywords }}{% endif %}{% endcapture %}
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{{ title }}</title>
+    <title>{{ title }}</title>
 
-  <script type="module">
-    document.documentElement.classList.remove('no-js');
-    document.documentElement.classList.add('js');
-  </script>
+    <script type="module">
+      document.documentElement.classList.remove('no-js');
+      document.documentElement.classList.add('js');
+    </script>
 
-  <meta name="description" content="{{ description | strip_html | strip | truncate:150 }}" />
-  <meta name="keywords" content="{{ keywords | strip_html | strip }}" />
-  <meta name="author" content="{{ site.author }}">
+    <meta name="description" content="{{ description | strip_html | strip | truncate:150 }}" />
+    <meta name="keywords" content="{{ keywords | strip_html | strip }}" />
+    <meta name="author" content="{{ site.author }}">
 
-  <meta property="og:title" content="{{ title }}">
-  <meta property="og:description" content="{{ description | strip_html | strip | truncate:150 }}">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ page.url | replace:'index.html','' | absolute_url }}">
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description | strip_html | strip | truncate:150 }}">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ page.url | replace:'index.html','' | absolute_url }}">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
 
-  {% comment %}
-  <meta property="og:image" content="https://www.mywebsite.com/image.jpg">
-  <meta property="og:image:alt" content="Image description">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" property="og:title" itemprop="title name" content="{{ title }}">
-  <meta name="twitter:description" property="og:description" itemprop="description" content="{{ description }}">
-  {% endcomment %}
+    {% comment %}
+    <meta property="og:image" content="https://www.mywebsite.com/image.jpg">
+    <meta property="og:image:alt" content="Image description">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="{{ title }}">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="{{ description }}">
+    {% endcomment %}
 
-  <link rel="shortcut icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
-  {% feed_meta %}
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
+    {% feed_meta %}
 
-  {% if page.katex %}
-  <!-- KaTeX -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/main.css">
 
-  <!-- The loading of KaTeX is deferred to speed up page rendering -->
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    {% if page.katex %}
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
 
-  <!-- To automatically render math in text elements, include the auto-render extension: -->
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-      onload="renderMathInElement(document.body);"></script>
-  {% endif %}
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    {% endif %}
 </head>
