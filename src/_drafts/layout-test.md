@@ -8,6 +8,13 @@ comments: false
 
 NEW YORK – Text set in all caps gets converted to small-caps by default. This means that acronyms like BBC don’t stand out relative to the rest of the text. Acronyms even work with accents like ÀÊØ. A possessive [acronym](/) like CNN's opinion works as well. What about the FCC! The so called (BBC). Also I automatically convert three dots to an ellipsis... « Hello » there should have non-breaking spaces between the punctuation and the word...
 
+So how does inline/block $$\LaTeX$$ work?
+Can I say that, if $$n \geq 3$$, then the problem is intractable?
+
+$$
+\sum_{i=1}^n i = \frac{n^2 + n}{2}
+$$
+
 Accents all work perfectly in Georgia. Al­brecht Dürer, François Truf­faut, Plácido Domingo should all render appropriately. Cause célèbre, piña co­lada, Göt­ter­däm­merung straße all work too. Links also are improved: note how the [descenders get cleared](/) from the underline stroke. Composing content for the web is complicated because the designer has no control over the dimensions of the screen on which the content will be viewed?
 
 "Hanging quotes and smart quotes." Blot will convert primes and basic quotes automatically. All you have to do is type using primes (\') and inch marks (\") and "everything" looks lovely. "Better than a 65'6" whale." – Captain Ahab. "It's my '#1' choice!" – 12" Foam Finger from '93. You can put acronyms and quotes safely inside code blocks too:

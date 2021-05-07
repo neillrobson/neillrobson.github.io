@@ -79,6 +79,6 @@ class Jekyll::Converters::Markdown::NeillKramdown
     end
 
     def convert(content)
-        Kramdown::Document.new(content, :input => 'NeillKramdown').to_html5
+        Kramdown::Document.new(content, {input: 'NeillKramdown', hard_wrap: false}).to_html5
     end
 end
