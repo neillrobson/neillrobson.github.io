@@ -20,8 +20,7 @@ restrooms are handled dormitory-style. Maintaining a clean and safe environment
 is as much the residents' job as it is the staff's, in the sense that everyone's
 space can be seen from all angles, creating an aura of community watch.
 
-![PodShare bunk beds](/assets/images/2017/05/access-vs-ownership/clean-pods.jpg)
-_A typical quiet afternoon amongst the pods_
+![PodShare bunk beds](/assets/images/2017/05/access-vs-ownership/clean-pods.jpg "A typical quiet afternoon amongst the pods")
 
 If this description is hard to visualize, a good video providing an overview and
 history of the startup can be found
@@ -71,9 +70,7 @@ Millennials invest in gym memberships, public transportation, and music
 streaming services rather than purchasing the physical capital necessary to
 enjoy these luxuries for ourselves. Why not extend that idea to our very homes?
 
-![Elvina Beck](/assets/images/2017/05/access-vs-ownership/community.jpg)
-_The occasional evening activity creates a sense of community. Hopefully nobody
-was looking to sleep tonight._
+![Elvina Beck](/assets/images/2017/05/access-vs-ownership/community.jpg "The occasional evening activity creates a sense of community. Hopefully nobody was looking to sleep tonight.")
 
 I do agree that, in the general case, owning less can lead to living more. Our
 culture in the United States has lost much of that compassionate, cooperative
@@ -104,9 +101,7 @@ received a recording of the event, to be viewed on demand at any location or
 time? More importantly, if I had never experienced the original, _would I even
 know what I was missing from the experience?_
 
-![Ben Glenn](/assets/images/2017/05/access-vs-ownership/ben-glenn.jpg)
-_Ben may create the same drawing thousands of times, but the one he crafted when
-I was in attendance was uniquely mine. No recreation does it justice._
+![Ben Glenn](/assets/images/2017/05/access-vs-ownership/ben-glenn.jpg "Ben may create the same drawing thousands of times, but the one he crafted when I was in attendance was uniquely mine. No recreation does it justice.")
 
 I do not believe I could describe with any accuracy the psychological difference
 between owning a home and having geographically-independent access to shelter,

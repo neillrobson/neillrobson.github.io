@@ -46,8 +46,7 @@ After a while, you mention how tired you are, and ask to go play with friends fo
 Happy with your work, I allow you to go, and I reach down to grab the paper with your fantastic cat drawings.
 There's only one problem...
 
-![Whiteboard with dry erase markings on the wall](https://www.kenarry.com/wp-content/uploads/2014/09/how-to-get-dry-erase-marker-off-the-wall2.webp)
-_Mom's face when she sees you've crossed the line_
+![Whiteboard with dry erase markings on the wall](https://www.kenarry.com/wp-content/uploads/2014/09/how-to-get-dry-erase-marker-off-the-wall2.webp "Mom's face when she sees you've crossed the line")
 
 You've drawn so many cats that you ran out of space on the paper and got markings on the table once again.
 With white paper on a white plastic table, who's to blame you for overstepping those boundaries?
@@ -77,8 +76,7 @@ Now, when you're drawing, I can see when your crayon hits the red zone, and choo
 In a similar way, I can mark certain edges in the computer's table (we call that table "memory" in the computer) as dangerous regions (red zones).
 Whenever a computer tries to write anything on that zone, the programmer can be notified and jump in to change the instructions (the "program") so that the computer doesn't venture past that edge any longer.
 
-![Child stepping on sidewalk bumps](https://www.simplemost.com/wp-content/uploads/2017/02/7275464206_72432c61cd_o_sidewalk-bumps.jpg)
-_We have "red zones" in real life too. Sometimes they're other colors, like yellow._
+![Child stepping on sidewalk bumps](https://www.simplemost.com/wp-content/uploads/2017/02/7275464206_72432c61cd_o_sidewalk-bumps.jpg "We have "red zones" in real life too. Sometimes they're other colors, like yellow.")
 
 No one should be fooled that this strategy solves all of our problems, though.
 The red zone is not _preventing_ our computer from drawing outside its region---only warning us of its error.
