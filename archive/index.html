@@ -1,418 +1,155 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
+  <head>
+    
 
-<head>
-  
-  
-  
-  
+    
 
-  <title>Neill Robson's Website</title>
-  
-  <!-- Meta -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
-  <meta name="author" content="Neill Robson">
-  <link type="application/atom+xml" rel="alternate" href="https://neillrobson.com/feed.xml" title="Neill Robson's Website" />
-  
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Canonical and RSS links -->
-  <link rel="canonical" href="https://neillrobson.com/archive/">
-  <link rel="alternate" type="application/rss+xml" title="Neill Robson's Website" href="https://neillrobson.com/feed.xml" />
+    <title>Neill Robson's Website</title>
 
-  <!-- Google Font -->
-  <link href='//fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-  
-  <!-- Plugins CSS -->
-  <link rel="stylesheet" href="/assets/plugins/flickity/flickity.min.css">
-  
-  <!-- Theme CSS -->  
-  <link id="theme-style" rel="stylesheet" href="/assets/css/theme-12.css">
+    <script type="module">
+      document.documentElement.classList.remove('no-js');
+      document.documentElement.classList.add('js');
+    </script>
+
+    <meta name="description" content="The blog and portfolio of a software developer." />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Neill Robson">
+
+    <meta property="og:title" content="Neill Robson's Website">
+    <meta property="og:description" content="The blog and portfolio of a software developer.">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neillrobson.com/archive/">
+    <link rel="canonical" href="https://neillrobson.com/archive/">
+
+    
+
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
+    <link type="application/atom+xml" rel="alternate" href="https://neillrobson.com/feed.xml" title="Neill Robson's Website" />
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    
 </head>
 
 
-<body>
-  <div id="content-container">
-    <header class="header">
-    <div class="top-bar theme-bg-primary-darken">
-  <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-dark position-relative">
-      <ul class="social-list list-inline mb-0">
-        
-          
-          
-          <li class="list-inline-item"><a class="text-white" href="mailto:neill@neillrobson.com" target="_blank"><i class="fas fa-envelope fa-fw"></i></a></li>
-        
-          
-          
-          <li class="list-inline-item"><a class="text-white" href="https://twitter.com/RNanoware" target="_blank"><i class="fab fa-twitter fa-fw"></i></a></li>
-        
-          
-          
-          <li class="list-inline-item"><a class="text-white" href="https://github.com/neillrobson" target="_blank"><i class="fab fa-github-alt fa-fw"></i></a></li>
-        
-          
-          
-          <li class="list-inline-item"><a class="text-white" href="https://www.linkedin.com/in/neillrobson/" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
-        
-          
-          
-          <li class="list-inline-item"><a class="text-white" href="https://stackoverflow.com/users/2977638" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
-        
-      </ul>
-      <!--//social-list-->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-        aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <body>
+    <div class="container">
+      <div class="header">
+  <div class="main">
+    <a id="logo" href="/">
+      <img
+        class="avatar rounded"
+        src="/assets/images/profile.jpg"
+        alt="Neill Robson"
+      />
+      Neill Robson's Website
+    </a>
+    <div class="nav">
+      
+      <a href="/" title="About">About</a>
+      
+      <a href="/blog" title="Blog">Blog</a>
+      
+      <a href="/archive" title="Archive">Archive</a>
+      
+      <a href="/projects" title="Projects">Projects</a>
+      
+      <a href="/contact" title="Contact">Contact</a>
+      
+      <a href="/feed.xml" title="RSS">RSS</a>
+      
+    </div>
+  </div>
+</div>
 
-      <div class="collapse navbar-collapse text-uppercase" id="navigation">
-        <ul class="navbar-nav ml-lg-auto">
-          
-            
-            
-              <li class="nav-item mr-lg-3">
-                <a href="/" class="nav-link">
-                  About
-                </a>
-              </li>
-            
-          
-            
-            
-              <li class="nav-item mr-lg-3">
-                <a href="/projects" class="nav-link">
-                  Projects
-                </a>
-              </li>
-            
-          
-            
-            
-              <li class="nav-item mr-lg-3">
-                <a href="/blog" class="nav-link">
-                  Blog
-                </a>
-              </li>
-            
-          
-            
-            
-              <li class="nav-item mr-lg-3">
-                <a href="/contact" class="nav-link">
-                  Contact
-                </a>
-              </li>
-            
-          
-          <!-- Markup for a dropdown nav item -->
-          <!--
-          <li class="nav-item dropdown mr-0">
-            <a class="nav-link dropdown-toggle" href="#" id="navigationLink" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
-              Remove Me
-            </a>
-            <div class="dropdown-menu dropdown-menu-right text-capitalize shadow-lg" aria-labelledby="navigationLink">
-              <a class="dropdown-item" href="/project.html">Project Case Study (1 Column)</a>
-              <a class="dropdown-item" href="/project-alt.html">Project Case Study (2 Columns)</a>
-              <a class="dropdown-item" href="/blog-post.html">Blog Post</a>
-            </div>
-          </li>
-        -->
 
-        </ul>
-        <span id="slide-line"></span>
+      <div class="main">
+        <h1>Archive</h1>
+<div class="archive">
+  
+  <a href="/blog/2020/11/23/grad-school-like-im-five/">Grad School Like I'm Five: Buffer Overflow</a>&nbsp;<span class="small"
+    >November 23, 2020</span
+  >
+  <br />
+  
+  <a href="/blog/2018/02/24/book-review-the-circle-by-dave-eggers/">Book Review: The Circle, by Dave Eggers</a>&nbsp;<span class="small"
+    >February 24, 2018</span
+  >
+  <br />
+  
+  <a href="/blog/2018/01/28/the-infamous-liebster-award/">The Infamous Liebster Award</a>&nbsp;<span class="small"
+    >January 28, 2018</span
+  >
+  <br />
+  
+  <a href="/blog/2017/05/29/access-versus-ownership/">Access vs. Ownership</a>&nbsp;<span class="small"
+    >May 29, 2017</span
+  >
+  <br />
+  
+  <a href="/blog/2016/06/15/the-tea/">The Tea</a>&nbsp;<span class="small"
+    >June 15, 2016</span
+  >
+  <br />
+  
+  <a href="/blog/2016/06/09/the-environment/">The Environment</a>&nbsp;<span class="small"
+    >June 9, 2016</span
+  >
+  <br />
+  
+  <a href="/blog/2016/06/02/the-food/">The Food</a>&nbsp;<span class="small"
+    >June 2, 2016</span
+  >
+  <br />
+  
+  <a href="/blog/2016/05/24/the-climb/">The Climb</a>&nbsp;<span class="small"
+    >May 24, 2016</span
+  >
+  <br />
+  
+  <a href="/blog/2016/05/22/the-room/">The Room</a>&nbsp;<span class="small"
+    >May 22, 2016</span
+  >
+  <br />
+  
+  <a href="/blog/2016/05/19/the-middle-country/">The Middle Country</a>&nbsp;<span class="small"
+    >May 19, 2016</span
+  >
+  <br />
+  
+  <a href="/blog/2015/10/02/hello-world/">Hello World</a>&nbsp;<span class="small"
+    >October 2, 2015</span
+  >
+  <br />
+  
+</div>
+
+
+        <div class="clear"></div>
       </div>
 
-
-
-    </nav>
-
-  </div>
-  <!--//container-->
-
-</div>
-    <div class="header-intro theme-bg-primary text-white py-5">
-        <div class="container">
-            <h2 class="page-heading mb-0">Blog Archive</h2>
-        </div>
-    </div>
-</header>
-
-<section class="section pt-5">
-    <div class="container">
-        
-            
-            
-                
-                <h3 class="archive-date-header text-center text-sm-left">November 2020</h3>
-                <div class="archive-month-container d-flex flex-wrap">
-                
-            
-            <div class="archive-card shadow-sm">
-                <div class="archive-text">
-                    <h4 class="title">Grad School Like I'm Five: Buffer Overflow</h4>
-                    <p class="excerpt">According to GitHub, I’ve written approximately 6,000 lines of code over the course of the past four months (welcome to grad school!).
-The question is, can I explain all of the stuff I wrote?
-</p>
-                </div>
-                <a class="archive-overlay" href="/blog/2020/11/23/grad-school-like-im-five/">
-                    <p class="date">Nov 23, 2020</p>
-                </a>
-            </div>
-            
-        
-            
-            
-                
-                    </div>
-                
-                <h3 class="archive-date-header text-center text-sm-left">February 2018</h3>
-                <div class="archive-month-container d-flex flex-wrap">
-                
-            
-            <div class="archive-card shadow-sm">
-                <div class="archive-text">
-                    <h4 class="title">Book Review: The Circle, by Dave Eggers</h4>
-                    <p class="excerpt">For the first time I can remember in a long while, I did not have the endurance to make it through a book. The Circle was patronizing, immature, and (as others have already mentioned) offered nothing new to the conversation.
-</p>
-                </div>
-                <a class="archive-overlay" href="/blog/2018/02/24/book-review-the-circle-by-dave-eggers/">
-                    <p class="date">Feb 24, 2018</p>
-                </a>
-            </div>
-            
-        
-            
-            
-                
-                    </div>
-                
-                <h3 class="archive-date-header text-center text-sm-left">January 2018</h3>
-                <div class="archive-month-container d-flex flex-wrap">
-                
-            
-            <div class="archive-card shadow-sm">
-                <div class="archive-text">
-                    <h4 class="title">The Infamous Liebster Award</h4>
-                    <p class="excerpt">As an encouragement to continue sharing my thoughts and experiences online, a person near and dear to my heart nominated me for the Liebster Award.
-
-</p>
-                </div>
-                <a class="archive-overlay" href="/blog/2018/01/28/the-infamous-liebster-award/">
-                    <p class="date">Jan 28, 2018</p>
-                </a>
-            </div>
-            
-        
-            
-            
-                
-                    </div>
-                
-                <h3 class="archive-date-header text-center text-sm-left">May 2017</h3>
-                <div class="archive-month-container d-flex flex-wrap">
-                
-            
-            <div class="archive-card shadow-sm">
-                <div class="archive-text">
-                    <h4 class="title">Access vs. Ownership</h4>
-                    <p class="excerpt">Recently I came across advertising online for a new co-living experiment taking
-place in Los Angeles. The name of the startup is PodShare. Essentially, the goal
-is to provide customers with location-independent access to a minimal set of
-resources necessary to live and work effectively in an urban environment.
-</p>
-                </div>
-                <a class="archive-overlay" href="/blog/2017/05/29/access-versus-ownership/">
-                    <p class="date">May 29, 2017</p>
-                </a>
-            </div>
-            
-        
-            
-            
-                
-                    </div>
-                
-                <h3 class="archive-date-header text-center text-sm-left">June 2016</h3>
-                <div class="archive-month-container d-flex flex-wrap">
-                
-            
-            <div class="archive-card shadow-sm">
-                <div class="archive-text">
-                    <h4 class="title">The Tea</h4>
-                    <p class="excerpt">
-  When in China, drink like the Chinese drink.
-
-
-That’s the goal, and the beverage of choice over here is, as you probably know, tea.
-
-</p>
-                </div>
-                <a class="archive-overlay" href="/blog/2016/06/15/the-tea/">
-                    <p class="date">Jun 15, 2016</p>
-                </a>
-            </div>
-            
-        
-            
-            
-            <div class="archive-card shadow-sm">
-                <div class="archive-text">
-                    <h4 class="title">The Environment</h4>
-                    <p class="excerpt">So many of my experiences in Hangzhou are relatively small excursions: individually, they aren’t worth an entire blog post, but they amount to quite a bit when added up! At the same time, a “Miscellaneous” blog post should honestly be saved for the end of a trip, so I’ll try my best to theme this one as more nature-related.
-</p>
-                </div>
-                <a class="archive-overlay" href="/blog/2016/06/09/the-environment/">
-                    <p class="date">Jun 09, 2016</p>
-                </a>
-            </div>
-            
-        
-            
-            
-            <div class="archive-card shadow-sm">
-                <div class="archive-text">
-                    <h4 class="title">The Food</h4>
-                    <p class="excerpt">There’s one big problem with food in China: more often than not, when you try to photograph it, it’s already escaped you.
-
-</p>
-                </div>
-                <a class="archive-overlay" href="/blog/2016/06/02/the-food/">
-                    <p class="date">Jun 02, 2016</p>
-                </a>
-            </div>
-            
-        
-            
-            
-                
-                    </div>
-                
-                <h3 class="archive-date-header text-center text-sm-left">May 2016</h3>
-                <div class="archive-month-container d-flex flex-wrap">
-                
-            
-            <div class="archive-card shadow-sm">
-                <div class="archive-text">
-                    <h4 class="title">The Climb</h4>
-                    <p class="excerpt">For just about every weekday morning here in China, I wake up around 6:00 and, after some morning prayer, I set off across campus to a little mountain trail called “The 1000 Steps” for some exercise.
-</p>
-                </div>
-                <a class="archive-overlay" href="/blog/2016/05/24/the-climb/">
-                    <p class="date">May 24, 2016</p>
-                </a>
-            </div>
-            
-        
-            
-            
-            <div class="archive-card shadow-sm">
-                <div class="archive-text">
-                    <h4 class="title">The Room</h4>
-                    <p class="excerpt">What does day-to-day life look like for an international student living at Zhejiang International University in Hangzhou? Many factors come into play, including food, physical activity, and social events–but it seemed appropriate to first introduce my dorm room: my “home away from home” so to speak.
-</p>
-                </div>
-                <a class="archive-overlay" href="/blog/2016/05/22/the-room/">
-                    <p class="date">May 22, 2016</p>
-                </a>
-            </div>
-            
-        
-            
-            
-            <div class="archive-card shadow-sm">
-                <div class="archive-text">
-                    <h4 class="title">The Middle Country</h4>
-                    <p class="excerpt">Who would have guessed that one day I would be saying hello from China?
-
-Over the next few weeks, I’ll be doing my best to chronicle my journey through a Study Abroad experience in Hangzhou, across the world from my Raleigh hometown.
-</p>
-                </div>
-                <a class="archive-overlay" href="/blog/2016/05/19/the-middle-country/">
-                    <p class="date">May 19, 2016</p>
-                </a>
-            </div>
-            
-        
-            
-            
-                
-                    </div>
-                
-                <h3 class="archive-date-header text-center text-sm-left">October 2015</h3>
-                <div class="archive-month-container d-flex flex-wrap">
-                
-            
-            <div class="archive-card shadow-sm">
-                <div class="archive-text">
-                    <h4 class="title">Hello World</h4>
-                    <p class="excerpt">What is this blog about? Who is Neill Robson? The Rattle?! I’ll try to cover some of those burning questions right here–probably just as much for my benefit as yours.
-
-</p>
-                </div>
-                <a class="archive-overlay" href="/blog/2015/10/02/hello-world/">
-                    <p class="date">Oct 02, 2015</p>
-                </a>
-            </div>
-            
-                </div>
-            
-        
-    </div>
-</section>
-  </div>
-
-  <footer class="footer text-light text-center py-2">
+      <div class="footer">
   <small class="copyright">
-    Template &copy; <a class="text-light" href="https://themes.3rdwavemedia.com/" target="_blank">3rd Wave Media</a>.
-    Content &copy; 2021 Neill Robson.
+    &copy; 2021 Neill Robson. Layout inspired by
+    <a href="https://blot.im/" target="_blank">Blot</a>.
     <br />
-    This site is hosted at <a class="text-light" href="https://github.com" target="_blank">GitHub</a> and created with
-    <a class="text-light" href="https://jekyllrb.com" target="_blank">Jekyll</a>.
+    This site is hosted at
+    <a href="https://github.com" target="_blank">GitHub</a> and built with
+    <a href="https://jekyllrb.com" target="_blank">Jekyll</a>.
   </small>
-</footer>
+</div>
 
-  <!-- Javascript -->
-  <script defer type="text/javascript" src="/assets/plugins/fontawesome/all.min.js"></script>
-<script defer type="text/javascript" src="/assets/plugins/jquery.min.js"></script>
-<script defer type="text/javascript" src="/assets/plugins/popper.min.js"></script> 
-<script defer type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
-<script defer type="text/javascript" src="/assets/js/back-to-top.js"></script>
-
-<!--Page Specific JS -->
-<script defer type="text/javascript" src="/assets/plugins/imagesloaded.pkgd.min.js"></script>
-<script defer type="text/javascript" src="/assets/plugins/isotope.pkgd.min.js"></script>
-<script defer type="text/javascript" src="/assets/plugins/flickity/flickity.pkgd.min.js"></script>
-
-<!-- Custom JS -->
-<script defer type="text/javascript" src="/assets/js/main.js"></script>
-<script defer type="text/javascript" src="/assets/js/isotope-custom.js"></script>
-<script defer type="text/javascript" src="/assets/js/flickity-custom.js"></script>
+    </div>
+    <script defer type="text/javascript" src="/assets/js/bundle.js"></script>
 
 
 <script async id="dsq-count-scr" src="//neillrobson.disqus.com/count.js"></script>
 
-  
-  <!-- Google Analytics -->
-  
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-97090131-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-  
-
-  
-</body>
-
+  </body>
 </html>

@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://neillrobson.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://neillrobson.com/" rel="alternate" type="text/html" /><updated>2021-05-03T22:09:37+00:00</updated><id>https://neillrobson.com/feed.xml</id><title type="html">Neill Robson’s Website</title><author><name>Neill Robson</name></author><entry><title type="html">Grad School Like I’m Five: Buffer Overflow</title><link href="https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five/" rel="alternate" type="text/html" title="Grad School Like I'm Five: Buffer Overflow" /><published>2020-11-23T20:25:00+00:00</published><updated>2020-11-23T20:25:00+00:00</updated><id>https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five</id><content type="html" xml:base="https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five/">&lt;p&gt;According to &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;, I’ve written approximately 6,000 lines of code over the course of the past four months (welcome to grad school!).
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://neillrobson.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://neillrobson.com/" rel="alternate" type="text/html" /><updated>2021-05-07T20:29:54+00:00</updated><id>https://neillrobson.com/feed.xml</id><title type="html">Neill Robson’s Website</title><subtitle>The blog and portfolio of a software developer.
+</subtitle><author><name>Neill Robson</name></author><entry><title type="html">Grad School Like I’m Five: Buffer Overflow</title><link href="https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five/" rel="alternate" type="text/html" title="Grad School Like I’m Five: Buffer Overflow" /><published>2020-11-23T20:25:00+00:00</published><updated>2020-11-23T20:25:00+00:00</updated><id>https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five</id><content type="html" xml:base="https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five/">&lt;p&gt;According to &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;, I’ve written approximately 6,000 lines of code over the course of the past four months (welcome to grad school!).
 The question is, can I explain all of the stuff I wrote? &lt;!--more--&gt;
 Over the next few blog posts, I’ll be trying to present a high-level overview of some of the most interesting concepts that I’ve learned this past semester.&lt;/p&gt;
 
@@ -29,7 +30,7 @@ It’s a cool cat that you draw, and I’m impressed, so I ask you to draw anoth
 And another.
 And another.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://pics.me.me/hey-girl-isaw-you-coloring-inside-the-linesearlierandivejust-gotto-say-7937983.png&quot; alt=&quot;Elementary-aged boy uttering a pickup line to girl&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;https://pics.me.me/hey-girl-isaw-you-coloring-inside-the-linesearlierandivejust-gotto-say-7937983.png&quot; alt=&quot;Elementary-aged boy uttering a pickup line to girl&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;After a while, you mention how tired you are, and ask to go play with friends for a while.
 Happy with your work, I allow you to go, and I reach down to grab the paper with your fantastic cat drawings.
@@ -51,7 +52,7 @@ But the computer can’t tell the difference between your paper, my paper, its p
 Although I just told you to draw one cat at a time (maybe ten cats in all), professional computer people get paid lots of money to tell computers to draw &lt;em&gt;billions&lt;/em&gt; of cats at once in the fastest way possible.
 It’s like your math teacher writing up a billion-problem multiplication drill the night before, handing it to you the next morning, and leaving.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://www.1989generationinitiative.org/j/2020/07/times-table-worksheets-activity-shelter-multiplication-drill-counting-money-kindergarten.jpg&quot; alt=&quot;five-minute multiplication drill&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;https://www.1989generationinitiative.org/j/2020/07/times-table-worksheets-activity-shelter-multiplication-drill-counting-money-kindergarten.jpg&quot; alt=&quot;five-minute multiplication drill&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;There’s no way to know in advance if you’ll write beyond the lines at some point in that greuling process!&lt;/p&gt;
 
@@ -103,7 +104,7 @@ I cannot yet release my own code to the public for viewing, as grades for the cl
 
 &lt;!--more--&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://theglobalaussie.com/wp-content/uploads/2017/12/More-Flowers.png&quot; alt=&quot;Liebster Award Logo&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;https://theglobalaussie.com/wp-content/uploads/2017/12/More-Flowers.png&quot; alt=&quot;Liebster Award Logo&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;First and foremost, I highly recommend that you check out the blog of my nominator, &lt;a href=&quot;https://volarconmigo.wordpress.com/2018/01/07/liebster-award/&quot;&gt;Further Up and Further In&lt;/a&gt; by La Creadora Fantasma. Like myself, LCF is just beginning to learn how to record her own thoughts and inspire others through online publishing, and I am eager to watch her blossom both professionally and creatively through this experience. Keep it up!&lt;/p&gt;
 
@@ -237,7 +238,7 @@ I cannot yet release my own code to the public for viewing, as grades for the cl
 &lt;ol&gt;
   &lt;li&gt;My favorite ingredient in any dish (where it is appropriate, of course) is the caper.&lt;/li&gt;
   &lt;li&gt;I drove my date to the senior prom in my grandfather’s 1995 Oldsmobile Cutlass Ciera.&lt;/li&gt;
-  &lt;li&gt;I’ve remapped my keyboard so that the &lt;code class=&quot;highlighter-rouge&quot;&gt;capslock&lt;/code&gt; key acts as &lt;code class=&quot;highlighter-rouge&quot;&gt;esc&lt;/code&gt; when tapped and as &lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl&lt;/code&gt; when held down along with another key. My left &lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl&lt;/code&gt; key is mapped to &lt;code class=&quot;highlighter-rouge&quot;&gt;capslock&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;I’ve remapped my keyboard so that the &lt;code&gt;capslock&lt;/code&gt; key acts as &lt;code&gt;esc&lt;/code&gt; when tapped and as &lt;code&gt;ctrl&lt;/code&gt; when held down along with another key. My left &lt;code&gt;ctrl&lt;/code&gt; key is mapped to &lt;code&gt;capslock&lt;/code&gt;.&lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;My first paying job was acting as the cow mascot for Chick-fil-A. I had to quit because I grew too tall for the suit.&lt;/p&gt;
 
@@ -594,109 +595,109 @@ below.&lt;/p&gt;
 
 &lt;p&gt;So far, I’ve located green tea popsicles, green tea toothpaste, and green tea ice cream here in China. There’s no doubt that I’ll be paying premium to get my hands on the stuff back home. Say goodbye to my poor wallet…&lt;/p&gt;</content><author><name>neill</name></author><category term="china" /><category term="travel" /><category term="food" /><category term="personal" /><summary type="html">When in China, drink like the Chinese drink. That’s the goal, and the beverage of choice over here is, as you probably know, tea.</summary></entry><entry><title type="html">The Environment</title><link href="https://neillrobson.com/blog/2016/06/09/the-environment/" rel="alternate" type="text/html" title="The Environment" /><published>2016-06-09T10:03:11+00:00</published><updated>2016-06-09T10:03:11+00:00</updated><id>https://neillrobson.com/blog/2016/06/09/the-environment</id><content type="html" xml:base="https://neillrobson.com/blog/2016/06/09/the-environment/">&lt;p&gt;So many of my experiences in Hangzhou are relatively small excursions: individually, they aren’t worth an entire blog post, but they amount to quite a bit when added up! At the same time, a “Miscellaneous” blog post should honestly be saved for the end of a trip, so I’ll try my best to theme this one as more nature-related. &lt;!--more--&gt; Indeed, the vast majority of Hangzhou’s attractions are outdoors–a characteristic that I greatly admire!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160514_145419.jpg&quot; alt=&quot;house of courtyards&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160514_145419.jpg&quot; alt=&quot;house of courtyards&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Near the beginning of our trip we visited a Chinese mansion exhibiting some of the older architectural styles of China. The Chinese culture of the time took an incredible amount of liberties with indoor/outdoor spaces to create an astonishingly beautiful effect. Areas such as the ones pictured above and below were entirely “inside” the house, and doors could just as easily lead to artificial caves as they could lead to “rooms” as we think of them in the US.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160514_151809.jpg&quot; alt=&quot;stone path over river&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160514_151809.jpg&quot; alt=&quot;stone path over river&quot; /&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160514_155700.jpg&quot; alt=&quot;floor plan&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160514_155700.jpg&quot; alt=&quot;floor plan&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Above is a floor plan of the house. As you can see, most places are naturally exposed to the elements, and roofs only exist over the edges of major rooms.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160514_144930.jpg&quot; alt=&quot;kitchen&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160514_144930.jpg&quot; alt=&quot;kitchen&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Also, your modern American “dream kitchen” can’t shake a stick at the massive size of the facilities in this bachelor’s place. There are full ovens on both sides of that marble counter on the right.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160514_144733.jpg&quot; alt=&quot;bonsai&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160514_144733.jpg&quot; alt=&quot;bonsai&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;And yeah, they also grew bonsai trees to obnoxiously large sizes. (Thanks to Michael for posing next to this one, for scale!)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160518_102120.jpg&quot; alt=&quot;lilypad landscape&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160518_102120.jpg&quot; alt=&quot;lilypad landscape&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Hangzhou is also known for its enormous and beautiful botanical gardens, of which I took quite a few photos.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160518_102801.jpg&quot; alt=&quot;fake deer&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160518_102801.jpg&quot; alt=&quot;fake deer&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Although they may be known for their flowers, the botanical gardens certainly aren’t known for their wildlife!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160518_102527.jpg&quot; alt=&quot;boat&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160518_102527.jpg&quot; alt=&quot;boat&quot; /&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160518_104013.jpg&quot; alt=&quot;circle door&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160518_104013.jpg&quot; alt=&quot;circle door&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Doors are always a favorite posing spot for us.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160518_105418-1.jpg&quot; alt=&quot;lake, no lilies&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160518_105418-1.jpg&quot; alt=&quot;lake, no lilies&quot; /&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160518_111110.jpg&quot; alt=&quot;rock garden&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160518_111110.jpg&quot; alt=&quot;rock garden&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;When you can’t grow flowers, you can always fall back on your splendid rock collection!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160522_152556-1.jpg&quot; alt=&quot;distant pagoda&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160522_152556-1.jpg&quot; alt=&quot;distant pagoda&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;We also went out to quite a few temples and pagodas–some more accessible than others. We found that when it comes to trails, the Chinese have very low tolerance for handicap-accessibility or even general safety measures. Most of the time, the only precaution taken would be a sign such as the one below, ordering people not to climb. We can see how well that went:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160522_152915.jpg&quot; alt=&quot;don't climb&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160522_152915.jpg&quot; alt=&quot;don't climb&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Some people in our group were a bit more adventurous than I upon these rocks; at first I thought it was because they couldn’t read the warnings in Chinese, but I was quickly put in my place.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160522_154755.jpg&quot; alt=&quot;cherished life&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160522_154755.jpg&quot; alt=&quot;cherished life&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;(Thanks for the photo op, Patrick!)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160522_154447_PN.jpg&quot; alt=&quot;xihu panorama&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160522_154447_PN.jpg&quot; alt=&quot;xihu panorama&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;But climbing, of course, is where all the best views are.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160522_154502.jpg&quot; alt=&quot;Eischen climbing&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160522_154502.jpg&quot; alt=&quot;Eischen climbing&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;And when your professors do it, it’s hard to overcome the social pressure, you know?&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_140325.jpg&quot; alt=&quot;stairs&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_140325.jpg&quot; alt=&quot;stairs&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Anyway, the climbing trouble doesn’t end when you get to the pagoda…&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_141904.jpg&quot; alt=&quot;doorway&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_141904.jpg&quot; alt=&quot;doorway&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;especially not for tall guys like me.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_140852_LL.jpg&quot; alt=&quot;roofing&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_140852_LL.jpg&quot; alt=&quot;roofing&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;But the fabulously decorated walls and roofs encourage you as you cross the threshold of the 72nd floor on your way to the 134th…&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_141125_HDR.jpg&quot; alt=&quot;power lines&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_141125_HDR.jpg&quot; alt=&quot;power lines&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Yeah, you are occasionally greeted with power lines or some other unfortunate presence in an otherwise serene environment, but I actually found the vast scale that they imply to be quite photogenic!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_141817.jpg&quot; alt=&quot;tiny farm&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_141817.jpg&quot; alt=&quot;tiny farm&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;You take whatever sunlight you can get and make the most of it, you know?&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_144035.jpg&quot; alt=&quot;tiny pagoda&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_144035.jpg&quot; alt=&quot;tiny pagoda&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Back on the ground floor of the place, I felt a lot taller than when I first arrived. I’m not sure if that’s the psychological effect of climbing the thing, or because…&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_144430_BF.jpg&quot; alt=&quot;hand on the stairs&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_144430_BF.jpg&quot; alt=&quot;hand on the stairs&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;..there were actually a ton of mini pagodas scattered around the big one!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_144124_BF.jpg&quot; alt=&quot;giant&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_144124_BF.jpg&quot; alt=&quot;giant&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Fun times being a giant.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_145121_BF.jpg&quot; alt=&quot;elephant&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_145121_BF.jpg&quot; alt=&quot;elephant&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Tried to use a selfie stick here, but I’m still too awkward with handling it. …Look at the expression on that elephant. He’s so judgmental! All like, “is this dude seriously using a selfie stick to take a photo with me? What a flippant, obnoxious foreigner! I would &lt;em&gt;never&lt;/em&gt; attempt the same thing with &lt;em&gt;my&lt;/em&gt; nose if I ever visited &lt;em&gt;his&lt;/em&gt; country! Sheesh, what an American.”&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160603_144337.jpg&quot; alt=&quot;snail and hand&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160603_144337.jpg&quot; alt=&quot;snail and hand&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;In the US, when it rains, worms come out and cover the sidewalks. In China, the equivalent are the snails!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160604_072407_HDR.jpg&quot; alt=&quot;clear day picture&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160604_072407_HDR.jpg&quot; alt=&quot;clear day picture&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Just think of all the beautiful sunrises that the people in the US missed because they were busy watching the sunset over there!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_165525_HDR.jpg&quot; alt=&quot;foggy day picture&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_165525_HDR.jpg&quot; alt=&quot;foggy day picture&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;It’s just as beautiful on a foggy day too–don’t get me wrong.&lt;/p&gt;
 
@@ -712,9 +713,9 @@ below.&lt;/p&gt;
 
 &lt;p&gt;That being said, I’ve tried my best to compile a few images of the types of food I’ve consumed here in Hangzhou. The list is by no means comprehensive–and it will likely grow exponentially before I leave–but hopefully I will leave you with some idea of the wild and wonderful world that is authentic Chinese cuisine!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160525_080017.jpg&quot; alt=&quot;fruit&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160525_080017.jpg&quot; alt=&quot;fruit&quot; /&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_125002.jpg&quot; alt=&quot;tv dinner&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160525_125002.jpg&quot; alt=&quot;tv dinner&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;We’ll start with the tame stuff. Right across the street from the dormitory is a nice little collection of convenience stores and food shops, selling everything from fruit to loaves of bread and dumplings. Usually my lunch consists of something similar to the above: a chopped-and-peeled dish of some mystery produce (dragonfruit, in this case–delicious, like a mild kiwi!), and a microwavable meal.&lt;/p&gt;
 
@@ -722,75 +723,75 @@ below.&lt;/p&gt;
 
 &lt;p&gt;Also, not to brag or anything, but the entire lunch pictured above costs around $3.00 (yes, that’s US dollars). Talk about living on a budget.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160531_074016.jpg&quot; alt=&quot;breakfast&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160531_074016.jpg&quot; alt=&quot;breakfast&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Speaking of living on a budget, the cafeteria breakfasts literally only cost dimes here. If you’re super hungry in the mornings (like me) and need to order noodles, an egg, three sticky buns, and a warm glass of soy milk, it will put you out around a dollar fifty.&lt;/p&gt;
 
 &lt;p&gt;Trust me, if Chinese people are considered relatively slim, it has &lt;em&gt;nothing&lt;/em&gt; to do with the price of the food here!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_183411.jpg&quot; alt=&quot;lazy susan&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_183411.jpg&quot; alt=&quot;lazy susan&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Starting with this image one can see a sampling of the food collection served at a typical large lazy-susan dinner. The blessing and the curse of this service style is that you almost never see the same dish twice. All too often I eat something absolutely heavenly, but by the time I look up the dish is gone and I never see it again in the future. &lt;em&gt;sigh!&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_183030.jpg&quot; alt=&quot;meat over lettuce&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_183030.jpg&quot; alt=&quot;meat over lettuce&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;To add to the stress of the Chinese food wheel of fortune, often dishes such as this pork is served over a garnish of fresh leafy greens. Pretty indeed, but “fresh leafy greens” is synonymous for “unwashed bacteria farm” in China, so nothing touching the garnish is safe to eat. You’d better level that mountain like a borderline-bankrupt coal miner if you want any meat, because once you get to the base no one is touching those pieces at the bottom.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_183414.jpg&quot; alt=&quot;tofu&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_183414.jpg&quot; alt=&quot;tofu&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Tofu. Escaping the iron grip of chopstick masters since 2000BC.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_183417.jpg&quot; alt=&quot;pineapple chicken&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_183417.jpg&quot; alt=&quot;pineapple chicken&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Pineapple chicken! One quickly learns that China doesn’t get its share of fruits and veggies as separate dishes: you’ve got to sleuth them out of the meals labeled as “Three-Bird Plus Beef Wrapped in Tofu Supreme.” Fortunately, with dishes such as this one, it isn’t hard to find the fruit!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_183528.jpg&quot; alt=&quot;ice-cream bread&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_183528.jpg&quot; alt=&quot;ice-cream bread&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;So basically, this is a loaf of hot bread chopped into cubes on the inside, with a scoop of ice cream dumped on top. You use your chopsticks to dig a cube out of the melting sugar magma seeping into the carbohydrate volcano, dip it into the cream on top for extra calories, consume your piece of the destruction, and repeat.&lt;/p&gt;
 
 &lt;p&gt;I have no idea why this isn’t a thing in the United States!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_183531.jpg&quot; alt=&quot;mushrooms and cheese substitute&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_183531.jpg&quot; alt=&quot;mushrooms and cheese substitute&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Here we have a mushroom casserole. There are so many mushrooms in China, I’m astonished that there hasn’t been an influx of Italian plumbers… But actually, I photographed this dish to talk about the cheese. As it turns out, cheese is virtually unknown in China–even in the pizza shops–and instead they use various forms of dairy-free cheese substitute. Surprisingly, despite their bad reputation in the US, dairy-free cheeses in Chinese dishes actually complement the local tastes quite well! I would even venture to consider the culinary experience as something altogether unique from cheese, and pretty good too.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_183651.jpg&quot; alt=&quot;eggplant&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_183651.jpg&quot; alt=&quot;eggplant&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Eggplant is served here the way it should be everywhere: in a boiling hot sauce of Sichuan peppers. Unfortunately I don’t have an image of the “dancing” eggplant variety, where bonito flakes are added and propelled into the air by the radiation, but I’ll leave finding pictures of that dish as an exercise to the reader.&lt;/p&gt;
 
 &lt;p&gt;Also featured in the above image are fish-sticks–Americans love them some fish sticks.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_184141.jpg&quot; alt=&quot;fish #1&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_184141.jpg&quot; alt=&quot;fish #1&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Here comes the fish;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_184727.jpg&quot; alt=&quot;fish #2&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_184727.jpg&quot; alt=&quot;fish #2&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Drowned in his dish!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_184734.jpg&quot; alt=&quot;Hot greens&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_184734.jpg&quot; alt=&quot;Hot greens&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Don’t worry, there are a few dishes that contain your average, boiled-to-death cabbage to add some semblance of leafy greens to your diet. Other greens not pictured here are bamboo shoots and boiled okra: the seeds work wonders for sweeping out one’s digestive system!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_182147.jpg&quot; alt=&quot;tea cakes&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160526_182147.jpg&quot; alt=&quot;tea cakes&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Finally, one of the dishes that I can always look forward to at any self-respecting Chinese restaurant is the tea cake. These little patties are covered in sesame seeds and filled with green-tea flavored sweet bean paste, and in my opinion are a thousand times more delicious than any ice cream volcano loaf. Close runner-ups are pumpkin fries and sweet mung bean paste (you can tell I’ve been doing a great job at remembering my Chinese food names). The latter is a miracle-worker when you’ve put your money where your mouth is with some fancy-looking Sichuan firecracker and now the mouth in question is purple and numb with pain.&lt;/p&gt;
 
 &lt;p&gt;Only two more food pictures remain, and a quick word of caution along with it: Japanese food in China is just as expensive as Japanese food in America. Furthermore, it consists almost exclusively of raw fish and fresh leafy vegetables. This particular Japanese place I went to, upon sitting our group down, explained to us that they had just opened and that every dish was 25% off because they were still “testing out” the recipes with customers. Oh boy. I just lost all confidence in this institution. While the rest of the group proceeded to order several plates of sushi and a boatload of mystery meat:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160527_182126.jpg&quot; alt=&quot;sushi boat&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160527_182126.jpg&quot; alt=&quot;sushi boat&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;…my wise-stomached friend and I turned instead to the kids menu and found the only cooked dishes in the entire restaurant: fried rice and ramen noodles.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160527_181612.jpg&quot; alt=&quot;fried rice&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/06/P_20160527_181612.jpg&quot; alt=&quot;fried rice&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Hooray for defensive eating!&lt;/p&gt;</content><author><name>neill</name></author><category term="china" /><category term="travel" /><category term="food" /><category term="personal" /><summary type="html">There’s one big problem with food in China: more often than not, when you try to photograph it, it’s already escaped you.</summary></entry><entry><title type="html">The Climb</title><link href="https://neillrobson.com/blog/2016/05/24/the-climb/" rel="alternate" type="text/html" title="The Climb" /><published>2016-05-24T09:07:03+00:00</published><updated>2016-05-24T09:07:03+00:00</updated><id>https://neillrobson.com/blog/2016/05/24/the-climb</id><content type="html" xml:base="https://neillrobson.com/blog/2016/05/24/the-climb/">&lt;p&gt;For just about every weekday morning here in China, I wake up around 6:00 and, after some morning prayer, I set off across campus to a little mountain trail called “The 1000 Steps” for some exercise. &lt;!--more--&gt; To be honest, I couldn’t have possibly asked for a better way to start off every day here in Hangzhou: to stay active and healthy despite living in the middle of one of China’s larger cities is quite a blessing indeed! The following images are just a sampling of the morning routine I’ve adopted:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_125345.jpg&quot; alt=&quot;Campus road&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_125345.jpg&quot; alt=&quot;Campus road&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;The ~5 minute walk I take through campus to the trail. With all of the trees and grass, walking through Zhejiang University’s Yuquan campus feels just like home in Raleigh!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160523_064705.jpg&quot; alt=&quot;Bike parking&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160523_064705.jpg&quot; alt=&quot;Bike parking&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;…Well, except for one small thing: the parking situation.&lt;/p&gt;
 
@@ -798,15 +799,15 @@ below.&lt;/p&gt;
   &lt;p&gt;Hey, let’s all park our bikes in a calm and orderly fashion. &lt;cite&gt;Nobody, ever, in China&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_125020.jpg&quot; alt=&quot;Entering the neighborhood&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_125020.jpg&quot; alt=&quot;Entering the neighborhood&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Right behind campus is a side street leading to a tiny neighborhood, at the back of which is an entrance to the trail. Oftentimes the people living here will walk up to the top of the mountain to have a picnic breakfast or lunch while listening to radio news and talking with their neighbors. It’s a nice environment!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_124842.jpg&quot; alt=&quot;Exiting the neighborhood&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_124842.jpg&quot; alt=&quot;Exiting the neighborhood&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;A picture from the other direction, now looking towards the campus (which is not visible in this shot). Simply pivoting on my feet to the right leads me to…&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_115034.jpg&quot; alt=&quot;The entrance&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_115034.jpg&quot; alt=&quot;The entrance&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Oh boy. It’s about to get serious.&lt;/p&gt;
 
@@ -814,55 +815,55 @@ below.&lt;/p&gt;
 
 &lt;p&gt;Actually, it’s about 700, according to the numbers carved onto the steps. I suppose if one wanders all around the mountaintop, the approximate equivalent is 1000 steps, but your primary exertion will occur during this initial ascent.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_115049.jpg&quot; alt=&quot;The beginning&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_115049.jpg&quot; alt=&quot;The beginning&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;It starts out rather slow, sort of like a warm-up.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_115233.jpg&quot; alt=&quot;The ascent&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_115233.jpg&quot; alt=&quot;The ascent&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;After the first 100 steps or so, the steps quickly narrow down to escalator size, exhibiting none of the American architectural luxury of switchbacks. Up we go!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_115401.jpg&quot; alt=&quot;300&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_115401.jpg&quot; alt=&quot;300&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;No. &lt;strong&gt;This is SPARTA!&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_124330.jpg&quot; alt=&quot;Side path&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_124330.jpg&quot; alt=&quot;Side path&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;A lot of people ditch the stair route for a slightly more gradual dirt path, but as tempting as it looks, you’ll also find no shortage of mosquitoes and other blood-sucking parasites that way. Trust me, your sore feet are more than compensated by your smooth, unbruised legs when taking the steps!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_120111.jpg&quot; alt=&quot;700&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_120111.jpg&quot; alt=&quot;700&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;By this point pretty much everyone is completely winded, and you’re absolutely dying for a rest. Fortunately, right up ahead there’s a lovely little pool of standing water with an orange bucket perfect for scooping up some lukewarm, gray-green thirst-quenching drink.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_123939.jpg&quot; alt=&quot;Water break&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_123939.jpg&quot; alt=&quot;Water break&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;(The sign displays the following insightful comment: “This lid is broken; restoration is underway. We advise your safety.”)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_120303.jpg&quot; alt=&quot;Skyline #1&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_120303.jpg&quot; alt=&quot;Skyline #1&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Once you climb up this high, the skyline is utterly beautiful. Almost every day I come up here, I notice a different angle or perspective of the city that leaves me utterly breathless. (Or that might just be my exhaustion after the stair-climbing. I don’t know.)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_123346_PN.jpg&quot; alt=&quot;Skyline panorama&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_123346_PN.jpg&quot; alt=&quot;Skyline panorama&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Wow.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_120508.jpg&quot; alt=&quot;Pavilion&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_120508.jpg&quot; alt=&quot;Pavilion&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Only a few more stairs to the top! As I mentioned, up here you’ll find people doing every manner of things, from listening to the news to eating snacks to just socializing. Some, like me, are crazy enough to push their bodies to even higher levels of physical exertion on what I affectionately dub the “Chinese Monkey Bars”:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_120648.jpg&quot; alt=&quot;Pull-up bars&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_120648.jpg&quot; alt=&quot;Pull-up bars&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;They’re perfectly sturdy, I swear. You should see the size of some of the guys who do sets on these things. Pull-ups are a &lt;em&gt;big&lt;/em&gt; deal in this area.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_122601.jpg&quot; alt=&quot;Push-up bench&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_122601.jpg&quot; alt=&quot;Push-up bench&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Of course, no workout would be complete without some push-ups as well. I usually do them inclined on this bench, simply because it’s cleaner and my arms are too exhausted for anything else.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_123742.jpg&quot; alt=&quot;Going down&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_123742.jpg&quot; alt=&quot;Going down&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;On the way down again!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_124455.jpg&quot; alt=&quot;Vertigo&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_124455.jpg&quot; alt=&quot;Vertigo&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Yeah, you’ve got to be careful going down these steps–no jogging allowed. Well, I mean, it &lt;em&gt;is&lt;/em&gt; allowed, but only if you don’t value your front teeth (which you’ll surely lose in the fall).&lt;/p&gt;
 
@@ -870,7 +871,7 @@ below.&lt;/p&gt;
 
 &lt;p&gt;One more picture, before signing off:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_125147.jpg&quot; alt=&quot;No riding&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160522_125147.jpg&quot; alt=&quot;No riding&quot; /&gt;&lt;/figure&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Hmm, maybe it isn’t a good idea to ride bikes here. &lt;cite&gt;Nobody, ever, in China&lt;/cite&gt;&lt;/p&gt;
@@ -880,21 +881,21 @@ below.&lt;/p&gt;
 
 &lt;h2 id=&quot;the-bed-and-breakfast&quot;&gt;The Bed and Breakfast&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_172906.jpg&quot; alt=&quot;Walking into the room&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_172906.jpg&quot; alt=&quot;Walking into the room&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Here you can see the same perspective I have upon entering my room. You’ll notice that it’s a single-bed setup, with a dresser, desk, and television all provided. The view out the window is another dormitory, as you might expect. Unfortunately this image doesn’t capture the rainbow of color that appears when all the students hang their clothes to dry in the windows: it is in fact quite a beautiful sight in its own unique way!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173000.jpg&quot; alt=&quot;Walking out of the room&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173000.jpg&quot; alt=&quot;Walking out of the room&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;My lovely shoes (which I dearly hope will not wear out before the end of this journey), as well as the doorway to my bathroom and the door to the hall. Yes, those little coat hangers have moose on them; just a little touch of home that the Zhejiang staff added to the room. (You think that’s special? Just wait for the description of the day-to-day room service.)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173017.jpg&quot; alt=&quot;The bed&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173017.jpg&quot; alt=&quot;The bed&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Unlike many of my peers, I am actually quite satisfied with the firmness of the bed. It is certainly more stiff than American standards (dropping a phone on the mattress yields a “klunk” noise), but since I am a back sleeper (not a side sleeper) I find it actually leaves me quite nimble getting up in the morning, rather than waking up sunken into an overly-soft mattress in some ergonomically abhorrent position. The pillow is softer than anything I’ve ever used at home.&lt;/p&gt;
 
 &lt;p&gt;The sheets, as it turns out, are replaced daily by the cleaning service. Hold on, did you catch that? &lt;em&gt;Daily.&lt;/em&gt; We’re talking pillow and comforter as well: all of it is delivered fresh to the room every single day. If you happen to wander out back around four or five in the afternoon, you’ll see huge piles of the previous day’s sheets being loaded onto a truck for delivery to the washrooms. Don’t ask me why the cleaning policies are so pompous; in fact, I’ve only just begun describing the service here.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173048.jpg&quot; alt=&quot;The breakfast&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173048.jpg&quot; alt=&quot;The breakfast&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;We’ll take a quick detour here to the pantry above my bed. My first trip to the convenience store (literally across the street from the dorm room) consisted mostly of these purchases. You can see “ten-grain bread” (which is actually white bread with ten grains sprinkled on the crust) and peanut butter and jelly: a delicious taste of home that seems to have no equivalent in typical Chinese cuisine. I also purchased some “Argentinian” raisins, which happen to be the size of golf balls and utterly mouth-watering (especially in hot cereal), as well as some powdered milk packets and high-fiber oatmeal.&lt;/p&gt;
 
@@ -904,43 +905,43 @@ below.&lt;/p&gt;
 
 &lt;p&gt;You ask a first-world question, you get a first-world answer.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173235.jpg&quot; alt=&quot;The hot water&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173235.jpg&quot; alt=&quot;The hot water&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;That blue thermos you see there is a miraculous piece of technology: I’ve left it sitting there overnight, and the water within it is still steaming hot the following morning. I swear, there are no plugs and no lids other than that foil-capped cork you see on top of it. Also included in our room service package are slippers (delivered fresh for every time the previous set have been used) and a teabag and glass (for your consumption pleasure). My orange water bottle is actually metal, which means I can pour hot water into it without it melting and let it cool overnight, but I’ve actually taken to buying five-liter jugs from the C-store so that I don’t forget the temperature of the metal and burn the skin off my palm.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173201-1.jpg&quot; alt=&quot;The wardrobe&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173201-1.jpg&quot; alt=&quot;The wardrobe&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;My clothes, toiletries, laundry, and pharmacy. A woman on the bottom floor of the dorm directly behind ours offers a vertically-integrated laundry service for only around 20元 per load (~$3). You bring her a bag of dirty clothes, and 24 hours later they are washed, air-dried, folded and re-packaged for you to take back to your room. Sometimes when you walk into her shop, you can’t see the walls or floor due to the quantity of clothes all over the place. With all the rinse cycles running at once, sometimes you can’t hear her either. Being situated literally inside a college dormitory, I don’t think she’s running a risk of losing business anytime soon! I must get a picture of her shop uploaded here someday.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173443-1.jpg&quot; alt=&quot;The bathroom entry&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173443-1.jpg&quot; alt=&quot;The bathroom entry&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Don’t tell room service that I was standing on freshly-made sheets to take this masterpiece selfie.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173516.jpg&quot; alt=&quot;The toiletries&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173516.jpg&quot; alt=&quot;The toiletries&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Why, might you ask, do I have two sets of body wash and shampoo? Well, if they pick up your current set and detect that you’ve used it once (or maybe it leaked (or maybe there just wasn’t enough in that particular tube)) they give you another set, just in case. Also provided are fresh toothbrushes, toothpaste (herbal tea flavored–easily the best flavor I’ve ever had!), combs, and shower caps. The soap bottle in the bottom right was a c-store purchase that I use for washing out my tupperware bowl (featured above) along with boiling water. By the way, if I return home with no skin left on my hands, you’ll know why.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173527.jpg&quot; alt=&quot;Towels&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173527.jpg&quot; alt=&quot;Towels&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Delivered fresh every morning. I hear that my peers have utilized (read: exploited) this service to chop open watermelons in their dorm rooms and wipe up the mess without fearing that their shower will smell like old fruit. I don’t blame them: the watermelon sold at the c-store next to campus is stellar.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173541-1.jpg&quot; alt=&quot;Toilet&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173541-1.jpg&quot; alt=&quot;Toilet&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Two rolls of toilet paper, because I started to use the first roll. One morning when I first arrived I had clogged up the toilet due to my body adjusting to the new diet. That afternoon after class I planned to pick up a plunger form the c-store to fix the problem. However, when I returned to my dorm after my morning classes, I found that the cleaning staff had already unclogged the toilet for me. And left me a third roll of toilet paper.&lt;/p&gt;
 
 &lt;p&gt;I can’t keep up with these guys.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173621-1.jpg&quot; alt=&quot;The drain&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173621-1.jpg&quot; alt=&quot;The drain&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;The whole bathroom is a shower, as can be seen by the sliding door and drain in this picture.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173652.jpg&quot; alt=&quot;Warning sign&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173652.jpg&quot; alt=&quot;Warning sign&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;I really tried hard to put on my best “duh” face here. When translated literally, this sign says “please slip with a small heart.”&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173753.jpg&quot; alt=&quot;Air unit&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173753.jpg&quot; alt=&quot;Air unit&quot; /&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173819-1.jpg&quot; alt=&quot;Remote&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160515_173819-1.jpg&quot; alt=&quot;Remote&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Funny story: when I first arrived at the dorm, I couldn’t figure out how to work the air conditioning unit. No matter what buttons I pressed on the remote, the unit itself would give no perceptible response. Finally, I got so fed up that I just mashed every button at once and promptly went to bed. The next morning, I woke up in a pool of sweat. The unit was blowing out hot air. Checking the display on the remote, the current temperature was 30 degrees–Celsius. Fortunately, once the darn thing was actually blowing some kind of air out of it, jerry-rigging it to get cold air out wasn’t too big of a deal. And hey, one night in the Sahara isn’t too bad, you know?&lt;/p&gt;
 
@@ -960,43 +961,43 @@ below.&lt;/p&gt;
 
 &lt;p&gt;If anybody ever tells you that “everything is bigger in Texas,” you can respond with confidence that “everything is bigg&lt;em&gt;est&lt;/em&gt; in Beijing.” Unfortunately, pictures truly cannot capture the prodigious nature of this city’s architecture and history, especially not when they are shot by an amateur such as myself, but one cannot pass through this home of over 20 million people without making a few attempts.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160511_080002-2.jpg&quot; alt=&quot;The airport&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160511_080002-2.jpg&quot; alt=&quot;The airport&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;The airport above covers over 3700 acres of land, roughly one-eighth the size of Raleigh. At 8:30pm on a Wednesday evening, it’s empty and quiet enough to hear the ghosts of the 2008 Olympic Games (for whom the airport was built) jostling their way into the city.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_085211.jpg&quot; alt=&quot;Tiananmen Square&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_085211.jpg&quot; alt=&quot;Tiananmen Square&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;The city square is also the size of many, many football fields. Beijing, unlike American cities, does not boast its size in terms of height, but in terms of square area. Raleigh has one belt line; Beijing has six, with a seventh under construction. You can cross Raleigh in half an hour on a bad day; multiply that by five, and you might be on the other side of Beijing.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_093954.jpg&quot; alt=&quot;Forbidden Selfie&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_093954.jpg&quot; alt=&quot;Forbidden Selfie&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;At this point in the trip, I was still too self-conscious to take selfies (especially in a place called the “Forbidden City”), but selfie sticks are commonplace among the guests any major tourist attraction.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_135151-1.jpg&quot; alt=&quot;Great Wall parking lot&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_135151-1.jpg&quot; alt=&quot;Great Wall parking lot&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;And of course you can’t go to China without conquering the Great Wall! The section we went to actually covered a circular area (rather than progressing in a line), because the surrounding mountains (and Mongols) necessitated a rather unique defense strategy. Our tour guide explained the military logic in detail, but in my opinion the real defense was the absurdly steep and uneven stairs with handrails only a foot above the ground. It was enough to make any enemy stumble, even if they did manage to scale to outside of the wall itself.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_141123_BF.jpg&quot; alt=&quot;Great Wall selfie&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_141123_BF.jpg&quot; alt=&quot;Great Wall selfie&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Good exposure, bad finger positioning. I’ll get it at some point.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_142857.jpg&quot; alt=&quot;Beijing landscape&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_142857.jpg&quot; alt=&quot;Beijing landscape&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;We’re too far away here to really tell, but that entire “flat” area is all Beijing, with its apartments and skyscrapers. I was astonished by the incredibly large ratio of apartments to other buildings; they seemed like an invasive species of plant that crowded out all other buildings and industries. Dr. Griffin mentioned how the Chinese government was known for building “ghost cities,” in which apartment buildings and train stations are built in anticipation of population growth in a given area that doesn’t boom–or booms into a different location, leaving the new buildings empty. Even in Beijing itself, I often found myself wondering how all of those millions of people could possibly be productively employed, with so little physical evidence of businesses of any sort in the surrounding area. China has a lot of population problems on the horizon much more complex than simply hedging exponential growth.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_143704-1.jpg&quot; alt=&quot;Mountains&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_143704-1.jpg&quot; alt=&quot;Mountains&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Just some pretty mountains. #desktop!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_143933.jpg&quot; alt=&quot;Great wall circle&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_143933.jpg&quot; alt=&quot;Great wall circle&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Here you can see the whole circular section of the great wall that we toured, viewed from the highest point. Off to the left you can see where it stretches off in a straight line once again.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160513_092511.jpg&quot; alt=&quot;Temple of Good Harvests&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160513_092511.jpg&quot; alt=&quot;Temple of Good Harvests&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;I didn’t take many pictures at the Temple of Heaven in the places I should have. Much of the area was actually a park (with trees and flowers and grassy fields), where many people from the city came to play badminton or dance to music. Some people even came alone with their hackey-sacks and birdies and paddles, simply pulling people aside (even foreigners like us!) to play a game or two with them. When you live in such a vast concrete plain as Beijing, you really learn to cherish your parks and social areas.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160513_094000.jpg&quot; alt=&quot;Altar gate&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160513_094000.jpg&quot; alt=&quot;Altar gate&quot; /&gt;&lt;/figure&gt;
 
 &lt;p&gt;Pathways like this were called “dragon lines,” upon which only the emperor was allowed to travel between his various facilities. Fun fact: when you’re the emperor and servants carry you everywhere, sometimes you get halfway to where you need to go before realizing that you forgot to change out of your pajamas. In that case, a dressing room is located conveniently halfway down the line for you to take a pit stop at, with the added benefit of giving your servants’ shoulders a much-needed break.&lt;/p&gt;
 
