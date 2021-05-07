@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://neillrobson.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://neillrobson.com/" rel="alternate" type="text/html" /><updated>2021-05-07T20:29:54+00:00</updated><id>https://neillrobson.com/feed.xml</id><title type="html">Neill Robson’s Website</title><subtitle>The blog and portfolio of a software developer.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://neillrobson.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://neillrobson.com/" rel="alternate" type="text/html" /><updated>2021-05-07T22:01:32+00:00</updated><id>https://neillrobson.com/feed.xml</id><title type="html">Neill Robson’s Website</title><subtitle>The blog and portfolio of a software developer.
 </subtitle><author><name>Neill Robson</name></author><entry><title type="html">Grad School Like I’m Five: Buffer Overflow</title><link href="https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five/" rel="alternate" type="text/html" title="Grad School Like I’m Five: Buffer Overflow" /><published>2020-11-23T20:25:00+00:00</published><updated>2020-11-23T20:25:00+00:00</updated><id>https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five</id><content type="html" xml:base="https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five/">&lt;p&gt;According to &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;, I’ve written approximately 6,000 lines of code over the course of the past four months (welcome to grad school!).
 The question is, can I explain all of the stuff I wrote? &lt;!--more--&gt;
 Over the next few blog posts, I’ll be trying to present a high-level overview of some of the most interesting concepts that I’ve learned this past semester.&lt;/p&gt;
@@ -36,8 +36,7 @@ And another.&lt;/p&gt;
 Happy with your work, I allow you to go, and I reach down to grab the paper with your fantastic cat drawings.
 There’s only one problem…&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://www.kenarry.com/wp-content/uploads/2014/09/how-to-get-dry-erase-marker-off-the-wall2.webp&quot; alt=&quot;Whiteboard with dry erase markings on the wall&quot; /&gt;
-&lt;em&gt;Mom’s face when she sees you’ve crossed the line&lt;/em&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;https://www.kenarry.com/wp-content/uploads/2014/09/how-to-get-dry-erase-marker-off-the-wall2.webp&quot; alt=&quot;Whiteboard with dry erase markings on the wall&quot; title=&quot;Mom's face when she sees you've crossed the line&quot; /&gt;&lt;figcaption&gt;Mom's face when she sees you've crossed the line&lt;/figcaption&gt;&lt;/figure&gt;
 
 &lt;p&gt;You’ve drawn so many cats that you ran out of space on the paper and got markings on the table once again.
 With white paper on a white plastic table, who’s to blame you for overstepping those boundaries?&lt;/p&gt;
@@ -67,8 +66,7 @@ Now, when you’re drawing, I can see when your crayon hits the red zone, and ch
 &lt;p&gt;In a similar way, I can mark certain edges in the computer’s table (we call that table “memory” in the computer) as dangerous regions (red zones).
 Whenever a computer tries to write anything on that zone, the programmer can be notified and jump in to change the instructions (the “program”) so that the computer doesn’t venture past that edge any longer.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://www.simplemost.com/wp-content/uploads/2017/02/7275464206_72432c61cd_o_sidewalk-bumps.jpg&quot; alt=&quot;Child stepping on sidewalk bumps&quot; /&gt;
-&lt;em&gt;We have “red zones” in real life too. Sometimes they’re other colors, like yellow.&lt;/em&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;https://www.simplemost.com/wp-content/uploads/2017/02/7275464206_72432c61cd_o_sidewalk-bumps.jpg&quot; alt=&quot;Child stepping on sidewalk bumps&quot; title=&quot;We have &amp;quot;red zones&amp;quot; in real life too. Sometimes they're other colors, like yellow.&quot; /&gt;&lt;figcaption&gt;We have &quot;red zones&quot; in real life too. Sometimes they're other colors, like yellow.&lt;/figcaption&gt;&lt;/figure&gt;
 
 &lt;p&gt;No one should be fooled that this strategy solves all of our problems, though.
 The red zone is not &lt;em&gt;preventing&lt;/em&gt; our computer from drawing outside its region—only warning us of its error.
@@ -118,8 +116,7 @@ I cannot yet release my own code to the public for viewing, as grades for the cl
 
 &lt;p&gt;My journey began when I took a trip abroad to Hangzhou, China, and was seeking a way to memorialize that unique experience and share it with friends and family back home. Being a quixotic techie with a dogged proclivity toward independence, I threw together a self-hosted website on which I built a resume page in spartan HTML/CSS and a &lt;a href=&quot;https://ghost.org/&quot;&gt;Ghost blog&lt;/a&gt; for recording my time in China. Since then, I’ve spent much more time investing in the website’s technology rather than its content (form over function–an incorrigible flaw against which I battle), and have most recently settled on a &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll site&lt;/a&gt; hosted on &lt;a href=&quot;https://github.com/&quot;&gt;Github&lt;/a&gt; (a platform to help software developers track their code and collaborate) and managed with &lt;a href=&quot;http://prose.io/&quot;&gt;Prose&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2018/01/the-infamous-liebster-award/jekyll.png&quot; alt=&quot;Github and Jekyll&quot; /&gt;
-&lt;em&gt;Jekyll static website generator, plus Github Pages hosting: A match made in an evil genius’s lab.&lt;/em&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2018/01/the-infamous-liebster-award/jekyll.png&quot; alt=&quot;Github and Jekyll&quot; title=&quot;Jekyll static website generator, plus Github Pages hosting: A match made in an evil genius's lab.&quot; /&gt;&lt;figcaption&gt;Jekyll static website generator, plus Github Pages hosting: A match made in an evil genius's lab.&lt;/figcaption&gt;&lt;/figure&gt;
 
 &lt;p&gt;But, technologies aside, why do I still strive to immortalize my thoughts in text, and publish them online for the world to see? In truth, my motivation comes down to my love for storytelling: using narratives in every form to build connections with others. From the color palletes of the websites I build to the tension of the piano’s vibrations, from the worlds invented through extemporized theatrical performance to the themes shared through a video game, I am in love with communication–especially through non-traditional media. Building a website and contribuing to a blog is one way I believe that I can combine my two somewhat divergent passions–software development and narrative creation–into a single product.&lt;/p&gt;
 
@@ -139,8 +136,7 @@ I cannot yet release my own code to the public for viewing, as grades for the cl
 
     &lt;p&gt;From a practical perspective, I actually find myself leaning slightly toward Microsoft. Although I am perhaps least familiar with system administration and software development on Windows, I find Microsoft’s recent actions as a company pleasantly surprising and admirable. They seem eager to make their products accessible and open both to developers (who desire clear documentation and transparent sources) and end users (who desire dependability and elegant functionality). Microsoft doesn’t exhibit the vertical integration of their products and services that Apple does (allowing Apple to provide beautiful interfaces to their customers), but in relaxing their hold on the reins, Microsoft forms better relationships with their developer community. Microsoft still keeps much of their software closed-source, but without doing so they would struggle to make ends meet in order to deliver the high-quality services that end users have come to expect.&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;/assets/images/2018/01/the-infamous-liebster-award/Microsoft-logo_rgb_c-gray.png&quot; alt=&quot;Microsoft logo circa 2018&quot; /&gt;
- &lt;em&gt;A pretty (flat) logo&lt;/em&gt;&lt;/p&gt;
+    &lt;figure&gt;&lt;img src=&quot;/assets/images/2018/01/the-infamous-liebster-award/Microsoft-logo_rgb_c-gray.png&quot; alt=&quot;Microsoft logo circa 2018&quot; title=&quot;A pretty (flat) logo&quot; /&gt;&lt;figcaption&gt;A pretty (flat) logo&lt;/figcaption&gt;&lt;/figure&gt;
 
     &lt;p&gt;So, long story short: In a perfect world, Linux. In this world, Microsoft!&lt;/p&gt;
   &lt;/li&gt;
@@ -165,8 +161,7 @@ I cannot yet release my own code to the public for viewing, as grades for the cl
 
     &lt;p&gt;The first song I ever purchased was &lt;a href=&quot;https://www.youtube.com/watch?v=Y6ljFaKRTrI&quot;&gt;Still Alive by Jonathan Coulton&lt;/a&gt;. I also ended up parodying this song as a goodbye gift for the music teacher who directed the theatre production that was pivotal in maturing me emotionally and socially.&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;/assets/images/2018/01/the-infamous-liebster-award/chell.jpg&quot; alt=&quot;The protagonist of Portal&quot; /&gt;
- &lt;em&gt;Fan art of Portal–the video game in which Jonathan Coulton’s song was featured&lt;/em&gt;&lt;/p&gt;
+    &lt;figure&gt;&lt;img src=&quot;/assets/images/2018/01/the-infamous-liebster-award/chell.jpg&quot; alt=&quot;The protagonist of Portal&quot; title=&quot;Fan art of Portal--the video game in which Jonathan Coulton's song was featured&quot; /&gt;&lt;figcaption&gt;Fan art of Portal--the video game in which Jonathan Coulton's song was featured&lt;/figcaption&gt;&lt;/figure&gt;
 
     &lt;p&gt;Speaking of that show, I am quite fond of several songs in the soundtrack of &lt;a href=&quot;https://www.youtube.com/playlist?list=PLnbBAvpTGon8EN_eh_zALsb7dxPy-ttnd&quot;&gt;HONK Jr&lt;/a&gt;.&lt;/p&gt;
 
@@ -186,8 +181,7 @@ I cannot yet release my own code to the public for viewing, as grades for the cl
 
     &lt;p&gt;Yeah… Isn’t it a string instrument that specializes in producing tones between the ranges of a violin and cello? I’m purposely not going to look up whether I’m right or not to preserve the innocence of my potentially incorrect and offensive answer.&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;/assets/images/2018/01/the-infamous-liebster-award/viola.jpg&quot; alt=&quot;viola&quot; /&gt;
- &lt;em&gt;Something like this, I think&lt;/em&gt;&lt;/p&gt;
+    &lt;figure&gt;&lt;img src=&quot;/assets/images/2018/01/the-infamous-liebster-award/viola.jpg&quot; alt=&quot;viola&quot; title=&quot;Something like this, I think&quot; /&gt;&lt;figcaption&gt;Something like this, I think&lt;/figcaption&gt;&lt;/figure&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Have you ever been out of the country? If so, where?&lt;/p&gt;
@@ -218,8 +212,7 @@ I cannot yet release my own code to the public for viewing, as grades for the cl
 
     &lt;p&gt;Best video game is, without the shadow of a doubt, &lt;a href=&quot;http://store.steampowered.com/app/210970/The_Witness/&quot;&gt;The Witness&lt;/a&gt;. It is a marvellous tapestry outlining human intelligence and philosophy, and a shining example of nonverbal communication. It is the one video game that I believe would have engaged C.S. Lewis, Steve Jobs, and Douglas Hofstadter alike.&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;/assets/images/2018/01/the-infamous-liebster-award/witness.jpg&quot; alt=&quot;logo for The Witness&quot; /&gt;
- &lt;em&gt;Beautiful.&lt;/em&gt;&lt;/p&gt;
+    &lt;figure&gt;&lt;img src=&quot;/assets/images/2018/01/the-infamous-liebster-award/witness.jpg&quot; alt=&quot;logo for The Witness&quot; title=&quot;Beautiful.&quot; /&gt;&lt;figcaption&gt;Beautiful.&lt;/figcaption&gt;&lt;/figure&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;How do you feel about autocorrect when texting?&lt;/p&gt;
@@ -242,8 +235,7 @@ I cannot yet release my own code to the public for viewing, as grades for the cl
   &lt;li&gt;
     &lt;p&gt;My first paying job was acting as the cow mascot for Chick-fil-A. I had to quit because I grew too tall for the suit.&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;/assets/images/2018/01/the-infamous-liebster-award/chick-fil-a-cow-day-2013.jpg&quot; alt=&quot;A Chick-fil-A cow mascot&quot; /&gt;
- &lt;em&gt;Is that me?! Wouldn’t you like to know…&lt;/em&gt;&lt;/p&gt;
+    &lt;figure&gt;&lt;img src=&quot;/assets/images/2018/01/the-infamous-liebster-award/chick-fil-a-cow-day-2013.jpg&quot; alt=&quot;A Chick-fil-A cow mascot&quot; title=&quot;Is that me?! Wouldn't you like to know...&quot; /&gt;&lt;figcaption&gt;Is that me?! Wouldn't you like to know...&lt;/figcaption&gt;&lt;/figure&gt;
   &lt;/li&gt;
   &lt;li&gt;The first programming language I took classes and achieved fluency in is &lt;a href=&quot;http://jsoftware.com/&quot;&gt;J&lt;/a&gt;. My teacher was &lt;a href=&quot;https://www.linkedin.com/in/henry-rich-5b7503131/&quot;&gt;Henry Rich&lt;/a&gt;.&lt;/li&gt;
   &lt;li&gt;When I took an ideology test in high school, measuring my political views on a spectrum of -72 (left/liberal) to +72 (right/conservative), I received a stunning +2. Since then, my views haven’t changed much: last time I took the test, I had migrated to +6.&lt;/li&gt;
@@ -251,8 +243,7 @@ I cannot yet release my own code to the public for viewing, as grades for the cl
   &lt;li&gt;
     &lt;p&gt;The latest I have ever stayed awake is 3am: I was infuriated because I could not connect to a Raspberry Pi headless (without a monitor). I have never pulled a true all-nighter.&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;/assets/images/2018/01/the-infamous-liebster-award/rpi.png&quot; alt=&quot;The Raspberry Pi motherboard, shown to sacle.&quot; /&gt;
- &lt;em&gt;I’ve never tasted a real raspberry pie before: only the bitter tears of bootstrapping one.&lt;/em&gt;&lt;/p&gt;
+    &lt;figure&gt;&lt;img src=&quot;/assets/images/2018/01/the-infamous-liebster-award/rpi.png&quot; alt=&quot;The Raspberry Pi motherboard, shown to sacle.&quot; title=&quot;I've never tasted a real raspberry pie before: only the bitter tears of bootstrapping one.&quot; /&gt;&lt;figcaption&gt;I've never tasted a real raspberry pie before: only the bitter tears of bootstrapping one.&lt;/figcaption&gt;&lt;/figure&gt;
   &lt;/li&gt;
   &lt;li&gt;I prefer colder climates over warmer ones: not because I like being outside in the cold, but because I love the feeling and smell of indoor heating (stove, fireplace, etc) more than the atmosphere made by indoor cooling (fans, air conditioning).&lt;/li&gt;
   &lt;li&gt;One of my childhood comfort foods was white rice with cupcake sprinkles mixed in.&lt;/li&gt;
@@ -270,8 +261,7 @@ I cannot yet release my own code to the public for viewing, as grades for the cl
   &lt;li&gt;
     &lt;p&gt;What is your favorite constant number? Zero, One, Pi, Euler’s Constant, the Imaginary Number? Constant of permittivity or permeability? Something else?&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;/assets/images/2018/01/the-infamous-liebster-award/math.jpg&quot; alt=&quot;Handwritten Latin and Greek alphabets&quot; /&gt;
- &lt;em&gt;My handwriting? Ha. I wish…&lt;/em&gt;&lt;/p&gt;
+    &lt;figure&gt;&lt;img src=&quot;/assets/images/2018/01/the-infamous-liebster-award/math.jpg&quot; alt=&quot;Handwritten Latin and Greek alphabets&quot; title=&quot;My handwriting? Ha. I wish...&quot; /&gt;&lt;figcaption&gt;My handwriting? Ha. I wish...&lt;/figcaption&gt;&lt;/figure&gt;
   &lt;/li&gt;
   &lt;li&gt;Describe the last experience that made you laugh without those around you finding it amusing.&lt;/li&gt;
   &lt;li&gt;Describe the last experience where everyone else found something hilarious that you didn’t understand.&lt;/li&gt;
@@ -313,8 +303,7 @@ restrooms are handled dormitory-style. Maintaining a clean and safe environment
 is as much the residents’ job as it is the staff’s, in the sense that everyone’s
 space can be seen from all angles, creating an aura of community watch.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2017/05/access-vs-ownership/clean-pods.jpg&quot; alt=&quot;PodShare bunk beds&quot; /&gt;
-&lt;em&gt;A typical quiet afternoon amongst the pods&lt;/em&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2017/05/access-vs-ownership/clean-pods.jpg&quot; alt=&quot;PodShare bunk beds&quot; title=&quot;A typical quiet afternoon amongst the pods&quot; /&gt;&lt;figcaption&gt;A typical quiet afternoon amongst the pods&lt;/figcaption&gt;&lt;/figure&gt;
 
 &lt;p&gt;If this description is hard to visualize, a good video providing an overview and
 history of the startup can be found
@@ -364,9 +353,7 @@ Millennials invest in gym memberships, public transportation, and music
 streaming services rather than purchasing the physical capital necessary to
 enjoy these luxuries for ourselves. Why not extend that idea to our very homes?&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2017/05/access-vs-ownership/community.jpg&quot; alt=&quot;Elvina Beck&quot; /&gt;
-&lt;em&gt;The occasional evening activity creates a sense of community. Hopefully nobody
-was looking to sleep tonight.&lt;/em&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2017/05/access-vs-ownership/community.jpg&quot; alt=&quot;Elvina Beck&quot; title=&quot;The occasional evening activity creates a sense of community. Hopefully nobody was looking to sleep tonight.&quot; /&gt;&lt;figcaption&gt;The occasional evening activity creates a sense of community. Hopefully nobody was looking to sleep tonight.&lt;/figcaption&gt;&lt;/figure&gt;
 
 &lt;p&gt;I do agree that, in the general case, owning less can lead to living more. Our
 culture in the United States has lost much of that compassionate, cooperative
@@ -397,9 +384,7 @@ received a recording of the event, to be viewed on demand at any location or
 time? More importantly, if I had never experienced the original, &lt;em&gt;would I even
 know what I was missing from the experience?&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2017/05/access-vs-ownership/ben-glenn.jpg&quot; alt=&quot;Ben Glenn&quot; /&gt;
-&lt;em&gt;Ben may create the same drawing thousands of times, but the one he crafted when
-I was in attendance was uniquely mine. No recreation does it justice.&lt;/em&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&quot;/assets/images/2017/05/access-vs-ownership/ben-glenn.jpg&quot; alt=&quot;Ben Glenn&quot; title=&quot;Ben may create the same drawing thousands of times, but the one he crafted when I was in attendance was uniquely mine. No recreation does it justice.&quot; /&gt;&lt;figcaption&gt;Ben may create the same drawing thousands of times, but the one he crafted when I was in attendance was uniquely mine. No recreation does it justice.&lt;/figcaption&gt;&lt;/figure&gt;
 
 &lt;p&gt;I do not believe I could describe with any accuracy the psychological difference
 between owning a home and having geographically-independent access to shelter,
