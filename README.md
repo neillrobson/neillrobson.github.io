@@ -46,7 +46,7 @@ Source code for the personal website and blog of Neill Robson.
 
 ## Todo
 
-- [ ] Make blog titles clickable (links to full blog text)
+- [x] Make blog titles clickable (links to full blog text)
 - [ ] Write a blog post using the new formatting features
 - [ ] Decide on a quality font stack
 - [ ] Implement search bar: elasticsearch free?
