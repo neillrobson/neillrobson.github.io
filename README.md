@@ -42,3 +42,13 @@ Source code for the personal website and blog of Neill Robson.
 ## Live Site
 
 - https://neillrobson.com
+
+
+## Todo
+
+- [ ] Make blog titles clickable (links to full blog text)
+- [ ] Write a blog post using the new formatting features
+- [ ] Decide on a quality font stack
+- [ ] Implement search bar: elasticsearch free?
+- [ ] Respond smartly to no-js
+- [ ] Refactor CSS to use SASS features (variables etc) for maintainability
