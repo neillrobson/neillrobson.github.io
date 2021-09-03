@@ -454,7 +454,7 @@ iframe {
   font-size: 1.05rem;
 }
 
-#logo {
+#title {
   font-weight: bold;
   display: block;
   font-size: 0.95rem;
@@ -463,33 +463,30 @@ iframe {
   text-shadow: none;
   background-image: none;
   grid-area: title;
+
+  &:hover {
+    color: #555;
+  }
 }
 
-#logo img {
+#logo {
   position: absolute;
-  width: 48px;
-  top: 0px;
-  left: -62px;
+  height: 2.75rem;
+  top: 0;
+  right: 0.6rem;
   grid-area: logo;
-}
 
-#logo:hover {
-  color: #555;
-}
+  &.rounded {
+    border-radius: 50%;
+  }
 
-#logo img:hover {
-  opacity: 0.8;
-}
+  &:hover {
+    opacity: 0.8;
+  }
 
-#logo img.rounded {
-  width: 52px;
-  border-radius: 50%;
-  top: -2px;
-  left: -64px;
-}
-
-#logo img:active {
-  margin-top: 1px;
+  &:active {
+    margin-top: 1px;
+  }
 }
 
 .nav {
@@ -703,10 +700,9 @@ input#search:focus {
   }
 }
 
-@media screen and (max-width: 730px) {
-  .nav,
-  #logo {
-    margin-left: 60px;
+@media screen and (max-width: 740px) {
+  .header {
+    grid-template-columns: 3rem auto;
   }
   ul,
   li {
