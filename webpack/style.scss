@@ -1,3 +1,18 @@
+/*
+ * FONTS
+ * Default font stack found at https://systemfontstack.com/
+ */
+$serif: Iowan Old Style, Apple Garamond, Baskerville, Georgia, Times New Roman,
+  Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji,
+  Segoe UI Symbol;
+$sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+  helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+$mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+
+html {
+  font-size: 20px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +25,8 @@ body {
 }
 
 body {
-  font: 17px / 24px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+  font-family: $sans-serif;
   text-rendering: optimizeLegibility;
   font-variant-ligatures: common-ligatures;
   font-feature-settings: "liga";
@@ -33,15 +49,15 @@ small,
 .small,
 figcaption,
 .caption {
-  font-size: 13px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.7rem;
+  font-family: $sans-serif;
   color: #999;
   font-weight: 500;
 }
 
 figcaption,
 .caption {
-  line-height: 18px;
+  line-height: 1.2;
   display: block;
   margin: 9px auto 24px;
   max-width: 600px;
@@ -73,6 +89,10 @@ div {
 
 .header {
   margin: 48px 0;
+  display: grid;
+  grid-template:
+    "logo title"
+    "logo nav" / 0 auto;
 }
 
 .container {
@@ -103,8 +123,8 @@ div {
   margin: 3px 0;
   color: #232323;
   padding: 3px 6px;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 0.8rem;
+  line-height: 1.2;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-left: 4px solid rgba(0, 0, 0, 0.2);
   background: rgba(0, 0, 0, 0.05);
@@ -123,8 +143,8 @@ div {
 .margin figure,
 .margin p {
   font-style: italic;
-  font-family: Georgia;
-  font-size: 0.9em;
+  font-family: $serif;
+  font-size: 0.8rem;
   margin-top: 0;
 }
 .margin h1,
@@ -207,14 +227,14 @@ div {
 figure,
 p,
 li {
-  font-family: Georgia, serif;
+  font-family: $serif;
   position: relative;
   margin: 24px 0;
 }
 
 h1 {
-  font-size: 25px;
-  line-height: 36px;
+  font-size: 1.1rem;
+  line-height: 1.5;
   font-weight: bold;
   margin-bottom: 24px;
 }
@@ -224,9 +244,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-size: 17px;
+  font-size: 0.8rem;
   font-weight: bold;
-  line-height: 24px;
   margin: 48px 0 24px;
 }
 
@@ -237,9 +256,9 @@ blockquote {
 
 big {
   color: #000;
-  font-size: 32px;
-  font-family: Georgia;
-  line-height: 48px;
+  font-size: 1.4rem;
+  font-family: $serif;
+  line-height: 1.5;
   display: block;
 }
 
@@ -320,16 +339,14 @@ pre,
 }
 
 code {
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-family: $mono;
   margin: 0;
-  font-size: 85%;
+  font-size: 0.85rem;
   background: rgba(0, 0, 0, 0.03);
   border-radius: 3px;
-  line-height: 24px;
 }
 
 p code {
-  line-height: 1em;
   padding: 2px;
   margin-left: -2px;
   display: inline-block;
@@ -353,8 +370,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
   box-sizing: border-box;
-  font-size: 15px;
-  line-height: 24px;
+  font-size: 0.95rem;
 }
 
 tr {
@@ -435,17 +451,18 @@ iframe {
 /* MATH */
 
 .katex {
-  font-size: 1.05em;
+  font-size: 1.05rem;
 }
 
 #logo {
   font-weight: bold;
   display: block;
-  font-size: 15px;
+  font-size: 0.95rem;
   color: #222;
   position: relative;
   text-shadow: none;
   background-image: none;
+  grid-area: title;
 }
 
 #logo img {
@@ -453,11 +470,13 @@ iframe {
   width: 48px;
   top: 0px;
   left: -62px;
+  grid-area: logo;
 }
 
 #logo:hover {
   color: #555;
 }
+
 #logo img:hover {
   opacity: 0.8;
 }
@@ -468,18 +487,18 @@ iframe {
   top: -2px;
   left: -64px;
 }
+
 #logo img:active {
   margin-top: 1px;
 }
 
-/* Nav links are underlined which affects their optical lineheight */
 .nav {
-  line-height: 20px;
-  padding-bottom: 4px;
+  grid-area: nav;
 }
+
 .nav a {
   margin-right: 6px;
-  font-size: 14px;
+  font-size: 0.8rem;
   background: none;
   text-shadow: none;
 }
@@ -489,7 +508,7 @@ iframe {
   float: right;
   color: #000;
   font-weight: 500;
-  font-size: 13px;
+  font-size: 0.7rem;
   padding-left: 1.25em;
   background: url("data:image/svg+xml;base64,PHN2ZyBpZD0iaWNvbi1icm9hZGNhc3QiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTIwIDEyMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8Y2lyY2xlIGN4PSIxOC4zODUiIGN5PSIxMDEuNjE1IiByPSIxOC4zODUiLz4NCjxnPg0KCTxwYXRoIGQ9Ik0tMS4wMzEsNjFjMzIuNTMzLDAsNTksMjYuNDY4LDU5LDU5cy0yNi40NjcsNTktNTksNTlzLTU5LTI2LjQ2OC01OS01OVMtMzMuNTY0LDYxLTEuMDMxLDYxIE0tMS4wMzEsMzgNCgkJYy00NS4yODgsMC04MiwzNi43MTMtODIsODJzMzYuNzEyLDgyLDgyLDgyczgyLTM2LjcxMyw4Mi04MlM0NC4yNTcsMzgtMS4wMzEsMzhMLTEuMDMxLDM4eiIvPg0KPC9nPg0KPGc+DQoJPHBhdGggZD0iTTAuMTU0LDIzLjA0MWM1My4zNDksMCw5Ni43NSw0My40MDIsOTYuNzUsOTYuNzVzLTQzLjQwMiw5Ni43NS05Ni43NSw5Ni43NWMtNTMuMzQ4LDAtOTYuNzUtNDMuNDAyLTk2Ljc1LTk2Ljc1DQoJCVMtNTMuMTk0LDIzLjA0MSwwLjE1NCwyMy4wNDEgTTAuMTU0LDAuMDQxYy02Ni4xMzYsMC0xMTkuNzUsNTMuNjE1LTExOS43NSwxMTkuNzVzNTMuNjE0LDExOS43NSwxMTkuNzUsMTE5Ljc1DQoJCWM2Ni4xMzUsMCwxMTkuNzUtNTMuNjE1LDExOS43NS0xMTkuNzVTNjYuMjg5LDAuMDQxLDAuMTU0LDAuMDQxTDAuMTU0LDAuMDQxeiIvPg0KPC9nPg0KPC9zdmc+")
     no-repeat left center / 100%;
@@ -509,7 +528,7 @@ a.search:hover {
 }
 
 input#search {
-  font-size: 1.2em;
+  font-size: 1.2rem;
   padding: 0.5em 1em 0.5em 2.3em;
   background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iaWNvbi1zZWFyY2giIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgOCA4IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGlkPSJzZWFyY2giIGQ9Ik03Ljk5LDYuOTI4TDUuODQ3LDQuNzg0YzAuMjg5LTAuNDc2LDAuNDU4LTEuMDMzLDAuNDU4LTEuNjNDNi4zMDUsMS40MTIsNC44OTUsMCwzLjE1MiwwDQoJQzEuNDExLDAsMCwxLjQxMiwwLDMuMTU0YzAsMS43NDEsMS40MTIsMy4xNTEsMy4xNTMsMy4xNTFjMC41OTcsMCwxLjE1NC0wLjE2OSwxLjYzLTAuNDU4bDIuMTQ1LDIuMTQ2TDcuOTksNi45Mjh6IE0xLjIwMywzLjE1NA0KCWMwLjAwMi0xLjA3NywwLjg3NC0xLjk0OSwxLjk1MS0xLjk1MWMxLjA3NiwwLjAwMiwxLjk0OCwwLjg3NCwxLjk0OSwxLjk1MUM1LjEwMSw0LjIzLDQuMjI5LDUuMTAzLDMuMTUzLDUuMTAzDQoJQzIuMDc1LDUuMTAzLDEuMjA1LDQuMjMsMS4yMDMsMy4xNTR6Ii8+DQo8L3N2Zz4=)
     1em center/0.8em no-repeat;
@@ -518,7 +537,7 @@ input#search {
   box-sizing: border-box;
   margin: 0.33em 0.66em 2em -1em;
   border: 1px solid #a1adb6;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $sans-serif;
 }
 
 input#search:focus {
@@ -586,7 +605,7 @@ input#search:focus {
 .pagination {
   text-align: center;
   margin: 72px 0;
-  font-size: 14px;
+  font-size: 0.8rem;
   color: #999;
 }
 
@@ -600,8 +619,8 @@ input#search:focus {
   text-decoration: none;
   background: none;
   text-shadow: none;
-  font-size: 0.88em;
-  line-height: 1.33em;
+  font-size: 0.88rem;
+  line-height: 1.33;
   width: 48%;
   margin: 1em 0 6em 2%;
   color: #000;
@@ -619,16 +638,16 @@ input#search:focus {
 }
 .adjacent a .summary {
   color: #6b6b6b;
-  font-size: 13px;
-  line-height: 17px;
+  font-size: 0.7rem;
+  line-height: 1.2;
 }
 
 .previousEntry .title,
 .nextEntry .title {
   display: block;
-  font-size: 1.156em;
-  font-family: sans-serif;
-  line-height: 20px;
+  font-size: 1.156rem;
+  font-family: $sans-serif;
+  line-height: 1.33;
   margin-bottom: 3px;
 }
 
