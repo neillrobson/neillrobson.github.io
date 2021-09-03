@@ -48,7 +48,9 @@ Source code for the personal website and blog of Neill Robson.
 
 - [x] Make blog titles clickable (links to full blog text)
 - [ ] Write a blog post using the new formatting features
-- [ ] Decide on a quality font stack
-- [ ] Implement search bar: elasticsearch free?
+- [x] Decide on a quality font stack
+- [ ] RSS/Search
+    - [ ] Improve styling of RSS/Search buttons
+    - [ ] Implement search bar: elasticsearch free?
 - [ ] Respond smartly to no-js
-- [ ] Refactor CSS to use SASS features (variables etc) for maintainability
+- [x] Refactor CSS to use SASS features (variables etc) for maintainability (process started; ongoing)
