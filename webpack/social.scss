@@ -1,98 +1,89 @@
 $google-color: #d73d32;
 $facebook-color: #3b5998;
-$twitter-color: #1DA1F2;
-$linkedin-color: #0077B5;
+$twitter-color: #1da1f2;
+$linkedin-color: #0077b5;
 
 $github-color: #576477;
-$stackoverflow-color: #F3A83B;
+$stackoverflow-color: #f3a83b;
 $codepen-color: #000000;
-$medium-color: #02B875;
-$instagram-color: #BC296D;
+$medium-color: #02b875;
+$instagram-color: #bc296d;
 
-$google-plus-color: #DB4437;
-$reddit-color: #EC5428;
-$pinterest-color: #BD081C;
-$tumblr-color: #39465B;
-$stumbleupon-color: #DB5535;
-$digg-color: #3569A3;
+$google-plus-color: #db4437;
+$reddit-color: #ec5428;
+$pinterest-color: #bd081c;
+$tumblr-color: #39465b;
+$stumbleupon-color: #db5535;
+$digg-color: #3569a3;
 $email-color: #f06a4e;
 
 .social-list-color {
-	a {
-		width: 36px;
-		height: 36px;
-		padding-top: 0.4rem;
-		display: inline-block;
-		text-align: center;
-        border-radius: 4px;
-		color: #fff;
-		font-size: 1.25rem;
-        background: none;
-        box-sizing: border-box;
-		&.twitter {
-			background-color: $twitter-color;
-			&:hover {
-				background-color: darken($twitter-color, 10%);
-			}
+  a {
+    width: 36px;
+    height: 36px;
+    padding-top: 0.1rem;
+    display: inline-block;
+    text-align: center;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.9rem;
+    background: none;
+    box-sizing: border-box;
+    &.twitter {
+      background-color: $twitter-color;
+      &:hover {
+        background-color: darken($twitter-color, 10%);
+      }
+    }
 
-		}
+    &.facebook {
+      background-color: $facebook-color;
+      &:hover {
+        background-color: darken($facebook-color, 10%);
+      }
+    }
 
-		&.facebook {
-			background-color: $facebook-color;
-			&:hover {
-				background-color: darken($facebook-color, 10%);
-			}
-
-		}
-
-		&.github {
-			background-color: $github-color;
-			&:hover {
-				background-color: darken($github-color, 10%);
-			}
-
-		}
-		&.stack-overflow {
-			background-color: $stackoverflow-color;
-			&:hover {
-				background-color: darken($stackoverflow-color, 10%);
-			}
-
-		}
-		&.linkedin {
-			background-color: $linkedin-color;
-			&:hover {
-				background-color: darken($linkedin-color, 10%);
-			}
-
-		}
-		&.codepen {
-			background-color: $codepen-color;
-			&:hover {
-				background-color: darken($codepen-color, 10%);
-			}
-
-		}
-		&.instagram {
-			background-color: $instagram-color;
-			&:hover {
-				background-color: darken($instagram-color, 10%);
-			}
-
-		}
-		&.medium {
-			background-color: $medium-color;
-			&:hover {
-				background-color: darken($medium-color, 10%);
-			}
-
-		}
-		&.email {
-			background-color: $email-color;
-			&:hover {
-				background-color: darken($email-color, 10%);
-			}
-
-		}
-	}
+    &.github {
+      background-color: $github-color;
+      &:hover {
+        background-color: darken($github-color, 10%);
+      }
+    }
+    &.stack-overflow {
+      background-color: $stackoverflow-color;
+      &:hover {
+        background-color: darken($stackoverflow-color, 10%);
+      }
+    }
+    &.linkedin {
+      background-color: $linkedin-color;
+      &:hover {
+        background-color: darken($linkedin-color, 10%);
+      }
+    }
+    &.codepen {
+      background-color: $codepen-color;
+      &:hover {
+        background-color: darken($codepen-color, 10%);
+      }
+    }
+    &.instagram {
+      background-color: $instagram-color;
+      &:hover {
+        background-color: darken($instagram-color, 10%);
+      }
+    }
+    &.medium {
+      background-color: $medium-color;
+      &:hover {
+        background-color: darken($medium-color, 10%);
+      }
+    }
+    &.email {
+      background-color: $email-color;
+      &:hover {
+        background-color: darken($email-color, 10%);
+      }
+    }
+  }
 }
