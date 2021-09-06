@@ -1,13 +1,15 @@
 <div class="header">
-  <img
-    id="logo"
-    class="avatar rounded"
-    src="/assets/images/profile.jpg"
-    alt="Neill Robson"
-  />
-  <a id="title" href="/">
-    {{ site.title }}
-  </a>
+  <div id="title">
+    <a href="/">
+      <img
+        id="logo"
+        class="rounded"
+        src="/assets/images/profile.jpg"
+        alt="Neill Robson"
+      />
+      {{ site.title }}
+    </a>
+  </div>
   <div class="nav">
     {% for link in site.data.nav %}
     <a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a>

@@ -89,10 +89,6 @@ div {
 
 .header {
   margin: 48px 0;
-  display: grid;
-  grid-template:
-    "logo title"
-    "logo nav" / 0 auto;
 }
 
 .container {
@@ -109,6 +105,7 @@ div {
 
 .footer {
   text-align: center;
+  padding-bottom: 0.5rem;
 }
 
 /* LAYOUT */
@@ -454,15 +451,13 @@ iframe {
   font-size: 1.05rem;
 }
 
-#title {
+#title a {
   font-weight: bold;
-  display: block;
   font-size: 0.95rem;
   color: #222;
   position: relative;
   text-shadow: none;
   background-image: none;
-  grid-area: title;
 
   &:hover {
     color: #555;
@@ -473,8 +468,7 @@ iframe {
   position: absolute;
   height: 2.75rem;
   top: 0;
-  right: 0.6rem;
-  grid-area: logo;
+  left: -3.4rem;
 
   &.rounded {
     border-radius: 50%;
@@ -490,11 +484,12 @@ iframe {
 }
 
 .nav {
-  grid-area: nav;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.75rem;
 }
 
 .nav a {
-  margin-right: 6px;
   font-size: 0.8rem;
   background: none;
   text-shadow: none;
@@ -502,7 +497,6 @@ iframe {
 
 .nav a[href="/feed.xml"],
 .nav a[href="/search"] {
-  float: right;
   color: #000;
   font-weight: 500;
   font-size: 0.7rem;
@@ -511,12 +505,16 @@ iframe {
     no-repeat left center / 100%;
   background-size: 0.88em;
   opacity: 0.4;
-  margin-left: 1em;
+}
+
+.nav a[href="/feed.xml"] {
+  margin-left: auto;
 }
 
 .nav a[href="/search"] {
   background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iaWNvbi1zZWFyY2giIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgOCA4IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGlkPSJzZWFyY2giIGQ9Ik03Ljk5LDYuOTI4TDUuODQ3LDQuNzg0YzAuMjg5LTAuNDc2LDAuNDU4LTEuMDMzLDAuNDU4LTEuNjNDNi4zMDUsMS40MTIsNC44OTUsMCwzLjE1MiwwDQoJQzEuNDExLDAsMCwxLjQxMiwwLDMuMTU0YzAsMS43NDEsMS40MTIsMy4xNTEsMy4xNTMsMy4xNTFjMC41OTcsMCwxLjE1NC0wLjE2OSwxLjYzLTAuNDU4bDIuMTQ1LDIuMTQ2TDcuOTksNi45Mjh6IE0xLjIwMywzLjE1NA0KCWMwLjAwMi0xLjA3NywwLjg3NC0xLjk0OSwxLjk1MS0xLjk1MWMxLjA3NiwwLjAwMiwxLjk0OCwwLjg3NCwxLjk0OSwxLjk1MUM1LjEwMSw0LjIzLDQuMjI5LDUuMTAzLDMuMTUzLDUuMTAzDQoJQzIuMDc1LDUuMTAzLDEuMjA1LDQuMjMsMS4yMDMsMy4xNTR6Ii8+DQo8L3N2Zz4=);
   background-size: 0.94em;
+  margin-left: 1em;
 }
 
 a.feed:hover,
@@ -700,9 +698,9 @@ input#search:focus {
   }
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 760px) {
   .header {
-    grid-template-columns: 3rem auto;
+    margin-left: 3rem;
   }
   ul,
   li {
@@ -729,6 +727,7 @@ input#search:focus {
     margin-left: 0 !important;
   }
   .header {
-    margin: 9px 0;
+    margin-top: 9px;
+    margin-bottom: 9px;
   }
 }
