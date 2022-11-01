@@ -1,6 +1,10 @@
 ---
 layout: post
 title: Typescript's Skeleton Key
+date: 2022-11-01 09:38 -0400
+comments: true
+tags:
+    - software
 ---
 
 The intrepid Typescript developer will find several types that, frankly, make no sense whatsoever in real life. A "string" or "number" is perfectly reasonable, but what is an "unknown" or "never" type?
