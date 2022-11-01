@@ -1,5 +1,181 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://neillrobson.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://neillrobson.com/" rel="alternate" type="text/html" /><updated>2022-10-25T20:45:49+00:00</updated><id>https://neillrobson.com/feed.xml</id><title type="html">Neill Robson’s Website</title><subtitle>The blog and portfolio of a software developer.
-</subtitle><author><name>Neill Robson</name></author><entry><title type="html">Grad School Like I’m Five: Buffer Overflow</title><link href="https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five/" rel="alternate" type="text/html" title="Grad School Like I’m Five: Buffer Overflow" /><published>2020-11-23T20:25:00+00:00</published><updated>2020-11-23T20:25:00+00:00</updated><id>https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five</id><content type="html" xml:base="https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five/">&lt;p&gt;According to &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;, I’ve written approximately 6,000 lines of code over the course of the past four months (welcome to grad school!).
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://neillrobson.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://neillrobson.com/" rel="alternate" type="text/html" /><updated>2022-11-01T13:42:30+00:00</updated><id>https://neillrobson.com/feed.xml</id><title type="html">Neill Robson’s Website</title><subtitle>The blog and portfolio of a software developer.
+</subtitle><author><name>Neill Robson</name></author><entry><title type="html">Typescript’s Skeleton Key</title><link href="https://neillrobson.com/blog/2022/11/01/typescripts-skeleton-key/" rel="alternate" type="text/html" title="Typescript’s Skeleton Key" /><published>2022-11-01T13:38:00+00:00</published><updated>2022-11-01T13:38:00+00:00</updated><id>https://neillrobson.com/blog/2022/11/01/typescripts-skeleton-key</id><content type="html" xml:base="https://neillrobson.com/blog/2022/11/01/typescripts-skeleton-key/">&lt;p&gt;The intrepid Typescript developer will find several types that, frankly, make no sense whatsoever in real life. A “string” or “number” is perfectly reasonable, but what is an “unknown” or “never” type?&lt;/p&gt;
+
+&lt;p&gt;More importantly, what in the world is a “keyof never”?&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;div class=&quot;margin right&quot;&gt;  &lt;p&gt;In case the introduction didn’t make the fact clear, this post will be pretty technical. Be forewarned!&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;First, we’ll need a bit of background on how types can be combined in Typescript to create new, more complicated types. The rules take after formal logic and set theory, but the end result is still pretty intuitive.&lt;/p&gt;
+
+&lt;p&gt;Let’s pretend we have two plain object types, &lt;code&gt;Vehicle&lt;/code&gt; and &lt;code&gt;Animal&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vehicle&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;speed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kr&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Animal&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;legs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;union&quot;&gt;Union&lt;/h2&gt;
+
+&lt;p&gt;Perhaps we also want a function that accepts either a &lt;code&gt;Vehicle&lt;/code&gt; or &lt;code&gt;Animal&lt;/code&gt; and returns its name. How would we write that function and its signature?&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;entity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vehicle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Animal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;entity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Notice a few things about this function:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The parameter can either be a &lt;code&gt;Vehicle&lt;/code&gt; or &lt;code&gt;Animal&lt;/code&gt;, &lt;em&gt;but not both&lt;/em&gt;. In other words, if you pass in something that has a name &lt;em&gt;and&lt;/em&gt; speed &lt;em&gt;and&lt;/em&gt; legs, you’ll get an error.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Because the object can only be one or the other type, the only property that is guaranteed to exist on the object is &lt;code&gt;name&lt;/code&gt;. If we tried to access any other property on the object (without additional typecasting or narrowing), again, we’d get an error.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The &lt;strong&gt;union&lt;/strong&gt; type operator &lt;code&gt;|&lt;/code&gt; is used when we want instances that are exactly one of the component types specified.&lt;/p&gt;
+
+&lt;h2 id=&quot;intersection&quot;&gt;Intersection&lt;/h2&gt;
+
+&lt;p&gt;Now, we could also have an object (one that is currently untyped) called “horse”:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;horse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;speed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;legs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Spirit&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The horse is both a &lt;code&gt;Vehicle&lt;/code&gt; and an &lt;code&gt;Animal&lt;/code&gt;, because it literally has all of the fields necessary for both types. We can declare that using the following syntax:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Steed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vehicle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Animal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;horse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Steed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A &lt;code&gt;Steed&lt;/code&gt; can be passed into the &lt;code&gt;getName&lt;/code&gt; function, and indeed, it can be used anywhere anyone asks for just a &lt;code&gt;Vehicle&lt;/code&gt;, or just an &lt;code&gt;Animal&lt;/code&gt;, because a &lt;code&gt;Steed&lt;/code&gt; is truly both. That said, any variable defined as a &lt;code&gt;Steed&lt;/code&gt; must have all the fields of both component types: we couldn’t assign “just” an &lt;code&gt;Animal&lt;/code&gt; to a variable of the &lt;code&gt;Steed&lt;/code&gt; type.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;intersection&lt;/strong&gt; type operator &lt;code&gt;&amp;amp;&lt;/code&gt; is used when we want instances that can serve as &lt;em&gt;any&lt;/em&gt; of the component types specified at &lt;em&gt;all&lt;/em&gt; times.&lt;/p&gt;
+
+&lt;h2 id=&quot;unknown-and-never&quot;&gt;Unknown and Never&lt;/h2&gt;
+
+&lt;p&gt;Among Typescript’s special-case built-in types are two polar opposites, &lt;code&gt;unknown&lt;/code&gt; and &lt;code&gt;never&lt;/code&gt;. What do those types mean?&lt;/p&gt;
+
+&lt;p&gt;If a variable is an &lt;code&gt;unknown&lt;/code&gt; type, then you can assign any value to it. &lt;em&gt;Anything. Always.&lt;/em&gt; Likewise, a variable with a &lt;code&gt;never&lt;/code&gt; type can not have anything assigned to it. &lt;em&gt;Nothing. At all.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The cases where you’d use either of these types are somewhat esoteric, and I won’t make a comprehensive list here. However, here are a few simpler motivating examples:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;A function that never returns (e.g. always throws an error or goes into an infinite loop) has a return type of, you guessed it, &lt;code&gt;never&lt;/code&gt;. This signature is different from a return type of &lt;code&gt;void&lt;/code&gt;, i.e. when the function does call &lt;code&gt;return;&lt;/code&gt; with no value.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A function parameter that could be a variety of things, determined through conditional checks (e.g. &lt;code&gt;if (param === undefined)&lt;/code&gt;), could have a type of &lt;code&gt;unknown&lt;/code&gt; if we were too lazy to create a more specific type.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;relation-to-set-theory&quot;&gt;Relation to Set Theory&lt;/h3&gt;
+
+&lt;p&gt;How might we define &lt;code&gt;unknown&lt;/code&gt; and &lt;code&gt;never&lt;/code&gt; with our union and intersection operators? They would both be infinite sets—impractical to write explicitly in code—but the thought exercise will help us understand some interactions described later in this post.&lt;/p&gt;
+
+&lt;p&gt;The easier type to conceptualize this way is &lt;code&gt;unknown&lt;/code&gt;. Consider: if we want the ability to assign any of three different types to a variable, what syntax would we use? Based on our &lt;code&gt;getName&lt;/code&gt; function parameter, we’d do something like &lt;code&gt;A | B | C&lt;/code&gt;. For five different types, we’d have &lt;code&gt;A | B | C | D | E&lt;/code&gt;… and for truly &lt;em&gt;any type at all&lt;/em&gt;, we’d have an infinitely-long union of types.&lt;/p&gt;
+
+&lt;p&gt;The more difficult type to discern in this way is &lt;code&gt;never&lt;/code&gt;—although, given the parallels so far, the reader might be able to guess where we’re going. When we defined &lt;code&gt;Steed&lt;/code&gt; as &lt;code&gt;Vehicle &amp;amp; Animal&lt;/code&gt;, we could no longer assign &lt;code&gt;Vehicle&lt;/code&gt; or &lt;code&gt;Animal&lt;/code&gt; alone to variables of that type. Furthermore, if we created a longer “intersection type” &lt;code&gt;A &amp;amp; B &amp;amp; C&lt;/code&gt;, with more components, we’d get an increasingly restricted type. It follows that a variable with an infinitely-long intersection type could &lt;em&gt;never&lt;/em&gt; take a value, because no value would have all the properties required of the type.&lt;/p&gt;
+
+&lt;p&gt;So, in summary: &lt;code&gt;unknown&lt;/code&gt; is an infinite union of types; &lt;code&gt;never&lt;/code&gt; is an infinite intersection of types.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-keyof-utility&quot;&gt;The “keyof” Utility&lt;/h2&gt;
+
+&lt;p&gt;This little operator has a pretty simple use: it creates a type consisting of a &lt;em&gt;union&lt;/em&gt; of the possible keys for an object.&lt;/p&gt;
+
+&lt;p&gt;Some code is worth a thousand words:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Animal&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;legs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Equivalent to ('name' | 'legs')&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AnimalKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;keyof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Animal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The union won’t always just be of strings, either: an array (for example) could yield numeric keys in that union.&lt;/p&gt;
+
+&lt;h2 id=&quot;keyof-with-unions-and-intersections&quot;&gt;&lt;code&gt;keyof&lt;/code&gt; with Unions and Intersections&lt;/h2&gt;
+
+&lt;p&gt;Think of our old example types of &lt;code&gt;Vehicle&lt;/code&gt;, &lt;code&gt;Animal&lt;/code&gt;, and &lt;code&gt;Steed&lt;/code&gt;. How would &lt;code&gt;keyof&lt;/code&gt; behave with the union and intersection operators?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;keyof (Vehicle | Animal)&lt;/code&gt; would only yield &lt;code&gt;'name'&lt;/code&gt;. Does that feel a bit odd? Remember, &lt;code&gt;Vehicle | Animal&lt;/code&gt; means that each value can only be one or the other type at any given time. When we apply &lt;code&gt;keyof&lt;/code&gt;, the only guaranteed key on the object is the one shared between both types. That’s also why our function &lt;code&gt;getName&lt;/code&gt; was restricted to referencing the &lt;code&gt;name&lt;/code&gt; property.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;keyof Steed&lt;/code&gt; (i.e. &lt;code&gt;keyof (Vehicle &amp;amp; Animal)&lt;/code&gt;) would naturally yield all three keys, &lt;code&gt;'name' | 'speed' | 'legs'&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A union type typically &lt;em&gt;decreases&lt;/em&gt; the number of valid keys, while an intersection type typically &lt;em&gt;increases&lt;/em&gt; the number of valid keys.&lt;/p&gt;
+
+&lt;h2 id=&quot;putting-it-all-together&quot;&gt;Putting it all together&lt;/h2&gt;
+
+&lt;p&gt;We have enough information now to consider the original question: What is &lt;code&gt;keyof never&lt;/code&gt;? Or &lt;code&gt;keyof unknown&lt;/code&gt;? The answer, while unintuitive, is quite logical!&lt;/p&gt;
+
+&lt;p&gt;Let’s start again with &lt;code&gt;unknown&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;unknown&lt;/code&gt; is an infinite union of types&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;a union type typically decreases the number of valid keys&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;keyof unknown&lt;/code&gt; is an infinitely-shrunk set of keys, i.e. an empty set&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The set theory explanation is still confusing, so think about it on a natural-language level. What property is valid for both Vehicles, and Animals, and Reports, and Electrons, and Arrays, and Numbers, and Strings, and anything else you can think of? True, a variable of type &lt;code&gt;unknown&lt;/code&gt; will only ever be one of those actual types at any given time, but (as we saw in the &lt;code&gt;getName&lt;/code&gt; function) we are only allowed to use keys that are shared across all possible types. The question we’re answering with &lt;code&gt;keyof unknown&lt;/code&gt; is “what keys can be used at any time on values of any type anywhere in Typescript?”&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Therefore, &lt;code&gt;keyof unknown&lt;/code&gt; is &lt;code&gt;never&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;What about &lt;code&gt;keyof never&lt;/code&gt;?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;never&lt;/code&gt; is an infinite intersection of types&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;an intersection type typically increases the number of valid keys&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;keyof never&lt;/code&gt; is the maximal set of keys possible in Typescript, i.e. &lt;code&gt;String | Number | Symbol&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When we combined two types, we got a type that had all the keys of both component types—even though we could no longer &lt;em&gt;assign&lt;/em&gt; values of either component type to the intersection type. As we continue expanding that intersection type, we cover more and more keys, while making it more and more difficult to assign any value to the type… until we reach &lt;code&gt;never&lt;/code&gt;. The question we’re answering with &lt;code&gt;keyof never&lt;/code&gt; is “what keys could possibly, at some point, be syntactically valid in Typescript?”&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Therefore, &lt;code&gt;keyof never&lt;/code&gt; is &lt;code&gt;String | Number | Symbol&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;why-do-we-even-need-this&quot;&gt;Why do we even need this?&lt;/h2&gt;
+
+&lt;p&gt;Admittedly, it’s mostly a fun thought exercise for me! But there is some marginal benefit.&lt;/p&gt;
+
+&lt;p&gt;If you are trying to define a variant of the &lt;code&gt;Record&lt;/code&gt; type and want to provide no restrictions on what keys are used, you can use the generic type &lt;code&gt;K extends keyof never&lt;/code&gt; to ensure that all valid key types are allowed (and, at the same time, preventing syntactically invalid key types). Granted, you could also use the more explicit &lt;code&gt;String | Number | Symbol&lt;/code&gt;, and you’d be 99.9% sure to cover everything. However, if the language ever evolves in the future to allow a wider (or—somehow—narrower) set of key types, &lt;code&gt;keyof never&lt;/code&gt; would by definition pick up on the change immediately, with no intervention necessary from the developer.&lt;/p&gt;
+
+&lt;p&gt;Crucially, I must urge the reader to not take this rationalization to their supervisors and tech leads in an attempt to justify unreadable code. The vast majority of developers will find it much easier to understand &lt;code&gt;String | Number | Symbol&lt;/code&gt;. Saving that value in a readily-accessible type alias, with an explanatory code comment, is arguably much more maintainable than throwing &lt;code&gt;keyof never&lt;/code&gt; everywhere. However, for those occasions when you see the latter in a codebase, and you’re confused as to how in the world that skeleton key works, think back to set theory. You just might be able to put yourself back on track!&lt;/p&gt;</content><author><name>Neill Robson</name></author><category term="software" /><summary type="html">The intrepid Typescript developer will find several types that, frankly, make no sense whatsoever in real life. A “string” or “number” is perfectly reasonable, but what is an “unknown” or “never” type? More importantly, what in the world is a “keyof never”?</summary></entry><entry><title type="html">Grad School Like I’m Five: Buffer Overflow</title><link href="https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five/" rel="alternate" type="text/html" title="Grad School Like I’m Five: Buffer Overflow" /><published>2020-11-23T20:25:00+00:00</published><updated>2020-11-23T20:25:00+00:00</updated><id>https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five</id><content type="html" xml:base="https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five/">&lt;p&gt;According to &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;, I’ve written approximately 6,000 lines of code over the course of the past four months (welcome to grad school!).
 The question is, can I explain all of the stuff I wrote? &lt;!--more--&gt;
 Over the next few blog posts, I’ll be trying to present a high-level overview of some of the most interesting concepts that I’ve learned this past semester.&lt;/p&gt;
 
@@ -932,68 +1108,4 @@ below.&lt;/p&gt;
 
 &lt;p&gt;Well, that’s all I have for now. In the near future I’ll hopefully document the food experience (trust me, there’s so much more than PB&amp;amp;J!), some of the areas in and around the campus, and maybe even a few more cultural excursions (to a pharmacy, of all places!).&lt;/p&gt;
 
-&lt;p&gt;This is Neill, signing off!&lt;/p&gt;</content><author><name>neill</name></author><category term="china" /><category term="travel" /><category term="personal" /><summary type="html">What does day-to-day life look like for an international student living at Zhejiang International University in Hangzhou? Many factors come into play, including food, physical activity, and social events–but it seemed appropriate to first introduce my dorm room: my “home away from home” so to speak.</summary></entry><entry><title type="html">The Middle Country</title><link href="https://neillrobson.com/blog/2016/05/19/the-middle-country/" rel="alternate" type="text/html" title="The Middle Country" /><published>2016-05-19T09:15:29+00:00</published><updated>2016-05-19T09:15:29+00:00</updated><id>https://neillrobson.com/blog/2016/05/19/the-middle-country</id><content type="html" xml:base="https://neillrobson.com/blog/2016/05/19/the-middle-country/">&lt;p&gt;Who would have guessed that one day I would be saying hello from China?&lt;/p&gt;
-
-&lt;p&gt;Over the next few weeks, I’ll be doing my best to chronicle my journey through a Study Abroad experience in Hangzhou, across the world from my Raleigh hometown. &lt;!--more--&gt; As my first experience truly “out of the country,” it’s quite a giant leap from the comfortable North Carolina home I’m used to. But how much of the place we call our home floats beyond our consciousness until we are separated from it (and thereby made aware of it) by another way of life? That idea is what we put to the test when we embark on a journey such as this. As the famous Chinese-American geographer said,&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;To identify wholly with the ambiance of a place is to lose the sense of its unique identity, which is revealed only when one can also see it from the outside. …The sense of place is perhaps never more acute than when one is homesick, and one can only be homesick when one is no longer at home. &lt;cite&gt;Yi-Fu Tuan&lt;/cite&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;the-capital&quot;&gt;The Capital&lt;/h2&gt;
-
-&lt;p&gt;This journey begins in Beijing.&lt;/p&gt;
-
-&lt;p&gt;If anybody ever tells you that “everything is bigger in Texas,” you can respond with confidence that “everything is bigg&lt;em&gt;est&lt;/em&gt; in Beijing.” Unfortunately, pictures truly cannot capture the prodigious nature of this city’s architecture and history, especially not when they are shot by an amateur such as myself, but one cannot pass through this home of over 20 million people without making a few attempts.&lt;/p&gt;
-
-&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160511_080002-2.jpg&quot; alt=&quot;The airport&quot; /&gt;&lt;/figure&gt;
-
-&lt;p&gt;The airport above covers over 3700 acres of land, roughly one-eighth the size of Raleigh. At 8:30pm on a Wednesday evening, it’s empty and quiet enough to hear the ghosts of the 2008 Olympic Games (for whom the airport was built) jostling their way into the city.&lt;/p&gt;
-
-&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_085211.jpg&quot; alt=&quot;Tiananmen Square&quot; /&gt;&lt;/figure&gt;
-
-&lt;p&gt;The city square is also the size of many, many football fields. Beijing, unlike American cities, does not boast its size in terms of height, but in terms of square area. Raleigh has one belt line; Beijing has six, with a seventh under construction. You can cross Raleigh in half an hour on a bad day; multiply that by five, and you might be on the other side of Beijing.&lt;/p&gt;
-
-&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_093954.jpg&quot; alt=&quot;Forbidden Selfie&quot; /&gt;&lt;/figure&gt;
-
-&lt;p&gt;At this point in the trip, I was still too self-conscious to take selfies (especially in a place called the “Forbidden City”), but selfie sticks are commonplace among the guests any major tourist attraction.&lt;/p&gt;
-
-&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_135151-1.jpg&quot; alt=&quot;Great Wall parking lot&quot; /&gt;&lt;/figure&gt;
-
-&lt;p&gt;And of course you can’t go to China without conquering the Great Wall! The section we went to actually covered a circular area (rather than progressing in a line), because the surrounding mountains (and Mongols) necessitated a rather unique defense strategy. Our tour guide explained the military logic in detail, but in my opinion the real defense was the absurdly steep and uneven stairs with handrails only a foot above the ground. It was enough to make any enemy stumble, even if they did manage to scale to outside of the wall itself.&lt;/p&gt;
-
-&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_141123_BF.jpg&quot; alt=&quot;Great Wall selfie&quot; /&gt;&lt;/figure&gt;
-
-&lt;p&gt;Good exposure, bad finger positioning. I’ll get it at some point.&lt;/p&gt;
-
-&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_142857.jpg&quot; alt=&quot;Beijing landscape&quot; /&gt;&lt;/figure&gt;
-
-&lt;p&gt;We’re too far away here to really tell, but that entire “flat” area is all Beijing, with its apartments and skyscrapers. I was astonished by the incredibly large ratio of apartments to other buildings; they seemed like an invasive species of plant that crowded out all other buildings and industries. Dr. Griffin mentioned how the Chinese government was known for building “ghost cities,” in which apartment buildings and train stations are built in anticipation of population growth in a given area that doesn’t boom–or booms into a different location, leaving the new buildings empty. Even in Beijing itself, I often found myself wondering how all of those millions of people could possibly be productively employed, with so little physical evidence of businesses of any sort in the surrounding area. China has a lot of population problems on the horizon much more complex than simply hedging exponential growth.&lt;/p&gt;
-
-&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_143704-1.jpg&quot; alt=&quot;Mountains&quot; /&gt;&lt;/figure&gt;
-
-&lt;p&gt;Just some pretty mountains. #desktop!&lt;/p&gt;
-
-&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160512_143933.jpg&quot; alt=&quot;Great wall circle&quot; /&gt;&lt;/figure&gt;
-
-&lt;p&gt;Here you can see the whole circular section of the great wall that we toured, viewed from the highest point. Off to the left you can see where it stretches off in a straight line once again.&lt;/p&gt;
-
-&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160513_092511.jpg&quot; alt=&quot;Temple of Good Harvests&quot; /&gt;&lt;/figure&gt;
-
-&lt;p&gt;I didn’t take many pictures at the Temple of Heaven in the places I should have. Much of the area was actually a park (with trees and flowers and grassy fields), where many people from the city came to play badminton or dance to music. Some people even came alone with their hackey-sacks and birdies and paddles, simply pulling people aside (even foreigners like us!) to play a game or two with them. When you live in such a vast concrete plain as Beijing, you really learn to cherish your parks and social areas.&lt;/p&gt;
-
-&lt;figure&gt;&lt;img src=&quot;/assets/images/2016/05/P_20160513_094000.jpg&quot; alt=&quot;Altar gate&quot; /&gt;&lt;/figure&gt;
-
-&lt;p&gt;Pathways like this were called “dragon lines,” upon which only the emperor was allowed to travel between his various facilities. Fun fact: when you’re the emperor and servants carry you everywhere, sometimes you get halfway to where you need to go before realizing that you forgot to change out of your pajamas. In that case, a dressing room is located conveniently halfway down the line for you to take a pit stop at, with the added benefit of giving your servants’ shoulders a much-needed break.&lt;/p&gt;
-
-&lt;p&gt;That’s all the images I have from Beijing. This leg of the trip was mostly touristy business, and not much “regular life” as one would expect when studying abroad; in the next blog post or two I’ll try to touch on more of my daily routine from my first few days in Hangzhou!&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Bonus Quote&lt;/em&gt;: Our tour guide for this section of the trip (a Beijing native) wanted to explain to the group the symbolic importance of the dragon in Chinese culture. Dragons were creatures of great wealth, saving, and self-sufficiency; they would eat up all of their treasure and store in in their large stomachs without ever releasing it (in the form of feces) again. Or, as our guide phrased it,&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The dragon have big mouth and no ass. So, he eat a lot, and don’t do shit.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Ancient emperors, he said, believed they were dragons in human form.&lt;/p&gt;
-
-&lt;p&gt;No kidding!&lt;/p&gt;</content><author><name>neill</name></author><category term="china" /><category term="travel" /><category term="personal" /><summary type="html">Who would have guessed that one day I would be saying hello from China? Over the next few weeks, I’ll be doing my best to chronicle my journey through a Study Abroad experience in Hangzhou, across the world from my Raleigh hometown.</summary></entry></feed>
+&lt;p&gt;This is Neill, signing off!&lt;/p&gt;</content><author><name>neill</name></author><category term="china" /><category term="travel" /><category term="personal" /><summary type="html">What does day-to-day life look like for an international student living at Zhejiang International University in Hangzhou? Many factors come into play, including food, physical activity, and social events–but it seemed appropriate to first introduce my dorm room: my “home away from home” so to speak.</summary></entry></feed>
