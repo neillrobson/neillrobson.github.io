@@ -2,7 +2,7 @@ name: Publish Website
 
 on:
   push:
-    branches: [ develop ]
+    branches: [develop]
   # Allows running this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -14,15 +14,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checks-out the repository under $GITHUB_WORKSPACE
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      # Set up the environment with Ruby 2.7 and Node 14
-      - uses: actions/setup-ruby@v1
+      # Set up the environment with Ruby and NodeJS
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.7'
-      - uses: actions/setup-node@v2-beta
+          ruby-version: "2.7"
+      - uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: "18"
 
       # Use GitHub Actions' cache to shorten build times and decrease load on servers
       - uses: actions/cache@v2
