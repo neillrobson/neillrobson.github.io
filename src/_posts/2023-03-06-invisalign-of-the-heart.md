@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Invisalign of the Heart
+date: 2023-03-06 14:53 -0500
 ---
-
 For the second time in my life, I am undergoing the tedious and painful
 experience of tooth re-alignment. As a coping mechanism, why not pontificate on
 how Invisalign can serve as a spiritual allegory?
