@@ -114,6 +114,7 @@ div {
     position: absolute;
     box-sizing: border-box;
     width: 29.3333%;
+    z-index: 1; // Render above <p> on mobile viewports
 }
 
 .margin blockquote {

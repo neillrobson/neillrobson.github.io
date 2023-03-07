@@ -46,7 +46,7 @@ Source code for the personal website and blog of Neill Robson.
 ## Todo
 
 -   [x] Refactor CSS to use SASS features (variables etc) for maintainability (process started; ongoing)
--   [ ] Update stylesheets to make sidebar links clickable on mobile
+-   [x] Update stylesheets to make sidebar links clickable on mobile
 -   [ ] RSS/Search
     -   [ ] Improve styling of RSS/Search buttons
     -   [ ] Implement search bar: elasticsearch free?
