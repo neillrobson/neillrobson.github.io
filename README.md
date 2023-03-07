@@ -41,16 +41,13 @@ Source code for the personal website and blog of Neill Robson.
 
 ## Live Site
 
-- https://neillrobson.com
-
+-   https://neillrobson.com
 
 ## Todo
 
-- [x] Make blog titles clickable (links to full blog text)
-- [ ] Write a blog post using the new formatting features
-- [x] Decide on a quality font stack
-- [ ] RSS/Search
-    - [ ] Improve styling of RSS/Search buttons
-    - [ ] Implement search bar: elasticsearch free?
-- [ ] Respond smartly to no-js
-- [x] Refactor CSS to use SASS features (variables etc) for maintainability (process started; ongoing)
+-   [x] Refactor CSS to use SASS features (variables etc) for maintainability (process started; ongoing)
+-   [ ] Update stylesheets to make sidebar links clickable on mobile
+-   [ ] RSS/Search
+    -   [ ] Improve styling of RSS/Search buttons
+    -   [ ] Implement search bar: elasticsearch free?
+-   [ ] Respond smartly to no-js
