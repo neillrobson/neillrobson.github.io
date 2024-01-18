@@ -1,6 +1,17 @@
 ---
 layout: post
 title: Small Group Leadership Brunch Speech
+date: 2024-01-17 21:22 -0500
+comments: true
+tags:
+    - personal
+    - spiritual
+    - speech
+---
+The following is a written draft of a speech I gave to a gathering of small group
+leaders at my church several months ago. After running across the file, I felt it
+might be encouraging for others to read. <!--more-->
+
 ---
 
 One cold February evening a couple of years ago, as folks were saying their

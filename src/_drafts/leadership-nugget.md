@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Small Group Leadership Brunch Speech
+title: Truncated Small Group Leadership Brunch Speech
 ---
 
 One cold February evening a couple of years ago, as folks were saying their
