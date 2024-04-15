@@ -7,7 +7,7 @@ tags:
     - software
 ---
 When you have a ton of data that all needs to be processed, reactive programming makes the implementation easy to read, terse to write, and efficient to run.
-But when the data isn't all needed, and processing the full stream is prohibitively expensive, more esoteric methods are necessary. <!-- more -->
+But when the data isn't all needed, and processing the full stream is prohibitively expensive, more esoteric methods are necessary. <!--more-->
 
 ## Context
 
