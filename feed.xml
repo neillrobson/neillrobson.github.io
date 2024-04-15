@@ -1,5 +1,259 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://neillrobson.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://neillrobson.com/" rel="alternate" type="text/html" /><updated>2024-04-12T20:21:49+00:00</updated><id>https://neillrobson.com/feed.xml</id><title type="html">Neill Robson’s Website</title><subtitle>The blog and portfolio of a software developer.
-</subtitle><author><name>Neill Robson</name></author><entry><title type="html">Small Group Leadership Brunch Speech</title><link href="https://neillrobson.com/blog/2024/01/18/leadership-full/" rel="alternate" type="text/html" title="Small Group Leadership Brunch Speech" /><published>2024-01-18T02:22:00+00:00</published><updated>2024-01-18T02:22:00+00:00</updated><id>https://neillrobson.com/blog/2024/01/18/leadership-full</id><content type="html" xml:base="https://neillrobson.com/blog/2024/01/18/leadership-full/"><![CDATA[<p>The following is a written draft of a speech I gave to a gathering of small group
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://neillrobson.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://neillrobson.com/" rel="alternate" type="text/html" /><updated>2024-04-15T17:51:36+00:00</updated><id>https://neillrobson.com/feed.xml</id><title type="html">Neill Robson’s Website</title><subtitle>The blog and portfolio of a software developer.
+</subtitle><author><name>Neill Robson</name></author><entry><title type="html">Batched Processing in RxJS</title><link href="https://neillrobson.com/blog/2024/04/15/rxjs-batched-processing/" rel="alternate" type="text/html" title="Batched Processing in RxJS" /><published>2024-04-15T17:47:00+00:00</published><updated>2024-04-15T17:47:00+00:00</updated><id>https://neillrobson.com/blog/2024/04/15/rxjs-batched-processing</id><content type="html" xml:base="https://neillrobson.com/blog/2024/04/15/rxjs-batched-processing/"><![CDATA[<p>When you have a ton of data that all needs to be processed, reactive programming makes the implementation easy to read, terse to write, and efficient to run.
+But when the data isn’t all needed, and processing the full stream is prohibitively expensive, more esoteric methods are necessary. <!-- more --></p>
+
+<h2 id="context">Context</h2>
+
+<p>Say you have an array or stream of image files. You want to send them off to a service that runs image recognition, to identify pictures with cats in them.
+You want specifically the <em>first four</em> pictures with cats. Not just any four pictures with cats: perhaps the source array is already sorted by timestamp and you want the most recent four cat pictures.</p>
+
+<p>Stream processing, asynchronous actions… This sounds like a job for reactive programming! However, you have a couple of unique concerns:</p>
+
+<ul>
+  <li>The image recognition API is expensive to call. You don’t want to be charged for unnecessary requests.</li>
+  <li>The image recognition API takes a long time for each file. You want to parallelize your processing, if possible.</li>
+</ul>
+
+<p>Even with those considerations, you’re pretty sure some creative pipelines will do the trick. You bust out your RxJS library and get started.</p>
+
+<h2 id="concatenation">Concatenation</h2>
+
+<p>Calling an asynchronous API for each item in an observable stream is a classic use case for one of the <code>*Map</code> operators. Every operator in that family will create a new stream for each item in the source stream, then collapse the outputs into a single stream to pass down the pipeline.</p>
+
+<p>Some of the map operators are clearly inappropriate:</p>
+
+<ul>
+  <li><code>switchMap</code> drops old streams as soon as new source data comes in. We don’t want to lose any responses from the API.</li>
+  <li><code>exhaustMap</code> ignores the source data stream while it waits for each created stream to complete. We want to check every image until we have four cats.</li>
+</ul>
+
+<p>We really just want concatenation of our API calls, so <code>concatMap</code> seems like a good choice. Our pipeline would look something like:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">sourceImages$</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span>
+    <span class="nf">concatMap</span><span class="p">(</span><span class="nx">identifyImage</span><span class="p">),</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="nx">isCatImage</span><span class="p">),</span>
+    <span class="nf">take</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">).</span><span class="nf">subscribe</span><span class="p">(</span><span class="nx">sendToMyPhone</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>It’s a clean pipeline! But in practice, this implementation processes the source images serially. Each API call must be returned before the next image is sent off.
+For a slow API, such serial processing is undesirable.</p>
+
+<div class="wide">  <figure><img src="/assets/images/2024/04/15/rxjs-batched-processing/serial.png" alt="visualization of serial pipeline processing" title="The top pipeline represents queries sent to the API. The number on each data point is the number of queries happening in parallel. The bottom pipeline contains the four images identified as cats, emitted at the time they were identified." /><figcaption>The top pipeline represents queries sent to the API. The number on each data point is the number of queries happening in parallel. The bottom pipeline contains the four images identified as cats, emitted at the time they were identified.</figcaption></figure>
+</div>
+
+<h2 id="merging">Merging</h2>
+
+<p>We’ve got a fourth member of the <code>*Map</code> family: <code>mergeMap</code>. On the surface, it looks like precisely the operator we need.
+It creates child streams and merges them into the output stream as soon as input data arrives.</p>
+
+<p>Implementing it yields nearly identical pipeline code:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">sourceImages$</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span>
+    <span class="nf">mergeMap</span><span class="p">(</span><span class="nx">identifyImage</span><span class="p">),</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="nx">isCatImage</span><span class="p">),</span>
+    <span class="nf">take</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">).</span><span class="nf">subscribe</span><span class="p">(</span><span class="nx">sendToMyPhone</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Testing it out yields a result worse than we started with: <strong>the order of the source images is no longer preserved</strong>. We start seeing cat pictures from decades ago, simply because they happened to be the first ones returned by the API.</p>
+
+<div class="margin left">  <figure><img src="/assets/images/2024/04/15/rxjs-batched-processing/parallel.png" alt="visualization of parallel pipeline processing" title="Every single image is sent to the API in parallel. There were 21 images in the sample dataset, but the fourth cat image was the 17th item: we sent off four unnecessary API requests." /><figcaption>Every single image is sent to the API in parallel. There were 21 images in the sample dataset, but the fourth cat image was the 17th item: we sent off four unnecessary API requests.</figcaption></figure>
+</div>
+
+<h2 id="maintaining-order">Maintaining Order</h2>
+
+<p>As it turns out, the serialization of streams in <code>concatMap</code> (only creating a new stream when the previous one has completed) is a feature unique to that operator.
+If we simply split out the “map” part of the operator from the concatenation, we get the best of both worlds:</p>
+
+<ul>
+  <li>All of the streams are created up front (in the <code>map</code> operator)</li>
+  <li>The order of the streams’ output is preserved</li>
+</ul>
+
+<div class="margin right">  <p>In between map and concatAll, each object in the stream is… itself a stream. Streamception!</p>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">sourceImages$</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span>
+    <span class="nf">map</span><span class="p">(</span><span class="nx">identifyImage</span><span class="p">),</span>
+    <span class="nf">concatAll</span><span class="p">(),</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="nx">isCatImage</span><span class="p">),</span>
+    <span class="nf">take</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">).</span><span class="nf">subscribe</span><span class="p">(</span><span class="nx">sendToMyPhone</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>This pipeline fixes both our ordering issue, and also runs completely parallelized. We get super excited, until we view our monthly bill from the image recognition service.
+As it turns out, this pipeline sends <em>every single image</em> to the API, as soon as it shows up in our source stream. We might send off thousands of requests before the four cat images are identified, even if the cat images are the first four images in the source stream!</p>
+
+<h3 id="side-note-hot-vs-cold"><em>Side Note: Hot vs Cold</em></h3>
+
+<p>If you’re trying out this code on your own, you might find that your <code>map</code>/<code>concatAll</code> implementation did not parallelize like you wanted it to. Most likely, it’s a result of implementing <code>identifyImage</code> as a pure RxJS stream, otherwise known as a “cold” observable. The difference between cold and hot observables is simple to state, hard to internalize:</p>
+
+<ul>
+  <li>Cold observables have their data created <em>inside</em> the observable</li>
+  <li>Hot observables have their data created <em>outside</em> the observable</li>
+</ul>
+
+<div class="column two">
+  <h3 id="cold">Cold</h3>
+  <p>If I make an Observable from an array, <code>from([1, 2, 3])</code>, all of the data is already there. The computer doesn’t have to wait for anyone to get data back to it for the stream to both start and complete immediately.</p>
+  <ul>
+    <li>They don’t start emitting values until someone <code>subscribe</code>s to them</li>
+    <li>They run a separate, unique pipeline for each subscription (they are “<strong>unicast</strong>”)</li>
+  </ul>
+</div>
+
+<div class="column two">
+  <h3 id="hot">Hot</h3>
+  <p>Hot observables are made from things like Promises. The computer is waiting for someone else to get back to it, and the computer will emit whatever it receives as soon as it arrives.</p>
+  <ul>
+    <li>They emit items upon arrival, regardless of subscriber count</li>
+    <li>They send data through a single pipeline, no matter how many subscribers (they are “<strong>multicast</strong>”)</li>
+  </ul>
+</div>
+
+<hr />
+
+<p>Returning to our pipeline above: if we <code>map</code> data to a <em>hot</em> observable, the API request goes out immedately (no need for a subscriber). The <code>concatAll</code> <em>does</em> end up subscribing, but the API request is already processing at that point. As each API call returns, <code>concatAll</code> will subscribe to the next one in the stream. Most likely, that latter API call will have already returned, so <code>concatAll</code> receives an immediate value, and continues.</p>
+
+<p>On the other hand, <code>map</code>ping to a <em>cold</em> observable doesn’t kick off any process at all. The <code>concatAll</code> subscribes to the first observable, and waits for it to complete. Then it subscribes to the second observable, which hasn’t been doing anything up to this point because it’s cold (and had no subscribers)… and the effect is serialization.</p>
+
+<p>If you want to mimic Promises in your <code>indentifyImage</code> implementation, <strong>use the <code>shareReplay</code> operator</strong> in your pipeline. For example:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">identifyImage</span><span class="p">(</span><span class="nx">img</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">pipeline</span> <span class="k">of</span><span class="p">(</span><span class="nx">img</span><span class="p">).</span><span class="nf">pipe</span><span class="p">(</span>
+        <span class="nf">delay</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="mi">5000</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">random</span><span class="p">())),</span> <span class="c1">// simulated delay</span>
+        <span class="nf">map</span><span class="p">((</span><span class="nx">img</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="dl">'</span><span class="s1">yep this is a cat</span><span class="dl">'</span><span class="p">),</span>
+        <span class="nf">shareReplay</span><span class="p">()</span>
+    <span class="p">);</span>
+    <span class="nx">pipeline</span><span class="p">.</span><span class="nf">subscribe</span><span class="p">();</span> <span class="c1">// No argument needed: just kick off processing</span>
+
+    <span class="k">return</span> <span class="nx">pipeline</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The <code>shareReplay</code> operator turns your pipeline into a multicast (hot) pipeline, and also replays past events for subscribers who hop on board after data has already arrived.</p>
+
+<h2 id="batching">Batching</h2>
+
+<p>We managed to get API call parallelization, while still preserving data order, but we’re calling the API way too much.
+We need to design a way for the pipeline to only process the data it knows it could use, and terminate early once the four desired cat images are identified.</p>
+
+<p>By definition, we know that full parallelization of the API calls on the input data is not efficient in most cases. The exception is when there are four or less cat pictures in the entire data set, <em>and</em> the last cat picture is at the very end.</p>
+
+<p>Assuming that cat pictures relatively frequent, and spread evenly throughout the input dataset, a more cost-efficient strategy would be to query the API in batches.
+For each batch returned, we can add the cat images to our result dataset, and then adjust our batch size based on how many slots remain for us to fill.</p>
+
+<p>RxJS provides a <code>bufferCount</code> operator which looks promising, but the buffer size is fixed when the operator is defined. A fancier operator, <code>buffer</code>, uses a second Observable to determine when to cut/emit batches of data. It’s flexible, but also makes our solution dependent on the timing of our source data observable: an extraneous, unimportant factor.</p>
+
+<p>We’d prefer to suspend our input stream entirely, until we’ve processed a batch of results. The <code>zipWith</code> operator comes in handy here! It’ll emit pairs of values from two Observable streams, <em>only when both of them have a value available</em>.</p>
+
+<p>For example:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">batcher$</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Subject</span><span class="p">();</span>
+
+<span class="nx">sourceImages$</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span>
+    <span class="nf">zipWith</span><span class="p">(</span><span class="nx">batcher$</span><span class="p">),</span>  <span class="c1">// emits tuples of [image, batcherOutput]</span>
+    <span class="nf">map</span><span class="p">(([</span><span class="nx">img</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="nf">identifyImage</span><span class="p">(</span><span class="nx">img</span><span class="p">)),</span>  <span class="c1">// we only care about the image</span>
+    <span class="nf">concatAll</span><span class="p">(),</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="nx">isCatImage</span><span class="p">),</span>
+    <span class="nf">take</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">).</span><span class="nf">subscribe</span><span class="p">(</span><span class="nx">sendToMyPhone</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The <code>batcher$</code> stream controls when each source image goes through the pipeline. If we call <code>batcher$.next()</code> four times in succession, four images will immediately go into processing (assuming four images are available to process).</p>
+
+<p>How do we initialize and manage <code>batcher$</code>?</p>
+
+<p>We know that, when an image comes through that <em>isn’t</em> a cat, we want to call <code>batcher$.next()</code> to add another image into processing. If an image is a cat, we don’t need to trigger the batcher, because that output “slot” is filled.</p>
+
+<p>So we now have actions we want to take for both the positives <em>and</em> negatives of our <code>filter</code> operator… meaning that we need something more robust than <code>filter</code>. Enter the <code>partition</code> utility, which splits an Observable stream into two streams for the positive and negative items against a filter!</p>
+
+<div class="margin right">  <p>Since we are creating (and eventually subscribing to) <em>two</em> streams with the same source pipeline, we need to “share()” the pipeline to ensure that we aren’t double-calling the API. See the <a href="#side-note-hot-vs-cold">hot versus cold</a> section for details.</p>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">batcher$</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Subject</span><span class="p">();</span>
+
+<span class="kd">const</span> <span class="p">[</span><span class="nx">cats$</span><span class="p">,</span> <span class="nx">notCats$</span><span class="p">]</span> <span class="o">=</span> <span class="nf">partition</span><span class="p">(</span>
+    <span class="nx">sourceImages$</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span>
+        <span class="nf">zipWith</span><span class="p">(</span><span class="nx">batcher$</span><span class="p">),</span>
+        <span class="nf">map</span><span class="p">(([</span><span class="nx">img</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="nf">identifyImage</span><span class="p">(</span><span class="nx">img</span><span class="p">)),</span>
+        <span class="nf">concatAll</span><span class="p">(),</span>
+        <span class="nf">share</span><span class="p">()</span>  <span class="c1">// To prevent double-processing</span>
+    <span class="p">),</span>
+    <span class="nx">isCatImage</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>With the <code>cats$</code> stream, we do the same thing we’ve been doing:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">cats$</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span>
+    <span class="nf">take</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">).</span><span class="nf">subscribe</span><span class="p">(</span><span class="nx">sendToMyPhone</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>With <code>notCats$</code>, we need to queue another image for processing on each negative value:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// No need to pass a value to next().</span>
+<span class="c1">// batcher$ is just a sentinel.</span>
+
+<span class="nx">notCats$</span><span class="p">.</span><span class="nf">subscribe</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">batcher$</span><span class="p">.</span><span class="nf">next</span><span class="p">());</span>
+</code></pre></div></div>
+
+<p>Nothing will run unless <code>batcher$</code> is primed with a few <code>next()</code> calls. The initial number of calls will determine the level of parallelism. Since we need four cat images, we’ll set the parallelism to four as well:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Or, just use a for-loop!</span>
+
+<span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">).</span><span class="nf">subscribe</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">batcher$</span><span class="p">.</span><span class="nf">next</span><span class="p">());</span>
+</code></pre></div></div>
+
+<p>The initial run will send off four API calls at once. The pipeline will maintain four in-flight API calls until one of them returns with a cat. Each cat received will effectively decrement the parallelism, preventing us from over-querying the API after we’ve already received our four cats.</p>
+
+<div class="wide">  <figure><img src="/assets/images/2024/04/15/rxjs-batched-processing/batched.png" alt="visualization of batched pipeline processing" title="Notice how up to four parallel API calls are allowed at first. The number drops to three when the first cat is identified, then down to one when two cats are found in quick succession." /><figcaption>Notice how up to four parallel API calls are allowed at first. The number drops to three when the first cat is identified, then down to one when two cats are found in quick succession.</figcaption></figure>
+</div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Here’s the final pipeline we created:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">NUM_CATS</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">batcher$</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Subject</span><span class="p">();</span>
+
+<span class="kd">const</span> <span class="p">[</span><span class="nx">cats$</span><span class="p">,</span> <span class="nx">notCats$</span><span class="p">]</span> <span class="o">=</span> <span class="nf">partition</span><span class="p">(</span>
+    <span class="nx">sourceImages$</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span>
+        <span class="nf">zipWith</span><span class="p">(</span><span class="nx">batcher$</span><span class="p">),</span>
+        <span class="nf">map</span><span class="p">(([</span><span class="nx">img</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="nf">identifyImage</span><span class="p">(</span><span class="nx">img</span><span class="p">)),</span>
+        <span class="nf">concatAll</span><span class="p">(),</span>
+        <span class="nf">share</span><span class="p">()</span>
+    <span class="p">),</span>
+    <span class="nx">isCatImage</span>
+<span class="p">);</span>
+
+<span class="nx">cats$</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span>
+    <span class="nf">take</span><span class="p">(</span><span class="nx">NUM_CATS</span><span class="p">)</span>
+<span class="p">).</span><span class="nf">subscribe</span><span class="p">(</span><span class="nx">sendToMyPhone</span><span class="p">);</span>
+
+<span class="nx">notCats$</span><span class="p">.</span><span class="nf">subscribe</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">batcher$</span><span class="p">.</span><span class="nf">next</span><span class="p">());</span>
+
+<span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nx">NUM_CATS</span><span class="p">).</span><span class="nf">subscribe</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">batcher$</span><span class="p">.</span><span class="nf">next</span><span class="p">());</span>
+</code></pre></div></div>
+
+<p>Although it got a little unweildy, this architecture does everything we wanted it to: identified and filtered a specific number of cat images out of a large input set, using parallel processing while also being frugal about extraneous API calls.</p>
+
+<p>This simple problem statement and exercise highlights many key concepts in RxJS:</p>
+
+<ul>
+  <li>Observable streams aren’t limited to containing data. They are also useful in scheduling and behavioral control of pipelines.</li>
+  <li>Cold observables are lazy, a behavior that often leads to counterintuitive results when multiple subscribers are involved. If you only want a pipeline run once, <code>share()</code> it.</li>
+  <li>Pipelines don’t have “memory” on their own. Changing future behavior based on past results requires creative solutions.</li>
+</ul>
+
+<p>RxJS can be incredibly difficult to wrap one’s head around, and complicated to write.
+If your team is slowed down or blocked by an exotic pipeline you wrote, I encourage you to remember: <code>for</code>-loops are perfectly acceptable.
+Don’t sacrifice readability for glamor and elegance.
+But when the opportunity to wrestle with RxJS does arise, I find that the satisfaction of a solid solution is worth the puzzling challenge!</p>
+
+<p>My hope is that this little exploration satisfied your curiosity too.</p>]]></content><author><name>Neill Robson</name></author><category term="software" /><summary type="html"><![CDATA[When you have a ton of data that all needs to be processed, reactive programming makes the implementation easy to read, terse to write, and efficient to run. But when the data isn’t all needed, and processing the full stream is prohibitively expensive, more esoteric methods are necessary. Context Say you have an array or stream of image files. You want to send them off to a service that runs image recognition, to identify pictures with cats in them. You want specifically the first four pictures with cats. Not just any four pictures with cats: perhaps the source array is already sorted by timestamp and you want the most recent four cat pictures. Stream processing, asynchronous actions… This sounds like a job for reactive programming! However, you have a couple of unique concerns: The image recognition API is expensive to call. You don’t want to be charged for unnecessary requests. The image recognition API takes a long time for each file. You want to parallelize your processing, if possible. Even with those considerations, you’re pretty sure some creative pipelines will do the trick. You bust out your RxJS library and get started. Concatenation Calling an asynchronous API for each item in an observable stream is a classic use case for one of the *Map operators. Every operator in that family will create a new stream for each item in the source stream, then collapse the outputs into a single stream to pass down the pipeline. Some of the map operators are clearly inappropriate: switchMap drops old streams as soon as new source data comes in. We don’t want to lose any responses from the API. exhaustMap ignores the source data stream while it waits for each created stream to complete. We want to check every image until we have four cats. We really just want concatenation of our API calls, so concatMap seems like a good choice. Our pipeline would look something like: sourceImages$.pipe( concatMap(identifyImage), filter(isCatImage), take(4) ).subscribe(sendToMyPhone); It’s a clean pipeline! But in practice, this implementation processes the source images serially. Each API call must be returned before the next image is sent off. For a slow API, such serial processing is undesirable. The top pipeline represents queries sent to the API. The number on each data point is the number of queries happening in parallel. The bottom pipeline contains the four images identified as cats, emitted at the time they were identified. Merging We’ve got a fourth member of the *Map family: mergeMap. On the surface, it looks like precisely the operator we need. It creates child streams and merges them into the output stream as soon as input data arrives. Implementing it yields nearly identical pipeline code: sourceImages$.pipe( mergeMap(identifyImage), filter(isCatImage), take(4) ).subscribe(sendToMyPhone); Testing it out yields a result worse than we started with: the order of the source images is no longer preserved. We start seeing cat pictures from decades ago, simply because they happened to be the first ones returned by the API. Every single image is sent to the API in parallel. There were 21 images in the sample dataset, but the fourth cat image was the 17th item: we sent off four unnecessary API requests. Maintaining Order As it turns out, the serialization of streams in concatMap (only creating a new stream when the previous one has completed) is a feature unique to that operator. If we simply split out the “map” part of the operator from the concatenation, we get the best of both worlds: All of the streams are created up front (in the map operator) The order of the streams’ output is preserved In between map and concatAll, each object in the stream is… itself a stream. Streamception! sourceImages$.pipe( map(identifyImage), concatAll(), filter(isCatImage), take(4) ).subscribe(sendToMyPhone); This pipeline fixes both our ordering issue, and also runs completely parallelized. We get super excited, until we view our monthly bill from the image recognition service. As it turns out, this pipeline sends every single image to the API, as soon as it shows up in our source stream. We might send off thousands of requests before the four cat images are identified, even if the cat images are the first four images in the source stream! Side Note: Hot vs Cold If you’re trying out this code on your own, you might find that your map/concatAll implementation did not parallelize like you wanted it to. Most likely, it’s a result of implementing identifyImage as a pure RxJS stream, otherwise known as a “cold” observable. The difference between cold and hot observables is simple to state, hard to internalize: Cold observables have their data created inside the observable Hot observables have their data created outside the observable Cold If I make an Observable from an array, from([1, 2, 3]), all of the data is already there. The computer doesn’t have to wait for anyone to get data back to it for the stream to both start and complete immediately. They don’t start emitting values until someone subscribes to them They run a separate, unique pipeline for each subscription (they are “unicast”) Hot Hot observables are made from things like Promises. The computer is waiting for someone else to get back to it, and the computer will emit whatever it receives as soon as it arrives. They emit items upon arrival, regardless of subscriber count They send data through a single pipeline, no matter how many subscribers (they are “multicast”) Returning to our pipeline above: if we map data to a hot observable, the API request goes out immedately (no need for a subscriber). The concatAll does end up subscribing, but the API request is already processing at that point. As each API call returns, concatAll will subscribe to the next one in the stream. Most likely, that latter API call will have already returned, so concatAll receives an immediate value, and continues. On the other hand, mapping to a cold observable doesn’t kick off any process at all. The concatAll subscribes to the first observable, and waits for it to complete. Then it subscribes to the second observable, which hasn’t been doing anything up to this point because it’s cold (and had no subscribers)… and the effect is serialization. If you want to mimic Promises in your indentifyImage implementation, use the shareReplay operator in your pipeline. For example: function identifyImage(img) { const pipeline of(img).pipe( delay(Math.floor(5000 * Math.random())), // simulated delay map((img) =&gt; 'yep this is a cat'), shareReplay() ); pipeline.subscribe(); // No argument needed: just kick off processing return pipeline; } The shareReplay operator turns your pipeline into a multicast (hot) pipeline, and also replays past events for subscribers who hop on board after data has already arrived. Batching We managed to get API call parallelization, while still preserving data order, but we’re calling the API way too much. We need to design a way for the pipeline to only process the data it knows it could use, and terminate early once the four desired cat images are identified. By definition, we know that full parallelization of the API calls on the input data is not efficient in most cases. The exception is when there are four or less cat pictures in the entire data set, and the last cat picture is at the very end. Assuming that cat pictures relatively frequent, and spread evenly throughout the input dataset, a more cost-efficient strategy would be to query the API in batches. For each batch returned, we can add the cat images to our result dataset, and then adjust our batch size based on how many slots remain for us to fill. RxJS provides a bufferCount operator which looks promising, but the buffer size is fixed when the operator is defined. A fancier operator, buffer, uses a second Observable to determine when to cut/emit batches of data. It’s flexible, but also makes our solution dependent on the timing of our source data observable: an extraneous, unimportant factor. We’d prefer to suspend our input stream entirely, until we’ve processed a batch of results. The zipWith operator comes in handy here! It’ll emit pairs of values from two Observable streams, only when both of them have a value available. For example: const batcher$ = new Subject(); sourceImages$.pipe( zipWith(batcher$), // emits tuples of [image, batcherOutput] map(([img]) =&gt; identifyImage(img)), // we only care about the image concatAll(), filter(isCatImage), take(4) ).subscribe(sendToMyPhone); The batcher$ stream controls when each source image goes through the pipeline. If we call batcher$.next() four times in succession, four images will immediately go into processing (assuming four images are available to process). How do we initialize and manage batcher$? We know that, when an image comes through that isn’t a cat, we want to call batcher$.next() to add another image into processing. If an image is a cat, we don’t need to trigger the batcher, because that output “slot” is filled. So we now have actions we want to take for both the positives and negatives of our filter operator… meaning that we need something more robust than filter. Enter the partition utility, which splits an Observable stream into two streams for the positive and negative items against a filter! Since we are creating (and eventually subscribing to) two streams with the same source pipeline, we need to “share()” the pipeline to ensure that we aren’t double-calling the API. See the hot versus cold section for details. const batcher$ = new Subject(); const [cats$, notCats$] = partition( sourceImages$.pipe( zipWith(batcher$), map(([img]) =&gt; identifyImage(img)), concatAll(), share() // To prevent double-processing ), isCatImage ); With the cats$ stream, we do the same thing we’ve been doing: cats$.pipe( take(4) ).subscribe(sendToMyPhone); With notCats$, we need to queue another image for processing on each negative value: // No need to pass a value to next(). // batcher$ is just a sentinel. notCats$.subscribe(() =&gt; batcher$.next()); Nothing will run unless batcher$ is primed with a few next() calls. The initial number of calls will determine the level of parallelism. Since we need four cat images, we’ll set the parallelism to four as well: // Or, just use a for-loop! range(1, 4).subscribe(() =&gt; batcher$.next()); The initial run will send off four API calls at once. The pipeline will maintain four in-flight API calls until one of them returns with a cat. Each cat received will effectively decrement the parallelism, preventing us from over-querying the API after we’ve already received our four cats. Notice how up to four parallel API calls are allowed at first. The number drops to three when the first cat is identified, then down to one when two cats are found in quick succession. Conclusion Here’s the final pipeline we created: const NUM_CATS = 4; const batcher$ = new Subject(); const [cats$, notCats$] = partition( sourceImages$.pipe( zipWith(batcher$), map(([img]) =&gt; identifyImage(img)), concatAll(), share() ), isCatImage ); cats$.pipe( take(NUM_CATS) ).subscribe(sendToMyPhone); notCats$.subscribe(() =&gt; batcher$.next()); range(1, NUM_CATS).subscribe(() =&gt; batcher$.next()); Although it got a little unweildy, this architecture does everything we wanted it to: identified and filtered a specific number of cat images out of a large input set, using parallel processing while also being frugal about extraneous API calls. This simple problem statement and exercise highlights many key concepts in RxJS: Observable streams aren’t limited to containing data. They are also useful in scheduling and behavioral control of pipelines. Cold observables are lazy, a behavior that often leads to counterintuitive results when multiple subscribers are involved. If you only want a pipeline run once, share() it. Pipelines don’t have “memory” on their own. Changing future behavior based on past results requires creative solutions. RxJS can be incredibly difficult to wrap one’s head around, and complicated to write. If your team is slowed down or blocked by an exotic pipeline you wrote, I encourage you to remember: for-loops are perfectly acceptable. Don’t sacrifice readability for glamor and elegance. But when the opportunity to wrestle with RxJS does arise, I find that the satisfaction of a solid solution is worth the puzzling challenge! My hope is that this little exploration satisfied your curiosity too.]]></summary></entry><entry><title type="html">Small Group Leadership Brunch Speech</title><link href="https://neillrobson.com/blog/2024/01/18/leadership-full/" rel="alternate" type="text/html" title="Small Group Leadership Brunch Speech" /><published>2024-01-18T02:22:00+00:00</published><updated>2024-01-18T02:22:00+00:00</updated><id>https://neillrobson.com/blog/2024/01/18/leadership-full</id><content type="html" xml:base="https://neillrobson.com/blog/2024/01/18/leadership-full/"><![CDATA[<p>The following is a written draft of a speech I gave to a gathering of small group
 leaders at my church several months ago. After running across the file, I felt it
 might be encouraging for others to read. <!--more--></p>
 
@@ -1154,88 +1408,4 @@ below.</p>
 
 <p>It’s just as beautiful on a foggy day too–don’t get me wrong.</p>
 
-<p>Okay, that’s all for this blog! The next post will hopefully feature a pharmacy, tea museum, and underground bunker. See you next time!</p>]]></content><author><name>neill</name></author><category term="china" /><category term="travel" /><category term="personal" /><category term="nature" /><summary type="html"><![CDATA[So many of my experiences in Hangzhou are relatively small excursions: individually, they aren’t worth an entire blog post, but they amount to quite a bit when added up! At the same time, a “Miscellaneous” blog post should honestly be saved for the end of a trip, so I’ll try my best to theme this one as more nature-related.]]></summary></entry><entry><title type="html">The Food</title><link href="https://neillrobson.com/blog/2016/06/02/the-food/" rel="alternate" type="text/html" title="The Food" /><published>2016-06-02T13:00:00+00:00</published><updated>2016-06-02T13:00:00+00:00</updated><id>https://neillrobson.com/blog/2016/06/02/the-food</id><content type="html" xml:base="https://neillrobson.com/blog/2016/06/02/the-food/"><![CDATA[<p>There’s one big problem with food in China: more often than not, when you try to photograph it, it’s already escaped you.</p>
-
-<!--more-->
-
-<p>Don’t worry–I’m not talking about the type of food that can run away from you on its own accord! (They do sell that kind of thing, but you won’t see any of it on this blog.) No, I’m instead referring to the unique and wonderful way that food is <em>served</em> to large groups in restaurants.</p>
-
-<p>Rather than everybody getting their own dish of food, you are instead given a small empty plate and bowl with chopsticks and a spoon. All the food that everybody ordered is then presented in serving dishes on a lazy susan the middle of the table, and its up to you to grab what you want to eat before the dish is spun away from under your nose!</p>
-
-<p>Needless to say, you learn to use chopsticks quickly when your nourishment depends on it.</p>
-
-<p>That being said, I’ve tried my best to compile a few images of the types of food I’ve consumed here in Hangzhou. The list is by no means comprehensive–and it will likely grow exponentially before I leave–but hopefully I will leave you with some idea of the wild and wonderful world that is authentic Chinese cuisine!</p>
-
-<figure><img src="/assets/images/2016/05/P_20160525_080017.jpg" alt="fruit" /></figure>
-
-<figure><img src="/assets/images/2016/06/P_20160525_125002.jpg" alt="tv dinner" /></figure>
-
-<p>We’ll start with the tame stuff. Right across the street from the dormitory is a nice little collection of convenience stores and food shops, selling everything from fruit to loaves of bread and dumplings. Usually my lunch consists of something similar to the above: a chopped-and-peeled dish of some mystery produce (dragonfruit, in this case–delicious, like a mild kiwi!), and a microwavable meal.</p>
-
-<p>Now, before you get on my case about eating frozen food like a typical American tourist, hear me out! These things are <em>nothing</em> like the cheap Hot Pockets sold in the United States. They often have balanced amounts of vegetables and grains, with a variety of meat or vegetarian options that are easily recognizable. Furthermore, when you buy it at the c-store, they heat it up for you and provide chopsticks and a toothpick at no extra charge!</p>
-
-<p>Also, not to brag or anything, but the entire lunch pictured above costs around $3.00 (yes, that’s US dollars). Talk about living on a budget.</p>
-
-<figure><img src="/assets/images/2016/06/P_20160531_074016.jpg" alt="breakfast" /></figure>
-
-<p>Speaking of living on a budget, the cafeteria breakfasts literally only cost dimes here. If you’re super hungry in the mornings (like me) and need to order noodles, an egg, three sticky buns, and a warm glass of soy milk, it will put you out around a dollar fifty.</p>
-
-<p>Trust me, if Chinese people are considered relatively slim, it has <em>nothing</em> to do with the price of the food here!</p>
-
-<figure><img src="/assets/images/2016/06/P_20160526_183411.jpg" alt="lazy susan" /></figure>
-
-<p>Starting with this image one can see a sampling of the food collection served at a typical large lazy-susan dinner. The blessing and the curse of this service style is that you almost never see the same dish twice. All too often I eat something absolutely heavenly, but by the time I look up the dish is gone and I never see it again in the future. <em>sigh!</em></p>
-
-<figure><img src="/assets/images/2016/06/P_20160526_183030.jpg" alt="meat over lettuce" /></figure>
-
-<p>To add to the stress of the Chinese food wheel of fortune, often dishes such as this pork is served over a garnish of fresh leafy greens. Pretty indeed, but “fresh leafy greens” is synonymous for “unwashed bacteria farm” in China, so nothing touching the garnish is safe to eat. You’d better level that mountain like a borderline-bankrupt coal miner if you want any meat, because once you get to the base no one is touching those pieces at the bottom.</p>
-
-<figure><img src="/assets/images/2016/06/P_20160526_183414.jpg" alt="tofu" /></figure>
-
-<p>Tofu. Escaping the iron grip of chopstick masters since 2000BC.</p>
-
-<figure><img src="/assets/images/2016/06/P_20160526_183417.jpg" alt="pineapple chicken" /></figure>
-
-<p>Pineapple chicken! One quickly learns that China doesn’t get its share of fruits and veggies as separate dishes: you’ve got to sleuth them out of the meals labeled as “Three-Bird Plus Beef Wrapped in Tofu Supreme.” Fortunately, with dishes such as this one, it isn’t hard to find the fruit!</p>
-
-<figure><img src="/assets/images/2016/06/P_20160526_183528.jpg" alt="ice-cream bread" /></figure>
-
-<p>So basically, this is a loaf of hot bread chopped into cubes on the inside, with a scoop of ice cream dumped on top. You use your chopsticks to dig a cube out of the melting sugar magma seeping into the carbohydrate volcano, dip it into the cream on top for extra calories, consume your piece of the destruction, and repeat.</p>
-
-<p>I have no idea why this isn’t a thing in the United States!</p>
-
-<figure><img src="/assets/images/2016/06/P_20160526_183531.jpg" alt="mushrooms and cheese substitute" /></figure>
-
-<p>Here we have a mushroom casserole. There are so many mushrooms in China, I’m astonished that there hasn’t been an influx of Italian plumbers… But actually, I photographed this dish to talk about the cheese. As it turns out, cheese is virtually unknown in China–even in the pizza shops–and instead they use various forms of dairy-free cheese substitute. Surprisingly, despite their bad reputation in the US, dairy-free cheeses in Chinese dishes actually complement the local tastes quite well! I would even venture to consider the culinary experience as something altogether unique from cheese, and pretty good too.</p>
-
-<figure><img src="/assets/images/2016/06/P_20160526_183651.jpg" alt="eggplant" /></figure>
-
-<p>Eggplant is served here the way it should be everywhere: in a boiling hot sauce of Sichuan peppers. Unfortunately I don’t have an image of the “dancing” eggplant variety, where bonito flakes are added and propelled into the air by the radiation, but I’ll leave finding pictures of that dish as an exercise to the reader.</p>
-
-<p>Also featured in the above image are fish-sticks–Americans love them some fish sticks.</p>
-
-<figure><img src="/assets/images/2016/06/P_20160526_184141.jpg" alt="fish #1" /></figure>
-
-<p>Here comes the fish;</p>
-
-<figure><img src="/assets/images/2016/06/P_20160526_184727.jpg" alt="fish #2" /></figure>
-
-<p>Drowned in his dish!</p>
-
-<figure><img src="/assets/images/2016/06/P_20160526_184734.jpg" alt="Hot greens" /></figure>
-
-<p>Don’t worry, there are a few dishes that contain your average, boiled-to-death cabbage to add some semblance of leafy greens to your diet. Other greens not pictured here are bamboo shoots and boiled okra: the seeds work wonders for sweeping out one’s digestive system!</p>
-
-<figure><img src="/assets/images/2016/06/P_20160526_182147.jpg" alt="tea cakes" /></figure>
-
-<p>Finally, one of the dishes that I can always look forward to at any self-respecting Chinese restaurant is the tea cake. These little patties are covered in sesame seeds and filled with green-tea flavored sweet bean paste, and in my opinion are a thousand times more delicious than any ice cream volcano loaf. Close runner-ups are pumpkin fries and sweet mung bean paste (you can tell I’ve been doing a great job at remembering my Chinese food names). The latter is a miracle-worker when you’ve put your money where your mouth is with some fancy-looking Sichuan firecracker and now the mouth in question is purple and numb with pain.</p>
-
-<p>Only two more food pictures remain, and a quick word of caution along with it: Japanese food in China is just as expensive as Japanese food in America. Furthermore, it consists almost exclusively of raw fish and fresh leafy vegetables. This particular Japanese place I went to, upon sitting our group down, explained to us that they had just opened and that every dish was 25% off because they were still “testing out” the recipes with customers. Oh boy. I just lost all confidence in this institution. While the rest of the group proceeded to order several plates of sushi and a boatload of mystery meat:</p>
-
-<figure><img src="/assets/images/2016/06/P_20160527_182126.jpg" alt="sushi boat" /></figure>
-
-<p>…my wise-stomached friend and I turned instead to the kids menu and found the only cooked dishes in the entire restaurant: fried rice and ramen noodles.</p>
-
-<figure><img src="/assets/images/2016/06/P_20160527_181612.jpg" alt="fried rice" /></figure>
-
-<p>Hooray for defensive eating!</p>]]></content><author><name>neill</name></author><category term="china" /><category term="travel" /><category term="food" /><category term="personal" /><summary type="html"><![CDATA[There’s one big problem with food in China: more often than not, when you try to photograph it, it’s already escaped you.]]></summary></entry></feed>
+<p>Okay, that’s all for this blog! The next post will hopefully feature a pharmacy, tea museum, and underground bunker. See you next time!</p>]]></content><author><name>neill</name></author><category term="china" /><category term="travel" /><category term="personal" /><category term="nature" /><summary type="html"><![CDATA[So many of my experiences in Hangzhou are relatively small excursions: individually, they aren’t worth an entire blog post, but they amount to quite a bit when added up! At the same time, a “Miscellaneous” blog post should honestly be saved for the end of a trip, so I’ll try my best to theme this one as more nature-related.]]></summary></entry></feed>

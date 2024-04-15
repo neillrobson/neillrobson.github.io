@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+    
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Batched Processing in RxJS | Neill Robson's Website</title>
+
+    <script type="module">
+      document.documentElement.classList.remove('no-js');
+      document.documentElement.classList.add('js');
+    </script>
+
+    <meta name="description" content="Batched Processing in RxJS" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Neill Robson">
+
+    <meta property="og:title" content="Batched Processing in RxJS | Neill Robson's Website">
+    <meta property="og:description" content="Batched Processing in RxJS">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neillrobson.com/blog/2024/04/15/rxjs-batched-processing/">
+    <link rel="canonical" href="https://neillrobson.com/blog/2024/04/15/rxjs-batched-processing/">
+
+    
+
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
+    <link type="application/atom+xml" rel="alternate" href="https://neillrobson.com/feed.xml" title="Neill Robson's Website" />
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    
+</head>
+
+
+  <body>
+    <div class="container">
+      <div class="header">
+  <div id="title">
+    <a href="/">
+      <img
+        id="logo"
+        class="rounded"
+        src="/assets/images/2022-profile.jpg"
+        alt="Neill Robson"
+      />
+      Neill Robson's Website
+    </a>
+  </div>
+  <div class="nav">
+    
+    <a href="/" title="About">About</a>
+    
+    <a href="/blog" title="Blog">Blog</a>
+    
+    <a href="/archive" title="Archive">Archive</a>
+    
+    <a href="/projects" title="Projects">Projects</a>
+    
+    <a href="/contact" title="Contact">Contact</a>
+    
+    <a href="/feed.xml" title="RSS">RSS</a>
+    
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="entry">
+    <a class="small date left margin" href="/blog/2024/04/15/rxjs-batched-processing/">April 15, 2024</a>
+    <h1>Batched Processing in RxJS</h1>
+
+    <p>When you have a ton of data that all needs to be processed, reactive programming makes the implementation easy to read, terse to write, and efficient to run.
+But when the data isn’t all needed, and processing the full stream is prohibitively expensive, more esoteric methods are necessary. <!-- more --></p>
+
+<h2 id="context">Context</h2>
+
+<p>Say you have an array or stream of image files. You want to send them off to a service that runs image recognition, to identify pictures with cats in them.
+You want specifically the <em>first four</em> pictures with cats. Not just any four pictures with cats: perhaps the source array is already sorted by timestamp and you want the most recent four cat pictures.</p>
+
+<p>Stream processing, asynchronous actions… This sounds like a job for reactive programming! However, you have a couple of unique concerns:</p>
+
+<ul>
+  <li>The image recognition API is expensive to call. You don’t want to be charged for unnecessary requests.</li>
+  <li>The image recognition API takes a long time for each file. You want to parallelize your processing, if possible.</li>
+</ul>
+
+<p>Even with those considerations, you’re pretty sure some creative pipelines will do the trick. You bust out your RxJS library and get started.</p>
+
+<h2 id="concatenation">Concatenation</h2>
+
+<p>Calling an asynchronous API for each item in an observable stream is a classic use case for one of the <code>*Map</code> operators. Every operator in that family will create a new stream for each item in the source stream, then collapse the outputs into a single stream to pass down the pipeline.</p>
+
+<p>Some of the map operators are clearly inappropriate:</p>
+
+<ul>
+  <li><code>switchMap</code> drops old streams as soon as new source data comes in. We don’t want to lose any responses from the API.</li>
+  <li><code>exhaustMap</code> ignores the source data stream while it waits for each created stream to complete. We want to check every image until we have four cats.</li>
+</ul>
+
+<p>We really just want concatenation of our API calls, so <code>concatMap</code> seems like a good choice. Our pipeline would look something like:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">sourceImages$</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span>
+    <span class="nf">concatMap</span><span class="p">(</span><span class="nx">identifyImage</span><span class="p">),</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="nx">isCatImage</span><span class="p">),</span>
+    <span class="nf">take</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">).</span><span class="nf">subscribe</span><span class="p">(</span><span class="nx">sendToMyPhone</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>It’s a clean pipeline! But in practice, this implementation processes the source images serially. Each API call must be returned before the next image is sent off.
+For a slow API, such serial processing is undesirable.</p>
+
+<div class="wide">  <figure><img src="/assets/images/2024/04/15/rxjs-batched-processing/serial.png" alt="visualization of serial pipeline processing" title="The top pipeline represents queries sent to the API. The number on each data point is the number of queries happening in parallel. The bottom pipeline contains the four images identified as cats, emitted at the time they were identified." /><figcaption>The top pipeline represents queries sent to the API. The number on each data point is the number of queries happening in parallel. The bottom pipeline contains the four images identified as cats, emitted at the time they were identified.</figcaption></figure>
+</div>
+
+<h2 id="merging">Merging</h2>
+
+<p>We’ve got a fourth member of the <code>*Map</code> family: <code>mergeMap</code>. On the surface, it looks like precisely the operator we need.
+It creates child streams and merges them into the output stream as soon as input data arrives.</p>
+
+<p>Implementing it yields nearly identical pipeline code:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">sourceImages$</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span>
+    <span class="nf">mergeMap</span><span class="p">(</span><span class="nx">identifyImage</span><span class="p">),</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="nx">isCatImage</span><span class="p">),</span>
+    <span class="nf">take</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">).</span><span class="nf">subscribe</span><span class="p">(</span><span class="nx">sendToMyPhone</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Testing it out yields a result worse than we started with: <strong>the order of the source images is no longer preserved</strong>. We start seeing cat pictures from decades ago, simply because they happened to be the first ones returned by the API.</p>
+
+<div class="margin left">  <figure><img src="/assets/images/2024/04/15/rxjs-batched-processing/parallel.png" alt="visualization of parallel pipeline processing" title="Every single image is sent to the API in parallel. There were 21 images in the sample dataset, but the fourth cat image was the 17th item: we sent off four unnecessary API requests." /><figcaption>Every single image is sent to the API in parallel. There were 21 images in the sample dataset, but the fourth cat image was the 17th item: we sent off four unnecessary API requests.</figcaption></figure>
+</div>
+
+<h2 id="maintaining-order">Maintaining Order</h2>
+
+<p>As it turns out, the serialization of streams in <code>concatMap</code> (only creating a new stream when the previous one has completed) is a feature unique to that operator.
+If we simply split out the “map” part of the operator from the concatenation, we get the best of both worlds:</p>
+
+<ul>
+  <li>All of the streams are created up front (in the <code>map</code> operator)</li>
+  <li>The order of the streams’ output is preserved</li>
+</ul>
+
+<div class="margin right">  <p>In between map and concatAll, each object in the stream is… itself a stream. Streamception!</p>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">sourceImages$</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span>
+    <span class="nf">map</span><span class="p">(</span><span class="nx">identifyImage</span><span class="p">),</span>
+    <span class="nf">concatAll</span><span class="p">(),</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="nx">isCatImage</span><span class="p">),</span>
+    <span class="nf">take</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">).</span><span class="nf">subscribe</span><span class="p">(</span><span class="nx">sendToMyPhone</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>This pipeline fixes both our ordering issue, and also runs completely parallelized. We get super excited, until we view our monthly bill from the image recognition service.
+As it turns out, this pipeline sends <em>every single image</em> to the API, as soon as it shows up in our source stream. We might send off thousands of requests before the four cat images are identified, even if the cat images are the first four images in the source stream!</p>
+
+<h3 id="side-note-hot-vs-cold"><em>Side Note: Hot vs Cold</em></h3>
+
+<p>If you’re trying out this code on your own, you might find that your <code>map</code>/<code>concatAll</code> implementation did not parallelize like you wanted it to. Most likely, it’s a result of implementing <code>identifyImage</code> as a pure RxJS stream, otherwise known as a “cold” observable. The difference between cold and hot observables is simple to state, hard to internalize:</p>
+
+<ul>
+  <li>Cold observables have their data created <em>inside</em> the observable</li>
+  <li>Hot observables have their data created <em>outside</em> the observable</li>
+</ul>
+
+<div class="column two">
+  <h3 id="cold">Cold</h3>
+  <p>If I make an Observable from an array, <code>from([1, 2, 3])</code>, all of the data is already there. The computer doesn’t have to wait for anyone to get data back to it for the stream to both start and complete immediately.</p>
+  <ul>
+    <li>They don’t start emitting values until someone <code>subscribe</code>s to them</li>
+    <li>They run a separate, unique pipeline for each subscription (they are “<strong>unicast</strong>”)</li>
+  </ul>
+</div>
+
+<div class="column two">
+  <h3 id="hot">Hot</h3>
+  <p>Hot observables are made from things like Promises. The computer is waiting for someone else to get back to it, and the computer will emit whatever it receives as soon as it arrives.</p>
+  <ul>
+    <li>They emit items upon arrival, regardless of subscriber count</li>
+    <li>They send data through a single pipeline, no matter how many subscribers (they are “<strong>multicast</strong>”)</li>
+  </ul>
+</div>
+
+<hr />
+
+<p>Returning to our pipeline above: if we <code>map</code> data to a <em>hot</em> observable, the API request goes out immedately (no need for a subscriber). The <code>concatAll</code> <em>does</em> end up subscribing, but the API request is already processing at that point. As each API call returns, <code>concatAll</code> will subscribe to the next one in the stream. Most likely, that latter API call will have already returned, so <code>concatAll</code> receives an immediate value, and continues.</p>
+
+<p>On the other hand, <code>map</code>ping to a <em>cold</em> observable doesn’t kick off any process at all. The <code>concatAll</code> subscribes to the first observable, and waits for it to complete. Then it subscribes to the second observable, which hasn’t been doing anything up to this point because it’s cold (and had no subscribers)… and the effect is serialization.</p>
+
+<p>If you want to mimic Promises in your <code>indentifyImage</code> implementation, <strong>use the <code>shareReplay</code> operator</strong> in your pipeline. For example:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">identifyImage</span><span class="p">(</span><span class="nx">img</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">pipeline</span> <span class="k">of</span><span class="p">(</span><span class="nx">img</span><span class="p">).</span><span class="nf">pipe</span><span class="p">(</span>
+        <span class="nf">delay</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="mi">5000</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">random</span><span class="p">())),</span> <span class="c1">// simulated delay</span>
+        <span class="nf">map</span><span class="p">((</span><span class="nx">img</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="dl">'</span><span class="s1">yep this is a cat</span><span class="dl">'</span><span class="p">),</span>
+        <span class="nf">shareReplay</span><span class="p">()</span>
+    <span class="p">);</span>
+    <span class="nx">pipeline</span><span class="p">.</span><span class="nf">subscribe</span><span class="p">();</span> <span class="c1">// No argument needed: just kick off processing</span>
+
+    <span class="k">return</span> <span class="nx">pipeline</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The <code>shareReplay</code> operator turns your pipeline into a multicast (hot) pipeline, and also replays past events for subscribers who hop on board after data has already arrived.</p>
+
+<h2 id="batching">Batching</h2>
+
+<p>We managed to get API call parallelization, while still preserving data order, but we’re calling the API way too much.
+We need to design a way for the pipeline to only process the data it knows it could use, and terminate early once the four desired cat images are identified.</p>
+
+<p>By definition, we know that full parallelization of the API calls on the input data is not efficient in most cases. The exception is when there are four or less cat pictures in the entire data set, <em>and</em> the last cat picture is at the very end.</p>
+
+<p>Assuming that cat pictures relatively frequent, and spread evenly throughout the input dataset, a more cost-efficient strategy would be to query the API in batches.
+For each batch returned, we can add the cat images to our result dataset, and then adjust our batch size based on how many slots remain for us to fill.</p>
+
+<p>RxJS provides a <code>bufferCount</code> operator which looks promising, but the buffer size is fixed when the operator is defined. A fancier operator, <code>buffer</code>, uses a second Observable to determine when to cut/emit batches of data. It’s flexible, but also makes our solution dependent on the timing of our source data observable: an extraneous, unimportant factor.</p>
+
+<p>We’d prefer to suspend our input stream entirely, until we’ve processed a batch of results. The <code>zipWith</code> operator comes in handy here! It’ll emit pairs of values from two Observable streams, <em>only when both of them have a value available</em>.</p>
+
+<p>For example:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">batcher$</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Subject</span><span class="p">();</span>
+
+<span class="nx">sourceImages$</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span>
+    <span class="nf">zipWith</span><span class="p">(</span><span class="nx">batcher$</span><span class="p">),</span>  <span class="c1">// emits tuples of [image, batcherOutput]</span>
+    <span class="nf">map</span><span class="p">(([</span><span class="nx">img</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="nf">identifyImage</span><span class="p">(</span><span class="nx">img</span><span class="p">)),</span>  <span class="c1">// we only care about the image</span>
+    <span class="nf">concatAll</span><span class="p">(),</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="nx">isCatImage</span><span class="p">),</span>
+    <span class="nf">take</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">).</span><span class="nf">subscribe</span><span class="p">(</span><span class="nx">sendToMyPhone</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The <code>batcher$</code> stream controls when each source image goes through the pipeline. If we call <code>batcher$.next()</code> four times in succession, four images will immediately go into processing (assuming four images are available to process).</p>
+
+<p>How do we initialize and manage <code>batcher$</code>?</p>
+
+<p>We know that, when an image comes through that <em>isn’t</em> a cat, we want to call <code>batcher$.next()</code> to add another image into processing. If an image is a cat, we don’t need to trigger the batcher, because that output “slot” is filled.</p>
+
+<p>So we now have actions we want to take for both the positives <em>and</em> negatives of our <code>filter</code> operator… meaning that we need something more robust than <code>filter</code>. Enter the <code>partition</code> utility, which splits an Observable stream into two streams for the positive and negative items against a filter!</p>
+
+<div class="margin right">  <p>Since we are creating (and eventually subscribing to) <em>two</em> streams with the same source pipeline, we need to “share()” the pipeline to ensure that we aren’t double-calling the API. See the <a href="#side-note-hot-vs-cold">hot versus cold</a> section for details.</p>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">batcher$</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Subject</span><span class="p">();</span>
+
+<span class="kd">const</span> <span class="p">[</span><span class="nx">cats$</span><span class="p">,</span> <span class="nx">notCats$</span><span class="p">]</span> <span class="o">=</span> <span class="nf">partition</span><span class="p">(</span>
+    <span class="nx">sourceImages$</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span>
+        <span class="nf">zipWith</span><span class="p">(</span><span class="nx">batcher$</span><span class="p">),</span>
+        <span class="nf">map</span><span class="p">(([</span><span class="nx">img</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="nf">identifyImage</span><span class="p">(</span><span class="nx">img</span><span class="p">)),</span>
+        <span class="nf">concatAll</span><span class="p">(),</span>
+        <span class="nf">share</span><span class="p">()</span>  <span class="c1">// To prevent double-processing</span>
+    <span class="p">),</span>
+    <span class="nx">isCatImage</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>With the <code>cats$</code> stream, we do the same thing we’ve been doing:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">cats$</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span>
+    <span class="nf">take</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">).</span><span class="nf">subscribe</span><span class="p">(</span><span class="nx">sendToMyPhone</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>With <code>notCats$</code>, we need to queue another image for processing on each negative value:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// No need to pass a value to next().</span>
+<span class="c1">// batcher$ is just a sentinel.</span>
+
+<span class="nx">notCats$</span><span class="p">.</span><span class="nf">subscribe</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">batcher$</span><span class="p">.</span><span class="nf">next</span><span class="p">());</span>
+</code></pre></div></div>
+
+<p>Nothing will run unless <code>batcher$</code> is primed with a few <code>next()</code> calls. The initial number of calls will determine the level of parallelism. Since we need four cat images, we’ll set the parallelism to four as well:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Or, just use a for-loop!</span>
+
+<span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">).</span><span class="nf">subscribe</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">batcher$</span><span class="p">.</span><span class="nf">next</span><span class="p">());</span>
+</code></pre></div></div>
+
+<p>The initial run will send off four API calls at once. The pipeline will maintain four in-flight API calls until one of them returns with a cat. Each cat received will effectively decrement the parallelism, preventing us from over-querying the API after we’ve already received our four cats.</p>
+
+<div class="wide">  <figure><img src="/assets/images/2024/04/15/rxjs-batched-processing/batched.png" alt="visualization of batched pipeline processing" title="Notice how up to four parallel API calls are allowed at first. The number drops to three when the first cat is identified, then down to one when two cats are found in quick succession." /><figcaption>Notice how up to four parallel API calls are allowed at first. The number drops to three when the first cat is identified, then down to one when two cats are found in quick succession.</figcaption></figure>
+</div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Here’s the final pipeline we created:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">NUM_CATS</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">batcher$</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Subject</span><span class="p">();</span>
+
+<span class="kd">const</span> <span class="p">[</span><span class="nx">cats$</span><span class="p">,</span> <span class="nx">notCats$</span><span class="p">]</span> <span class="o">=</span> <span class="nf">partition</span><span class="p">(</span>
+    <span class="nx">sourceImages$</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span>
+        <span class="nf">zipWith</span><span class="p">(</span><span class="nx">batcher$</span><span class="p">),</span>
+        <span class="nf">map</span><span class="p">(([</span><span class="nx">img</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="nf">identifyImage</span><span class="p">(</span><span class="nx">img</span><span class="p">)),</span>
+        <span class="nf">concatAll</span><span class="p">(),</span>
+        <span class="nf">share</span><span class="p">()</span>
+    <span class="p">),</span>
+    <span class="nx">isCatImage</span>
+<span class="p">);</span>
+
+<span class="nx">cats$</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span>
+    <span class="nf">take</span><span class="p">(</span><span class="nx">NUM_CATS</span><span class="p">)</span>
+<span class="p">).</span><span class="nf">subscribe</span><span class="p">(</span><span class="nx">sendToMyPhone</span><span class="p">);</span>
+
+<span class="nx">notCats$</span><span class="p">.</span><span class="nf">subscribe</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">batcher$</span><span class="p">.</span><span class="nf">next</span><span class="p">());</span>
+
+<span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nx">NUM_CATS</span><span class="p">).</span><span class="nf">subscribe</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">batcher$</span><span class="p">.</span><span class="nf">next</span><span class="p">());</span>
+</code></pre></div></div>
+
+<p>Although it got a little unweildy, this architecture does everything we wanted it to: identified and filtered a specific number of cat images out of a large input set, using parallel processing while also being frugal about extraneous API calls.</p>
+
+<p>This simple problem statement and exercise highlights many key concepts in RxJS:</p>
+
+<ul>
+  <li>Observable streams aren’t limited to containing data. They are also useful in scheduling and behavioral control of pipelines.</li>
+  <li>Cold observables are lazy, a behavior that often leads to counterintuitive results when multiple subscribers are involved. If you only want a pipeline run once, <code>share()</code> it.</li>
+  <li>Pipelines don’t have “memory” on their own. Changing future behavior based on past results requires creative solutions.</li>
+</ul>
+
+<p>RxJS can be incredibly difficult to wrap one’s head around, and complicated to write.
+If your team is slowed down or blocked by an exotic pipeline you wrote, I encourage you to remember: <code>for</code>-loops are perfectly acceptable.
+Don’t sacrifice readability for glamor and elegance.
+But when the opportunity to wrestle with RxJS does arise, I find that the satisfaction of a solid solution is worth the puzzling challenge!</p>
+
+<p>My hope is that this little exploration satisfied your curiosity too.</p>
+
+    
+        <br/>
+        <p>
+            
+                <a class="small tag" href="/tag/software">software</a>
+            
+        </p>
+    
+
+    <div class="clear"></div>
+
+    
+        <div id="disqus_thread"></div>
+<script>
+/**
+ *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+ */
+var disqus_config = function () {
+this.page.url = "https://neillrobson.com/blog/2024/04/15/rxjs-batched-processing/";  // Your page's canonical URL variable
+this.page.identifier = "/blog/2024/04/15/rxjs-batched-processing"; // Your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://neillrobson.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
+        <hr class="full"/>
+    
+    
+        <a class="halfWidth left previousEntry" href="/blog/2024/01/18/leadership-full/">
+            <h5>Previous post</h5>
+            <span class="title">Small Group Leadership Brunch Speech</span>
+            <span class="summary">The following is a written draft of a speech I gave to a gathering of small group leaders at my church several months ago. After running across the file, I felt it might be encouraging for others to read.</span>
+        </a>
+    
+    
+</div>
+
+
+        <div class="clear"></div>
+      </div>
+
+      <div class="footer">
+  <small class="copyright">
+    &copy; 2024 Neill Robson. Layout inspired by
+    <a href="https://blot.im/" target="_blank">Blot</a>.
+    <br />
+    This site is hosted at
+    <a href="https://github.com" target="_blank">GitHub</a> and built with
+    <a href="https://jekyllrb.com" target="_blank">Jekyll</a>.
+  </small>
+</div>
+
+    </div>
+    <script defer type="text/javascript" src="/assets/js/bundle.js"></script>
+
+
+<script async id="dsq-count-scr" src="//neillrobson.disqus.com/count.js"></script>
+
+
+  </body>
+</html>
