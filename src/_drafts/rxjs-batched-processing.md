@@ -79,7 +79,7 @@ sourceImages$.pipe(
 This pipeline fixes both our ordering issue, and also runs completely parallelized. We get super excited, until we view our monthly bill from the image recognition service.
 As it turns out, this pipeline sends _every single image_ to the API, as soon as it shows up in our source stream. We might send off thousands of requests before the four cat images are identified, even if the cat images are the first four images in the source stream!
 
-### _Hot vs Cold_
+### _Side Note: Hot vs Cold_
 
 If you're trying out this code on your own, you might find that your `map`/`concatAll` implementation did not parallelize like you wanted it to. Most likely, it's a result of implementing `identifyImage` as a pure RxJS stream, otherwise known as a "cold" observable. The difference between cold and hot observables is simple to state, hard to internalize:
 
@@ -119,8 +119,121 @@ The `shareReplay` operator turns your pipeline into a multicast (hot) pipeline, 
 
 ## Batching
 
-TODO: this section
+We managed to get API call parallelization, while still preserving data order, but we're calling the API way too much.
+We need to design a way for the pipeline to only process the data it knows it could use, and terminate early once the four desired cat images are identified.
+
+By definition, we know that full parallelization of the API calls on the input data is not efficient in most cases. The exception is when there are four or less cat pictures in the entire data set, _and_ the last cat picture is at the very end.
+
+Assuming that cat pictures relatively frequent, and spread evenly throughout the input dataset, a more cost-efficient strategy would be to query the API in batches.
+For each batch returned, we can add the cat images to our result dataset, and then adjust our batch size based on how many slots remain for us to fill.
+
+RxJS provides a `bufferCount` operator which looks promising, but the buffer size is fixed when the operator is defined. A fancier operator, `buffer`, uses a second Observable to determine when to cut/emit batches of data. It's flexible, but also makes our solution dependent on the timing of our source data observable: an extraneous, unimportant factor.
+
+We'd prefer to suspend our input stream entirely, until we've processed a batch of results. The `zipWith` operator comes in handy here! It'll emit pairs of values from two Observable streams, _only when both of them have a value available_.
+
+For example:
+
+```javascript
+const batcher$ = new Subject();
+
+sourceImages$.pipe(
+    zipWith(batcher$),  // emits tuples of [image, batcherOutput]
+    map(([img]) => identifyImage(img)),  // we only care about the image
+    concatAll(),
+    filter(isCatImage),
+    take(4)
+).subscribe(sendToMyPhone);
+```
+
+The `batcher$` stream controls when each source image goes through the pipeline. If we call `batcher$.next()` four times in succession, four images will immediately go into processing (assuming four images are available to process).
+
+How do we initialize and manage `batcher$`?
+
+We know that, when an image comes through that _isn't_ a cat, we want to call `batcher$.next()` to add another image into processing. If an image is a cat, we don't need to trigger the batcher, because that output "slot" is filled.
+
+So we now have actions we want to take for both the positives _and_ negatives of our `filter` operator... meaning that we need something more robust than `filter`. Enter the `partition` utility, which splits an Observable stream into two streams for the positive and negative items against a filter!
+
+{>|} Since we are creating (and eventually subscribing to) _two_ streams with the same source pipeline, we need to "share()" the pipeline to ensure that we aren't double-calling the API. See the [hot versus cold](#side-note-hot-vs-cold) section for details.
+
+```javascript
+const batcher$ = new Subject();
+
+const [cats$, notCats$] = partition(
+    sourceImages$.pipe(
+        zipWith(batcher$),
+        map(([img]) => identifyImage(img)),
+        concatAll(),
+        share()  // To prevent double-processing
+    ),
+    isCatImage
+);
+```
+
+With the `cats$` stream, we do the same thing we've been doing:
+
+```javascript
+cats$.pipe(
+    take(4)
+).subscribe(sendToMyPhone);
+```
+
+With `notCats$`, we need to queue another image for processing on each negative value:
+
+```javascript
+// No need to pass a value to next().
+// batcher$ is just a sentinel.
+
+notCats$.subscribe(() => batcher$.next());
+```
+
+Nothing will run unless `batcher$` is primed with a few `next()` calls. The initial number of calls will determine the level of parallelism. Since we need four cat images, we'll set the parallelism to four as well:
+
+```javascript
+// Or, just use a for-loop!
+
+range(1, 4).subscribe(() => batcher$.next());
+```
+
+The initial run will send off four API calls at once. The pipeline will maintain four in-flight API calls until one of them returns with a cat. Each cat received will effectively decrement the parallelism, preventing us from over-querying the API after we've already received our four cats.
 
 ## Conclusion
 
-TODO: this section
+Here's the final pipeline we created:
+
+```javascript
+const NUM_CATS = 4;
+const batcher$ = new Subject();
+
+const [cats$, notCats$] = partition(
+    sourceImages$.pipe(
+        zipWith(batcher$),
+        map(([img]) => identifyImage(img)),
+        concatAll(),
+        share()
+    ),
+    isCatImage
+);
+
+cats$.pipe(
+    take(NUM_CATS)
+).subscribe(sendToMyPhone);
+
+notCats$.subscribe(() => batcher$.next());
+
+range(1, NUM_CATS).subscribe(() => batcher$.next());
+```
+
+Although it got a little unweildy, this architecture does everything we wanted it to: identified and filtered a specific number of cat images out of a large input set, using parallel processing while also being frugal about extraneous API calls.
+
+This simple problem statement and exercise highlights many key concepts in RxJS:
+
+* Observable streams aren't limited to containing data. They are also useful in scheduling and behavioral control of pipelines.
+* Cold observables are lazy, a behavior that often leads to counterintuitive results when multiple subscribers are involved. If you only want a pipeline run once, `share()` it.
+* Pipelines don't have "memory" on their own. Changing future behavior based on past results requires creative solutions.
+
+RxJS can be incredibly difficult to wrap one's head around, and complicated to write.
+If your team is slowed down or blocked by an exotic pipeline you wrote, I encourage you to remember: `for`-loops are perfectly acceptable.
+Don't sacrifice readability for glamor and elegance.
+But when the opportunity to wrestle with RxJS does arise, I find that the satisfaction of a solid solution is worth the puzzling challenge!
+
+My hope is that this little exploration satisfied your curiosity too.
