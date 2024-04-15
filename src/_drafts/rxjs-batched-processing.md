@@ -40,6 +40,8 @@ sourceImages$.pipe(
 It's a clean pipeline! But in practice, this implementation processes the source images serially. Each API call must be returned before the next image is sent off.
 For a slow API, such serial processing is undesirable.
 
+{<>} ![visualization of serial pipeline processing]({{site.baseurl}}/assets/images/2024/04/15/rxjs-batched-processing/serial.png "The top pipeline represents queries sent to the API. The number on each data point is the number of queries happening in parallel. The bottom pipeline contains the four images identified as cats, emitted at the time they were identified.")
+
 ## Merging
 
 We've got a fourth member of the `*Map` family: `mergeMap`. On the surface, it looks like precisely the operator we need.
@@ -56,6 +58,8 @@ sourceImages$.pipe(
 ```
 
 Testing it out yields a result worse than we started with: **the order of the source images is no longer preserved**. We start seeing cat pictures from decades ago, simply because they happened to be the first ones returned by the API.
+
+{|<} ![visualization of parallel pipeline processing]({{site.baseurl}}/assets/images/2024/04/15/rxjs-batched-processing/parallel.png "Every single image is sent to the API in parallel. There were 21 images in the sample dataset, but the fourth cat image was the 17th item: we sent off four unnecessary API requests.")
 
 ## Maintaining Order
 
@@ -86,15 +90,19 @@ If you're trying out this code on your own, you might find that your `map`/`conc
 * Cold observables have their data created _inside_ the observable
 * Hot observables have their data created _outside_ the observable
 
-If I make an Observable from an array, `from([1, 2, 3])`, all of the data is already there. Even though we created a stream/observable "interface," the computer doesn't have to wait for anyone to get data back to it for the stream to both start and complete immediately. As a result:
+{||}
+### Cold
+If I make an Observable from an array, `from([1, 2, 3])`, all of the data is already there. The computer doesn't have to wait for anyone to get data back to it for the stream to both start and complete immediately.
+* They don't start emitting values until someone `subscribe`s to them
+* They run a separate, unique pipeline for each subscription (they are "**unicast**")
 
-* Cold observables don't start emitting values until someone `subscribe`s to them
-* Cold observables run a separate, unique pipeline for each subscription (they are "**unicast**")
+{||}
+### Hot
+Hot observables are made from things like Promises. The computer is waiting for someone else to get back to it, and the computer will emit whatever it receives as soon as it arrives.
+* They emit items upon arrival, regardless of subscriber count
+* They send data through a single pipeline, no matter how many subscribers (they are "**multicast**")
 
-Hot observables are made from things like Promises (e.g. `from(http.fetch('/api/my-endpoint'))`). The computer is waiting for someone else to get back to it, and the computer will emit whatever it receives as soon as it arrives.
-
-* Hot observables emit items upon arrival, regardless of subscriber count
-* Hot observables send data through a single pipeline, no matter how many subscribers (they are "**multicast**")
+---
 
 Returning to our pipeline above: if we `map` data to a _hot_ observable, the API request goes out immedately (no need for a subscriber). The `concatAll` _does_ end up subscribing, but the API request is already processing at that point. As each API call returns, `concatAll` will subscribe to the next one in the stream. Most likely, that latter API call will have already returned, so `concatAll` receives an immediate value, and continues.
 
@@ -195,6 +203,8 @@ range(1, 4).subscribe(() => batcher$.next());
 ```
 
 The initial run will send off four API calls at once. The pipeline will maintain four in-flight API calls until one of them returns with a cat. Each cat received will effectively decrement the parallelism, preventing us from over-querying the API after we've already received our four cats.
+
+{<>} ![visualization of batched pipeline processing]({{site.baseurl}}/assets/images/2024/04/15/rxjs-batched-processing/batched.png "Notice how up to four parallel API calls are allowed at first. The number drops to three when the first cat is identified, then down to one when two cats are found in quick succession.")
 
 ## Conclusion
 
