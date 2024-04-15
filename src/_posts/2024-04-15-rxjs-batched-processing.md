@@ -1,8 +1,11 @@
 ---
 layout: post
 title: Batched Processing in RxJS
+date: 2024-04-15 13:47 -0400
+comments: true
+tags:
+    - software
 ---
-
 When you have a ton of data that all needs to be processed, reactive programming makes the implementation easy to read, terse to write, and efficient to run.
 But when the data isn't all needed, and processing the full stream is prohibitively expensive, more esoteric methods are necessary. <!-- more -->
 
