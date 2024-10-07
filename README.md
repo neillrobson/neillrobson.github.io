@@ -51,3 +51,5 @@ Source code for the personal website and blog of Neill Robson.
     -   [ ] Improve styling of RSS/Search buttons
     -   [ ] Implement search bar: elasticsearch free?
 -   [ ] Respond smartly to no-js
+-   [ ] "now" page: https://nownownow.com/
+-   [ ] Project page for Private Reacji app
