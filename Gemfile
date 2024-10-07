@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+# Transitive dependencies that were removed from stdlib in Ruby 3.4
+gem "logger"
+gem "csv"
+gem "ostruct"
+gem "base64"
+
 gem "jekyll"
 
 group :jekyll_plugins do
