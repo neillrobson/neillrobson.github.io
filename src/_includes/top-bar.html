@@ -1,7 +1,7 @@
 <div class="header">
   <div id="title">
     {% assign backup_url = "https://neillrobson.com/assets/images/2023-profile.jpg" | url_encode %}
-    {% assign slug = site.data.people.neill.email | strip | downcase | sha256 %}
+    {% assign slug = "neill@neillrobson.com" | strip | downcase | sha256 %}
     <a href="/">
       <img
         id="logo"
