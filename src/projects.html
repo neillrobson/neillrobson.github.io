@@ -9,7 +9,7 @@ layout: default
 	{% if project.cover-image %}
 	<img class="three column" src="{{project.cover-image}}" />
 	{% endif %}
-	<p>{{ project.content | strip_html | truncatewords: 30, '...' }}</p>
+	<p>{{ project.excerpt | strip_html | truncatewords: 30, '...' }}</p>
 	<div class="clear"></div>
 </div>
 {% endfor %}

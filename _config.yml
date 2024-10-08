@@ -43,3 +43,4 @@ keep_files:
   - assets
 
 excerpt_separator: <!--more-->
+page_excerpts: true
