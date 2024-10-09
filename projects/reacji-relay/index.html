@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+    
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Reacji Relay | Neill Robson's Website</title>
+
+    <script type="module">
+      document.documentElement.classList.remove('no-js');
+      document.documentElement.classList.add('js');
+    </script>
+
+    <meta name="description" content="Reacji Relay" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Neill Robson">
+
+    <meta property="og:title" content="Reacji Relay | Neill Robson's Website">
+    <meta property="og:description" content="Reacji Relay">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neillrobson.com/projects/reacji-relay/">
+    <link rel="canonical" href="https://neillrobson.com/projects/reacji-relay/">
+
+    
+
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
+    <link type="application/atom+xml" rel="alternate" href="https://neillrobson.com/feed.xml" title="Neill Robson&apos;s Website" />
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    
+</head>
+
+
+  <body>
+    <div class="container">
+      <div class="header">
+  <div id="title">
+    
+    
+    <a href="/">
+      <img
+        id="logo"
+        class="rounded"
+        src="https://gravatar.com/avatar/e246fc5b45d5e2859ecbf2b867e4b5bb30d5e3d079c412add3acdd5ba87b07ce?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
+        alt="Neill Robson"
+      />
+      Neill Robson's Website
+    </a>
+  </div>
+  <div class="nav">
+    
+    <a href="/" title="About">About</a>
+    
+    <a href="/blog" title="Blog">Blog</a>
+    
+    <a href="/archive" title="Archive">Archive</a>
+    
+    <a href="/projects" title="Projects">Projects</a>
+    
+    <a href="/contact" title="Contact">Contact</a>
+    
+    <a href="/feed.xml" title="RSS">RSS</a>
+    
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="entry">
+	<a href="/projects/reacji-relay/">
+	<h1>Reacji Relay</h1>
+	</a>
+	
+	<div class="three column">
+		<div class="blur-container">
+			<img width="100%" src="/assets/images/projects/reacji-relay.png" />
+			<div class="blur"></div>
+		</div>
+	</div>
+	
+	<p>A Slack app that forwards messages to different channels, based on the emojis
+users react to the message with. Supports private-channel destinations and a
+robust administrative interface. <!--more--></p>
+
+<hr />
+
+<h2 id="history">History</h2>
+
+<p>Disappointed that Slack’s home-grown
+<a href="https://reacji-channeler.builtbyslack.com/">Reacji Channeler</a> app did not
+support targeting private channels with their forwarding rules, I took it upon
+myself to create a more robust solution.</p>
+
+<p>As a frontend engineer, I wanted to do as little backend work as possible.
+Fortunately, in 2024, database-as-a-service providers and edge function
+technologies make avoiding backend work an achievable goal. Having experimented
+a bit with both Supabase (DBaaS) and edge functions with DigitalOcean, I was
+comfortable with the challenge of putting those ideas together into a
+production-ready app.</p>
+
+<p>“Production-ready” is a formidable aspiration <em>outside</em> the technical details. I
+have yet to implement any sort of payment model (even edge functions aren’t
+free), airtight privacy policy, or formalized support channel. Even after
+installing the app in your workspace, the activation flow is nothing more than
+sending me an email at the moment!</p>
+
+<p>However, a “version 1.0” of the app is largely code-complete. For the sake of
+giving the app a public web presence, to begin soliciting alpha testing feedback
+and share what I’m working on, I’m establishing this project page.</p>
+
+<p>Click the link below if you’re interested in trying out the app!</p>
+
+<p><a href="https://ouajvwrffkiwzwwjvuzp.supabase.co/functions/v1/oauth/request" style="align-items:center;color:#000;background:#fff;border:1px solid #ddd;border-radius:4px;display:inline-flex;font-family:Lato, sans-serif;font-size:16px;font-weight:600;height:48px;justify-content:center;text-decoration:none;width:236px"><svg xmlns="http://www.w3.org/2000/svg" style="height:20px;width:20px;margin-right:12px" viewBox="0 0 122.8 122.8"><path d="M25.8 77.6c0 7.1-5.8 12.9-12.9 12.9S0 84.7 0 77.6s5.8-12.9 12.9-12.9h12.9v12.9zm6.5 0c0-7.1 5.8-12.9 12.9-12.9s12.9 5.8 12.9 12.9v32.3c0 7.1-5.8 12.9-12.9 12.9s-12.9-5.8-12.9-12.9V77.6z" fill="#e01e5a"></path><path d="M45.2 25.8c-7.1 0-12.9-5.8-12.9-12.9S38.1 0 45.2 0s12.9 5.8 12.9 12.9v12.9H45.2zm0 6.5c7.1 0 12.9 5.8 12.9 12.9s-5.8 12.9-12.9 12.9H12.9C5.8 58.1 0 52.3 0 45.2s5.8-12.9 12.9-12.9h32.3z" fill="#36c5f0"></path><path d="M97 45.2c0-7.1 5.8-12.9 12.9-12.9s12.9 5.8 12.9 12.9-5.8 12.9-12.9 12.9H97V45.2zm-6.5 0c0 7.1-5.8 12.9-12.9 12.9s-12.9-5.8-12.9-12.9V12.9C64.7 5.8 70.5 0 77.6 0s12.9 5.8 12.9 12.9v32.3z" fill="#2eb67d"></path><path d="M77.6 97c7.1 0 12.9 5.8 12.9 12.9s-5.8 12.9-12.9 12.9-12.9-5.8-12.9-12.9V97h12.9zm0-6.5c-7.1 0-12.9-5.8-12.9-12.9s5.8-12.9 12.9-12.9h32.3c7.1 0 12.9 5.8 12.9 12.9s-5.8 12.9-12.9 12.9H77.6z" fill="#ecb22e"></path></svg>Add
+to Slack</a></p>
+
+<h2 id="usage">Usage</h2>
+
+<p>The app can be configured using four commands:</p>
+
+<ul>
+  <li><code>/reacji help</code>: Displays a message with usage information.</li>
+  <li><code>/reacji list</code>: Displays all forwarding rules currently configured for your
+workspace.</li>
+  <li><code>/reacji add :emoji: #destination</code>: Adds a forwarding rule for any messages
+who receive the <code>:emoji:</code> reaction. They will be forwarded to the
+<code>#destination</code> channel.</li>
+  <li><code>/reacji remove :emoji: #destination</code>: Removes the forwarding rule for the
+given emoji and destination.</li>
+</ul>
+
+<p>Note that the app must be <strong>manually invited</strong> to each channel where reactions
+should be observed, and where posts should be forwarded. The app will <strong>not</strong>
+see messages or reactions in channels it is not invited to, and it will silently
+refuse to post messages in destination channels it is not a member of.</p>
+
+<p>Additionally, the app will <strong>never re-post messages from DMs or private
+channels</strong>, regardless of destination. The app can safely be invited to private
+channels (to serve as a destination) without concern that private information is
+re-posted publicly.</p>
+
+<h2 id="support">Support</h2>
+
+<p>For now, any questions or concerns should be sent directly to me via
+<a href="mailto:reacjisupport.smite805@passmail.net">email</a>. Creating a more robust
+support system is high on my priority list!</p>
+
+<h2 id="privacy-policy">Privacy Policy</h2>
+
+<p>A formal Privacy Policy will be drafted in the near future. In the meantime, the
+following is a plain-English overview of what you can expect from using Reacji
+Relay:</p>
+
+<ul>
+  <li>
+    <p>Authentication is handled entirely through Slack. We do not collect, manage,
+or even see login information from users.</p>
+  </li>
+  <li>
+    <p>The Slack app itself asks for certain permission scopes, such as reading
+message reaction data and posting to private channels. These permissions are
+used to provide the essential functionalities of this app. It will never post
+unsolicited messages or pull post content from Slack.</p>
+  </li>
+  <li>
+    <p>Information stored in the database includes Channel IDs, Team/Workspace IDs,
+User IDs, message timestamps, and emoji identifiers. Of these, the only
+“plain-English” information are emoji identifiers (e.g. <code>:sweat-smile:</code>). All
+other information is set by Slack. Their IDs typically look like <code>C12345</code> or
+<code>T67890</code> (a letter followed by numbers). In other words, they do not carry
+personally-identifiable information.</p>
+  </li>
+  <li>
+    <p>When deleting/de-registering your application instance, <em>all data related to
+your workspace is automatically deleted from the system</em>. Nothing is retained.</p>
+  </li>
+  <li>
+    <p>Email <a href="mailto:reacjisupport.smite805@passmail.net">the support address</a> if you
+desire an export of your data.</p>
+  </li>
+</ul>
+
+	<div class="clear"></div>
+</div>
+
+
+        <div class="clear"></div>
+      </div>
+
+      <div class="footer">
+  <small class="copyright">
+    &copy; 2024 Neill Robson. Layout inspired by
+    <a href="https://blot.im/" target="_blank">Blot</a>.
+    <br />
+    This site is hosted at
+    <a href="https://github.com" target="_blank">GitHub</a> and built with
+    <a href="https://jekyllrb.com" target="_blank">Jekyll</a>.
+  </small>
+</div>
+
+    </div>
+    <script defer type="text/javascript" src="/assets/js/bundle.js"></script>
+
+
+<script async id="dsq-count-scr" src="//neillrobson.disqus.com/count.js"></script>
+
+
+  </body>
+</html>
