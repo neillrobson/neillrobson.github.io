@@ -3,11 +3,12 @@ title: Digital Candyland Card Deck
 subtitle: Progressive web application
 client: Give Kids the World
 cover-image: /assets/images/projects/gktw.png
-tags: 
+tags:
   - JavaScript
   - React
   - Google Workbox
 layout: project
+year: 2019
 ---
 Each year, NC State University sends a group of students down to Orlando,
 Florida to serve for a week at the charity [Give Kids The World

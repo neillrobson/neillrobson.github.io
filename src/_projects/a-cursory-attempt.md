@@ -2,10 +2,11 @@
 title: A Cursor-y Attempt
 client: Ludum Dare 35
 cover-image: /assets/images/projects/ld35.png
-tags: 
+tags:
   - JavaScript
   - HTML
 layout: project
+year: 2016
 ---
 In April 2016, I participated in my first-ever video game design competition:
 Ludum Dare. The experience of developing and publishing a video game from
@@ -33,7 +34,7 @@ scratch--adhering to a theme announced at the beginning of the contest. Entries
 are judged and ranked in 7 categories, including audio, graphics, innovation,
 adherence to the theme, and so on.
 
-This time, the theme was **Shapeshift**. I was one of 2,712 entries. 
+This time, the theme was **Shapeshift**. I was one of 2,712 entries.
 
 For anyone interested in further background about the rules, operations, or
 history of the Ludum Dare competition, feel free to check out [the
@@ -49,7 +50,7 @@ game](/assets/images/2016/06/Screenshot-from-2016-06-27-14-42-04.png)
 
 A lot of information can already be found at the link above. So that players
 would not have to download anything (and could play the game regardless of their
-operating system), I opted to write a browser-based game in pure Javascript. 
+operating system), I opted to write a browser-based game in pure Javascript.
 
 The basic idea is that you have a cursor that can be maneuvered around on a
 grid. Colored boxes are strewn about the grid as well, and whenever the cursor
@@ -85,7 +86,7 @@ one, choosing not to use a game-creation engine or library was a terrible
 inconvenience to me. Furthermore, pure Javascript (of all inappropriate
 languages) is simply not suited for video game development, and if I were to
 expand on this project I would most certainly have to begin by translating the
-current product into a different language! 
+current product into a different language!
 
 As I stated previously, the main reason for choosing Javascript as my working
 environment was to produce a Web-based game that required no downloading. That
@@ -107,7 +108,7 @@ However, my greatest success in this first attempt was certainly my tenacity:
 even realizing at the 24-hour mark what terrible mistakes I was making, and
 watching my lofty dreams come tumbling down to a humble reality, by sticking
 with the imperfect pieces I had I was able to make an infinitely higher-quality
-product than if I had been wishy-washy in my development choices. 
+product than if I had been wishy-washy in my development choices.
 
 ---
 

@@ -2,10 +2,11 @@
 title: Path-Marched 3D Fractal Renderer
 client: NC State University
 cover-image: /assets/images/projects/fractal.jpg
-tags: 
+tags:
   - JavaScript
   - WebGL
 layout: project
+year: 2019
 ---
 For my final project in my graphics course, rather than sticking with the
 status-quo of triangular surfaces, I wanted to render an object with an infinite

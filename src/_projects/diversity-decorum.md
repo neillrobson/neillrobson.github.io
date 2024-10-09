@@ -3,11 +3,12 @@ title: Diversity and Decorum in Open Source Communities
 subtitle: Research paper
 client: NC State University
 cover-image: /assets/images/projects/femaleoctocat.png
-tags: 
+tags:
   - R
   - SQL
   - LaTeX
 layout: project
+year: 2018
 ---
 Over the summer of 2018 I had the privilege of working under Dr. Emerson
 Murphy-Hill at NC State University, researching cultural bias in open source

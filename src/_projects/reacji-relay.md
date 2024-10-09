@@ -8,6 +8,7 @@ tags:
   - Supabase
   - Slack
 layout: project
+year: 2024
 ---
 
 A Slack app that forwards messages to different channels, based on the emojis
