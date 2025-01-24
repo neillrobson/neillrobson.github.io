@@ -51,5 +51,5 @@ Source code for the personal website and blog of Neill Robson.
     -   [ ] Improve styling of RSS/Search buttons
     -   [ ] Implement search bar using frontend-only solution: maybe [lunr](https://lunrjs.com)
 -   [ ] Respond smartly to no-js
--   [ ] "now" page: https://nownownow.com/
+-   [x] "now" page: https://nownownow.com/
 -   [x] Project page for Private Reacji app
