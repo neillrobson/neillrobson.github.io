@@ -49,7 +49,7 @@ Source code for the personal website and blog of Neill Robson.
 -   [x] Update stylesheets to make sidebar links clickable on mobile
 -   [ ] RSS/Search
     -   [ ] Improve styling of RSS/Search buttons
-    -   [ ] Implement search bar: elasticsearch free?
+    -   [ ] Implement search bar using frontend-only solution: maybe [lunr](https://lunrjs.com)
 -   [ ] Respond smartly to no-js
 -   [ ] "now" page: https://nownownow.com/
--   [ ] Project page for Private Reacji app
+-   [x] Project page for Private Reacji app
