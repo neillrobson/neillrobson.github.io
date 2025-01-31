@@ -3,6 +3,7 @@ layout: default
 pagination:
     data: collections.post
     size: 2
+    reverse: true
     alias: posts
 ---
 
@@ -11,27 +12,28 @@ pagination:
         <a class="small date left margin" href="{{post.url}}">{{post.date | date: '%B %-d, %Y'}}</a>
         <a href="{{ post.url }}"><h1>{{ post.data.title }}</h1></a>
         <p>
-            {{ post.excerpt | newline_to_br | strip_newlines | replace: '<br />', ' ' |
+            {{ post.data.page.excerpt | newline_to_br | strip_newlines | replace: '<br />', ' ' |
     strip_html | strip | truncatewords: 100 }}
         </p>
-        {% for tag in post.tags %}
-            <a class="small tag" href="/tag/{{ tag }}">{{tag}}</a>
+        {% for tag in post.data.tags %}
+            {% if tag != 'post' %}
+                <a class="small tag" href="/tag/{{ tag }}">{{tag}}</a>
+            {% endif %}
         {% endfor %}
         <div class="clear"></div>
     </div>
 {% endfor %}
-{% if paginator.total_pages > 1 %}
+{% if pagination.hrefs.length > 1 %}
     <div class="pagination">
-        {% if paginator.previous_page %}
-            <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}">&larr; Newer</a>
+        {% if pagination.href.previous %}
+            <a href="{{ pagination.href.previous }}">&larr; Newer</a>
         {% endif %}
         Page
-        {{ paginator.page }}
+        {{ pagination.pageNumber | plus: 1 }}
         of
-        {{ paginator.total_pages }}
-        {% if
-  paginator.next_page %}
-            <a href="{{ paginator.next_page_path | prepend: site.baseurl }}">Older &rarr;</a>
+        {{ pagination.hrefs.length }}
+        {% if pagination.href.next %}
+            <a href="{{ pagination.href.next }}">Older &rarr;</a>
         {% endif %}
     </div>
 {% endif %}

@@ -9,5 +9,10 @@ export default async function (eleventyConfig) {
     yaml.load(contents)
   );
 
+  eleventyConfig.setFrontMatterParsingOptions({
+    excerpt: true,
+    excerpt_separator: "<!--more-->",
+  });
+
   eleventyConfig.addPlugin(eleventyPluginSass);
 }
