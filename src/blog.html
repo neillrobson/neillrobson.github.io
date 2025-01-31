@@ -13,8 +13,7 @@ permalink: "/blog{% if pagination.pageNumber > 0 %}/page{{ pagination.pageNumber
         <a class="small date left margin" href="{{post.url}}">{{post.date | date: '%B %-d, %Y'}}</a>
         <a href="{{ post.url }}"><h1>{{ post.data.title }}</h1></a>
         <p>
-            {{ post.data.page.excerpt | newline_to_br | strip_newlines | replace: '<br />', ' ' |
-    strip_html | strip | truncatewords: 100 }}
+            {{ post.data.page.excerpt | md | strip_html | truncatewords: 100 }}
         </p>
         {% for tag in post.data.tags %}
             {% if tag != 'post' %}
