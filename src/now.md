@@ -4,10 +4,7 @@ layout: default
 
 # What I'm doing now
 
-<small>
-This page is a [Now Page](https://nownownow.com/about). It answers the question, *what is my current season in life?*<br>
-Last updated January 2025.
-</small>
+<small>This page is a [Now Page](https://nownownow.com/about). It answers the question, *what is my current season in life?*<br>Last updated January 2025.</small>
 
 ## Location
 
