@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-  {% include head.html %}
+  {% include "head.html" %}
 
   <body>
     <div class="container">
-      {% include top-bar.html %}
+      {% include "top-bar.html" %}
 
       <div class="main">
         {{ content }}
@@ -12,8 +12,8 @@
         <div class="clear"></div>
       </div>
 
-      {% include footer.html %}
+      {% include "footer.html" %}
     </div>
-    {% include scripts.html %}
+    {% include "scripts.html" %}
   </body>
 </html>

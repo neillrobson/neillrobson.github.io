@@ -1,43 +1,46 @@
 {
-    "name": "neillrobson.github.io",
-    "version": "2.0.0",
-    "description": "Source code for the personal website and blog of Neill Robson.",
-    "private": true,
-    "scripts": {
-        "clean": "shx rm -rf _site && shx mkdir _site",
-        "build": "npm run clean && webpack --mode=production && bundle exec jekyll build",
-        "start": "npm run clean && concurrently -k -n \"WEBPACK,JEKYLL,BROWSER-SYNC\" -c \"bgBlue.bold,bgRed.bold,bgCyan.bold\" \"webpack -w --mode=development\" \"bundle exec jekyll build --drafts --watch\" \"browser-sync _site -w --no-open\""
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/neillrobson/neillrobson.github.io.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/neillrobson/neillrobson.github.io/issues"
-    },
-    "homepage": "https://github.com/neillrobson/neillrobson.github.io#readme",
-    "devDependencies": {
-        "@babel/core": "^7.25.7",
-        "@babel/preset-env": "^7.25.7",
-        "babel-loader": "^9.2.1",
-        "browser-sync": "^3.0.3",
-        "concurrently": "^9.0.1",
-        "css-loader": "^7.1.2",
-        "file-loader": "^6.2.0",
-        "mini-css-extract-plugin": "^2.9.1",
-        "sass": "^1.79.4",
-        "sass-loader": "^16.0.2",
-        "shx": "^0.3.4",
-        "style-loader": "^4.0.0",
-        "webpack": "^5.95.0",
-        "webpack-cli": "^5.1.4"
-    },
-    "dependencies": {
-        "@fortawesome/fontawesome-svg-core": "^6.6.0",
-        "@fortawesome/free-brands-svg-icons": "^6.6.0",
-        "@fortawesome/free-solid-svg-icons": "^6.6.0"
-    }
+  "name": "neillrobson.github.io",
+  "version": "2.0.0",
+  "description": "Source code for the personal website and blog of Neill Robson.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "clean": "shx rm -rf _site && shx mkdir _site",
+    "build": "npm run clean && webpack --mode=production && bundle exec jekyll build",
+    "start": "npm run clean && concurrently -k -n \"WEBPACK,JEKYLL,BROWSER-SYNC\" -c \"bgBlue.bold,bgRed.bold,bgCyan.bold\" \"webpack -w --mode=development\" \"bundle exec jekyll build --drafts --watch\" \"browser-sync _site -w --no-open\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neillrobson/neillrobson.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neillrobson/neillrobson.github.io/issues"
+  },
+  "homepage": "https://github.com/neillrobson/neillrobson.github.io#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@babel/core": "^7.25.7",
+    "@babel/preset-env": "^7.25.7",
+    "babel-loader": "^9.2.1",
+    "browser-sync": "^3.0.3",
+    "concurrently": "^9.0.1",
+    "css-loader": "^7.1.2",
+    "file-loader": "^6.2.0",
+    "luxon": "^3.5.0",
+    "mini-css-extract-plugin": "^2.9.1",
+    "sass": "^1.79.4",
+    "sass-loader": "^16.0.2",
+    "shx": "^0.3.4",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0"
+  }
 }

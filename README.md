@@ -54,3 +54,8 @@ Source code for the personal website and blog of Neill Robson.
 -   [ ] Respond smartly to no-js
 -   [x] "now" page: https://nownownow.com/
 -   [x] Project page for Private Reacji app
+
+### Eleventy Migration
+
+- [ ] Fix RSS feed
+- [ ] Maintain identical urls / permalinks

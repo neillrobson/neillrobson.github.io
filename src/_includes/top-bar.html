@@ -1,12 +1,11 @@
 <div class="header">
   <div id="title">
     {% assign backup_url = "https://neillrobson.com/assets/images/2023-profile.jpg" | url_encode %}
-    {% assign slug = "neill@neillrobson.com" | strip | downcase | sha256 %}
     <a href="/">
       <img
         id="logo"
         class="rounded"
-        src="https://gravatar.com/avatar/{{ slug }}?s=64&d={{ backup_url }}"
+        src="https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d={{ backup_url }}"
         alt="Neill Robson"
       />
       {{ site.title }}

@@ -27,8 +27,8 @@
     <meta property="og:description" content="{{ description | strip_html | strip | truncate:150 }}">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ page.url | replace:'index.html','' | absolute_url }}">
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+    <meta property="og:url" content="https://neillrobson.com/{{ page.url | replace:'index.html','' }}">
+    <link rel="canonical" href="https://neillrobson.com/{{ page.url | replace:'index.html','' }}">
 
     {% comment %}
     <meta property="og:image" content="https://www.mywebsite.com/image.jpg">
@@ -39,7 +39,6 @@
     {% endcomment %}
 
     <link rel="shortcut icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
-    {% feed_meta %}
 
     <link rel="stylesheet" href="/assets/css/main.css">
 
