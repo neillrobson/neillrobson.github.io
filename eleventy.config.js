@@ -14,9 +14,19 @@ export default async function (eleventyConfig) {
     excerpt: true,
     excerpt_separator: "<!--more-->",
   });
+
+  const twoDigits = (n) => String(n).padStart(2, "0");
+
   eleventyConfig.addFilter("md", (content) => {
     return markdownIt({ html: true, typographer: true }).render(content);
   });
+  eleventyConfig.addFilter(
+    "dateToUrl",
+    (date) =>
+      `${date.getFullYear()}/${twoDigits(date.getMonth() + 1)}/${twoDigits(
+        date.getDate() + 1
+      )}`
+  );
 
   eleventyConfig.addPlugin(eleventyPluginSass);
 }
