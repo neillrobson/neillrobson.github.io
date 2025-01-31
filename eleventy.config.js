@@ -18,7 +18,7 @@ export default async function (eleventyConfig) {
   const twoDigits = (n) => String(n).padStart(2, "0");
 
   eleventyConfig.addFilter("md", (content) => {
-    return markdownIt({ html: true, typographer: true }).render(content);
+    return markdownIt({ html: true, typographer: true }).render(content || "");
   });
   eleventyConfig.addFilter(
     "dateToUrl",
@@ -29,4 +29,7 @@ export default async function (eleventyConfig) {
   );
 
   eleventyConfig.addPlugin(eleventyPluginSass);
+
+  eleventyConfig.addPassthroughCopy("src/assets/images");
+  eleventyConfig.addPassthroughCopy("src/assets/favicon");
 }

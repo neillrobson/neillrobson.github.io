@@ -1,21 +1,21 @@
 ---
 layout: default
 ---
-{% assign projects = site.projects | sort: 'year' | reverse %}
+{% assign projects = collections.project | sort: 'data.year' | reverse %}
 {% for project in projects %}
 <div class="entry">
 	<a href="{{project.url}}">
-	<h1>{{ project.title }}</h1>
+	<h1>{{ project.data.title }}</h1>
 	</a>
-	{% if project.cover-image %}
+	{% if project.data.cover-image %}
 	<div class="three column">
 		<div class="blur-container">
-			<img width="100%" src="{{project.cover-image}}" />
+			<img width="100%" src="{{project.data.cover-image}}" />
 			<div class="blur"></div>
 		</div>
 	</div>
 	{% endif %}
-	<p>{{ project.excerpt | strip_html | truncatewords: 30, '...' }}</p>
+	<p>{{ project.data.page.excerpt | default: project.data.page.rawInput | md | strip_html | truncatewords: 30, '...' }}</p>
 	<div class="clear"></div>
 </div>
 {% endfor %}
