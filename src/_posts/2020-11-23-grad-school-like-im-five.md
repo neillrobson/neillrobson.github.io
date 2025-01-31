@@ -7,7 +7,7 @@ author: neill
 tags:
 - college
 - software
-date: 2020-11-23 15:25 -0500
+date: 2020-11-23T15:25-05:00
 ---
 According to [GitHub](https://github.com), I've written approximately 6,000 lines of code over the course of the past four months (welcome to grad school!).
 The question is, can I explain all of the stuff I wrote? <!--more-->

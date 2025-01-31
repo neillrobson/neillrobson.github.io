@@ -1,6 +1,6 @@
 ---
 layout: post
-date: '2018-01-28 14:30 -0500'
+date: '2018-01-28T14:30-05:00'
 banner: https://theglobalaussie.com/wp-content/uploads/2017/12/More-Flowers.png
 comments: true
 published: true

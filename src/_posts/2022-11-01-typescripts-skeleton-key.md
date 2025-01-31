@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Typescript's Skeleton Key
-date: 2022-11-01 09:38 -0400
+date: 2022-11-01T09:38-04:00
 comments: true
 tags:
     - software

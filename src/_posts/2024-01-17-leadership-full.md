@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Small Group Leadership Brunch Speech
-date: 2024-01-17 21:22 -0500
+date: 2024-01-17T21:22-05:00
 comments: true
 tags:
     - personal

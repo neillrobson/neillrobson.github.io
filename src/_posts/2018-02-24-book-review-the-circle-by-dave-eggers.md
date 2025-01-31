@@ -1,6 +1,6 @@
 ---
 layout: post
-date: '2018-02-24 10:13 -0500'
+date: '2018-02-24T10:13-05:00'
 comments: true
 published: true
 banner: https://imgix.bustle.com/mic/63037580ec8fc6eae8638297af97ac2f8d211374319ef8d68fe40321b50024f4.jpg?w=1020&h=576&fit=crop&crop=faces&auto=format&q=70
@@ -17,7 +17,7 @@ Far from edifying or subtly cautionary, the mature content smacked of pretentiou
 
 In submission, the portion of this book that I forced down my gullet did resonate with my own past experience. The fears and fascinations, challenges and trials that the fictional community faces are present with glaring radiance in my history, and I am by no means worthy of denouncing the lifestyle that this book attempts to critique. But if _The Circle_ wanted to be a parable, it failed miserably: those of us who would benefit from the perspective this book attempts to provide would more likely find the reading experience an act of navel-gazing, while those capable of gleaning the moral by and large have already discovered it from reflection and experience.
 
-Maybe I did not represent the intended audience for Eggers, but to dismiss oneself as inappropriate to judge a work that one found repulsive is a self-pitying cop-out. Dave, I want to receive the message you are trying to express, but please instruct me as an adult would exhort an ignorant child: the sources from which I can revel in darkness with fellow miscreants are, as you say, already far to prevalent. 
+Maybe I did not represent the intended audience for Eggers, but to dismiss oneself as inappropriate to judge a work that one found repulsive is a self-pitying cop-out. Dave, I want to receive the message you are trying to express, but please instruct me as an adult would exhort an ignorant child: the sources from which I can revel in darkness with fellow miscreants are, as you say, already far to prevalent.
 
 ---
 

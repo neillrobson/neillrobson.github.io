@@ -1,14 +1,14 @@
 ---
 layout: post
 title:  Hello World
-date:   2015-10-01 20:40:43 -0400
+date:   2015-10-01T20:40:43-04:00
 tags:
-  - personal 
+  - personal
   - blogging
 author: neill
 comments: true
 ---
-What is this blog about? Who is Neill Robson? *The Rattle*?! I'll try to cover some of those burning questions right here--probably just as much for my benefit as yours. 
+What is this blog about? Who is Neill Robson? *The Rattle*?! I'll try to cover some of those burning questions right here--probably just as much for my benefit as yours.
 
 <!--more-->
 
@@ -16,7 +16,7 @@ What is this blog about? Who is Neill Robson? *The Rattle*?! I'll try to cover s
 
 >Starting a conversation is trivial. Holding one, on the other hand... <cite>Neill Robson</cite>
 
-Hi! I'm Neill Robson: the guy sitting on the other side of the Internet from you, trying to spark a conversation. Among other things, I am an aspiring software developer, college student, Christian, actor, musician, and reader; I suppose I'm adding "blogger" to that list now. 
+Hi! I'm Neill Robson: the guy sitting on the other side of the Internet from you, trying to spark a conversation. Among other things, I am an aspiring software developer, college student, Christian, actor, musician, and reader; I suppose I'm adding "blogger" to that list now.
 
 Currently I am attending [North Carolina State University](http://ncsu.edu) as a freshman in Computer Science. Maybe I will pursue a M.S. in that field; perhaps I will pick up a minor in the Chinese language. Primarily, my current goal is to narrow down my interests into a specific career field that will cater to more than simply my own intellectual appetite--learning is fun, but knowledge is worthless unless it is being used to improve our communities and world.
 
@@ -44,13 +44,13 @@ Defining clear objectives is one of my great weaknesses. Even so, here are a few
 
  - **Collaborate and befriend**
 
-   I may not be the most conversational person, it's true. But I do love discussions; I love being able to grow together, incubate deep thought together, work together to make the world a better place. And just like with any other conversation, I haven't the slightest idea where this one will lead, but I'd love to start it here and now. 
+   I may not be the most conversational person, it's true. But I do love discussions; I love being able to grow together, incubate deep thought together, work together to make the world a better place. And just like with any other conversation, I haven't the slightest idea where this one will lead, but I'd love to start it here and now.
 
 ## The Rattle
 
 >Rattlesnakes would be a lot more dangerous if they didn't have the rattle. <cite>Louis Sachar</cite>
 
-Before the post is tied up, I'll go ahead and note the origin of this blog's name. 
+Before the post is tied up, I'll go ahead and note the origin of this blog's name.
 
 *Holes*, a novel by Louis Sachar, is a beautiful introduction to symbolic literature and analysis of fiction. Sachar taught me to love the "difficult" books--the classics and crazies that English teachers make students read to amuse themselves. As childish as certain parts of this young adult novel seem to me now, there are still certain parts that have profoundly affected my life philosophy.
 
@@ -58,10 +58,10 @@ Consider the classic rattlesnake: a poisonous serpent hiding in the dust and inf
 
 There are many other examples of this disparity between a stimulus's real and perceived purpose. Consider the sirens of a police car, the smell of sulfur in the home, or the seatbelt light in an airplane; the most turbulence often occurs in the minutes before landing. Some of the most profound blessings in our lives are the alarm bells that we are terrified to encounter.
 
-Unfortunately, our response to communication can often take on a Pavlovian quality: we see, hear, sense a call to action, and immediately assume an attitude of inevitability and helplessness toward the impending doom. Often we skirt around a difficult truth, as if acknowledging the elephant in the room will somehow solidify and immortalize its existence. 
+Unfortunately, our response to communication can often take on a Pavlovian quality: we see, hear, sense a call to action, and immediately assume an attitude of inevitability and helplessness toward the impending doom. Often we skirt around a difficult truth, as if acknowledging the elephant in the room will somehow solidify and immortalize its existence.
 
 However, remove the rattle from the snake, and you have a machine of inevitable death. The rattle is a warning, a cautionary call, an act of mercy. Likewise, our words and actions can have incredible power to save if we overcome our fear of harsh warnings and heavy truths.
 
-This is the fundamental resolve I have taken on this blog: to speak the truth in love, in a hope that my words will someday carry the power of a second chance. 
+This is the fundamental resolve I have taken on this blog: to speak the truth in love, in a hope that my words will someday carry the power of a second chance.
 
-This is my rattle: my cautionary tail. 
+This is my rattle: my cautionary tail.

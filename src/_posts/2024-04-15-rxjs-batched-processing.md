@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Batched Processing in RxJS
-date: 2024-04-15 13:47 -0400
+date: 2024-04-15T13:47-04:00
 comments: true
 tags:
     - software

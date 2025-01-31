@@ -1,6 +1,6 @@
 ---
 layout: post
-date: '2018-01-05 09:16 -0500'
+date: '2018-01-05T09:16-05:00'
 published: false
 title: The Bullet Journal Journey
 categories:

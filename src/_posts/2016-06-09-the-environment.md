@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  The Environment
-date:   2016-06-09 06:03:11 -0400
+date:   2016-06-09T06:03:11-04:00
 banner: /assets/images/2016/06/P_20160525_144035.jpg
 tags:
   - china
@@ -15,13 +15,13 @@ So many of my experiences in Hangzhou are relatively small excursions: individua
 
 ![house of courtyards](/assets/images/2016/06/P_20160514_145419.jpg)
 
-Near the beginning of our trip we visited a Chinese mansion exhibiting some of the older architectural styles of China. The Chinese culture of the time took an incredible amount of liberties with indoor/outdoor spaces to create an astonishingly beautiful effect. Areas such as the ones pictured above and below were entirely "inside" the house, and doors could just as easily lead to artificial caves as they could lead to "rooms" as we think of them in the US. 
+Near the beginning of our trip we visited a Chinese mansion exhibiting some of the older architectural styles of China. The Chinese culture of the time took an incredible amount of liberties with indoor/outdoor spaces to create an astonishingly beautiful effect. Areas such as the ones pictured above and below were entirely "inside" the house, and doors could just as easily lead to artificial caves as they could lead to "rooms" as we think of them in the US.
 
 ![stone path over river](/assets/images/2016/06/P_20160514_151809.jpg)
 
 ![floor plan](/assets/images/2016/06/P_20160514_155700.jpg)
 
-Above is a floor plan of the house. As you can see, most places are naturally exposed to the elements, and roofs only exist over the edges of major rooms. 
+Above is a floor plan of the house. As you can see, most places are naturally exposed to the elements, and roofs only exist over the edges of major rooms.
 
 ![kitchen](/assets/images/2016/06/P_20160514_144930.jpg)
 
@@ -33,7 +33,7 @@ And yeah, they also grew bonsai trees to obnoxiously large sizes. (Thanks to Mic
 
 ![lilypad landscape](/assets/images/2016/06/P_20160518_102120.jpg)
 
-Hangzhou is also known for its enormous and beautiful botanical gardens, of which I took quite a few photos. 
+Hangzhou is also known for its enormous and beautiful botanical gardens, of which I took quite a few photos.
 
 ![fake deer](/assets/images/2016/06/P_20160518_102801.jpg)
 
@@ -43,7 +43,7 @@ Although they may be known for their flowers, the botanical gardens certainly ar
 
 ![circle door](/assets/images/2016/06/P_20160518_104013.jpg)
 
-Doors are always a favorite posing spot for us. 
+Doors are always a favorite posing spot for us.
 
 ![lake, no lilies](/assets/images/2016/06/P_20160518_105418-1.jpg)
 
@@ -73,11 +73,11 @@ And when your professors do it, it's hard to overcome the social pressure, you k
 
 ![stairs](/assets/images/2016/06/P_20160525_140325.jpg)
 
-Anyway, the climbing trouble doesn't end when you get to the pagoda... 
+Anyway, the climbing trouble doesn't end when you get to the pagoda...
 
 ![doorway](/assets/images/2016/06/P_20160525_141904.jpg)
 
-especially not for tall guys like me. 
+especially not for tall guys like me.
 
 ![roofing](/assets/images/2016/06/P_20160525_140852_LL.jpg)
 
