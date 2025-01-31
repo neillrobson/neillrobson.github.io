@@ -4,14 +4,16 @@ layout: default
 
 <div class="entry">
     <a class="small date left margin" href="{{page.url}}">{{page.date | date: '%B %-d, %Y'}}</a>
-    <h1>{{ page.title }}</h1>
+    <h1>{{ title }}</h1>
 
     {{ content }}
-    {% if page.tags.size > 0 %}
+    {% if tags.size > 0 %}
         <br/>
         <p>
-            {% for tag in page.tags %}
-                <a class="small tag" href="/tag/{{ tag }}">{{tag}}</a>
+            {% for tag in tags %}
+                {% if tag != 'post' %}
+                    <a class="small tag" href="/tag/{{ tag }}">{{tag}}</a>
+                {% endif %}
             {% endfor %}
         </p>
     {% endif %}
@@ -21,23 +23,25 @@ layout: default
     {% if jekyll.environment == "production" and page.comments %}
         {% include "disqus.html" %}
     {% endif %}
-    {% if page.previous.url or page.next.url %}
+
+    {% assign previousPost = collections.post | getPreviousCollectionItem %}
+    {% assign nextPost = collections.post | getNextCollectionItem %}
+
+    {% if previousPost.url or nextPost.url %}
         <hr class="full"/>
     {% endif %}
-    {% if page.previous.url %}
-        <a class="halfWidth left previousEntry" href="{{page.previous.url}}">
+    {% if previousPost.url %}
+        <a class="halfWidth left previousEntry" href="{{previousPost.url}}">
             <h5>Previous post</h5>
-            <span class="title">{{page.previous.title}}</span>
-            <span class="summary">{{page.previous.excerpt | newline_to_br | strip_newlines | replace: '<br />',
-      ' ' | strip_html | strip | truncatewords: 50 }}</span>
+            <span class="title">{{previousPost.data.title}}</span>
+            <span class="summary">{{previousPost.data.page.excerpt | md | strip_html | truncatewords: 100 }}</span>
         </a>
     {% endif %}
-    {% if page.next.url %}
-        <a class="left halfWidth nextEntry" href="{{page.next.url}}">
+    {% if nextPost.url %}
+        <a class="left halfWidth nextEntry" href="{{nextPost.url}}">
             <h5>Next post</h5>
-            <span class="title">{{page.next.title}}</span>
-            <span class="summary">{{page.next.excerpt | newline_to_br | strip_newlines | replace: '<br />',
-      ' ' | strip_html | strip | truncatewords: 50 }}</span>
+            <span class="title">{{nextPost.data.title}}</span>
+            <span class="summary">{{nextPost.data.page.excerpt | md | strip_html | truncatewords: 100 }}</span>
         </a>
     {% endif %}
 </div>
