@@ -59,3 +59,8 @@ Source code for the personal website and blog of Neill Robson.
 
 - [ ] Fix RSS feed
 - [ ] Maintain identical urls / permalinks
+- [ ] Disqus repair
+- [ ] Social iconography
+- [ ] README build instruction updates
+- [ ] Github Actions patch-up
+- [ ] Clean package.json dependencies
