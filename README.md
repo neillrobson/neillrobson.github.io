@@ -64,7 +64,7 @@ Source code for the personal website and blog of Neill Robson.
 - [ ] README build instruction updates
 - [ ] Github Actions patch-up
 - [ ] Clean package.json dependencies
-- [ ] robots.txt
+- [x] robots.txt
 - [ ] Formatting repair
   - [ ] Images (too wide)
   - [ ] sidebars (left/right)
