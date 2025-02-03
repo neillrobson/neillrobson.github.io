@@ -21,7 +21,7 @@ permalink: "/blog/{{ page.date | dateToUrl }}/{{ page.fileSlug }}/index.html"
 
     <div class="clear"></div>
 
-    {% if jekyll.environment == "production" and page.comments %}
+    {% if comments %}
         {% include "disqus.html" %}
     {% endif %}
 

@@ -5,13 +5,14 @@
  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
  */
 var disqus_config = function () {
+{% assign newlen = page.url | size | minus: 1 %}
 this.page.url = "https://neillrobson.com{{ page.url }}";  // Your page's canonical URL variable
-this.page.identifier = "{{ page.id }}"; // Your page's unique identifier variable
+this.page.identifier = "{{ page.url | slice: 0, newlen }}"; // Your page's unique identifier variable
 };
 
 (function() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');
-s.src = 'https://{{ site.disqus-shortname }}.disqus.com/embed.js';
+s.src = 'https://neillrobson.disqus.com/embed.js';
 s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
