@@ -1,7 +1,7 @@
 ---
 layout: default
 pagination:
-    data: collections.post
+    data: collections.posts
     size: 2
     reverse: true
     alias: posts
@@ -16,7 +16,7 @@ permalink: "/blog{% if pagination.pageNumber > 0 %}/page{{ pagination.pageNumber
             {{ post.data.page.excerpt | md | strip_html | truncatewords: 100 }}
         </p>
         {% for tag in post.data.tags %}
-            {% if tag != 'post' %}
+            {% if tag != 'posts' %}
                 <a class="small tag" href="/tag/{{ tag }}">{{tag}}</a>
             {% endif %}
         {% endfor %}

@@ -24,6 +24,7 @@
   "homepage": "https://github.com/neillrobson/neillrobson.github.io#readme",
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-plugin-rss": "^2.0.3",
     "@babel/core": "^7.25.7",
     "@babel/preset-env": "^7.25.7",
     "@jgarber/eleventy-plugin-sass": "^2.0.0",

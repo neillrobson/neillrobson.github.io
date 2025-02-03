@@ -57,7 +57,7 @@ Source code for the personal website and blog of Neill Robson.
 
 ### Eleventy Migration
 
-- [ ] Fix RSS feed
+- [x] Fix RSS feed
 - [x] Maintain identical urls / permalinks
 - [x] Disqus repair
 - [x] Social iconography
