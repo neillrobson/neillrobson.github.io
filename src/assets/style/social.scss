@@ -1,4 +1,4 @@
-@use 'sass:color';
+@use "sass:color";
 
 $google-color: #d73d32;
 $facebook-color: #3b5998;
@@ -20,90 +20,76 @@ $digg-color: #3569a3;
 $email-color: #f06a4e;
 
 .social-list-color {
-    a {
-        width: 36px;
-        height: 36px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 4px;
-        color: #fff;
-        font-size: 0.9rem;
-        background: none;
-        box-sizing: border-box;
-        &.twitter {
-            background-color: $twitter-color;
-            &:hover {
-                background-color: color.adjust(
-                    $twitter-color,
-                    $lightness: -10%
-                );
-            }
-        }
-
-        &.facebook {
-            background-color: $facebook-color;
-            &:hover {
-                background-color: color.adjust(
-                    $facebook-color,
-                    $lightness: -10%
-                );
-            }
-        }
-
-        &.github {
-            background-color: $github-color;
-            &:hover {
-                background-color: color.adjust($github-color, $lightness: -10%);
-            }
-        }
-        &.stack-overflow {
-            background-color: $stackoverflow-color;
-            &:hover {
-                background-color: color.adjust(
-                    $stackoverflow-color,
-                    $lightness: -10%
-                );
-            }
-        }
-        &.linkedin {
-            background-color: $linkedin-color;
-            &:hover {
-                background-color: color.adjust(
-                    $linkedin-color,
-                    $lightness: -10%
-                );
-            }
-        }
-        &.codepen {
-            background-color: $codepen-color;
-            &:hover {
-                background-color: color.adjust(
-                    $codepen-color,
-                    $lightness: -10%
-                );
-            }
-        }
-        &.instagram {
-            background-color: $instagram-color;
-            &:hover {
-                background-color: color.adjust(
-                    $instagram-color,
-                    $lightness: -10%
-                );
-            }
-        }
-        &.medium {
-            background-color: $medium-color;
-            &:hover {
-                background-color: color.adjust($medium-color, $lightness: -10%);
-            }
-        }
-        &.email {
-            background-color: $email-color;
-            &:hover {
-                background-color: color.adjust($email-color, $lightness: -10%);
-            }
-        }
+  a {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.9rem;
+    background: none;
+    box-sizing: border-box;
+    &.twitter {
+      background-color: $twitter-color;
+      &:hover {
+        background-color: color.adjust($twitter-color, $lightness: -10%);
+      }
     }
+
+    &.facebook {
+      background-color: $facebook-color;
+      &:hover {
+        background-color: color.adjust($facebook-color, $lightness: -10%);
+      }
+    }
+
+    &.github {
+      background-color: $github-color;
+      &:hover {
+        background-color: color.adjust($github-color, $lightness: -10%);
+      }
+    }
+    &.stack-overflow {
+      background-color: $stackoverflow-color;
+      &:hover {
+        background-color: color.adjust($stackoverflow-color, $lightness: -10%);
+      }
+    }
+    &.linkedin {
+      background-color: $linkedin-color;
+      &:hover {
+        background-color: color.adjust($linkedin-color, $lightness: -10%);
+      }
+    }
+    &.codepen {
+      background-color: $codepen-color;
+      &:hover {
+        background-color: color.adjust($codepen-color, $lightness: -10%);
+      }
+    }
+    &.instagram {
+      background-color: $instagram-color;
+      &:hover {
+        background-color: color.adjust($instagram-color, $lightness: -10%);
+      }
+    }
+    &.medium {
+      background-color: $medium-color;
+      &:hover {
+        background-color: color.adjust($medium-color, $lightness: -10%);
+      }
+    }
+    &.email {
+      background-color: $email-color;
+      &:hover {
+        background-color: color.adjust($email-color, $lightness: -10%);
+      }
+    }
+
+    img {
+      filter: invert(1);
+    }
+  }
 }

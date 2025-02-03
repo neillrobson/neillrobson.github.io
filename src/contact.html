@@ -4,9 +4,9 @@ layout: default
 <p>Let's connect! Here are several places I can be found online:</p>
 
 <div class="social-list-color" style="display: flex; justify-content: space-evenly">
-{% for item in site.data.people.neill.social %}
+{% for item in people.neill.social %}
 {% assign key = item[0] %}
 {% assign value = item[1] %}
-<a class="{{ key }}" href="{{ value.url }}" target="_blank"><i class="{{ value.icon }} fa-fw"></i></a>
+<a class="{{ key }}" href="{{ value.url }}" target="_blank"><img src="/assets/favicon/{{ value.icon }}" /></a>
 {% endfor %}
 </div>

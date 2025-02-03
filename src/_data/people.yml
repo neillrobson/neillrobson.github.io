@@ -9,16 +9,16 @@ neill:
   social:
     email:
       url: mailto:contactneill.catapult308@passmail.net
-      icon: fas fa-envelope
+      icon: mail.svg
     twitter:
       url: https://twitter.com/RNanoware
-      icon: fab fa-twitter
+      icon: twitter.svg
     github:
       url: https://github.com/neillrobson
-      icon: fab fa-github-alt
+      icon: github.svg
     linkedin:
       url: https://www.linkedin.com/in/neillrobson/
-      icon: fab fa-linkedin-in
+      icon: linkedin.svg
     stack-overflow:
       url: https://stackoverflow.com/users/2977638
-      icon: fab fa-stack-overflow
+      icon: stack-overflow.svg
