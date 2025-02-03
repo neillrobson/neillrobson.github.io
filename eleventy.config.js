@@ -32,4 +32,5 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy("src/assets/favicon");
+  eleventyConfig.addPassthroughCopy("src/CNAME");
 }
