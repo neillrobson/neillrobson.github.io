@@ -23,9 +23,9 @@ export default async function (eleventyConfig) {
   eleventyConfig.addFilter(
     "dateToUrl",
     (date) =>
-      `${date.getFullYear()}/${twoDigits(date.getMonth() + 1)}/${twoDigits(
-        date.getDate() + 1
-      )}`
+      `${date.getUTCFullYear()}/${twoDigits(
+        date.getUTCMonth() + 1
+      )}/${twoDigits(date.getUTCDate())}`
   );
 
   eleventyConfig.addPlugin(eleventyPluginSass);
