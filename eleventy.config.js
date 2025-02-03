@@ -31,6 +31,6 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyPluginSass);
 
   eleventyConfig.addPassthroughCopy("src/assets/images");
-  eleventyConfig.addPassthroughCopy("src/assets/favicon");
+  eleventyConfig.addPassthroughCopy("src/assets/icon");
   eleventyConfig.addPassthroughCopy("src/CNAME");
 }
