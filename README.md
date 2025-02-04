@@ -61,7 +61,7 @@ Source code for the personal website and blog of Neill Robson.
 - [x] Disqus repair
 - [x] Social iconography
 - [x] README build instruction updates
-- [ ] Github Actions patch-up
+- [x] Github Actions patch-up
 - [x] Clean package.json dependencies
 - [x] robots.txt
 - [x] Liquid UTC Date filter
