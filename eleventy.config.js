@@ -17,6 +17,10 @@ export default async function (eleventyConfig) {
     excerpt_separator: "<!--more-->",
   });
 
+  eleventyConfig.amendLibrary("md", (mdLib) => {
+    mdLib.set({ html: true, typographer: true });
+  });
+
   eleventyConfig.addFilter("md", (content) => {
     return markdownIt({ html: true, typographer: true }).render(content || "");
   });

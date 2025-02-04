@@ -69,4 +69,4 @@ Source code for the personal website and blog of Neill Robson.
 - [ ] Formatting repair
   - [ ] Images (too wide)
   - [ ] sidebars (left/right)
-  - [ ] Typography (smart quotes)
+  - [x] Typography (smart quotes)
