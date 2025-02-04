@@ -67,6 +67,7 @@ Source code for the personal website and blog of Neill Robson.
 - [x] Liquid UTC Date filter
 - [x] Footer (colophon) update
 - [ ] Formatting repair
-  - [ ] Images (too wide)
+  - [x] Images (too wide) \
+    Note that markdown-it-tufte 0.3.0 doesn't yet catch images within larger block elements!
   - [ ] sidebars (left/right)
   - [x] Typography (smart quotes)

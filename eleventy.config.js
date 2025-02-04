@@ -3,6 +3,7 @@ import yaml from "js-yaml";
 import eleventyPluginSass from "@jgarber/eleventy-plugin-sass";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import strftime from "strftime";
+import MarkdownItTufte from "markdown-it-tufte";
 
 export default async function (eleventyConfig) {
   eleventyConfig.setInputDirectory("src");
@@ -18,9 +19,12 @@ export default async function (eleventyConfig) {
   });
 
   eleventyConfig.amendLibrary("md", (mdLib) => {
+    mdLib.use(MarkdownItTufte);
     mdLib.set({ html: true, typographer: true });
   });
 
+  // This filter doesn't use the same Markdown-It instance as the core Eleventy renderer.
+  // Consider replacing with the official EleventyRenderPlugin if issues arise.
   eleventyConfig.addFilter("md", (content) => {
     return markdownIt({ html: true, typographer: true }).render(content || "");
   });
