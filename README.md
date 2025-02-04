@@ -21,7 +21,6 @@ Source code for the personal website and blog of Neill Robson.
 3. Install dependencies
 
     ```
-    bundle install
     npm install
     ```
 
@@ -31,7 +30,7 @@ Source code for the personal website and blog of Neill Robson.
     npm start
     ```
 
-5. Access via http://localhost:3000/
+5. Access via http://localhost:8080/
 
 6. Check production build
 
@@ -61,9 +60,9 @@ Source code for the personal website and blog of Neill Robson.
 - [x] Maintain identical urls / permalinks
 - [x] Disqus repair
 - [x] Social iconography
-- [ ] README build instruction updates
+- [x] README build instruction updates
 - [ ] Github Actions patch-up
-- [ ] Clean package.json dependencies
+- [x] Clean package.json dependencies
 - [x] robots.txt
 - [x] Liquid UTC Date filter
 - [ ] Footer (colophon) update
