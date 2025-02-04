@@ -65,7 +65,8 @@ Source code for the personal website and blog of Neill Robson.
 - [x] Clean package.json dependencies
 - [x] robots.txt
 - [x] Liquid UTC Date filter
-- [ ] Footer (colophon) update
+- [x] Footer (colophon) update
 - [ ] Formatting repair
   - [ ] Images (too wide)
   - [ ] sidebars (left/right)
+  - [ ] Typography (smart quotes)
