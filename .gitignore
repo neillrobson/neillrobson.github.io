@@ -1,7 +1,5 @@
 _site
 .sass-cache
-.jekyll-metadata
-.jekyll-cache
 *.swp
 node_modules
 .vscode
