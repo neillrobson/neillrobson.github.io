@@ -9,7 +9,7 @@ permalink: /tag/{{ tag }}/index.html
 <h1>Entries tagged “{{tag}}”</h1>
 <div class="archives">
 {% for post in collections[tag] reversed %}
-    <a href="{{post.url}}">{{post.data.title}}</a>&nbsp;<span class="small">{{post.date | date: '%B %-d, %Y'}}</span>
+    <a href="{{post.url}}">{{post.data.title}}</a>&nbsp;<span class="small">{{post.date | utcDate: '%B %-d, %Y'}}</span>
     <br />
 {% endfor %}
 </div>

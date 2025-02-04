@@ -1,10 +1,10 @@
 ---
 layout: default
-permalink: "/blog/{{ page.date | dateToUrl }}/{{ page.fileSlug }}/index.html"
+permalink: "/blog/{{ page.date | utcDate: '%Y/%m/%d' }}/{{ page.fileSlug }}/index.html"
 ---
 
 <div class="entry">
-    <a class="small date left margin" href="{{page.url}}">{{page.date | date: '%B %-d, %Y'}}</a>
+    <a class="small date left margin" href="{{page.url}}">{{page.date | utcDate: '%B %-d, %Y'}}</a>
     <h1>{{ title }}</h1>
 
     {{ content }}

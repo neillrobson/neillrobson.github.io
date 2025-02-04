@@ -2,6 +2,7 @@ import markdownIt from "markdown-it";
 import yaml from "js-yaml";
 import eleventyPluginSass from "@jgarber/eleventy-plugin-sass";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
+import strftime from "strftime";
 
 export default async function (eleventyConfig) {
   eleventyConfig.setInputDirectory("src");
@@ -16,17 +17,12 @@ export default async function (eleventyConfig) {
     excerpt_separator: "<!--more-->",
   });
 
-  const twoDigits = (n) => String(n).padStart(2, "0");
-
   eleventyConfig.addFilter("md", (content) => {
     return markdownIt({ html: true, typographer: true }).render(content || "");
   });
-  eleventyConfig.addFilter(
-    "dateToUrl",
-    (date) =>
-      `${date.getUTCFullYear()}/${twoDigits(
-        date.getUTCMonth() + 1
-      )}/${twoDigits(date.getUTCDate())}`
+
+  eleventyConfig.addFilter("utcDate", (date, format) =>
+    strftime(format, new Date(date.toUTCString().substr(0, 25)))
   );
 
   eleventyConfig.addPlugin(eleventyPluginSass);
