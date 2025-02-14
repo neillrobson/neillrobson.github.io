@@ -94,16 +94,18 @@ If you're trying out this code on your own, you might find that your `map`/`conc
 * Hot observables have their data created _outside_ the observable
 
 {||}
-### Cold
-If I make an Observable from an array, `from([1, 2, 3])`, all of the data is already there. The computer doesn't have to wait for anyone to get data back to it for the stream to both start and complete immediately.
-* They don't start emitting values until someone `subscribe`s to them
-* They run a separate, unique pipeline for each subscription (they are "**unicast**")
+
+    ### Cold
+    If I make an Observable from an array, `from([1, 2, 3])`, all of the data is already there. The computer doesn't have to wait for anyone to get data back to it for the stream to both start and complete immediately.
+    * They don't start emitting values until someone `subscribe`s to them
+    * They run a separate, unique pipeline for each subscription (they are "**unicast**")
 
 {||}
-### Hot
-Hot observables are made from things like Promises. The computer is waiting for someone else to get back to it, and the computer will emit whatever it receives as soon as it arrives.
-* They emit items upon arrival, regardless of subscriber count
-* They send data through a single pipeline, no matter how many subscribers (they are "**multicast**")
+
+    ### Hot
+    Hot observables are made from things like Promises. The computer is waiting for someone else to get back to it, and the computer will emit whatever it receives as soon as it arrives.
+    * They emit items upon arrival, regardless of subscriber count
+    * They send data through a single pipeline, no matter how many subscribers (they are "**multicast**")
 
 ---
 

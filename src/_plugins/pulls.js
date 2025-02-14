@@ -24,7 +24,7 @@ export default function pulls_plugin(md) {
     if (!match) return false;
 
     let pos = PULL_REGEX.lastIndex;
-    if (pos >= max) return false;
+    if (pos > max) return false;
 
     if (silent) return true;
 
