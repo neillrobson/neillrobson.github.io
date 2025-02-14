@@ -1,6 +1,6 @@
 {
   "name": "neillrobson.github.io",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Source code for the personal website and blog of Neill Robson.",
   "private": true,
   "type": "module",
