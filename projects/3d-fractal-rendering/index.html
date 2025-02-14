@@ -8,19 +8,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Path-Marched 3D Fractal Renderer | Neill Robson's Website</title>
+    <title>Neill Robson's Website</title>
 
     <script type="module">
       document.documentElement.classList.remove('no-js');
       document.documentElement.classList.add('js');
     </script>
 
-    <meta name="description" content="Path-Marched 3D Fractal Renderer" />
-    <meta name="keywords" content="" />
+    <meta name="description" content="The blog and portfolio of a software developer." />
     <meta name="author" content="Neill Robson">
 
-    <meta property="og:title" content="Path-Marched 3D Fractal Renderer | Neill Robson's Website">
-    <meta property="og:description" content="Path-Marched 3D Fractal Renderer">
+    <meta property="og:title" content="Neill Robson's Website">
+    <meta property="og:description" content="The blog and portfolio of a software developer.">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://neillrobson.com/projects/3d-fractal-rendering/">
@@ -28,12 +27,10 @@
 
     
 
-    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
-    <link type="application/atom+xml" rel="alternate" href="https://neillrobson.com/feed.xml" title="Neill Robson&apos;s Website" />
+    <link rel="shortcut icon" href="/assets/icon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="/assets/css/main.css">
-
-    
+    <link rel="stylesheet" href="/assets/style/main.css">
+    <link rel="stylesheet" href="/assets/style/social.css">
 </head>
 
 
@@ -42,12 +39,11 @@
       <div class="header">
   <div id="title">
     
-    
     <a href="/">
       <img
         id="logo"
         class="rounded"
-        src="https://gravatar.com/avatar/e246fc5b45d5e2859ecbf2b867e4b5bb30d5e3d079c412add3acdd5ba87b07ce?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
+        src="https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
         alt="Neill Robson"
       />
       Neill Robson's Website
@@ -86,7 +82,8 @@
 		</div>
 	</div>
 	
-	<p>For my final project in my graphics course, rather than sticking with the
+	<section>
+<p>For my final project in my graphics course, rather than sticking with the
 status-quo of triangular surfaces, I wanted to render an object with an infinite
 level of detail. Although truly infinite detail is still a pipe dream of
 computer graphics enthusiasts, mathematicians have known for a while that
@@ -94,10 +91,8 @@ complicated objects could be described by surprisingly simple equations. These
 objects, loosely gathered under the label “fractals,” could bypass the
 limitations of polygon-based rendering, giving viewers the illusion of more
 detail on their computer screen than their processor is able to handle.</p>
-
 <p>Since all of computer graphics is an illusion anyway, going the next step with
 three-dimensional fractals seemed like an excellent idea to me!</p>
-
 <p>My final result used WebGL to render complicated graphics in any desktop web
 browser: even desktops without dedicated graphics cards. The various controls on
 the right-hand side of the screen control aspects of the rendering atmosphere
@@ -106,10 +101,10 @@ recursion depth. Users can press the <code>WASD</code> keys on their keyboard to
 camera along the ground plane, as well as the <code>QE</code> keys to raise and lower the
 camera. Camera rotation in all directions can be achieved by holding down
 <code>shift</code> while pressing the aforementioned letters.</p>
-
 <p>You can play with the simulation <a href="http://neillrobson.com/csc562-final">here</a>,
 and view the source on <a href="https://github.com/neillrobson/csc562-final">GitHub</a>.
 Feel free to send me any screenshots of impressive renders you create!</p>
+</section>
 
 	<div class="clear"></div>
 </div>
@@ -123,18 +118,15 @@ Feel free to send me any screenshots of impressive renders you create!</p>
     &copy; 2025 Neill Robson. Layout inspired by
     <a href="https://blot.im/" target="_blank">Blot</a>.
     <br />
-    This site is hosted at
+    This site is hosted on
     <a href="https://github.com" target="_blank">GitHub</a> and built with
-    <a href="https://jekyllrb.com" target="_blank">Jekyll</a>.
+    <a href="https://www.11ty.dev/" target="_blank">Eleventy</a>. Icons by
+    <a href="https://icons8.com" target="_blank">Icons8</a>.
   </small>
 </div>
 
     </div>
-    <script defer type="text/javascript" src="/assets/js/bundle.js"></script>
-
-
-<script async id="dsq-count-scr" src="//neillrobson.disqus.com/count.js"></script>
-
+    
 
   </body>
 </html>

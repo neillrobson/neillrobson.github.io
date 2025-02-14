@@ -8,19 +8,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Grad School Like I'm Five: Buffer Overflow | Neill Robson's Website</title>
+    <title>Neill Robson's Website</title>
 
     <script type="module">
       document.documentElement.classList.remove('no-js');
       document.documentElement.classList.add('js');
     </script>
 
-    <meta name="description" content="Grad School Like I'm Five: Buffer Overflow" />
-    <meta name="keywords" content="" />
+    <meta name="description" content="The blog and portfolio of a software developer." />
     <meta name="author" content="Neill Robson">
 
-    <meta property="og:title" content="Grad School Like I'm Five: Buffer Overflow | Neill Robson's Website">
-    <meta property="og:description" content="Grad School Like I'm Five: Buffer Overflow">
+    <meta property="og:title" content="Neill Robson's Website">
+    <meta property="og:description" content="The blog and portfolio of a software developer.">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five/">
@@ -28,12 +27,10 @@
 
     
 
-    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
-    <link type="application/atom+xml" rel="alternate" href="https://neillrobson.com/feed.xml" title="Neill Robson&apos;s Website" />
+    <link rel="shortcut icon" href="/assets/icon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="/assets/css/main.css">
-
-    
+    <link rel="stylesheet" href="/assets/style/main.css">
+    <link rel="stylesheet" href="/assets/style/social.css">
 </head>
 
 
@@ -42,12 +39,11 @@
       <div class="header">
   <div id="title">
     
-    
     <a href="/">
       <img
         id="logo"
         class="rounded"
-        src="https://gravatar.com/avatar/e246fc5b45d5e2859ecbf2b867e4b5bb30d5e3d079c412add3acdd5ba87b07ce?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
+        src="https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
         alt="Neill Robson"
       />
       Neill Robson's Website
@@ -74,25 +70,21 @@
 
 
       <div class="main">
-        <div class="entry">
+        
+<div class="entry">
     <a class="small date left margin" href="/blog/2020/11/23/grad-school-like-im-five/">November 23, 2020</a>
     <h1>Grad School Like I'm Five: Buffer Overflow</h1>
 
-    <p>According to <a href="https://github.com">GitHub</a>, I’ve written approximately 6,000 lines of code over the course of the past four months (welcome to grad school!).
-The question is, can I explain all of the stuff I wrote? <!--more-->
+    <section>
+<p>According to <a href="https://github.com">GitHub</a>, I’ve written approximately 6,000 lines of code over the course of the past four months (welcome to grad school!).
+The question is, can I explain all of the stuff I wrote?
 Over the next few blog posts, I’ll be trying to present a high-level overview of some of the most interesting concepts that I’ve learned this past semester.</p>
-
 <p>How high-level, you ask?</p>
-
 <p>The goal is to explain these concepts to a five-year-old.</p>
-
 <p>Not only will this audience choice keep these blog posts short and sweet, it will also help me reassure myself that the boatloads of information I consumed throughout this semester did not simply fall out of my other ear!
 And, of course, I hope that you, the reader, find these snippets more entertaining to read than your average textbook chapter.</p>
-
 <p>For this inaugural episode, we will cover… <strong>Buffer Overflow</strong>!</p>
-
-<h1 id="the-problem">The Problem</h1>
-
+<h1>The Problem</h1>
 <p>Imagine we’re sitting across from each other, with an empty table between us.
 The tabletop is wiped so clean, you can see the reflection of the overhead light in the white plastic.
 I give you a crayon, and I ask you to draw a cat.
@@ -101,52 +93,41 @@ If you’re following my instructions, you’ll probably start drawing a cat dir
 If I’m a self-respecting grown-up, I’ll probably respond by scolding you for drawing on furniture.
 But you were only doing what you were told to do!
 Grown-ups are so unfair, am I right?</p>
-
 <p>Okay, I’ll give you a piece of paper: unlined and white, a blank slate for your work of art.
 I set it down in front of you, and ask you once again to draw a cat.
 And you do!
 It’s a cool cat that you draw, and I’m impressed, so I ask you to draw another.
 And another.
 And another.</p>
-
-<figure><img src="https://pics.me.me/hey-girl-isaw-you-coloring-inside-the-linesearlierandivejust-gotto-say-7937983.png" alt="Elementary-aged boy uttering a pickup line to girl" /></figure>
-
+<figure><img src="https://pics.me.me/hey-girl-isaw-you-coloring-inside-the-linesearlierandivejust-gotto-say-7937983.png" alt="Elementary-aged boy uttering a pickup line to girl"></figure>
 <p>After a while, you mention how tired you are, and ask to go play with friends for a while.
 Happy with your work, I allow you to go, and I reach down to grab the paper with your fantastic cat drawings.
 There’s only one problem…</p>
-
-<figure><img src="https://www.kenarry.com/wp-content/uploads/2014/09/how-to-get-dry-erase-marker-off-the-wall2.webp" alt="Whiteboard with dry erase markings on the wall" title="Mom's face when she sees you've crossed the line" /><figcaption>Mom's face when she sees you've crossed the line</figcaption></figure>
-
+<figure>
+<img src="https://www.kenarry.com/wp-content/uploads/2014/09/how-to-get-dry-erase-marker-off-the-wall2.webp" alt="Whiteboard with dry erase markings on the wall" title="Mom's face when she sees you've crossed the line"><figcaption>Mom’s face when she sees you’ve crossed the line</figcaption>
+</figure>
 <p>You’ve drawn so many cats that you ran out of space on the paper and got markings on the table once again.
 With white paper on a white plastic table, who’s to blame you for overstepping those boundaries?</p>
-
 <p>In a similar way, computers have a large table on which they can write and draw.
 Usually, someone like you and me will lay down pieces of paper for the computer, so that when it draws cats for the cat-drawing program, those cats won’t end up on the table or on anyone else’s paper sitting nearby.
 But the computer can’t tell the difference between your paper, my paper, its paper, or the table, so unless we are <em>very</em> specific about the size of what we tell it to draw, it has no problem drawing all over everyone else’s work.</p>
-
 <p>Not good.</p>
-
 <p>On top of that, most people give computers enormous amounts of instructions in advance.
 Although I just told you to draw one cat at a time (maybe ten cats in all), professional computer people get paid lots of money to tell computers to draw <em>billions</em> of cats at once in the fastest way possible.
 It’s like your math teacher writing up a billion-problem multiplication drill the night before, handing it to you the next morning, and leaving.</p>
-
-<figure><img src="https://www.1989generationinitiative.org/j/2020/07/times-table-worksheets-activity-shelter-multiplication-drill-counting-money-kindergarten.jpg" alt="five-minute multiplication drill" /></figure>
-
+<figure><img src="https://www.1989generationinitiative.org/j/2020/07/times-table-worksheets-activity-shelter-multiplication-drill-counting-money-kindergarten.jpg" alt="five-minute multiplication drill"></figure>
 <p>There’s no way to know in advance if you’ll write beyond the lines at some point in that greuling process!</p>
-
-<h1 id="the-solution-">The Solution (?)</h1>
-
+<h1>The Solution (?)</h1>
 <p>So after cleaning the poor table of all your crayon marks, I decide to fix the problem by using a new type of paper.
 This paper, rather than being pure white, has a thick red border around the edges.
 We’ll call this border the “red zone.”
 Now, when you’re drawing, I can see when your crayon hits the red zone, and choose to change my instructions to you so that you don’t venture beyond that zone.
 (Of course, you could also use that red zone to guide yourself, but computers aren’t as smart as you are.)</p>
-
 <p>In a similar way, I can mark certain edges in the computer’s table (we call that table “memory” in the computer) as dangerous regions (red zones).
 Whenever a computer tries to write anything on that zone, the programmer can be notified and jump in to change the instructions (the “program”) so that the computer doesn’t venture past that edge any longer.</p>
-
-<figure><img src="https://www.simplemost.com/wp-content/uploads/2017/02/7275464206_72432c61cd_o_sidewalk-bumps.jpg" alt="Child stepping on sidewalk bumps" title="We have &quot;red zones&quot; in real life too. Sometimes they're other colors, like yellow." /><figcaption>We have "red zones" in real life too. Sometimes they're other colors, like yellow.</figcaption></figure>
-
+<figure>
+<img src="https://www.simplemost.com/wp-content/uploads/2017/02/7275464206_72432c61cd_o_sidewalk-bumps.jpg" alt="Child stepping on sidewalk bumps" title="We have &quot;red zones&quot; in real life too. Sometimes they're other colors, like yellow."><figcaption>We have “red zones” in real life too. Sometimes they’re other colors, like yellow.</figcaption>
+</figure>
 <p>No one should be fooled that this strategy solves all of our problems, though.
 The red zone is not <em>preventing</em> our computer from drawing outside its region—only warning us of its error.
 Furthermore, I could easily instruct the computer (or you!) to draw something “new” far outside the bounds of the paper.
@@ -154,26 +135,28 @@ For example, say I want you to draw a cloud in the sky above the various cats.
 In that case, you could draw that entire cloud without ever touching the red zone that I’ve designated.
 When I’m watching you, it’s easy to spot the error, but again, remember that most big-shot computer programmers send in tasks like billion-question multiplication quizzes in advance.
 They don’t bother to watch every calculation, but rely on looking at the red zone after the fact to see if their instructions need to be edited.</p>
-
 <p>I could make larger red zones to catch more of these over-steps, but if I make the red zone too big, then no one would be able to draw anything <em>outside</em> of the massive red zone!</p>
-
-<hr />
-
+<hr>
 <p>So that’s buffer overflows and red zones in a nutshell.</p>
-
 <p>Those over the age of five might be interested in the open-source tool that I used during my studies to implement a red-zone-based buffer overflow detector.
 If so, definitely check out the <a href="https://dynamorio.org/">DynamoRIO</a> runtime code manipulation system and the <a href="https://github.com/Xuhpclab/DrCCTProf">DrCCTProf</a> call path profiling tool built atop DynamoRIO.
 I cannot yet release my own code to the public for viewing, as grades for the class are still being calculated, but pending the professor’s permission I will definitely update this blog post with links for interested parties!</p>
-
 <p>I hope you found this little explanation entertaining and informational.</p>
+</section>
 
     
         <br/>
         <p>
             
-                <a class="small tag" href="/tag/college">college</a>
+                
             
-                <a class="small tag" href="/tag/software">software</a>
+                
+                    <a class="small tag" href="/tag/college">college</a>
+                
+            
+                
+                    <a class="small tag" href="/tag/software">software</a>
+                
             
         </p>
     
@@ -188,6 +171,7 @@ I cannot yet release my own code to the public for viewing, as grades for the cl
  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
  */
 var disqus_config = function () {
+
 this.page.url = "https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five/";  // Your page's canonical URL variable
 this.page.identifier = "/blog/2020/11/23/grad-school-like-im-five"; // Your page's unique identifier variable
 };
@@ -202,6 +186,10 @@ s.setAttribute('data-timestamp', +new Date());
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     
+
+    
+    
+
     
         <hr class="full"/>
     
@@ -209,14 +197,14 @@ s.setAttribute('data-timestamp', +new Date());
         <a class="halfWidth left previousEntry" href="/blog/2018/02/24/book-review-the-circle-by-dave-eggers/">
             <h5>Previous post</h5>
             <span class="title">Book Review: The Circle, by Dave Eggers</span>
-            <span class="summary">For the first time I can remember in a long while, I did not have the endurance to make it through a book. The Circle was patronizing, immature, and (as others have already mentioned) offered nothing new to the conversation.</span>
+            <span class="summary">For the first time I can remember in a long while, I did not have the endurance to make it through a book. The Circle was patronizing, immature, and (as others have already mentioned) offered nothing new to the conversation. </span>
         </a>
     
     
         <a class="left halfWidth nextEntry" href="/blog/2022/11/01/typescripts-skeleton-key/">
             <h5>Next post</h5>
             <span class="title">Typescript's Skeleton Key</span>
-            <span class="summary">The intrepid Typescript developer will find several types that, frankly, make no sense whatsoever in real life. A “string” or “number” is perfectly reasonable, but what is an “unknown” or “never” type?  More importantly, what in the world is a “keyof never”?</span>
+            <span class="summary">The intrepid Typescript developer will find several types that, frankly, make no sense whatsoever in real life. A “string” or “number” is perfectly reasonable, but what is an “unknown” or “never” type? More importantly, what in the world is a “keyof never”? </span>
         </a>
     
 </div>
@@ -230,18 +218,15 @@ s.setAttribute('data-timestamp', +new Date());
     &copy; 2025 Neill Robson. Layout inspired by
     <a href="https://blot.im/" target="_blank">Blot</a>.
     <br />
-    This site is hosted at
+    This site is hosted on
     <a href="https://github.com" target="_blank">GitHub</a> and built with
-    <a href="https://jekyllrb.com" target="_blank">Jekyll</a>.
+    <a href="https://www.11ty.dev/" target="_blank">Eleventy</a>. Icons by
+    <a href="https://icons8.com" target="_blank">Icons8</a>.
   </small>
 </div>
 
     </div>
-    <script defer type="text/javascript" src="/assets/js/bundle.js"></script>
-
-
-<script async id="dsq-count-scr" src="//neillrobson.disqus.com/count.js"></script>
-
+    
 
   </body>
 </html>

@@ -8,19 +8,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>A Cursor-y Attempt | Neill Robson's Website</title>
+    <title>Neill Robson's Website</title>
 
     <script type="module">
       document.documentElement.classList.remove('no-js');
       document.documentElement.classList.add('js');
     </script>
 
-    <meta name="description" content="A Cursor-y Attempt" />
-    <meta name="keywords" content="" />
+    <meta name="description" content="The blog and portfolio of a software developer." />
     <meta name="author" content="Neill Robson">
 
-    <meta property="og:title" content="A Cursor-y Attempt | Neill Robson's Website">
-    <meta property="og:description" content="A Cursor-y Attempt">
+    <meta property="og:title" content="Neill Robson's Website">
+    <meta property="og:description" content="The blog and portfolio of a software developer.">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://neillrobson.com/projects/a-cursory-attempt/">
@@ -28,12 +27,10 @@
 
     
 
-    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
-    <link type="application/atom+xml" rel="alternate" href="https://neillrobson.com/feed.xml" title="Neill Robson&apos;s Website" />
+    <link rel="shortcut icon" href="/assets/icon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="/assets/css/main.css">
-
-    
+    <link rel="stylesheet" href="/assets/style/main.css">
+    <link rel="stylesheet" href="/assets/style/social.css">
 </head>
 
 
@@ -42,12 +39,11 @@
       <div class="header">
   <div id="title">
     
-    
     <a href="/">
       <img
         id="logo"
         class="rounded"
-        src="https://gravatar.com/avatar/e246fc5b45d5e2859ecbf2b867e4b5bb30d5e3d079c412add3acdd5ba87b07ce?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
+        src="https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
         alt="Neill Robson"
       />
       Neill Robson's Website
@@ -86,91 +82,85 @@
 		</div>
 	</div>
 	
-	<p>In April 2016, I participated in my first-ever video game design competition:
+	<section>
+<p>In April 2016, I participated in my first-ever video game design competition:
 Ludum Dare. The experience of developing and publishing a video game from
 scratch within a 48-hour time frame (!) was exhilarating and enlightening, and I
 couldn’t wait to see how it turned out. Unfortunately, right before the results
 were announced, I conveniently boarded a plane to China, and subsequently
 completely forgot about the competition and my entry until returning to the US.</p>
-
 <p>Of course, I am now a few months late sharing the experience (and results) here
 on the blog, but better late than never I suppose!</p>
-
 <p>If you want to skip straight to where I talk about the game I made, just head
 <a href="#myentry">here</a>.</p>
-
-<h2 id="the-competition">The Competition</h2>
-
-<figure><img src="/assets/images/2016/06/ludum-dare-long.jpg" alt="Ludum Dare logo" /></figure>
-
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#the-competition"></a><h2 id="the-competition">The Competition</h2>
+</div>
+<figure><img src="/assets/images/2016/06/ludum-dare-long.jpg" alt="Ludum Dare logo"></figure>
 <p>Ludum Dare: the Latin phrase roughly translates into “to give a game.” The Ludum
 Dare community is most well known for its “Accelerated Game Development Event”
 of the same name.</p>
-
 <p>Participants in the Ludum Dare competition have 48 hours to design a game–from
 scratch–adhering to a theme announced at the beginning of the contest. Entries
 are judged and ranked in 7 categories, including audio, graphics, innovation,
 adherence to the theme, and so on.</p>
-
 <p>This time, the theme was <strong>Shapeshift</strong>. I was one of 2,712 entries.</p>
-
 <p>For anyone interested in further background about the rules, operations, or
 history of the Ludum Dare competition, feel free to check out <a href="http://ludumdare.com/compo/">the
 homepage</a> or <a href="http://ludumdare.com/compo/rules/">the
 rules</a>.</p>
-
-<h2 id="my-entry-">My Entry <a id="myentry"></a></h2>
-
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#my-entry"></a><h2 id="my-entry">My Entry <a id="myentry"></a></h2>
+</div>
 <figure><img src="/assets/images/2016/06/Screenshot-from-2016-06-27-14-42-04.png" alt="An in-progress session of my
-game" /></figure>
-
+game"></figure>
 <p><a href="/LD35">Check it out!</a></p>
-
 <p>A lot of information can already be found at the link above. So that players
 would not have to download anything (and could play the game regardless of their
 operating system), I opted to write a browser-based game in pure Javascript.</p>
-
 <p>The basic idea is that you have a cursor that can be maneuvered around on a
 grid. Colored boxes are strewn about the grid as well, and whenever the cursor
 passes over a box, the box is “teleported” to another grid <em>based on the
 direction that the cursor passed over the box</em>.</p>
-
 <p>So where does the theme “Shapeshift” come into play? Well, if you are able to
 <em>shift</em> the tiles into the <em>shape</em> of an apple tree, then you win the game!</p>
-
 <p>If you haven’t already, go ahead and check it out at the link above. Don’t worry
 if you can’t complete the puzzle; what’s important is to get the experience of
 messing with it.</p>
-
-<h2 id="the-results">The Results</h2>
-
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#the-results"></a><h2 id="the-results">The Results</h2>
+</div>
 <p>Here are the <a href="http://ludumdare.com/compo/ludum-dare-35/">top games ranked by
 category</a>.</p>
-
 <p>If you click on
 <a href="http://ludumdare.com/compo/ludum-dare-35/?action=top&amp;cat=Innovation">innovation</a>,
 and you scroll down to 6th place, you’ll find my entry!</p>
-
 <p>I’m flabbergasted and humbled to have received such a fine rank considering this
 was my first attempt at such a competition. To be sure, you would be doing
 yourself quite a disservice if you didn’t go check out some of the other
 highly-ranked games; they are astonishing! Keep in mind that all of these
 entries were constructed from scratch in only 48 hours!</p>
-
-<h2 id="reflections">Reflections</h2>
-
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#reflections"></a><h2 id="reflections">Reflections</h2>
+</div>
 <p>I certainly made many more mistakes during this competition than successes. For
 one, choosing not to use a game-creation engine or library was a terrible
 inconvenience to me. Furthermore, pure Javascript (of all inappropriate
 languages) is simply not suited for video game development, and if I were to
 expand on this project I would most certainly have to begin by translating the
 current product into a different language!</p>
-
 <p>As I stated previously, the main reason for choosing Javascript as my working
 environment was to produce a Web-based game that required no downloading. That
 being said, there are plenty of other languages that compile to a
 browser-readable format that would have been better suited for the task.</p>
-
 <p>As far as the game itself goes, I think it certainly reflects my more abstract
 creative thought patterns. In the context of a 48-hour race, I think this
 tendency is simply expected, but in a more relaxed environment the game
@@ -179,7 +169,6 @@ definitely needs a boatload of polish and, well, accessibility added to
 etc), the game does a terrible job at “selling itself,” and even for the
 determined people who manage to construct the entire tree out of the tiles,
 there isn’t even a “You Win!” screen. I definitely failed in this respect.</p>
-
 <p>Again, choosing a different development language and environment would have been
 an excellent help in rounding off many of the aforementioned rough edges.
 However, my greatest success in this first attempt was certainly my tenacity:
@@ -187,17 +176,15 @@ even realizing at the 24-hour mark what terrible mistakes I was making, and
 watching my lofty dreams come tumbling down to a humble reality, by sticking
 with the imperfect pieces I had I was able to make an infinitely higher-quality
 product than if I had been wishy-washy in my development choices.</p>
-
-<hr />
-
+<hr>
 <p>In any case, I probably would have had much more to say if this postmortem had
 been drafted closer to the competition date; but alas, given the constraints of
 living in China, I did what I could! Hopefully you found some entertainment or
 insights in the game or my tangentially-related ramblings.</p>
-
 <p>If by any chance you are also familiar with web development and want to check
 out (or contribute to!) the <a href="https://github.com/neillrobson/LD35">source code</a>,
 well, you know where to go.</p>
+</section>
 
 	<div class="clear"></div>
 </div>
@@ -211,18 +198,15 @@ well, you know where to go.</p>
     &copy; 2025 Neill Robson. Layout inspired by
     <a href="https://blot.im/" target="_blank">Blot</a>.
     <br />
-    This site is hosted at
+    This site is hosted on
     <a href="https://github.com" target="_blank">GitHub</a> and built with
-    <a href="https://jekyllrb.com" target="_blank">Jekyll</a>.
+    <a href="https://www.11ty.dev/" target="_blank">Eleventy</a>. Icons by
+    <a href="https://icons8.com" target="_blank">Icons8</a>.
   </small>
 </div>
 
     </div>
-    <script defer type="text/javascript" src="/assets/js/bundle.js"></script>
-
-
-<script async id="dsq-count-scr" src="//neillrobson.disqus.com/count.js"></script>
-
+    
 
   </body>
 </html>

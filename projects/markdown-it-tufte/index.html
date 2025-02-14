@@ -8,19 +8,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Markdown-It Tufte | Neill Robson's Website</title>
+    <title>Neill Robson's Website</title>
 
     <script type="module">
       document.documentElement.classList.remove('no-js');
       document.documentElement.classList.add('js');
     </script>
 
-    <meta name="description" content="Markdown-It Tufte" />
-    <meta name="keywords" content="" />
+    <meta name="description" content="The blog and portfolio of a software developer." />
     <meta name="author" content="Neill Robson">
 
-    <meta property="og:title" content="Markdown-It Tufte | Neill Robson's Website">
-    <meta property="og:description" content="Markdown-It Tufte">
+    <meta property="og:title" content="Neill Robson's Website">
+    <meta property="og:description" content="The blog and portfolio of a software developer.">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://neillrobson.com/projects/markdown-it-tufte/">
@@ -28,12 +27,10 @@
 
     
 
-    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
-    <link type="application/atom+xml" rel="alternate" href="https://neillrobson.com/feed.xml" title="Neill Robson&apos;s Website" />
+    <link rel="shortcut icon" href="/assets/icon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="/assets/css/main.css">
-
-    
+    <link rel="stylesheet" href="/assets/style/main.css">
+    <link rel="stylesheet" href="/assets/style/social.css">
 </head>
 
 
@@ -42,12 +39,11 @@
       <div class="header">
   <div id="title">
     
-    
     <a href="/">
       <img
         id="logo"
         class="rounded"
-        src="https://gravatar.com/avatar/e246fc5b45d5e2859ecbf2b867e4b5bb30d5e3d079c412add3acdd5ba87b07ce?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
+        src="https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
         alt="Neill Robson"
       />
       Neill Robson's Website
@@ -86,42 +82,43 @@
 		</div>
 	</div>
 	
-	<p>Inspired by the pragmatic and elegant web design choices of the <a href="https://edwardtufte.github.io/tufte-css/">Tufte CSS</a> project,
-I set out to create an extension of the Markdown syntax to make drafting Tufte-styled documents a joy. <!--more--></p>
-
+	<section>
+<p>Inspired by the pragmatic and elegant web design choices of the <a href="https://edwardtufte.github.io/tufte-css/">Tufte CSS</a> project,
+I set out to create an extension of the Markdown syntax to make drafting Tufte-styled documents a joy.</p>
 <p><strong>Check it out on Github <a href="https://github.com/neillrobson/markdown-it-tufte">here</a></strong>, and try out the live demo <a href="https://neillrobson.com/markdown-it-tufte/">here</a>!</p>
-
-<h2 id="motivation">Motivation</h2>
-
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#motivation"></a><h2 id="motivation">Motivation</h2>
+</div>
 <p>I’ve been interested for a while in building a personal archive of my old writings (journals, poems, short stories),
 as well as having some way to annotate and curate them without destroying the source material.
 Tufte CSS sets a beautiful standard for all sorts of web documents,
 and I wanted to follow that precedent as much as possible.</p>
-
 <p>For the actual building of the website from plain-text files, I found the minimal static-site drafting tool <a href="https://11ty.dev">Eleventy</a>.
 Eleventy is an ideal technology to create “pure content” sites.
 There is no fuss over Javascript bundling, browser targets, and the like:
 just write your content (in Markdown or the language of your choice), run the serve or build command, and you’re golden.</p>
-
 <p>Eleventy uses <a href="https://markdown-it.github.io/">Markdown-It</a> by default to parse Markdown.
 Admittedly, I had no previous familiarity with that parser,
 and the documentation for authors of custom plugins was sparse.
 However, <a href="https://github.com/luhmann/tufte-markdown">existing</a> <a href="https://github.com/jez/tufte-pandoc-css">projects</a> were often unmaintained or lacking in functionality.
 They also required <a href="https://github.com/nerdhaus/eleventufte">a rip-and-replace</a> of Eleventy’s default Markdown parser,
 limiting the integration possibilities with other plugins designed for use with Eleventy.</p>
-
 <p>My plugin seeks to fill that gap!</p>
-
-<h2 id="next-steps">Next Steps</h2>
-
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#next-steps"></a><h2 id="next-steps">Next Steps</h2>
+</div>
 <p>Even if the plugin itself doesn’t experience widespread adoption,
 I at least hope to contribute some documentation for Markdown-It plugin development to their repository.
 I learned a ton in the development process that could be a significant help to others.</p>
-
 <p>On a much grander scale, I may one day move this blog/portfolio site from Jekyll to Eleventy.
 If I make that change, I would also likely use some variant of Tufte CSS in the redesign,
 allowing for the use of side-notes and new-thoughts.
 That project is much further out in the future, though.</p>
+</section>
 
 	<div class="clear"></div>
 </div>
@@ -135,18 +132,15 @@ That project is much further out in the future, though.</p>
     &copy; 2025 Neill Robson. Layout inspired by
     <a href="https://blot.im/" target="_blank">Blot</a>.
     <br />
-    This site is hosted at
+    This site is hosted on
     <a href="https://github.com" target="_blank">GitHub</a> and built with
-    <a href="https://jekyllrb.com" target="_blank">Jekyll</a>.
+    <a href="https://www.11ty.dev/" target="_blank">Eleventy</a>. Icons by
+    <a href="https://icons8.com" target="_blank">Icons8</a>.
   </small>
 </div>
 
     </div>
-    <script defer type="text/javascript" src="/assets/js/bundle.js"></script>
-
-
-<script async id="dsq-count-scr" src="//neillrobson.disqus.com/count.js"></script>
-
+    
 
   </body>
 </html>

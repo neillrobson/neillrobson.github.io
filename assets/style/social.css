@@ -1,0 +1,69 @@
+.social-list-color a {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.9rem;
+  background: none;
+  box-sizing: border-box;
+}
+.social-list-color a.twitter {
+  background-color: #1da1f2;
+}
+.social-list-color a.twitter:hover {
+  background-color: rgb(11.9665271967, 133.4728033473, 208.0334728033);
+}
+.social-list-color a.facebook {
+  background-color: #3b5998;
+}
+.social-list-color a.facebook:hover {
+  background-color: rgb(44.7393364929, 67.4881516588, 115.2606635071);
+}
+.social-list-color a.github {
+  background-color: #576477;
+}
+.social-list-color a.github:hover {
+  background-color: rgb(65.4611650485, 75.2427184466, 89.5388349515);
+}
+.social-list-color a.stack-overflow {
+  background-color: #f3a83b;
+}
+.social-list-color a.stack-overflow:hover {
+  background-color: rgb(236.5192307692, 146.0144230769, 14.4807692308);
+}
+.social-list-color a.linkedin {
+  background-color: #0077b5;
+}
+.social-list-color a.linkedin:hover {
+  background-color: rgb(0, 85.4696132597, 130);
+}
+.social-list-color a.codepen {
+  background-color: #000000;
+}
+.social-list-color a.codepen:hover {
+  background-color: hsl(0, 0%, -10%);
+}
+.social-list-color a.instagram {
+  background-color: #bc296d;
+}
+.social-list-color a.instagram:hover {
+  background-color: rgb(146.1310043668, 31.8689956332, 84.7248908297);
+}
+.social-list-color a.medium {
+  background-color: #02b875;
+}
+.social-list-color a.medium:hover {
+  background-color: rgb(1.4516129032, 133.5483870968, 84.9193548387);
+}
+.social-list-color a.email {
+  background-color: #f06a4e;
+}
+.social-list-color a.email:hover {
+  background-color: rgb(236.015625, 66.421875, 30.984375);
+}
+.social-list-color a img {
+  filter: invert(1);
+}
