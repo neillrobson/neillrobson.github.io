@@ -76,7 +76,7 @@ Now, when you're drawing, I can see when your crayon hits the red zone, and choo
 In a similar way, I can mark certain edges in the computer's table (we call that table "memory" in the computer) as dangerous regions (red zones).
 Whenever a computer tries to write anything on that zone, the programmer can be notified and jump in to change the instructions (the "program") so that the computer doesn't venture past that edge any longer.
 
-![Child stepping on sidewalk bumps](https://www.simplemost.com/wp-content/uploads/2017/02/7275464206_72432c61cd_o_sidewalk-bumps.jpg "We have "red zones" in real life too. Sometimes they're other colors, like yellow.")
+![Child stepping on sidewalk bumps](https://www.simplemost.com/wp-content/uploads/2017/02/7275464206_72432c61cd_o_sidewalk-bumps.jpg (We have "red zones" in real life too. Sometimes they're other colors, like yellow.))
 
 No one should be fooled that this strategy solves all of our problems, though.
 The red zone is not _preventing_ our computer from drawing outside its region---only warning us of its error.

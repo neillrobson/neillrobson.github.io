@@ -4,6 +4,7 @@ import eleventyPluginSass from "@jgarber/eleventy-plugin-sass";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import strftime from "strftime";
 import MarkdownItTufte from "markdown-it-tufte";
+import pullsPlugin from "./src/_plugins/pulls.js";
 
 export default async function (eleventyConfig) {
   eleventyConfig.setInputDirectory("src");
@@ -20,6 +21,7 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.amendLibrary("md", (mdLib) => {
     mdLib.use(MarkdownItTufte);
+    mdLib.use(pullsPlugin);
     mdLib.set({ html: true, typographer: true });
   });
 
