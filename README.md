@@ -46,7 +46,7 @@ Source code for the personal website and blog of Neill Robson.
 
 -   [x] Refactor CSS to use SASS features (variables etc) for maintainability (process started; ongoing)
 -   [x] Update stylesheets to make sidebar links clickable on mobile
--   [ ] Migrate to Eleventy
+-   [x] Migrate to Eleventy
 -   [ ] RSS/Search
     -   [ ] Improve styling of RSS/Search buttons
     -   [ ] Implement search bar using frontend-only solution: maybe [lunr](https://lunrjs.com)
@@ -67,7 +67,6 @@ Source code for the personal website and blog of Neill Robson.
 - [x] Liquid UTC Date filter
 - [x] Footer (colophon) update
 - [x] Formatting repair
-  - [x] Images (too wide) \
-    Note that markdown-it-tufte 0.3.0 doesn't yet catch images within larger block elements!
+  - [x] Images (too wide)
   - [x] sidebars (left/right)
   - [x] Typography (smart quotes)
