@@ -44,29 +44,8 @@ Source code for the personal website and blog of Neill Robson.
 
 ## Todo
 
--   [x] Refactor CSS to use SASS features (variables etc) for maintainability (process started; ongoing)
--   [x] Update stylesheets to make sidebar links clickable on mobile
--   [x] Migrate to Eleventy
+-   [ ] Restyling to take advantage of Tufte sidenotes
 -   [ ] RSS/Search
     -   [ ] Improve styling of RSS/Search buttons
     -   [ ] Implement search bar using frontend-only solution: maybe [lunr](https://lunrjs.com)
 -   [ ] Respond smartly to no-js
--   [x] "now" page: https://nownownow.com/
--   [x] Project page for Private Reacji app
-
-### Eleventy Migration
-
-- [x] Fix RSS feed
-- [x] Maintain identical urls / permalinks
-- [x] Disqus repair
-- [x] Social iconography
-- [x] README build instruction updates
-- [x] Github Actions patch-up
-- [x] Clean package.json dependencies
-- [x] robots.txt
-- [x] Liquid UTC Date filter
-- [x] Footer (colophon) update
-- [x] Formatting repair
-  - [x] Images (too wide)
-  - [x] sidebars (left/right)
-  - [x] Typography (smart quotes)
