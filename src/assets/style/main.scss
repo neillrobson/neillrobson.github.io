@@ -34,7 +34,10 @@ body {
   -moz-font-feature-settings: “liga” on;
   color: #232323;
   word-wrap: break-word;
-  padding: 0 20px;
+  width: 87.5%;
+  padding-left: 12.5%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .clear {
@@ -94,8 +97,7 @@ div {
 .container {
   min-height: 100%;
   display: grid;
-  grid-template: auto 1fr auto / minmax(0, 600px);
-  justify-content: center;
+  grid-template: auto 1fr auto / minmax(0, 90%);
 }
 
 .archive,
@@ -104,11 +106,17 @@ div {
 }
 
 .footer {
-  text-align: center;
+  line-height: 1.2;
   padding-bottom: 0.5rem;
 }
 
 /* LAYOUT */
+
+section > p,
+section > ol,
+section > ul {
+  width: 55%;
+}
 
 .margin {
   position: absolute;
@@ -456,18 +464,6 @@ iframe {
   margin: 24px 0 !important;
 }
 
-/* TWEETS */
-
-.entry .twitter-tweet {
-  margin-left: -16px !important;
-}
-
-/* MATH */
-
-.katex {
-  font-size: 1.05rem;
-}
-
 #title a {
   font-weight: bold;
   font-size: 0.95rem;
@@ -719,30 +715,37 @@ input#search:focus {
   .header {
     margin-left: 3rem;
   }
+
   ul,
   li {
     margin-left: 24px;
   }
+
   ul ul,
   ol ul,
   ol ol,
   ul ol {
     margin-left: 0;
   }
+
   .nav .right {
     clear: both;
     float: none;
     margin-top: 3px;
   }
+
   a.search {
     margin-left: 0;
+  }
+
+  section > p,
+  section > ol,
+  section > ul {
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 400px) {
-  .entry .twitter-tweet {
-    margin-left: 0 !important;
-  }
   .header {
     margin-top: 9px;
     margin-bottom: 9px;
