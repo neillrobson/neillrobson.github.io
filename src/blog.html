@@ -12,9 +12,11 @@ permalink: "/blog{% if pagination.pageNumber > 0 %}/page{{ pagination.pageNumber
     <div class="entry">
         <a class="small date left margin" href="{{post.url}}">{{post.date | utcDate: '%B %-d, %Y'}}</a>
         <a href="{{ post.url }}"><h1>{{ post.data.title }}</h1></a>
-        <p>
-            {{ post.data.page.excerpt | md | strip_html | truncatewords: 100 }}
-        </p>
+        <section>
+            <p>
+                {{ post.data.page.excerpt | md | strip_html | truncatewords: 100 }}
+            </p>
+        </section>
         {% for tag in post.data.tags %}
             {% if tag != 'posts' %}
                 <a class="small tag" href="/tag/{{ tag }}">{{tag}}</a>
