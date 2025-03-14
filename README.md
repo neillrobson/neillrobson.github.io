@@ -49,3 +49,10 @@ Source code for the personal website and blog of Neill Robson.
     -   [ ] Improve styling of RSS/Search buttons
     -   [ ] Implement search bar using frontend-only solution: maybe [lunr](https://lunrjs.com)
 -   [ ] Respond smartly to no-js
+
+### Tufte Restyle
+
+- [x] Left alignment
+- [ ] Sidenotes (counter)
+- [ ] Header link buttons
+- [ ] Fade transitions?
