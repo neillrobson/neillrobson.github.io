@@ -43,7 +43,7 @@ sourceImages$.pipe(
 It's a clean pipeline! But in practice, this implementation processes the source images serially. Each API call must be returned before the next image is sent off.
 For a slow API, such serial processing is undesirable.
 
-{<>} ![visualization of serial pipeline processing]({{site.baseurl}}/assets/images/2024/04/15/rxjs-batched-processing/serial.png "The top pipeline represents queries sent to the API. The number on each data point is the number of queries happening in parallel. The bottom pipeline contains the four images identified as cats, emitted at the time they were identified.")
+![visualization of serial pipeline processing]({{site.baseurl}}/assets/images/2024/04/15/rxjs-batched-processing/serial.png "The top pipeline represents queries sent to the API. The number on each data point is the number of queries happening in parallel. The bottom pipeline contains the four images identified as cats, emitted at the time they were identified.")
 
 ## Merging
 
@@ -209,7 +209,7 @@ range(1, 4).subscribe(() => batcher$.next());
 
 The initial run will send off four API calls at once. The pipeline will maintain four in-flight API calls until one of them returns with a cat. Each cat received will effectively decrement the parallelism, preventing us from over-querying the API after we've already received our four cats.
 
-{<>} ![visualization of batched pipeline processing]({{site.baseurl}}/assets/images/2024/04/15/rxjs-batched-processing/batched.png "Notice how up to four parallel API calls are allowed at first. The number drops to three when the first cat is identified, then down to one when two cats are found in quick succession.")
+![visualization of batched pipeline processing]({{site.baseurl}}/assets/images/2024/04/15/rxjs-batched-processing/batched.png "Notice how up to four parallel API calls are allowed at first. The number drops to three when the first cat is identified, then down to one when two cats are found in quick succession.")
 
 ## Conclusion
 

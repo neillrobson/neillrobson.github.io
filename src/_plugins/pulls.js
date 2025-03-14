@@ -1,7 +1,4 @@
 const CLASSES = {
-  "<<": "wide left",
-  ">>": "wide right",
-  "<>": "wide",
   "<": "inside left",
   ">": "inside right",
   "|<": "margin left",

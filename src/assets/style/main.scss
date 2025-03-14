@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /*
  * FONTS
  * Default font stack found at https://systemfontstack.com/
@@ -70,17 +72,6 @@ figcaption,
   margin: 9px 0 24px;
   max-width: 600px;
   font-style: normal;
-}
-
-/* 29.3333 / 1.2933333 */
-.wide.left figcaption,
-.wide.left .caption {
-  margin-left: 22.680412113%;
-}
-
-.wide.right figcaption,
-.wide.right .caption {
-  margin-right: 22.680412113%;
 }
 
 .right {
@@ -168,7 +159,7 @@ section > *:not(.margin),
 
 .left.margin {
   // Main body is 7x size of left margin (7/8)
-  $width: percentage(1 / 7);
+  $width: math.percentage(math.div(1, 7));
   width: $width;
   left: -$width;
   padding-right: 20px;
@@ -177,24 +168,8 @@ section > *:not(.margin),
 }
 
 .right.margin {
-  right: percentage(1 - (.55 * 1.6));
-  width: percentage(.55 / 2);
-}
-
-.wide {
-  max-width: 90%;
-}
-
-.wide.left,
-.wide.right {
-  width: 129.3333333%;
-  float: none;
-}
-.wide.left {
-  margin: 0 0 0 -29.3333333%;
-}
-.wide.right {
-  margin: 0 -29.3333333% 0 0;
+  right: math.percentage(1 - (.55 * 1.6));
+  width: math.percentage(math.div(.55, 2));
 }
 
 .column {
@@ -208,17 +183,17 @@ section > *:not(.margin),
 }
 
 .column.two {
-  width: percentage((0.9 - 0.03 * 1) / 2);
+  width: math.percentage(math.div(0.9 - 0.03 * 1, 2));
   margin-right: 3%;
 }
 
 .column.three {
-  width: percentage((0.9 - 0.03 * 2) / 3);
+  width: math.percentage(math.div(0.9 - 0.03 * 2, 3));
   margin-right: 3%;
 }
 
 .column.four {
-  width: percentage((0.9 - 0.03 * 3) / 4);
+  width: math.percentage(math.div(0.9 - 0.03 * 3, 4));
   margin-right: 3%;
 }
 
@@ -431,14 +406,8 @@ figure img {
   max-height: 90vh;
 }
 
-.wide figure img,
 .margin figure img {
   max-height: none;
-}
-
-.wide figure,
-.wide p {
-  margin-top: 0;
 }
 
 .blur-container {
@@ -708,16 +677,6 @@ input#search:focus {
   padding-bottom: 9px;
 }
 
-.entry .date + .wide {
-  position: relative;
-  top: 2.66em;
-  padding-bottom: 2.66em;
-}
-.entry .date + .wide.right {
-  position: relative;
-  top: 0.66em;
-  padding-bottom: 0.66em;
-}
 .entry .date + h2,
 .entry .date + h3,
 .entry .date + h4,
@@ -747,7 +706,7 @@ input#search:focus {
   text-shadow: none;
   font-size: 0.88rem;
   line-height: 1.33;
-  width: percentage(0.55 * 0.48);
+  width: math.percentage(0.55 * 0.48);
   margin: 1em 0 6em 1%;
   color: #000;
   display: block;
@@ -799,18 +758,6 @@ input#search:focus {
     text-align: left;
   }
 
-  .wide,
-  .wide.left,
-  .wide.right {
-    width: 100%;
-    margin: 0;
-  }
-
-  .wide.left figcaption,
-  .wide.left .caption {
-    margin-left: 0;
-  }
-
   .date {
     position: absolute;
     left: 0;
@@ -855,23 +802,19 @@ input#search:focus {
   }
 
   .column.two {
-    width: percentage((1 - 0.03 * 1) / 2);
+    width: math.percentage(math.div(1 - 0.03 * 1, 2));
   }
 
   .column.three {
-    width: percentage((1 - 0.03 * 2) / 3);
+    width: math.percentage(math.div(1 - 0.03 * 2, 3));
   }
 
   .column.four {
-    width: percentage((1 - 0.03 * 3) / 4);
+    width: math.percentage(math.div(1 - 0.03 * 3, 4));
   }
 
   hr {
     width: 100%;
-  }
-
-  .wide {
-    max-width: 100%;
   }
 
   section > *:not(.margin),
