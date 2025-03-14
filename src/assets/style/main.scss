@@ -112,10 +112,7 @@ div {
 
 /* LAYOUT */
 
-section > p,
-section > ol,
-section > ul,
-section > pre,
+section > *:not(.margin),
 #disqus_thread,
 .pagination,
 .footer {
@@ -753,10 +750,7 @@ input#search:focus {
     max-width: 100%;
   }
 
-  section > p,
-  section > ol,
-  section > ul,
-  section > pre,
+  section > *:not(.margin),
   pre code,
   #disqus_thread,
   .pagination,
