@@ -16,7 +16,7 @@ layout: default
 	</div>
 	{% endif %}
 	<section>
-		<p>{{ project.data.page.excerpt | default: project.data.page.rawInput | md | strip_html | truncatewords: 30, '...' }}</p>
+		<p>{{ project.data.page.excerpt | default: project.data.page.rawInput | renderContent: 'md' | strip_html | truncatewords: 30, '...' }}</p>
 	</section>
 	<div class="clear"></div>
 </div>

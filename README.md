@@ -56,6 +56,6 @@ Source code for the personal website and blog of Neill Robson.
 - [x] Sidenotes (counter)
 - [x] Header link buttons
 - [x] newthought
-- [ ] newthought stripping on excerpts
+- [x] newthought stripping on excerpts
 - [ ] Fade transitions?
 - [ ] CSS cleanup and best-practices

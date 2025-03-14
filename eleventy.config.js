@@ -1,7 +1,7 @@
-import markdownIt from "markdown-it";
 import yaml from "js-yaml";
 import eleventyPluginSass from "@jgarber/eleventy-plugin-sass";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
+import { EleventyRenderPlugin } from "@11ty/eleventy";
 import strftime from "strftime";
 import MarkdownItTufte from "markdown-it-tufte";
 import pullsPlugin from "./src/_plugins/pulls.js";
@@ -25,18 +25,12 @@ export default async function (eleventyConfig) {
     mdLib.set({ html: true, typographer: true });
   });
 
-  // This filter doesn't use the same Markdown-It instance as the core Eleventy renderer.
-  // Consider replacing with the official EleventyRenderPlugin if issues arise.
-  eleventyConfig.addFilter("md", (content) => {
-    return markdownIt({ html: true, typographer: true }).render(content || "");
-  });
-
   eleventyConfig.addFilter("utcDate", (date, format) =>
     strftime(format, new Date(date.toUTCString().substr(0, 25)))
   );
 
+  eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(eleventyPluginSass);
-
   eleventyConfig.addPlugin(feedPlugin, {
     type: "rss",
     outputPath: "/feed.xml",

@@ -35,14 +35,14 @@ permalink: "/blog/{{ page.date | utcDate: '%Y/%m/%d' }}/{{ page.fileSlug }}/inde
         <a class="halfWidth left previousEntry" href="{{previousPost.url}}">
             <h5>Previous post</h5>
             <span class="title">{{previousPost.data.title}}</span>
-            <span class="summary">{{previousPost.data.page.excerpt | md | strip_html | truncatewords: 100 }}</span>
+            <span class="summary">{{previousPost.data.page.excerpt | renderContent: 'md' | strip_html | truncatewords: 100 }}</span>
         </a>
     {% endif %}
     {% if nextPost.url %}
         <a class="left halfWidth nextEntry" href="{{nextPost.url}}">
             <h5>Next post</h5>
             <span class="title">{{nextPost.data.title}}</span>
-            <span class="summary">{{nextPost.data.page.excerpt | md | strip_html | truncatewords: 100 }}</span>
+            <span class="summary">{{nextPost.data.page.excerpt | renderContent: 'md' | strip_html | truncatewords: 100 }}</span>
         </a>
     {% endif %}
 </div>
