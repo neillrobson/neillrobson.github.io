@@ -58,4 +58,4 @@ Source code for the personal website and blog of Neill Robson.
 - [x] newthought
 - [x] newthought stripping on excerpts
 - [x] Fade transitions?
-- [ ] CSS cleanup and best-practices
+- [x] CSS cleanup and best-practices

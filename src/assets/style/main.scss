@@ -145,8 +145,6 @@ section > *:not(.margin),
 
 .margin figure,
 .margin p {
-  font-style: italic;
-  font-family: $serif;
   font-size: 0.8rem;
   margin-top: 0;
 }
@@ -168,6 +166,11 @@ section > *:not(.margin),
 }
 
 .right.margin {
+  // Content is 55% width
+  // margin note is half that width
+  // move right margin edge past content,
+  // plus own width,
+  // plus 10% padding
   right: math.percentage(1 - (.55 * 1.6));
   width: math.percentage(math.div(.55, 2));
 }
@@ -426,17 +429,7 @@ figure img {
   }
 }
 
-/* VIDEOS & tweets */
-
-iframe {
-  width: 100%;
-}
-
-/* Only apply vertical margin to direct
-   descendants, prevents multi margins */
-.entry > iframe {
-  margin: 24px 0 !important;
-}
+/* Header links */
 
 #title a {
   font-weight: bold;
@@ -450,39 +443,6 @@ iframe {
     color: #555;
   }
 }
-
-#logo {
-  position: absolute;
-  height: 2.75rem;
-  top: 0;
-  left: -3.4rem;
-
-  &.rounded {
-    border-radius: 50%;
-  }
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  &:active {
-    margin-top: 1px;
-  }
-}
-
-.nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.1rem 0.75rem;
-}
-
-.nav a {
-  font-size: 0.8rem;
-  background: none;
-  text-shadow: none;
-}
-
-/* Header links */
 
 .section-link,
 .newthought {
@@ -595,6 +555,37 @@ label.margin-toggle:not(.sidenote-number) {
 
 /* NAVIGATION */
 
+#logo {
+  position: absolute;
+  height: 2.75rem;
+  top: 0;
+  left: -3.4rem;
+
+  &.rounded {
+    border-radius: 50%;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    margin-top: 1px;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.75rem;
+}
+
+.nav a {
+  font-size: 0.8rem;
+  background: none;
+  text-shadow: none;
+}
+
 .nav a[href="/feed.xml"],
 .nav a[href="/search"] {
   color: #000;
@@ -668,25 +659,8 @@ input#search:focus {
   display: none;
 }
 
-/* Reset the spacing when date is not followed by an h1 tag */
-.entry .date + p,
-.entry .date + ul,
-.entry .date + ol {
-  position: relative;
-  top: 9px;
-  padding-bottom: 9px;
-}
-
-.entry .date + h2,
-.entry .date + h3,
-.entry .date + h4,
-.entry .date + h5,
-.entry .date + h6 {
-  position: relative;
-  top: 9px;
-}
-
 /* Pagination */
+
 .pagination {
   text-align: center;
   margin: 72px 0;
@@ -735,6 +709,8 @@ input#search:focus {
   line-height: 1.33;
   margin-bottom: 3px;
 }
+
+/* BREAKPOINTS */
 
 @media screen and (max-width: 976px) {
   .entry .margin.left {
@@ -818,7 +794,6 @@ input#search:focus {
   }
 
   section > *:not(.margin),
-  pre code,
   #disqus_thread,
   .pagination,
   .footer {
