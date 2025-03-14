@@ -57,5 +57,5 @@ Source code for the personal website and blog of Neill Robson.
 - [x] Header link buttons
 - [x] newthought
 - [x] newthought stripping on excerpts
-- [ ] Fade transitions?
+- [x] Fade transitions?
 - [ ] CSS cleanup and best-practices
