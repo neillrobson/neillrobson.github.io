@@ -116,6 +116,7 @@ section > p,
 section > ol,
 section > ul,
 section > pre,
+#disqus_thread,
 .pagination,
 .footer {
   width: 55%;
@@ -625,15 +626,15 @@ input#search:focus {
   text-shadow: none;
   font-size: 0.88rem;
   line-height: 1.33;
-  width: 48%;
-  margin: 1em 0 6em 2%;
+  width: percentage(0.55 * 0.48);
+  margin: 1em 0 6em 1%;
   color: #000;
   display: block;
   float: left;
 }
 
 .previousEntry {
-  margin: 1em 2% 6em 0;
+  margin: 1em 1% 6em 0;
 }
 
 .adjacent a h5 {
@@ -691,7 +692,6 @@ input#search:focus {
 
   .date {
     position: absolute;
-    top: -24px;
     left: 0;
     text-align: left;
     margin: 0;
@@ -758,9 +758,20 @@ input#search:focus {
   section > ul,
   section > pre,
   pre code,
+  #disqus_thread,
   .pagination,
   .footer {
     width: unset;
+  }
+
+  .previousEntry,
+  .nextEntry {
+    width: 48%;
+    margin: 1em 0 6em 2%;
+  }
+
+  .previousEntry {
+    margin: 1em 2% 6em 0;
   }
 }
 
