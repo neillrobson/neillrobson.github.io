@@ -304,6 +304,11 @@ a::-moz-selection {
     -0.09em 0 #b3d4fd, 0.12em 0 #b3d4fd, -0.12em 0 #b3d4fd;
 }
 
+a.no-tufte-underline {
+  background: none;
+  text-shadow: none;
+}
+
 h1 a {
   background-size: 0 0, 0 0, 0.07em 0.07em;
   background-position: 0% 90%, 100% 90%, 0% 98%;
@@ -500,6 +505,45 @@ iframe {
   font-size: 0.8rem;
   background: none;
   text-shadow: none;
+}
+
+/* Header links */
+
+.section-link,
+.newthought {
+    position: relative;
+}
+
+.section-link > a:first-child,
+.newthought > a:first-child {
+  z-index: 1;
+  position: absolute;
+  display: block;
+  width: 28px;
+  height: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -28px;
+  opacity: 0;
+}
+
+.section-link:hover > a:first-child,
+.newthought:hover > a:first-child {
+  opacity: 1;
+}
+
+.section-link > a:first-child::before,
+.newthought > a:first-child::before {
+  content: '';
+  mask: url(/assets/icon/link.svg) no-repeat 50% 50%;
+  mask-size: cover;
+  background-color: currentColor;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
 }
 
 .nav a[href="/feed.xml"],

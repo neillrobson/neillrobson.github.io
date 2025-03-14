@@ -54,5 +54,5 @@ Source code for the personal website and blog of Neill Robson.
 
 - [x] Left alignment
 - [ ] Sidenotes (counter)
-- [ ] Header link buttons
+- [x] Header link buttons
 - [ ] Fade transitions?
