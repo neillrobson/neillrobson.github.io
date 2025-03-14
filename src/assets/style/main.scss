@@ -62,7 +62,7 @@ figcaption,
 .caption {
   line-height: 1.2;
   display: block;
-  margin: 9px auto 24px;
+  margin: 9px 0 24px;
   max-width: 600px;
   font-style: normal;
 }
@@ -177,9 +177,7 @@ section > ul,
 }
 
 .wide {
-  width: 158.6666667%;
-  margin-left: -29.3333333%;
-  overflow: auto; /* collapse internal margins */
+  max-width: 90%;
 }
 
 .wide.left,
@@ -205,20 +203,17 @@ section > ul,
 }
 
 .column.two {
-  width: 48.5%;
-  /* (100 - 3 * 1)/2 */
+  width: percentage((0.9 - 0.03 * 1) / 2);
   margin-right: 3%;
 }
 
 .column.three {
-  width: 31.333%;
-  /* (100 - 3 * 2)/3 */
+  width: percentage((0.9 - 0.03 * 2) / 3);
   margin-right: 3%;
 }
 
 .column.four {
-  width: 22.75%;
-  /* (100 - 3 * 3)/4 */
+  width: percentage((0.9 - 0.03 * 3) / 4);
   margin-right: 3%;
 }
 
@@ -334,8 +329,8 @@ a.tag {
 /* RULE */
 
 hr {
-  width: 100%;
-  margin: 24px auto -1px;
+  width: 55%;
+  margin: 24px 0 -1px;
   border: none;
   border-bottom: 3px double #efefef;
   padding-bottom: 1.4em;
@@ -366,6 +361,7 @@ p code {
 
 pre code {
   display: block;
+  width: 52.5%;
   padding: 12px 18px;
   background-color: rgba(0, 0, 0, 0.02);
   overflow-x: auto;
@@ -427,7 +423,6 @@ li {
 
 figure img {
   display: block;
-  margin: 0 auto;
   max-width: 100%;
   max-height: 90vh;
 }
@@ -749,6 +744,30 @@ input#search:focus {
 
   a.search {
     margin-left: 0;
+  }
+
+  .column.two {
+    width: percentage((1 - 0.03 * 1) / 2);
+  }
+
+  .column.three {
+    width: percentage((1 - 0.03 * 2) / 3);
+  }
+
+  .column.four {
+    width: percentage((1 - 0.03 * 3) / 4);
+  }
+
+  hr {
+    width: 100%;
+  }
+
+  pre code {
+    width: 100%;
+  }
+
+  .wide {
+    max-width: 100%;
   }
 
   section > p,
