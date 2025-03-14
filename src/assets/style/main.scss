@@ -119,6 +119,7 @@ section > pre,
 .pagination,
 .footer {
   width: 55%;
+  box-sizing: border-box;
 }
 
 .margin {
@@ -392,7 +393,7 @@ td {
 ul,
 ol {
   margin-left: 0;
-  padding-left: 0;
+  padding-left: 24px;
   list-style-position: outside;
   margin-bottom: 24px;
 }
@@ -660,6 +661,7 @@ input#search:focus {
     display: block;
     left: auto;
     padding-left: 0;
+    padding-right: 24px;
     text-align: left;
   }
 
@@ -705,11 +707,6 @@ input#search:focus {
   .header {
     margin-left: 3rem;
     margin-right: 0;
-  }
-
-  ul,
-  li {
-    margin-left: 24px;
   }
 
   ul ul,
