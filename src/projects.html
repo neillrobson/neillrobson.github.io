@@ -8,14 +8,16 @@ layout: default
 	<h1>{{ project.data.title }}</h1>
 	</a>
 	{% if project.data.cover-image %}
-	<div class="three column">
+	<div class="four column">
 		<div class="blur-container">
 			<img width="100%" src="{{project.data.cover-image}}" />
 			<div class="blur"></div>
 		</div>
 	</div>
 	{% endif %}
-	<p>{{ project.data.page.excerpt | default: project.data.page.rawInput | md | strip_html | truncatewords: 30, '...' }}</p>
+	<section>
+		<p>{{ project.data.page.excerpt | default: project.data.page.rawInput | md | strip_html | truncatewords: 30, '...' }}</p>
+	</section>
 	<div class="clear"></div>
 </div>
 {% endfor %}
