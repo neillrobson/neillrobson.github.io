@@ -59,3 +59,5 @@ Source code for the personal website and blog of Neill Robson.
 - [x] newthought stripping on excerpts
 - [x] Fade transitions?
 - [x] CSS cleanup and best-practices
+- [ ] path prefix and HTML Base plugin
+- [ ] Github Actions setup for branch lookasides
