@@ -115,6 +115,7 @@ div {
 section > p,
 section > ol,
 section > ul,
+section > pre,
 .pagination,
 .footer {
   width: 55%;
@@ -123,7 +124,6 @@ section > ul,
 .margin {
   position: absolute;
   box-sizing: border-box;
-  width: 29.3333%;
   z-index: 1; // Render above <p> on mobile viewports
 }
 
@@ -163,17 +163,17 @@ section > ul,
 
 .left.margin {
   // Main body is 7x size of left margin (7/8)
-  // 1/7 divided by 90%
-  width: 15.873%;
-  left: -15.873%;
+  $width: percentage(1 / 7);
+  width: $width;
+  left: -$width;
   padding-right: 20px;
-  padding-left: 10px;
+  padding-left: 5px;
   text-align: right;
 }
 
 .right.margin {
-  right: -29.3333%;
-  padding-left: 30px;
+  right: percentage(1 - (.55 * 1.6));
+  width: percentage(.55 / 2);
 }
 
 .wide {
@@ -340,11 +340,6 @@ hr {
 
 /* CODE */
 
-pre,
-.highlight {
-  overflow-x: auto;
-}
-
 code {
   font-family: $mono;
   margin: 0;
@@ -361,7 +356,6 @@ p code {
 
 pre code {
   display: block;
-  width: 52.5%;
   padding: 12px 18px;
   background-color: rgba(0, 0, 0, 0.02);
   overflow-x: auto;
@@ -661,23 +655,12 @@ input#search:focus {
 }
 
 @media screen and (max-width: 976px) {
-  .entry .margin {
-    position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
-  }
-
-  .entry .margin.right {
-    float: right;
-  }
-
   .entry .margin.left {
+    position: relative;
+    display: block;
+    left: auto;
     padding-left: 0;
     text-align: left;
-    display: block;
-    float: left;
   }
 
   .entry .date {
@@ -746,6 +729,13 @@ input#search:focus {
     margin-left: 0;
   }
 
+  .entry .margin.right {
+    position: relative;
+    display: block;
+    right: auto;
+    padding-left: 20px;
+  }
+
   .column.two {
     width: percentage((1 - 0.03 * 1) / 2);
   }
@@ -762,10 +752,6 @@ input#search:focus {
     width: 100%;
   }
 
-  pre code {
-    width: 100%;
-  }
-
   .wide {
     max-width: 100%;
   }
@@ -773,9 +759,11 @@ input#search:focus {
   section > p,
   section > ol,
   section > ul,
+  section > pre,
+  pre code,
   .pagination,
   .footer {
-    width: 100%;
+    width: unset;
   }
 }
 
