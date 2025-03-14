@@ -19,7 +19,7 @@ Of course, I am now a few months late sharing the experience (and results) here
 on the blog, but better late than never I suppose!
 
 If you want to skip straight to where I talk about the game I made, just head
-[here](#myentry).
+[here](#my-entry).
 
 ## The Competition
 
@@ -41,7 +41,7 @@ history of the Ludum Dare competition, feel free to check out [the
 homepage](http://ludumdare.com/compo/) or [the
 rules](http://ludumdare.com/compo/rules/).
 
-## My Entry <a id="myentry"></a>
+## My Entry
 
 ![An in-progress session of my
 game](/assets/images/2016/06/Screenshot-from-2016-06-27-14-42-04.png)

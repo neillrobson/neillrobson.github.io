@@ -86,7 +86,7 @@ sourceImages$.pipe(
 This pipeline fixes both our ordering issue, and also runs completely parallelized. We get super excited, until we view our monthly bill from the image recognition service.
 As it turns out, this pipeline sends _every single image_ to the API, as soon as it shows up in our source stream. We might send off thousands of requests before the four cat images are identified, even if the cat images are the first four images in the source stream!
 
-### _Side Note: Hot vs Cold_
+## _Side Note: Hot vs Cold_
 
 If you're trying out this code on your own, you might find that your `map`/`concatAll` implementation did not parallelize like you wanted it to. Most likely, it's a result of implementing `identifyImage` as a pure RxJS stream, otherwise known as a "cold" observable. The difference between cold and hot observables is simple to state, hard to internalize:
 
@@ -166,7 +166,7 @@ We know that, when an image comes through that _isn't_ a cat, we want to call `b
 
 So we now have actions we want to take for both the positives _and_ negatives of our `filter` operator... meaning that we need something more robust than `filter`. Enter the `partition` utility, which splits an Observable stream into two streams for the positive and negative items against a filter!
 
-{>|} Since we are creating (and eventually subscribing to) _two_ streams with the same source pipeline, we need to "share()" the pipeline to ensure that we aren't double-calling the API. See the [hot versus cold](#side-note-hot-vs-cold) section for details.
+{>|} Since we are creating (and eventually subscribing to) _two_ streams with the same source pipeline, we need to "share()" the pipeline to ensure that we aren't double-calling the API. See the [hot versus cold](#side-note%3A-hot-vs-cold) section for details.
 
 ```javascript
 const batcher$ = new Subject();
