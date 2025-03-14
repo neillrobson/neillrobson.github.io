@@ -53,7 +53,9 @@ Source code for the personal website and blog of Neill Robson.
 ### Tufte Restyle
 
 - [x] Left alignment
-- [ ] Sidenotes (counter)
+- [x] Sidenotes (counter)
 - [x] Header link buttons
 - [x] newthought
+- [ ] newthought stripping on excerpts
 - [ ] Fade transitions?
+- [ ] CSS cleanup and best-practices
