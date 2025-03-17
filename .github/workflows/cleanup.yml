@@ -13,7 +13,7 @@ jobs:
       - name: Checkout lookaside repo
         uses: actions/checkout@v4
         with:
-          repository: neillrobson/lookaside
+          repository: neillrobson/lookasides
           token: ${{ secrets.LOOKASIDE_PAT }}
 
       - name: Create URL slug

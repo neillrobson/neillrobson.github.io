@@ -37,13 +37,15 @@ jobs:
     needs: build
     environment:
       name: lookaside
-      url: https://neillrobson.com/lookasides/${{ steps.url-slug.outputs.URL_SLUG }}
+      url:
+        https://neillrobson.com/lookasides/${{ steps.url-slug.outputs.URL_SLUG
+        }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout lookaside repo
         uses: actions/checkout@v4
         with:
-          repository: neillrobson/lookaside
+          repository: neillrobson/lookasides
           token: ${{ secrets.LOOKASIDE_PAT }}
 
       - name: Create URL slug
