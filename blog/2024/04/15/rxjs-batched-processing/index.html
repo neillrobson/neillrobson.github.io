@@ -111,10 +111,10 @@ You want specifically the <em>first four</em> pictures with cats. Not just any f
 </code></pre>
 <p>It’s a clean pipeline! But in practice, this implementation processes the source images serially. Each API call must be returned before the next image is sent off.
 For a slow API, such serial processing is undesirable.</p>
-<div class="wide"><figure>
+<figure>
 <img src="/assets/images/2024/04/15/rxjs-batched-processing/serial.png" alt="visualization of serial pipeline processing" title="The top pipeline represents queries sent to the API. The number on each data point is the number of queries happening in parallel. The bottom pipeline contains the four images identified as cats, emitted at the time they were identified."><figcaption>The top pipeline represents queries sent to the API. The number on each data point is the number of queries happening in parallel. The bottom pipeline contains the four images identified as cats, emitted at the time they were identified.</figcaption>
 </figure>
-</div></section>
+</section>
 <section>
 <div class="section-link">
 <a class="no-tufte-underline" href="#merging"></a><h2 id="merging">Merging</h2>
@@ -153,7 +153,11 @@ If we simply split out the “map” part of the operator from the concatenation
 </code></pre>
 <p>This pipeline fixes both our ordering issue, and also runs completely parallelized. We get super excited, until we view our monthly bill from the image recognition service.
 As it turns out, this pipeline sends <em>every single image</em> to the API, as soon as it shows up in our source stream. We might send off thousands of requests before the four cat images are identified, even if the cat images are the first four images in the source stream!</p>
-<h3><em>Side Note: Hot vs Cold</em></h3>
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#side-note%3A-hot-vs-cold"></a><h2 id="side-note%3A-hot-vs-cold"><em>Side Note: Hot vs Cold</em></h2>
+</div>
 <p>If you’re trying out this code on your own, you might find that your <code>map</code>/<code>concatAll</code> implementation did not parallelize like you wanted it to. Most likely, it’s a result of implementing <code>identifyImage</code> as a pure RxJS stream, otherwise known as a “cold” observable. The difference between cold and hot observables is simple to state, hard to internalize:</p>
 <ul>
 <li>Cold observables have their data created <em>inside</em> the observable</li>
@@ -214,7 +218,7 @@ sourceImages$.pipe(
 <p>How do we initialize and manage <code>batcher$</code>?</p>
 <p>We know that, when an image comes through that <em>isn’t</em> a cat, we want to call <code>batcher$.next()</code> to add another image into processing. If an image is a cat, we don’t need to trigger the batcher, because that output “slot” is filled.</p>
 <p>So we now have actions we want to take for both the positives <em>and</em> negatives of our <code>filter</code> operator… meaning that we need something more robust than <code>filter</code>. Enter the <code>partition</code> utility, which splits an Observable stream into two streams for the positive and negative items against a filter!</p>
-<div class="margin right"><p>Since we are creating (and eventually subscribing to) <em>two</em> streams with the same source pipeline, we need to “share()” the pipeline to ensure that we aren’t double-calling the API. See the <a href="#side-note-hot-vs-cold">hot versus cold</a> section for details.</p>
+<div class="margin right"><p>Since we are creating (and eventually subscribing to) <em>two</em> streams with the same source pipeline, we need to “share()” the pipeline to ensure that we aren’t double-calling the API. See the <a href="#side-note%3A-hot-vs-cold">hot versus cold</a> section for details.</p>
 </div><pre><code class="language-javascript">const batcher$ = new Subject();
 
 const [cats$, notCats$] = partition(
@@ -244,10 +248,10 @@ notCats$.subscribe(() =&gt; batcher$.next());
 range(1, 4).subscribe(() =&gt; batcher$.next());
 </code></pre>
 <p>The initial run will send off four API calls at once. The pipeline will maintain four in-flight API calls until one of them returns with a cat. Each cat received will effectively decrement the parallelism, preventing us from over-querying the API after we’ve already received our four cats.</p>
-<div class="wide"><figure>
+<figure>
 <img src="/assets/images/2024/04/15/rxjs-batched-processing/batched.png" alt="visualization of batched pipeline processing" title="Notice how up to four parallel API calls are allowed at first. The number drops to three when the first cat is identified, then down to one when two cats are found in quick succession."><figcaption>Notice how up to four parallel API calls are allowed at first. The number drops to three when the first cat is identified, then down to one when two cats are found in quick succession.</figcaption>
 </figure>
-</div></section>
+</section>
 <section>
 <div class="section-link">
 <a class="no-tufte-underline" href="#conclusion"></a><h2 id="conclusion">Conclusion</h2>
@@ -337,7 +341,7 @@ s.setAttribute('data-timestamp', +new Date());
         <a class="halfWidth left previousEntry" href="/blog/2024/01/18/leadership-full/">
             <h5>Previous post</h5>
             <span class="title">Small Group Leadership Brunch Speech</span>
-            <span class="summary">The following is a written draft of a speech I gave to a gathering of small group leaders at my church several months ago. After running across the file, I felt it might be encouraging for others to read. </span>
+            <span class="summary"> The following is a written draft of a speech I gave to a gathering of small group leaders at my church several months ago. After running across the file, I felt it might be encouraging for others to read. </span>
         </a>
     
     

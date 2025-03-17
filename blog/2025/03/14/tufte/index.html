@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+    
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Neill Robson's Website</title>
+
+    <script type="module">
+      document.documentElement.classList.remove('no-js');
+      document.documentElement.classList.add('js');
+    </script>
+
+    <meta name="description" content="The blog and portfolio of a software developer." />
+    <meta name="author" content="Neill Robson">
+
+    <meta property="og:title" content="Neill Robson's Website">
+    <meta property="og:description" content="The blog and portfolio of a software developer.">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neillrobson.com/blog/2025/03/14/tufte/">
+    <link rel="canonical" href="https://neillrobson.com/blog/2025/03/14/tufte/">
+
+    
+
+    <link rel="shortcut icon" href="/assets/icon/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/assets/style/main.css">
+    <link rel="stylesheet" href="/assets/style/social.css">
+</head>
+
+
+  <body>
+    <div class="container">
+      <div class="header">
+  <div id="title">
+    
+    <a href="/">
+      <img
+        id="logo"
+        class="rounded"
+        src="https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
+        alt="Neill Robson"
+      />
+      Neill Robson's Website
+    </a>
+  </div>
+  <div class="nav">
+    
+    <a href="/" title="About">About</a>
+    
+    <a href="/now" title="Now">Now</a>
+    
+    <a href="/blog" title="Blog">Blog</a>
+    
+    <a href="/archive" title="Archive">Archive</a>
+    
+    <a href="/projects" title="Projects">Projects</a>
+    
+    <a href="/contact" title="Contact">Contact</a>
+    
+    <a href="/feed.xml" title="RSS">RSS</a>
+    
+  </div>
+</div>
+
+
+      <div class="main">
+        
+<div class="entry">
+    <a class="small date left margin" href="/blog/2025/03/14/tufte/">March 14, 2025</a>
+    <h1>Tufte Demo</h1>
+
+    <section>
+<p><span class="newthought" id="in-addition-to-basic"><a class="no-tufte-underline" href="#in-addition-to-basic"></a>In addition to basic</span> markdown features like <em>emphasis,</em> <strong>strong text,</strong> <a href="https://example.com">links</a>, and <code>inline code</code>, the tufte-markdown parser pays special attention to figures and footnotes. The official <a href="https://edwardtufte.github.io/tufte-css/">Tufte-CSS site</a> explains the more advanced features in detail, but we’re trying to poke and prod things a bit to eliminate some of the manual HTML entry that’s still necessary.</p>
+<p>Let’s say that we want multiple paragraphs per section, and have subsequent sections use the “new-thought” small-caps differentiation. Can we achieve that with some manual HTML first?</p>
+</section>
+<section>
+<p><span class="newthought" id="in-his-later-works%2C"><a class="no-tufte-underline" href="#in-his-later-works%2C"></a>In his later works,</span> Tufte did not even use h2-level headings to separate sections. Isn’t that special? I wonder how feasible it is to do such a thing with custom Markdown extensions. Currently, if I run a stand-alone build, the custom plugin works. But if I modify the markdown and save, the rebuild fails to parse the carets. (Just kidding…)</p>
+</section>
+<section>
+<p><span class="newthought" id="here's-where-things-get"><a class="no-tufte-underline" href="#here's-where-things-get"></a>Here's where <a href="https://example.com">things</a> get</span> really exciting. Markdown footnotes<label for="sn-bolt-on" class="margin-toggle sidenote-number"></label><input id="sn-bolt-on" type="checkbox" class="margin-toggle"><span class="sidenote">Footnotes weren’t actually part of the original Markdown spec, but they’ve become a popular bolt-on.</span> are a convenient way to move digressions and asides out of the primary flow of a document. However, shoving them to the bottom of a long page is no good. In his books, Tufte instead uses &quot;side notes,&quot;<label for="sn-vocab" class="margin-toggle sidenote-number"></label><input id="sn-vocab" type="checkbox" class="margin-toggle"><span class="sidenote">Definitely a made-up word.</span> which keep the asides as close as possible to the related text without breaking the flow.</p>
+<p>If you want a sidenote without footnote-style numberings, then you want a margin note<label for="mn-2" class="margin-toggle">&#8853;</label><input id="mn-2" type="checkbox" class="margin-toggle"><span class="marginnote">This is a margin note. Notice there isn’t a number preceding the note.</span>. On large screens, a margin note is just a sidenote that omits the reference number. This lessens the distracting effect taking away from the flow of the main text, but can increase the cognitive load of matching a margin note to its referent text. However, on small screens, a margin note is like a sidenote except its viewability-toggle is a symbol rather than a reference number. This document currently uses the symbol ⊕ (<code>&amp;#8853;</code>), but it’s up to you.</p>
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#testing-header-links"></a><h2 id="testing-header-links">Testing Header <a href="https://example.com">Links</a></h2>
+</div>
+<p>I’m starting with an second-tier heading to work on what a header-link-copy button might look like.
+Eventually, I want similar link styling on new-thoughts too.</p>
+</section>
+
+    
+        <br/>
+        <p>
+            
+                
+                    <a class="small tag" href="/tag/draft">draft</a>
+                
+            
+        </p>
+    
+
+    <div class="clear"></div>
+
+    
+
+    
+    
+
+    
+    
+    
+</div>
+
+
+        <div class="clear"></div>
+      </div>
+
+      <div class="footer">
+  <small class="copyright">
+    &copy; 2025 Neill Robson. Layout inspired by
+    <a href="https://blot.im/" target="_blank">Blot</a>.
+    <br />
+    This site is hosted on
+    <a href="https://github.com" target="_blank">GitHub</a> and built with
+    <a href="https://www.11ty.dev/" target="_blank">Eleventy</a>. Icons by
+    <a href="https://icons8.com" target="_blank">Icons8</a>.
+  </small>
+</div>
+
+    </div>
+    
+
+  </body>
+</html>

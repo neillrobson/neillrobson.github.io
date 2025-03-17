@@ -45,10 +45,10 @@ You want specifically the &lt;em&gt;first four&lt;/em&gt; pictures with cats. No
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;It’s a clean pipeline! But in practice, this implementation processes the source images serially. Each API call must be returned before the next image is sent off.
 For a slow API, such serial processing is undesirable.&lt;/p&gt;
-&lt;div class=&quot;wide&quot;&gt;&lt;figure&gt;
+&lt;figure&gt;
 &lt;img src=&quot;https://neillrobson.com/assets/images/2024/04/15/rxjs-batched-processing/serial.png&quot; alt=&quot;visualization of serial pipeline processing&quot; title=&quot;The top pipeline represents queries sent to the API. The number on each data point is the number of queries happening in parallel. The bottom pipeline contains the four images identified as cats, emitted at the time they were identified.&quot;&gt;&lt;figcaption&gt;The top pipeline represents queries sent to the API. The number on each data point is the number of queries happening in parallel. The bottom pipeline contains the four images identified as cats, emitted at the time they were identified.&lt;/figcaption&gt;
 &lt;/figure&gt;
-&lt;/div&gt;&lt;/section&gt;
+&lt;/section&gt;
 &lt;section&gt;
 &lt;div class=&quot;section-link&quot;&gt;
 &lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2024/04/15/rxjs-batched-processing/#merging&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;merging&quot;&gt;Merging&lt;/h2&gt;
@@ -87,7 +87,11 @@ If we simply split out the “map” part of the operator from the concatenation
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This pipeline fixes both our ordering issue, and also runs completely parallelized. We get super excited, until we view our monthly bill from the image recognition service.
 As it turns out, this pipeline sends &lt;em&gt;every single image&lt;/em&gt; to the API, as soon as it shows up in our source stream. We might send off thousands of requests before the four cat images are identified, even if the cat images are the first four images in the source stream!&lt;/p&gt;
-&lt;h3&gt;&lt;em&gt;Side Note: Hot vs Cold&lt;/em&gt;&lt;/h3&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;div class=&quot;section-link&quot;&gt;
+&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2024/04/15/rxjs-batched-processing/#side-note%3A-hot-vs-cold&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;side-note%3A-hot-vs-cold&quot;&gt;&lt;em&gt;Side Note: Hot vs Cold&lt;/em&gt;&lt;/h2&gt;
+&lt;/div&gt;
 &lt;p&gt;If you’re trying out this code on your own, you might find that your &lt;code&gt;map&lt;/code&gt;/&lt;code&gt;concatAll&lt;/code&gt; implementation did not parallelize like you wanted it to. Most likely, it’s a result of implementing &lt;code&gt;identifyImage&lt;/code&gt; as a pure RxJS stream, otherwise known as a “cold” observable. The difference between cold and hot observables is simple to state, hard to internalize:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Cold observables have their data created &lt;em&gt;inside&lt;/em&gt; the observable&lt;/li&gt;
@@ -148,7 +152,7 @@ sourceImages$.pipe(
 &lt;p&gt;How do we initialize and manage &lt;code&gt;batcher$&lt;/code&gt;?&lt;/p&gt;
 &lt;p&gt;We know that, when an image comes through that &lt;em&gt;isn’t&lt;/em&gt; a cat, we want to call &lt;code&gt;batcher$.next()&lt;/code&gt; to add another image into processing. If an image is a cat, we don’t need to trigger the batcher, because that output “slot” is filled.&lt;/p&gt;
 &lt;p&gt;So we now have actions we want to take for both the positives &lt;em&gt;and&lt;/em&gt; negatives of our &lt;code&gt;filter&lt;/code&gt; operator… meaning that we need something more robust than &lt;code&gt;filter&lt;/code&gt;. Enter the &lt;code&gt;partition&lt;/code&gt; utility, which splits an Observable stream into two streams for the positive and negative items against a filter!&lt;/p&gt;
-&lt;div class=&quot;margin right&quot;&gt;&lt;p&gt;Since we are creating (and eventually subscribing to) &lt;em&gt;two&lt;/em&gt; streams with the same source pipeline, we need to “share()” the pipeline to ensure that we aren’t double-calling the API. See the &lt;a href=&quot;https://neillrobson.com/blog/2024/04/15/rxjs-batched-processing/#side-note-hot-vs-cold&quot;&gt;hot versus cold&lt;/a&gt; section for details.&lt;/p&gt;
+&lt;div class=&quot;margin right&quot;&gt;&lt;p&gt;Since we are creating (and eventually subscribing to) &lt;em&gt;two&lt;/em&gt; streams with the same source pipeline, we need to “share()” the pipeline to ensure that we aren’t double-calling the API. See the &lt;a href=&quot;https://neillrobson.com/blog/2024/04/15/rxjs-batched-processing/#side-note%3A-hot-vs-cold&quot;&gt;hot versus cold&lt;/a&gt; section for details.&lt;/p&gt;
 &lt;/div&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const batcher$ = new Subject();
 
 const [cats$, notCats$] = partition(
@@ -178,10 +182,10 @@ notCats$.subscribe(() =&amp;gt; batcher$.next());
 range(1, 4).subscribe(() =&amp;gt; batcher$.next());
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The initial run will send off four API calls at once. The pipeline will maintain four in-flight API calls until one of them returns with a cat. Each cat received will effectively decrement the parallelism, preventing us from over-querying the API after we’ve already received our four cats.&lt;/p&gt;
-&lt;div class=&quot;wide&quot;&gt;&lt;figure&gt;
+&lt;figure&gt;
 &lt;img src=&quot;https://neillrobson.com/assets/images/2024/04/15/rxjs-batched-processing/batched.png&quot; alt=&quot;visualization of batched pipeline processing&quot; title=&quot;Notice how up to four parallel API calls are allowed at first. The number drops to three when the first cat is identified, then down to one when two cats are found in quick succession.&quot;&gt;&lt;figcaption&gt;Notice how up to four parallel API calls are allowed at first. The number drops to three when the first cat is identified, then down to one when two cats are found in quick succession.&lt;/figcaption&gt;
 &lt;/figure&gt;
-&lt;/div&gt;&lt;/section&gt;
+&lt;/section&gt;
 &lt;section&gt;
 &lt;div class=&quot;section-link&quot;&gt;
 &lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2024/04/15/rxjs-batched-processing/#conclusion&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
