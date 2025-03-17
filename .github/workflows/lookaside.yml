@@ -27,7 +27,10 @@ jobs:
         run: npm install
 
       - name: Build website with Eleventy
-        run: npm run build
+        run:
+          npm run build -- --pathprefix=/lookasides/${{
+          github.event.repository.name }}/${{ github.event.pull_request.head.ref
+          }}-${{ github.event.pull_request.number }}"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
