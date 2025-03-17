@@ -1,0 +1,35 @@
+name: Pull Request Cleanup
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  deploy:
+    environment:
+      name: lookaside
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout lookaside repo
+        uses: actions/checkout@v4
+        with:
+          repository: neillrobson/lookaside
+          token: ${{ secrets.LOOKASIDE_PAT }}
+
+      - name: Create URL slug
+        id: url-slug
+        run: |
+          echo "URL_SLUG=${{ github.event.repository.name }}/${{
+            github.event.pull_request.head.ref }}-${{
+            github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+
+      - name: Clear directory
+        run: rm -rf "${{ steps.url-slug.outputs.URL_SLUG }}"
+
+      - name: Commit and push
+        run: |
+          git config --global user.email "<>"
+          git config --global user.name "Github Actions Bot"
+          git add .
+          git commit -m "Remove lookaside for ${{ steps.url-slug.outputs.URL_SLUG }}"
+          git push origin main
