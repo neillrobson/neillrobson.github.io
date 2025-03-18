@@ -44,20 +44,15 @@ Source code for the personal website and blog of Neill Robson.
 
 ## Todo
 
--   [ ] Restyling to take advantage of Tufte sidenotes
+-   [x] Restyling to take advantage of Tufte sidenotes
 -   [ ] RSS/Search
     -   [ ] Improve styling of RSS/Search buttons
     -   [ ] Implement search bar using frontend-only solution: maybe [lunr](https://lunrjs.com)
 -   [ ] Respond smartly to no-js
 
-### Tufte Restyle
+### CSS Cleanup
 
-- [x] Left alignment
-- [x] Sidenotes (counter)
-- [x] Header link buttons
-- [x] newthought
-- [x] newthought stripping on excerpts
-- [x] Fade transitions?
-- [x] CSS cleanup and best-practices
-- [x] path prefix and HTML Base plugin
-- [x] Github Actions setup for branch lookasides
+- [ ] Base font size
+- [ ] Split to multiple files
+- [ ] Replace `@media` where possible (using `@container`)
+- [ ] Favor min-width (mobile-first)
