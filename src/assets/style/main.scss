@@ -16,7 +16,9 @@ $mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 
 html {
-  font-size: 20px;
+  // Give a slight bump on large screens,
+  // without ever falling below browser default
+  font-size: calc(1rem + 0.4vw);
 }
 
 * {

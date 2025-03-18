@@ -52,7 +52,7 @@ Source code for the personal website and blog of Neill Robson.
 
 ### CSS Cleanup
 
-- [ ] Base font size
+- [x] Base font size
 - [ ] Split to multiple files
 - [ ] Replace `@media` where possible (using `@container`)
 - [ ] Favor min-width (mobile-first)
