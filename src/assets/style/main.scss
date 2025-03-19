@@ -257,56 +257,21 @@ big {
 /* LINKS */
 
 a {
-  color: #004984; /* 02569B */
-  text-decoration: none;
-  text-shadow: 0.03em 0 #fff, -0.03em 0 #fff, 0 0.03em #fff, 0 -0.03em #fff,
-    0.06em 0 #fff, -0.06em 0 #fff, 0.09em 0 #fff, -0.09em 0 #fff, 0.12em 0 #fff,
-    -0.12em 0 #fff, 0 0.03em #fff, 0 -0.03em #fff, 0 0.06em #fff, 0 -0.06em #fff,
-    0 0.08em #fff, 0 -0.08em #fff;
-  background-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff),
-    linear-gradient(#004984, #004984);
-  background-size: 0 0, 0 0, 0.07em 0.07em;
-  background-repeat: no-repeat, no-repeat, repeat-x;
-  background-position: 0% 90%, 100% 90%, 0% 95%;
+  color: #004984;
 }
 
 a:hover {
   color: #468cc7;
-  background-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff),
-    linear-gradient(#5599d2, #5599d2);
 }
 
-a::selection {
-  background: #b3d4fd;
-  text-shadow: 0.03em 0 #b3d4fd, -0.03em 0 #b3d4fd, 0 0.03em #b3d4fd,
-    0 -0.03em #b3d4fd, 0.06em 0 #b3d4fd, -0.06em 0 #b3d4fd, 0.09em 0 #b3d4fd,
-    -0.09em 0 #b3d4fd, 0.12em 0 #b3d4fd, -0.12em 0 #b3d4fd;
-}
-
-a::-moz-selection {
-  background: #b3d4fd;
-  text-shadow: 0.03em 0 #b3d4fd, -0.03em 0 #b3d4fd, 0 0.03em #b3d4fd,
-    0 -0.03em #b3d4fd, 0.06em 0 #b3d4fd, -0.06em 0 #b3d4fd, 0.09em 0 #b3d4fd,
-    -0.09em 0 #b3d4fd, 0.12em 0 #b3d4fd, -0.12em 0 #b3d4fd;
-}
-
-a.no-tufte-underline {
-  background: none;
-  text-shadow: none;
-}
-
-h1 a {
-  background-size: 0 0, 0 0, 0.07em 0.07em;
-  background-position: 0% 90%, 100% 90%, 0% 98%;
-}
-
-h2 a,
-h3 a,
-h4 a,
-h5 a,
-h6 a {
-  background-size: 0 0, 0 0, 0.07em 0.07em;
-  background-position: 0% 90%, 100% 90%, 0% 97%;
+a.no-tufte-underline,
+a:has(h1),
+a:has(h2),
+a:has(h3),
+a:has(h4),
+a:has(h5),
+a:has(h6) {
+  text-decoration: none;
 }
 
 a.tag {
@@ -314,6 +279,7 @@ a.tag {
   margin-right: 1em;
   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIyMnB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMyAyMiIgd2lkdGg9IjIzcHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6c2tldGNoPSJodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2gvbnMiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48dGl0bGUvPjxkZWZzPjxwYXRoIGQ9Ik0xMy4xMjgwNzM4LC0xLjg2ODA4NjcyIEw2LDQuMjk4NjQzMjcgTDYsMTkuNTY2ODc3NSBDNiwxOS44MzY4NjU4IDYuMjIzNjgyNiwyMC4wNTU3MzQ1IDYuNDk5MDc2ODUsMjAuMDU1NzM0NSBMMjAuNTAwOTIzMiwyMC4wNTU3MzQ1IEMyMC43NzY1NTU3LDIwLjA1NTczNDUgMjEsMTkuODMyOTg3MyAyMSwxOS41NjY4Nzc1IEwyMSw0LjI5ODY0MzI3IEwxMy44NzE5MjYyLC0xLjg2ODA4NjcyIEMxMy42NjY1MTcxLC0yLjA0NTc5MjkgMTMuMzI5MjYwNCwtMi4wNDIxMzk4MSAxMy4xMjgwNzM4LC0xLjg2ODA4NjcyIFogTTEzLjUsNy44MzM1MTIzMiBDMTQuNjA0NTY5Niw3LjgzMzUxMjMyIDE1LjUsNi45NTc5ODAzMiAxNS41LDUuODc3OTU2NzYgQzE1LjUsNC43OTc5MzMyMSAxNC42MDQ1Njk2LDMuOTIyNDAxMjEgMTMuNSwzLjkyMjQwMTIxIEMxMi4zOTU0MzA1LDMuOTIyNDAxMjEgMTEuNSw0Ljc5NzkzMzIxIDExLjUsNS44Nzc5NTY3NiBDMTEuNSw2Ljk1Nzk4MDMyIDEyLjM5NTQzMDUsNy44MzM1MTIzMiAxMy41LDcuODMzNTEyMzIgTDEzLjUsNy44MzM1MTIzMiBaIiBpZD0icGF0aC0xIi8+PC9kZWZzPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgaWQ9Im1pdSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiPjxnIGlkPSJjb21tb25fdGFnXzJfZ2VuZXJhbF9wcmljZV9nbHlwaCI+PHVzZSBmaWxsPSIjOTk5OTk5IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEzLjUwMDAwMCwgOS4wMDAwMDApIHJvdGF0ZSg0NS4wMDAwMDApIHRyYW5zbGF0ZSgtMTMuNTAwMDAwLCAtOS4wMDAwMDApICIgeGxpbms6aHJlZj0iI3BhdGgtMSIvPjx1c2UgZmlsbD0ibm9uZSIgeGxpbms6aHJlZj0iI3BhdGgtMSIvPjwvZz48L2c+PC9zdmc+)
     left center/0.94em no-repeat;
+  text-decoration: none;
 }
 
 /* RULE */
@@ -436,8 +402,7 @@ figure img {
   font-size: 0.95rem;
   color: #222;
   position: relative;
-  text-shadow: none;
-  background-image: none;
+  text-decoration: none;
 
   &:hover {
     color: #555;
@@ -582,8 +547,7 @@ label.margin-toggle:not(.sidenote-number) {
 
 .nav a {
   font-size: 0.8rem;
-  background: none;
-  text-shadow: none;
+  text-decoration: none;
 }
 
 .nav a[href$="/feed.xml"],
@@ -652,8 +616,7 @@ input#search:focus {
 
 .date {
   margin-top: 10px;
-  background: none;
-  text-shadow: none;
+  text-decoration: none;
 }
 .date:empty {
   display: none;
@@ -670,14 +633,12 @@ input#search:focus {
 
 .pagination a {
   margin: 0 1em;
-  background: none;
+  text-decoration: none;
 }
 
 .previousEntry,
 .nextEntry {
   text-decoration: none;
-  background: none;
-  text-shadow: none;
   font-size: 0.88rem;
   line-height: 1.33;
   width: math.percentage(0.55 * 0.48);

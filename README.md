@@ -53,6 +53,8 @@ Source code for the personal website and blog of Neill Robson.
 ### CSS Cleanup
 
 - [x] Base font size
+- [x] links: text-decoration-skip-ink
 - [ ] Split to multiple files
 - [ ] Replace `@media` where possible (using `@container`)
 - [ ] Favor min-width (mobile-first)
+- [ ] Dark mode?
