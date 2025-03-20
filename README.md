@@ -61,3 +61,4 @@ Source code for the personal website and blog of Neill Robson.
 - [ ] Move all margins right?
 - [ ] Column collapse (switcher pattern, flex-basis 30ch - 100%)
 - [ ] Dark mode?
+- [ ] Code syntax highlighting

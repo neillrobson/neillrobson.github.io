@@ -29,7 +29,7 @@ html {
 html,
 body {
   margin: 0;
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
@@ -42,8 +42,9 @@ body {
   -moz-font-feature-settings: “liga” on;
   color: #232323;
   word-wrap: break-word;
-  width: 87.5%;
+  width: 75%;
   padding-left: 12.5%;
+  padding-right: 12.5%;
   max-width: 1400px;
   margin: 0 auto;
   counter-reset: sidenote-counter;
@@ -89,7 +90,7 @@ div {
 }
 
 .header {
-  margin: 48px 10% 48px 0;
+  margin: 48px 0;
 }
 
 .container {
@@ -114,13 +115,14 @@ section > *:not(.margin),
 #disqus_thread,
 .pagination,
 .footer {
-  width: 55%;
+  width: 60%;
   box-sizing: border-box;
 }
 
 .margin {
   position: absolute;
   box-sizing: border-box;
+  min-width: 10ch;
   z-index: 1; // Render above <p> on mobile viewports
 }
 
@@ -158,8 +160,8 @@ section > *:not(.margin),
 }
 
 .left.margin {
-  // Main body is 7x size of left margin (7/8)
-  $width: math.percentage(math.div(1, 7));
+  // Main body is 6x size of left margin (6/8)
+  $width: math.percentage(math.div(1, 6));
   width: $width;
   left: -$width;
   padding-right: 20px;
@@ -168,18 +170,23 @@ section > *:not(.margin),
 }
 
 .right.margin {
-  // Content is 55% width
+  // Content is 60% width
   // margin note is half that width
   // move right margin edge past content,
   // plus own width,
   // plus 10% padding
-  right: math.percentage(1 - (.55 * 1.6));
-  width: math.percentage(math.div(.55, 2));
+  right: math.percentage(1 - (.6 * 1.6));
+  width: math.percentage(math.div(.6, 2));
 }
 
 .column {
   box-sizing: border-box;
   float: left;
+  min-width: 30ch;
+}
+
+.column:has(+ .column) {
+  margin-right: 3%;
 }
 
 .column figcaption,
@@ -189,23 +196,14 @@ section > *:not(.margin),
 
 .column.two {
   width: math.percentage(math.div(0.9 - 0.03 * 1, 2));
-  margin-right: 3%;
 }
 
 .column.three {
   width: math.percentage(math.div(0.9 - 0.03 * 2, 3));
-  margin-right: 3%;
 }
 
 .column.four {
   width: math.percentage(math.div(0.9 - 0.03 * 3, 4));
-  margin-right: 3%;
-}
-
-.column.two + .column.two,
-.column.three + .column.three + .column.three,
-.column.four + .column.four + .column.four + .column.four {
-  margin-right: 0;
 }
 
 .column h1,
@@ -285,13 +283,13 @@ a.tag {
 /* RULE */
 
 hr {
-  width: 55%;
   margin: 24px 0 -1px;
   border: none;
   border-bottom: 3px double #efefef;
   padding-bottom: 1.4em;
   text-shadow: none;
   box-shadow: none;
+  clear: both;
 }
 
 /* CODE */
@@ -733,7 +731,6 @@ input#search:focus {
 
   .entry .margin.right {
     position: relative;
-    display: block;
     right: auto;
     padding-left: 20px;
   }
