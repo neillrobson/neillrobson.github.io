@@ -53,8 +53,11 @@ Source code for the personal website and blog of Neill Robson.
 ### CSS Cleanup
 
 - [x] Base font size
+  - [x] Clamp to a max? max body width is 1400px
 - [x] links: text-decoration-skip-ink
 - [ ] Split to multiple files
 - [ ] Replace `@media` where possible (using `@container`)
 - [ ] Favor min-width (mobile-first)
+- [ ] Move all margins right?
+- [ ] Column collapse (switcher pattern, flex-basis 30ch - 100%)
 - [ ] Dark mode?
