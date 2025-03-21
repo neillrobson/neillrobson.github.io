@@ -1,3 +1,7 @@
+---
+layout: post
+---
+
 Early one morning, Peter walked across the office to his team's standup meeting.
 
 There in the conference room sat Betty, a backend engineer and Peter's friend.
@@ -63,4 +67,3 @@ Frank left the office in his humiliation. Both Betty and Quinn were brainstormin
 They imagined the botnet prowling around the network, looking for an opening to wreak further havoc.
 
 In the meantime, Peter, without the slightest fear, watched the incidents Slack channel and pondered all that was going on.
-

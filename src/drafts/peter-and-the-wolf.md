@@ -1,3 +1,7 @@
+---
+layout: post
+---
+
 # Peter and the Wolf Brainstorming
 
 Peter: Intern, associate

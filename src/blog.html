@@ -14,7 +14,7 @@ permalink: "/blog{% if pagination.pageNumber > 0 %}/page{{ pagination.pageNumber
         <a href="{{ post.url }}"><h1>{{ post.data.title }}</h1></a>
         <section>
             <p>
-                {{ post.data.page.excerpt | renderContent: 'md' | strip_html | truncatewords: 100 }}
+                {{ post.data.page.excerpt | default: post.data.page.rawInput | renderContent: 'md' | strip_html | truncatewords: 100 }}
             </p>
         </section>
         {% for tag in post.data.tags %}
