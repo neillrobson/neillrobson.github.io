@@ -6,36 +6,96 @@
  */
 
 :root {
-  --serif: Iowan Old Style, Apple Garamond, Baskerville, Georgia, Times New Roman,
-    Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji,
-    Segoe UI Symbol;
+  --serif: Iowan Old Style, Apple Garamond, Baskerville, Georgia,
+    Times New Roman, Droid Serif, Times, Source Serif Pro, serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   --sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
     helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
   --mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 
-@media (prefers-color-scheme: light) {
+$base03: #002b36;
+$base02: #073642;
+$base01: #586e75;
+$base00: #657b83;
+$base0: #839496;
+$base1: #93a1a1;
+$base2: #eee8d5;
+$base3: #fdf6e3;
+$yellow: #b58900;
+$orange: #cb4b16;
+$red: #dc322f;
+$magenta: #d33682;
+$violet: #6c71c4;
+$blue: #268bd2;
+$cyan: #2aa198;
+$green: #859900;
+
+@mixin rebase(
+  $rebase03,
+  $rebase02,
+  $rebase01,
+  $rebase00,
+  $rebase0,
+  $rebase1,
+  $rebase2,
+  $rebase3
+) {
   :root {
-    --background: #fffff8;
-    --color: #232323;
-    --color-light: #6b6b6b;
-    --color-dark: #000000;
+    --background: #{$rebase03};
+    --color: #{$rebase0};
+    --color-light: #{$rebase1};
+    --color-dark: #{$rebase01};
     --color-placeholder: #a4a9b0;
-    --link: #004984;
-    --link-hover: #468cc7;
+    --link: #{$rebase1};
+    --link-hover: #{$blue};
   }
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #151515;
-    --color: #dddddd;
-    --color-light: #cccccc;
-    --color-dark: #eeeeee;
-    --color-placeholder: #a4a9b0;
-    --link: #93c5fd;
-    --link-hover: #60a5fa;
-  }
+  @include rebase(
+    $base03,
+    $base02,
+    $base01,
+    $base00,
+    $base0,
+    $base1,
+    $base2,
+    $base3
+  );
+
+  // :root {
+  //   --background: #fffff8;
+  //   --color: #232323;
+  //   --color-light: #6b6b6b;
+  //   --color-dark: #000000;
+  //   --color-placeholder: #a4a9b0;
+  //   --link: #004984;
+  //   --link-hover: #468cc7;
+  // }
+}
+
+@media (prefers-color-scheme: light) {
+  @include rebase(
+    $base3,
+    $base2,
+    $base1,
+    $base0,
+    $base00,
+    $base01,
+    $base02,
+    $base03
+  );
+
+  // :root {
+  //   --background: #151515;
+  //   --color: #dddddd;
+  //   --color-light: #cccccc;
+  //   --color-dark: #eeeeee;
+  //   --color-placeholder: #a4a9b0;
+  //   --link: #93c5fd;
+  //   --link-hover: #60a5fa;
+  // }
 }
 
 @view-transition {
@@ -198,8 +258,8 @@ section > *:not(.margin),
   // move right margin edge past content,
   // plus own width,
   // plus 10% padding
-  right: math.percentage(1 - (.6 * 1.6));
-  width: math.percentage(math.div(.6, 2));
+  right: math.percentage(1 - (0.6 * 1.6));
+  width: math.percentage(math.div(0.6, 2));
 }
 
 .column {
@@ -445,7 +505,7 @@ figure img {
 
 .section-link,
 .newthought {
-    position: relative;
+  position: relative;
 }
 
 .section-link > a:first-child,
@@ -468,7 +528,7 @@ figure img {
 
 .section-link > a:first-child::before,
 .newthought > a:first-child::before {
-  content: '';
+  content: "";
   mask: url(../icon/link.svg) no-repeat 50% 50%;
   mask-size: cover;
   background-color: currentColor;
@@ -491,52 +551,52 @@ figure img {
 
 .sidenote,
 .marginnote {
-    float: right;
-    clear: right;
-    margin-right: -60%;
-    width: 50%;
-    margin-top: 0.3rem;
-    margin-bottom: 0.3rem;
-    font-size: 0.8rem;
-    line-height: 1.3;
-    vertical-align: baseline;
-    position: relative;
+  float: right;
+  clear: right;
+  margin-right: -60%;
+  width: 50%;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  vertical-align: baseline;
+  position: relative;
 }
 
 .sidenote-number {
-    counter-increment: sidenote-counter;
+  counter-increment: sidenote-counter;
 }
 
 .sidenote-number:after,
 .sidenote:before {
-    font-family: et-book-roman-old-style;
-    position: relative;
-    vertical-align: baseline;
+  font-family: et-book-roman-old-style;
+  position: relative;
+  vertical-align: baseline;
 }
 
 .sidenote-number:after {
-    content: counter(sidenote-counter);
-    font-size: 0.6rem;
-    top: -0.5rem;
-    left: 0.1rem;
+  content: counter(sidenote-counter);
+  font-size: 0.6rem;
+  top: -0.5rem;
+  left: 0.1rem;
 }
 
 .sidenote:before {
-    content: counter(sidenote-counter) " ";
-    font-size: 0.6rem;
-    top: -0.5rem;
+  content: counter(sidenote-counter) " ";
+  font-size: 0.6rem;
+  top: -0.5rem;
 }
 
 blockquote .sidenote,
 blockquote .marginnote {
-    margin-right: -82%;
-    min-width: 59%;
-    text-align: left;
+  margin-right: -82%;
+  min-width: 59%;
+  text-align: left;
 }
 
 .marginnote > code,
 .sidenote > code {
-    font-size: 0.8rem;
+  font-size: 0.8rem;
 }
 
 input.margin-toggle {
@@ -595,8 +655,9 @@ label.margin-toggle:not(.sidenote-number) {
   opacity: 0.8;
 
   &::before {
-    content: '';
-    mask: url("data:image/svg+xml;base64,PHN2ZyBpZD0iaWNvbi1icm9hZGNhc3QiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTIwIDEyMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8Y2lyY2xlIGN4PSIxOC4zODUiIGN5PSIxMDEuNjE1IiByPSIxOC4zODUiLz4NCjxnPg0KCTxwYXRoIGQ9Ik0tMS4wMzEsNjFjMzIuNTMzLDAsNTksMjYuNDY4LDU5LDU5cy0yNi40NjcsNTktNTksNTlzLTU5LTI2LjQ2OC01OS01OVMtMzMuNTY0LDYxLTEuMDMxLDYxIE0tMS4wMzEsMzgNCgkJYy00NS4yODgsMC04MiwzNi43MTMtODIsODJzMzYuNzEyLDgyLDgyLDgyczgyLTM2LjcxMyw4Mi04MlM0NC4yNTcsMzgtMS4wMzEsMzhMLTEuMDMxLDM4eiIvPg0KPC9nPg0KPGc+DQoJPHBhdGggZD0iTTAuMTU0LDIzLjA0MWM1My4zNDksMCw5Ni43NSw0My40MDIsOTYuNzUsOTYuNzVzLTQzLjQwMiw5Ni43NS05Ni43NSw5Ni43NWMtNTMuMzQ4LDAtOTYuNzUtNDMuNDAyLTk2Ljc1LTk2Ljc1DQoJCVMtNTMuMTk0LDIzLjA0MSwwLjE1NCwyMy4wNDEgTTAuMTU0LDAuMDQxYy02Ni4xMzYsMC0xMTkuNzUsNTMuNjE1LTExOS43NSwxMTkuNzVzNTMuNjE0LDExOS43NSwxMTkuNzUsMTE5Ljc1DQoJCWM2Ni4xMzUsMCwxMTkuNzUtNTMuNjE1LDExOS43NS0xMTkuNzVTNjYuMjg5LDAuMDQxLDAuMTU0LDAuMDQxTDAuMTU0LDAuMDQxeiIvPg0KPC9nPg0KPC9zdmc+") no-repeat 50% 50%;
+    content: "";
+    mask: url("data:image/svg+xml;base64,PHN2ZyBpZD0iaWNvbi1icm9hZGNhc3QiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTIwIDEyMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8Y2lyY2xlIGN4PSIxOC4zODUiIGN5PSIxMDEuNjE1IiByPSIxOC4zODUiLz4NCjxnPg0KCTxwYXRoIGQ9Ik0tMS4wMzEsNjFjMzIuNTMzLDAsNTksMjYuNDY4LDU5LDU5cy0yNi40NjcsNTktNTksNTlzLTU5LTI2LjQ2OC01OS01OVMtMzMuNTY0LDYxLTEuMDMxLDYxIE0tMS4wMzEsMzgNCgkJYy00NS4yODgsMC04MiwzNi43MTMtODIsODJzMzYuNzEyLDgyLDgyLDgyczgyLTM2LjcxMyw4Mi04MlM0NC4yNTcsMzgtMS4wMzEsMzhMLTEuMDMxLDM4eiIvPg0KPC9nPg0KPGc+DQoJPHBhdGggZD0iTTAuMTU0LDIzLjA0MWM1My4zNDksMCw5Ni43NSw0My40MDIsOTYuNzUsOTYuNzVzLTQzLjQwMiw5Ni43NS05Ni43NSw5Ni43NWMtNTMuMzQ4LDAtOTYuNzUtNDMuNDAyLTk2Ljc1LTk2Ljc1DQoJCVMtNTMuMTk0LDIzLjA0MSwwLjE1NCwyMy4wNDEgTTAuMTU0LDAuMDQxYy02Ni4xMzYsMC0xMTkuNzUsNTMuNjE1LTExOS43NSwxMTkuNzVzNTMuNjE0LDExOS43NSwxMTkuNzUsMTE5Ljc1DQoJCWM2Ni4xMzUsMCwxMTkuNzUtNTMuNjE1LDExOS43NS0xMTkuNzVTNjYuMjg5LDAuMDQxLDAuMTU0LDAuMDQxTDAuMTU0LDAuMDQxeiIvPg0KPC9nPg0KPC9zdmc+")
+      no-repeat 50% 50%;
     mask-size: cover;
     background-color: currentColor;
     position: absolute;
@@ -804,18 +865,18 @@ input#search:focus {
 
   .sidenote,
   .marginnote {
-      display: none;
+    display: none;
   }
 
   .margin-toggle:checked + .sidenote,
   .margin-toggle:checked + .marginnote {
-      display: block;
-      float: left;
-      left: 1rem;
-      clear: both;
-      width: 95%;
-      margin: 1rem 2.5%;
-      position: relative;
+    display: block;
+    float: left;
+    left: 1rem;
+    clear: both;
+    width: 95%;
+    margin: 1rem 2.5%;
+    position: relative;
   }
 
   /* sidenote and marginnote labels */
