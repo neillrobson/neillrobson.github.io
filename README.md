@@ -61,5 +61,5 @@ Source code for the personal website and blog of Neill Robson.
 - [x] Column collapse (switcher pattern, flex-basis 30ch - 100%)
   - [x] Unable to use flexbox due to how markup is generated
   - [x] Force column collapse in small viewports (add full width)
-- [ ] Dark mode?
+- [x] Dark mode?
 - [x] Code syntax highlighting

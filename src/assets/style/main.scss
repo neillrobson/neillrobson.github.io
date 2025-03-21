@@ -6,14 +6,36 @@
  */
 
 :root {
-  --color: #232323;
-  --color-light: #6b6b6b;
   --serif: Iowan Old Style, Apple Garamond, Baskerville, Georgia, Times New Roman,
     Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji,
     Segoe UI Symbol;
   --sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
     helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
   --mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #fffff8;
+    --color: #232323;
+    --color-light: #6b6b6b;
+    --color-dark: #000000;
+    --color-placeholder: #a4a9b0;
+    --link: #004984;
+    --link-hover: #468cc7;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #151515;
+    --color: #dddddd;
+    --color-light: #cccccc;
+    --color-dark: #eeeeee;
+    --color-placeholder: #a4a9b0;
+    --link: #93c5fd;
+    --link-hover: #60a5fa;
+  }
 }
 
 @view-transition {
@@ -40,7 +62,7 @@ body {
   font-feature-settings: "liga";
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: “liga” on;
-  background-color: #fffff8;
+  background-color: var(--background);
   color: var(--color);
   word-wrap: break-word;
   width: 75%;
@@ -245,11 +267,11 @@ h6 {
 
 blockquote {
   padding: 0 0 0 12px;
-  color: #777;
+  color: var(--color-light);
 }
 
 big {
-  color: #000;
+  color: var(--color-dark);
   font-size: 1.4rem;
   font-family: var(--serif);
   line-height: 1.5;
@@ -259,11 +281,11 @@ big {
 /* LINKS */
 
 a {
-  color: #004984;
+  color: var(--link);
 }
 
 a:hover {
-  color: #468cc7;
+  color: var(--link-hover);
 }
 
 a.no-tufte-underline,
@@ -412,12 +434,12 @@ figure img {
 #title a {
   font-weight: bold;
   font-size: 0.95rem;
-  color: #222;
+  color: var(--color);
   position: relative;
   text-decoration: none;
 
   &:hover {
-    color: #555;
+    color: var(--color-light);
   }
 }
 
@@ -564,14 +586,30 @@ label.margin-toggle:not(.sidenote-number) {
 
 .nav a[href$="/feed.xml"],
 .nav a[href$="/search"] {
-  color: #000;
+  color: var(--color-dark);
   font-weight: 500;
   font-size: 0.7rem;
+  line-height: 1.5;
   padding-left: 1.25em;
-  background: url("data:image/svg+xml;base64,PHN2ZyBpZD0iaWNvbi1icm9hZGNhc3QiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTIwIDEyMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8Y2lyY2xlIGN4PSIxOC4zODUiIGN5PSIxMDEuNjE1IiByPSIxOC4zODUiLz4NCjxnPg0KCTxwYXRoIGQ9Ik0tMS4wMzEsNjFjMzIuNTMzLDAsNTksMjYuNDY4LDU5LDU5cy0yNi40NjcsNTktNTksNTlzLTU5LTI2LjQ2OC01OS01OVMtMzMuNTY0LDYxLTEuMDMxLDYxIE0tMS4wMzEsMzgNCgkJYy00NS4yODgsMC04MiwzNi43MTMtODIsODJzMzYuNzEyLDgyLDgyLDgyczgyLTM2LjcxMyw4Mi04MlM0NC4yNTcsMzgtMS4wMzEsMzhMLTEuMDMxLDM4eiIvPg0KPC9nPg0KPGc+DQoJPHBhdGggZD0iTTAuMTU0LDIzLjA0MWM1My4zNDksMCw5Ni43NSw0My40MDIsOTYuNzUsOTYuNzVzLTQzLjQwMiw5Ni43NS05Ni43NSw5Ni43NWMtNTMuMzQ4LDAtOTYuNzUtNDMuNDAyLTk2Ljc1LTk2Ljc1DQoJCVMtNTMuMTk0LDIzLjA0MSwwLjE1NCwyMy4wNDEgTTAuMTU0LDAuMDQxYy02Ni4xMzYsMC0xMTkuNzUsNTMuNjE1LTExOS43NSwxMTkuNzVzNTMuNjE0LDExOS43NSwxMTkuNzUsMTE5Ljc1DQoJCWM2Ni4xMzUsMCwxMTkuNzUtNTMuNjE1LDExOS43NS0xMTkuNzVTNjYuMjg5LDAuMDQxLDAuMTU0LDAuMDQxTDAuMTU0LDAuMDQxeiIvPg0KPC9nPg0KPC9zdmc+")
-    no-repeat left center / 100%;
-  background-size: 0.88em;
-  opacity: 0.4;
+  position: relative;
+  opacity: 0.8;
+
+  &::before {
+    content: '';
+    mask: url("data:image/svg+xml;base64,PHN2ZyBpZD0iaWNvbi1icm9hZGNhc3QiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTIwIDEyMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8Y2lyY2xlIGN4PSIxOC4zODUiIGN5PSIxMDEuNjE1IiByPSIxOC4zODUiLz4NCjxnPg0KCTxwYXRoIGQ9Ik0tMS4wMzEsNjFjMzIuNTMzLDAsNTksMjYuNDY4LDU5LDU5cy0yNi40NjcsNTktNTksNTlzLTU5LTI2LjQ2OC01OS01OVMtMzMuNTY0LDYxLTEuMDMxLDYxIE0tMS4wMzEsMzgNCgkJYy00NS4yODgsMC04MiwzNi43MTMtODIsODJzMzYuNzEyLDgyLDgyLDgyczgyLTM2LjcxMyw4Mi04MlM0NC4yNTcsMzgtMS4wMzEsMzhMLTEuMDMxLDM4eiIvPg0KPC9nPg0KPGc+DQoJPHBhdGggZD0iTTAuMTU0LDIzLjA0MWM1My4zNDksMCw5Ni43NSw0My40MDIsOTYuNzUsOTYuNzVzLTQzLjQwMiw5Ni43NS05Ni43NSw5Ni43NWMtNTMuMzQ4LDAtOTYuNzUtNDMuNDAyLTk2Ljc1LTk2Ljc1DQoJCVMtNTMuMTk0LDIzLjA0MSwwLjE1NCwyMy4wNDEgTTAuMTU0LDAuMDQxYy02Ni4xMzYsMC0xMTkuNzUsNTMuNjE1LTExOS43NSwxMTkuNzVzNTMuNjE0LDExOS43NSwxMTkuNzUsMTE5Ljc1DQoJCWM2Ni4xMzUsMCwxMTkuNzUtNTMuNjE1LDExOS43NS0xMTkuNzVTNjYuMjg5LDAuMDQxLDAuMTU0LDAuMDQxTDAuMTU0LDAuMDQxeiIvPg0KPC9nPg0KPC9zdmc+") no-repeat 50% 50%;
+    mask-size: cover;
+    background-color: currentColor;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 0.88em;
+    height: 0.88em;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .nav a[href$="/feed.xml"] {
@@ -582,11 +620,6 @@ label.margin-toggle:not(.sidenote-number) {
   background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iaWNvbi1zZWFyY2giIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgOCA4IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGlkPSJzZWFyY2giIGQ9Ik03Ljk5LDYuOTI4TDUuODQ3LDQuNzg0YzAuMjg5LTAuNDc2LDAuNDU4LTEuMDMzLDAuNDU4LTEuNjNDNi4zMDUsMS40MTIsNC44OTUsMCwzLjE1MiwwDQoJQzEuNDExLDAsMCwxLjQxMiwwLDMuMTU0YzAsMS43NDEsMS40MTIsMy4xNTEsMy4xNTMsMy4xNTFjMC41OTcsMCwxLjE1NC0wLjE2OSwxLjYzLTAuNDU4bDIuMTQ1LDIuMTQ2TDcuOTksNi45Mjh6IE0xLjIwMywzLjE1NA0KCWMwLjAwMi0xLjA3NywwLjg3NC0xLjk0OSwxLjk1MS0xLjk1MWMxLjA3NiwwLjAwMiwxLjk0OCwwLjg3NCwxLjk0OSwxLjk1MUM1LjEwMSw0LjIzLDQuMjI5LDUuMTAzLDMuMTUzLDUuMTAzDQoJQzIuMDc1LDUuMTAzLDEuMjA1LDQuMjMsMS4yMDMsMy4xNTR6Ii8+DQo8L3N2Zz4=);
   background-size: 0.94em;
   margin-left: 1em;
-}
-
-a.feed:hover,
-a.search:hover {
-  opacity: 1;
 }
 
 input#search {
@@ -608,22 +641,11 @@ input#search:focus {
   border: 1px solid #a1adb6;
 }
 
-::-webkit-input-placeholder {
-  color: #a4a9b0;
-}
-
-:-moz-placeholder {
-  /* Firefox 18- */
-  color: #a4a9b0;
-}
-
-::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #a4a9b0;
-}
-
+::-webkit-input-placeholder,
+:-moz-placeholder,
+::-moz-placeholder,
 :-ms-input-placeholder {
-  color: #a4a9b0;
+  color: var(--color-placeholder);
 }
 
 .date {
