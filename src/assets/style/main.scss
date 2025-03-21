@@ -178,10 +178,11 @@ section > *:not(.margin),
   box-sizing: border-box;
   float: left;
   min-width: 30ch;
-}
-
-.column:has(+ .column) {
-  margin-right: 3%;
+  margin-block: 12px;
+  margin-right: 1.5%;
+  padding-left: 1.5%;
+  border-left: 1px solid #ccc;
+  border-radius: 10px;
 }
 
 .column figcaption,
@@ -190,21 +191,23 @@ section > *:not(.margin),
 }
 
 .column.two {
-  width: math.percentage(math.div(1 - 0.03 * 1, 2));
+  width: math.percentage(math.div(1 - 0.03 * 2, 2));
 }
 
 .column.three {
-  width: math.percentage(math.div(1 - 0.03 * 2, 3));
+  width: math.percentage(math.div(1 - 0.03 * 3, 3));
 }
 
 .column.four {
-  width: math.percentage(math.div(1 - 0.03 * 3, 4));
+  width: math.percentage(math.div(1 - 0.03 * 4, 4));
 }
 
 .column h1,
 .column h2,
 .column h3 {
+  margin-top: 12px;
   margin-bottom: -12px;
+  font-style: italic;
 }
 
 /* TEXT */
@@ -739,7 +742,7 @@ input#search:focus {
   .column.three,
   .column.four {
     width: unset;
-    margin-right: 0;
+    margin-inline: 0;
   }
 
   hr {
