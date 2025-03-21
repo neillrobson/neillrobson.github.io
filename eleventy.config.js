@@ -1,6 +1,7 @@
 import yaml from "js-yaml";
 import eleventyPluginSass from "@jgarber/eleventy-plugin-sass";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
+import eleventyPluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import { EleventyRenderPlugin, EleventyHtmlBasePlugin } from "@11ty/eleventy";
 import strftime from "strftime";
 import MarkdownItTufte from "markdown-it-tufte";
@@ -32,6 +33,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPlugin(eleventyPluginSass);
+  eleventyConfig.addPlugin(eleventyPluginSyntaxHighlight);
   eleventyConfig.addPlugin(feedPlugin, {
     type: "rss",
     outputPath: "/feed.xml",
