@@ -26,6 +26,9 @@ html {
   padding: 0;
 }
 
+$color: #232323;
+$color-light: #6b6b6b;
+
 body {
   min-height: 100vh;
   line-height: 1.4;
@@ -35,7 +38,8 @@ body {
   font-feature-settings: "liga";
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: “liga” on;
-  color: #232323;
+  background-color: #fffff8;
+  color: $color;
   word-wrap: break-word;
   width: 75%;
   padding-left: 12.5%;
@@ -59,7 +63,7 @@ figcaption,
 .caption {
   font-size: 0.7rem;
   font-family: $sans-serif;
-  color: #999;
+  color: $color-light;
   font-weight: 500;
 }
 
@@ -122,7 +126,7 @@ section > *:not(.margin),
 
 .margin blockquote {
   margin: 3px 0;
-  color: #232323;
+  color: $color;
   padding: 3px 6px;
   font-size: 0.8rem;
   line-height: 1.2;
@@ -634,7 +638,7 @@ input#search:focus {
   text-align: center;
   margin: 72px 0;
   font-size: 0.8rem;
-  color: #999;
+  color: $color-light;
 }
 
 .pagination a {
@@ -649,32 +653,31 @@ input#search:focus {
   line-height: 1.33;
   width: math.percentage(0.55 * 0.48);
   margin: 1em 0 6em 1%;
-  color: #000;
   display: block;
   float: left;
+
+  h5 {
+    margin-bottom: 3px;
+    color: $color;
+  }
+
+  .title {
+    display: block;
+    font-size: 1.156rem;
+    font-family: $sans-serif;
+    line-height: 1.33;
+    margin-bottom: 3px;
+  }
+
+  .summary {
+    color: $color-light;
+    font-size: 0.7rem;
+    line-height: 1.2;
+  }
 }
 
 .previousEntry {
   margin: 1em 1% 6em 0;
-}
-
-.adjacent a h5 {
-  margin-bottom: 3px;
-  color: #000;
-}
-.adjacent a .summary {
-  color: #6b6b6b;
-  font-size: 0.7rem;
-  line-height: 1.2;
-}
-
-.previousEntry .title,
-.nextEntry .title {
-  display: block;
-  font-size: 1.156rem;
-  font-family: $sans-serif;
-  line-height: 1.33;
-  margin-bottom: 3px;
 }
 
 /* BREAKPOINTS */
