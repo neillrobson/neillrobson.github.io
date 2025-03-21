@@ -9,5 +9,5 @@ export default {
     eleventyExcludeFromCollections: (data) =>
       isDev ? data.eleventyExcludeFromCollections : true,
   },
-  tags: "posts",
+  tags: ["posts", "drafts"],
 };

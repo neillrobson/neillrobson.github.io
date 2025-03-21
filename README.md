@@ -56,9 +56,9 @@ Source code for the personal website and blog of Neill Robson.
   - [x] Clamp to a max? max body width is 1400px
 - [x] links: text-decoration-skip-ink
 - [ ] Split to multiple files
-- [ ] Replace `@media` where possible (using `@container`)
-- [ ] Favor min-width (mobile-first)
-- [ ] Move all margins right?
-- [ ] Column collapse (switcher pattern, flex-basis 30ch - 100%)
+- [x] Fix float-mixing of right-margins and sidenotes
+- [x] Move all margins right? (won't do, achieved reasonable styling for left margins)
+- [x] Column collapse (switcher pattern, flex-basis 30ch - 100%)
+  - [x] Unable to use flexbox due to how markup is generated
 - [ ] Dark mode?
 - [ ] Code syntax highlighting
