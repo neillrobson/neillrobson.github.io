@@ -4,12 +4,17 @@
  * FONTS
  * Default font stack found at https://systemfontstack.com/
  */
-$serif: Iowan Old Style, Apple Garamond, Baskerville, Georgia, Times New Roman,
-  Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji,
-  Segoe UI Symbol;
-$sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
-  helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
-$mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+
+:root {
+  --color: #232323;
+  --color-light: #6b6b6b;
+  --serif: Iowan Old Style, Apple Garamond, Baskerville, Georgia, Times New Roman,
+    Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji,
+    Segoe UI Symbol;
+  --sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+  --mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+}
 
 @view-transition {
   navigation: auto;
@@ -26,20 +31,17 @@ html {
   padding: 0;
 }
 
-$color: #232323;
-$color-light: #6b6b6b;
-
 body {
   min-height: 100vh;
   line-height: 1.4;
-  font-family: $sans-serif;
+  font-family: var(--sans-serif);
   text-rendering: optimizeLegibility;
   font-variant-ligatures: common-ligatures;
   font-feature-settings: "liga";
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: “liga” on;
   background-color: #fffff8;
-  color: $color;
+  color: var(--color);
   word-wrap: break-word;
   width: 75%;
   padding-left: 12.5%;
@@ -62,8 +64,8 @@ small,
 figcaption,
 .caption {
   font-size: 0.7rem;
-  font-family: $sans-serif;
-  color: $color-light;
+  font-family: var(--sans-serif);
+  color: var(--color-light);
   font-weight: 500;
 }
 
@@ -126,7 +128,7 @@ section > *:not(.margin),
 
 .margin blockquote {
   margin: 3px 0;
-  color: $color;
+  color: var(--color);
   padding: 3px 6px;
   font-size: 0.8rem;
   line-height: 1.2;
@@ -160,9 +162,9 @@ section > *:not(.margin),
 .left.margin {
   position: absolute;
   // Main body is 6x size of left margin (6/8)
-  $width: math.percentage(math.div(1, 6));
-  width: $width;
-  left: -$width;
+  --width: calc(100% / 6);
+  width: var(--width);
+  left: calc(-1 * var(--width));
   padding-right: 20px;
   padding-left: 20px;
   text-align: right;
@@ -219,7 +221,7 @@ section > *:not(.margin),
 figure,
 p,
 li {
-  font-family: $serif;
+  font-family: var(--serif);
   position: relative;
   margin: 24px 0;
 }
@@ -249,7 +251,7 @@ blockquote {
 big {
   color: #000;
   font-size: 1.4rem;
-  font-family: $serif;
+  font-family: var(--serif);
   line-height: 1.5;
   display: block;
 }
@@ -299,13 +301,13 @@ hr {
 pre[class*="language-"] {
   margin: 0;
   padding: 0;
-  font-family: $mono;
+  font-family: var(--mono);
   background: none;
   overflow: initial;
 }
 
 code {
-  font-family: $mono;
+  font-family: var(--mono);
   margin: 0;
   font-size: 0.85rem;
   background: rgba(0, 0, 0, 0.03);
@@ -316,7 +318,7 @@ code {
 }
 
 pre code[class*="language-"] {
-  font-family: $mono;
+  font-family: var(--mono);
   display: block;
   padding: 12px 18px;
   margin: 0;
@@ -597,7 +599,7 @@ input#search {
   box-sizing: border-box;
   margin: 0.33em 0.66em 2em -1em;
   border: 1px solid #a1adb6;
-  font-family: $sans-serif;
+  font-family: var(--sans-serif);
 }
 
 input#search:focus {
@@ -638,7 +640,7 @@ input#search:focus {
   text-align: center;
   margin: 72px 0;
   font-size: 0.8rem;
-  color: $color-light;
+  color: var(--color-light);
 }
 
 .pagination a {
@@ -658,19 +660,19 @@ input#search:focus {
 
   h5 {
     margin-bottom: 3px;
-    color: $color;
+    color: var(--color);
   }
 
   .title {
     display: block;
     font-size: 1.156rem;
-    font-family: $sans-serif;
+    font-family: var(--sans-serif);
     line-height: 1.33;
     margin-bottom: 3px;
   }
 
   .summary {
-    color: $color-light;
+    color: var(--color-light);
     font-size: 0.7rem;
     line-height: 1.2;
   }
