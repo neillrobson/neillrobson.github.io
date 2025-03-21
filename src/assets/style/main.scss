@@ -190,15 +190,15 @@ section > *:not(.margin),
 }
 
 .column.two {
-  width: math.percentage(math.div(0.9 - 0.03 * 1, 2));
+  width: math.percentage(math.div(1 - 0.03 * 1, 2));
 }
 
 .column.three {
-  width: math.percentage(math.div(0.9 - 0.03 * 2, 3));
+  width: math.percentage(math.div(1 - 0.03 * 2, 3));
 }
 
 .column.four {
-  width: math.percentage(math.div(0.9 - 0.03 * 3, 4));
+  width: math.percentage(math.div(1 - 0.03 * 3, 4));
 }
 
 .column h1,
@@ -730,16 +730,11 @@ input#search:focus {
     padding-left: 20px;
   }
 
-  .column.two {
-    width: math.percentage(math.div(1 - 0.03 * 1, 2));
-  }
-
-  .column.three {
-    width: math.percentage(math.div(1 - 0.03 * 2, 3));
-  }
-
+  .column.two,
+  .column.three,
   .column.four {
-    width: math.percentage(math.div(1 - 0.03 * 3, 4));
+    width: unset;
+    margin-right: 0;
   }
 
   hr {

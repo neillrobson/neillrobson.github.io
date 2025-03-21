@@ -1,6 +1,4 @@
 const CLASSES = {
-  "<": "inside left",
-  ">": "inside right",
   "|<": "margin left",
   ">|": "margin right",
   "||": "column two",
