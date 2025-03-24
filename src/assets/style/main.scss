@@ -329,7 +329,9 @@ big {
 
 a {
   color: var(--link);
+  text-decoration: none;
   transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 0 0 2px transparent;
   border-radius: 8px;
 }
 
@@ -680,9 +682,8 @@ input#search:focus {
   color: var(--color-placeholder);
 }
 
-.date {
-  margin-top: 10px;
-  text-decoration: none;
+.date * {
+  vertical-align: bottom;
 }
 .date:empty {
   display: none;

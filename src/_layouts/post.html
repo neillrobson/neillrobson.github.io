@@ -4,7 +4,9 @@ permalink: "/blog/{{ page.date | utcDate: '%Y/%m/%d' }}/{{ page.fileSlug }}/inde
 ---
 
 <div class="entry">
-    <a class="small date left margin" href="{{page.url}}">{{page.date | utcDate: '%B %-d, %Y'}}</a>
+    <div class="date left margin">
+        <a class="small" href="{{page.url}}">{{page.date | utcDate: '%B %-d, %Y'}}</a>
+    </div>
     <h1>{{ title }}</h1>
 
     {{ content }}
