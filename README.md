@@ -71,5 +71,5 @@ Source code for the personal website and blog of Neill Robson.
   - [x] Switch anchor/heading for project and other pages
   - [x] Fix next/prev links (margin)
   - [x] Reduce spacing on section links
-- [ ] Reduce margins on p.margin
+- [x] Reduce margins on p.margin
 - [ ] Fix projects page
