@@ -64,12 +64,12 @@ Source code for the personal website and blog of Neill Robson.
 - [x] Dark mode?
 - [x] Code syntax highlighting
   - [ ] Switch to Solarized and match light/dark mode
-- [ ] Link styling:
+- [x] Link styling:
   - [x] Remove all underlines
   - [x] Fix dates (including line wrap)
   - [x] Fix tags (use pseudo element for the tag icon)
   - [x] Switch anchor/heading for project and other pages
   - [x] Fix next/prev links (margin)
-  - [ ] Reduce spacing on section links
+  - [x] Reduce spacing on section links
 - [ ] Reduce margins on p.margin
 - [ ] Fix projects page
