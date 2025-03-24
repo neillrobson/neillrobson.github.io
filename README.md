@@ -67,7 +67,7 @@ Source code for the personal website and blog of Neill Robson.
 - [ ] Link styling:
   - [x] Remove all underlines
   - [x] Fix dates
-  - [ ] Fix tags (use pseudo element for the tag icon)
+  - [x] Fix tags (use pseudo element for the tag icon)
   - [x] Switch anchor/heading for project and other pages
   - [ ] Fix next/prev links (needn't be blue)
   - [ ] Reduce spacing on section links
