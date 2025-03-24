@@ -63,3 +63,8 @@ Source code for the personal website and blog of Neill Robson.
   - [x] Force column collapse in small viewports (add full width)
 - [x] Dark mode?
 - [x] Code syntax highlighting
+  - [ ] Switch to Solarized and match light/dark mode
+- [ ] Link styling:
+  - [ ] Remove all underlines
+  - [ ] Fix dates
+  - [ ] Switch anchor/heading for project and other pages
