@@ -4,9 +4,7 @@ layout: default
 {% assign projects = collections.project | sort: 'data.year' | reverse %}
 {% for project in projects %}
 <div class="entry">
-	<a href="{{project.url}}">
-	<h1>{{ project.data.title }}</h1>
-	</a>
+	<h1><a href="{{project.url}}">{{ project.data.title }}</a></h1>
 	{% if project.data.cover-image %}
 	<div class="four column">
 		<div class="blur-container">
