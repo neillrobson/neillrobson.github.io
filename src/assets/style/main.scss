@@ -43,10 +43,10 @@ $green: #859900;
 ) {
   :root {
     --background: #{$rebase03};
-    --background-light: #{$rebase02};
+    --background-highlight: #{$rebase02};
     --color: #{$rebase0};
-    --color-light: #{$rebase1};
-    --color-dark: #{$rebase01};
+    --color-emphasis: #{$rebase1};
+    --color-secondary: #{$rebase01};
     --color-placeholder: #a4a9b0;
     --link: #{$blue};
   }
@@ -127,7 +127,7 @@ figcaption,
 .caption {
   font-size: 0.7rem;
   font-family: var(--sans-serif);
-  color: var(--color-light);
+  color: var(--color-secondary);
   font-weight: 500;
 }
 
@@ -293,6 +293,7 @@ h1 {
   line-height: 1.5;
   font-weight: bold;
   margin-bottom: 24px;
+  color: var(--color-emphasis);
 }
 
 h2,
@@ -303,15 +304,16 @@ h6 {
   font-size: 0.8rem;
   font-weight: bold;
   margin: 48px 0 24px;
+  color: var(--color-emphasis);
 }
 
 blockquote {
   padding: 0 0 0 12px;
-  color: var(--color-light);
+  color: var(--color-secondary);
 }
 
 big {
-  color: var(--color-dark);
+  color: var(--color-emphasis);
   font-size: 1.4rem;
   font-family: var(--serif);
   line-height: 1.5;
@@ -622,13 +624,12 @@ label.margin-toggle:not(.sidenote-number) {
 
 .nav a[href$="/feed.xml"],
 .nav a[href$="/search"] {
-  color: var(--color-dark);
+  color: var(--color-secondary);
   font-weight: 500;
   font-size: 0.7rem;
   line-height: 1.5;
   padding-left: 1.25em;
   position: relative;
-  opacity: 0.8;
 
   &::before {
     content: "";
@@ -642,11 +643,6 @@ label.margin-toggle:not(.sidenote-number) {
     transform: translateY(-50%);
     width: 0.88em;
     height: 0.88em;
-  }
-
-  &:hover {
-    opacity: 1;
-    filter: brightness(math.div(1, 1.2));
   }
 }
 
@@ -700,7 +696,7 @@ input#search:focus {
   text-align: center;
   margin: 72px 0;
   font-size: 0.8rem;
-  color: var(--color-light);
+  color: var(--color-secondary);
 }
 
 .pagination a {
@@ -732,7 +728,7 @@ input#search:focus {
   }
 
   .summary {
-    color: var(--color-light);
+    color: var(--color-secondary);
     font-size: 0.7rem;
     line-height: 1.2;
   }
