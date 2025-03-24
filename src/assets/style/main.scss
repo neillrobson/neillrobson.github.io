@@ -47,7 +47,6 @@ $green: #859900;
     --color: #{$rebase0};
     --color-emphasis: #{$rebase1};
     --color-secondary: #{$rebase01};
-    --color-placeholder: #a4a9b0;
     --link: #{$blue};
   }
 }
@@ -332,6 +331,7 @@ a {
   text-decoration: none;
   transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   box-shadow: 0 0 0 2px transparent;
+  box-decoration-break: clone;
   border-radius: 8px;
 }
 
@@ -692,14 +692,20 @@ input#search:focus {
 :-moz-placeholder,
 ::-moz-placeholder,
 :-ms-input-placeholder {
-  color: var(--color-placeholder);
+  color: var(--color-secondary);
 }
 
-.date * {
-  vertical-align: bottom;
-}
-.date:empty {
-  display: none;
+.date {
+  line-height: 1;
+  margin-block-start: 0.35rem;
+
+  * {
+    vertical-align: bottom;
+  }
+
+  &:empty {
+    display: none;
+  }
 }
 
 /* Pagination */
@@ -727,7 +733,8 @@ input#search:focus {
   float: left;
 
   h5 {
-    margin-bottom: 3px;
+    margin-block-start: 20px;
+    margin-block-end: 3px;
     color: var(--color);
   }
 
