@@ -72,4 +72,4 @@ Source code for the personal website and blog of Neill Robson.
   - [x] Fix next/prev links (margin)
   - [x] Reduce spacing on section links
 - [x] Reduce margins on p.margin
-- [ ] Fix projects page
+- [x] Fix projects page

@@ -4,12 +4,9 @@ layout: default
 <div class="entry">
 	<h1><a href="{{page.url}}">{{ title }}</a></h1>
 	{% if cover-image %}
-	<div class="four column">
-		<div class="blur-container">
-			<img width="100%" src="{{cover-image}}" />
-			<div class="blur"></div>
-		</div>
-	</div>
+	<figure class="four column force">
+		<img width="100%" src="{{cover-image}}" />
+	</figure>
 	{% endif %}
 	{{ content }}
 	<div class="clear"></div>

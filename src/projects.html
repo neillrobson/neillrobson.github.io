@@ -6,12 +6,9 @@ layout: default
 <div class="entry">
 	<h1><a href="{{project.url}}">{{ project.data.title }}</a></h1>
 	{% if project.data.cover-image %}
-	<div class="four column">
-		<div class="blur-container">
-			<img width="100%" src="{{project.data.cover-image}}" />
-			<div class="blur"></div>
-		</div>
-	</div>
+	<figure class="four column force">
+		<img width="100%" src="{{project.data.cover-image}}" />
+	</figure>
 	{% endif %}
 	<section>
 		<p>{{ project.data.page.excerpt | default: project.data.page.rawInput | renderContent: 'md' | strip_html | truncatewords: 30, '...' }}</p>
