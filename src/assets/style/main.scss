@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "solarized" as *;
 
 /*
  * FONTS
@@ -13,23 +14,6 @@
     helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
   --mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
-
-$base03: #002b36;
-$base02: #073642;
-$base01: #586e75;
-$base00: #657b83;
-$base0: #839496;
-$base1: #93a1a1;
-$base2: #eee8d5;
-$base3: #fdf6e3;
-$yellow: #b58900;
-$orange: #cb4b16;
-$red: #dc322f;
-$magenta: #d33682;
-$violet: #6c71c4;
-$blue: #268bd2;
-$cyan: #2aa198;
-$green: #859900;
 
 @mixin rebase(
   $rebase03,
@@ -399,7 +383,6 @@ code {
   font-family: var(--mono);
   margin: 0;
   font-size: 0.85rem;
-  background: rgba(0, 0, 0, 0.03);
   border-radius: 3px;
   display: inline-block;
   padding: 2px;
@@ -413,7 +396,6 @@ pre code[class*="language-"] {
   margin: 0;
   font-size: 0.85rem;
   overflow-x: auto;
-  background: rgba(0, 0, 0, 0.03);
 }
 
 /* TABLES */
