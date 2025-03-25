@@ -1,15 +1,13 @@
 <div class="header">
   <div id="title">
     {% assign backup_url = "https://neillrobson.com/assets/images/2023-profile.jpg" | url_encode %}
-    <a href="/">
-      <img
-        id="logo"
-        class="rounded"
-        src="https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d={{ backup_url }}"
-        alt="Neill Robson"
-      />
-      Neill Robson's Website
-    </a>
+    <img
+      id="logo"
+      class="rounded"
+      src="https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d={{ backup_url }}"
+      alt="Neill Robson"
+    />
+    Neill Robson's Website
   </div>
   <div class="nav">
     {% for link in nav %}
