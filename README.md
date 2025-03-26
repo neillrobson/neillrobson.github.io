@@ -54,6 +54,7 @@ Source code for the personal website and blog of Neill Robson.
 
 - [x] Base font size
   - [x] Clamp to a max? max body width is 1400px
+  - [x] Make 1rem the absolute min
 - [x] links: text-decoration-skip-ink
 - [ ] Split to multiple files
 - [x] Fix float-mixing of right-margins and sidenotes
@@ -63,7 +64,8 @@ Source code for the personal website and blog of Neill Robson.
   - [x] Force column collapse in small viewports (add full width)
 - [x] Dark mode?
 - [x] Code syntax highlighting
-  - [ ] Switch to Solarized and match light/dark mode
+  - [x] Switch to Solarized and match light/dark mode
+  - [x] Fix overflow (initial on pre, auto on code)
 - [x] Link styling:
   - [x] Unobtrusive underlines
   - [x] Fix dates (including line wrap)
@@ -71,6 +73,9 @@ Source code for the personal website and blog of Neill Robson.
   - [x] Switch anchor/heading for project and other pages
   - [x] Fix next/prev links (margin)
   - [x] Reduce spacing on section links
+  - [ ] Link hover styling: background color or underline/text color?
 - [x] Reduce margins on p.margin
 - [x] Fix projects page
 - [ ] Render-blocking to make view transitions smoother
+- [ ] Light/dark/contrast switches?
+- [ ] hr color

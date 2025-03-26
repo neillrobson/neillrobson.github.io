@@ -68,7 +68,7 @@
 html {
   // Give a slight bump on large screens,
   // without ever falling below browser default
-  font-size: clamp(1.125rem, 1.088rem + 0.1852vw, 1.25rem);
+  font-size: clamp(1rem, 0.8rem + 1vi, 1.5rem);
 }
 
 * {
@@ -211,9 +211,13 @@ section > *:not(.margin),
   --width: calc(100% / 6);
   width: var(--width);
   left: calc(-1 * var(--width));
-  padding-right: 20px;
-  padding-left: 20px;
+  padding-right: 2ch;
+  padding-left: 2ch;
   text-align: right;
+
+  figure img {
+    display: inline-block; // right-align
+  }
 }
 
 .right.margin {
@@ -751,13 +755,13 @@ input#search:focus {
 
 /* BREAKPOINTS */
 
-@media screen and (max-width: 976px) {
+@media screen and (max-width: 80rem) {
   .entry .margin.left {
     position: relative;
     display: block;
     left: auto;
     padding-left: 0;
-    padding-right: 20px;
+    padding-right: 2ch;
     text-align: left;
   }
 
@@ -781,7 +785,7 @@ input#search:focus {
   }
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 50rem) {
   body {
     width: 84%;
     padding: 0 8%;
@@ -869,7 +873,7 @@ input#search:focus {
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 30rem) {
   .header {
     margin-top: 9px;
     margin-bottom: 9px;
