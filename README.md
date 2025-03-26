@@ -73,9 +73,9 @@ Source code for the personal website and blog of Neill Robson.
   - [x] Switch anchor/heading for project and other pages
   - [x] Fix next/prev links (margin)
   - [x] Reduce spacing on section links
-  - [ ] Link hover styling: background color or underline/text color?
+  - [x] Link hover styling: background color or underline/text color?
 - [x] Reduce margins on p.margin
 - [x] Fix projects page
-- [ ] Render-blocking to make view transitions smoother
+- [x] Render-blocking to make view transitions smoother (couldn't figure this out)
 - [ ] Light/dark/contrast switches?
 - [x] hr color

@@ -68,7 +68,7 @@
 html {
   // Give a slight bump on large screens,
   // without ever falling below browser default
-  font-size: clamp(1rem, 0.8rem + 1vi, 1.5rem);
+  font-size: clamp(1rem, 0.8rem + 0.9vi, 1.5rem);
 }
 
 * {
@@ -464,22 +464,6 @@ figure img {
 
 .margin figure img {
   max-height: none;
-}
-
-.blur-container {
-  img {
-    display: block;
-    margin: 0;
-  }
-
-  .blur {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    box-shadow: 0 0 8px 8px inset white;
-  }
 }
 
 /* Header links */
