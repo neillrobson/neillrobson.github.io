@@ -56,7 +56,7 @@ Source code for the personal website and blog of Neill Robson.
   - [x] Clamp to a max? max body width is 1400px
   - [x] Make 1rem the absolute min
 - [x] links: text-decoration-skip-ink
-- [ ] Split to multiple files
+- [x] Split to multiple files
 - [x] Fix float-mixing of right-margins and sidenotes
 - [x] Move all margins right? (won't do, achieved reasonable styling for left margins)
 - [x] Column collapse (switcher pattern, flex-basis 30ch - 100%)
@@ -78,4 +78,4 @@ Source code for the personal website and blog of Neill Robson.
 - [x] Fix projects page
 - [ ] Render-blocking to make view transitions smoother
 - [ ] Light/dark/contrast switches?
-- [ ] hr color
+- [x] hr color
