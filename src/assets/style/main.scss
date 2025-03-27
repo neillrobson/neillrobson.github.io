@@ -173,6 +173,47 @@ div {
   padding-bottom: 0.5rem;
 }
 
+/* THEME SWITCHER */
+
+#theme-switcher {
+  display: flex;
+  gap: 0.5em;
+
+  label {
+    width: 1em;
+    height: 1em;
+  }
+
+  label svg {
+    opacity: 0.4;
+    transition-property: color, opacity;
+    transition-duration: 0.25s;
+    transition-timing-function: ease;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+  }
+
+  label svg:hover {
+    opacity: 1;
+  }
+
+  #theme-system:checked ~ .container & label[for="theme-system"] svg {
+    opacity: 1;
+    cursor: default;
+  }
+
+  #theme-dark:checked ~ .container & label[for="theme-dark"] svg {
+    opacity: 1;
+    cursor: default;
+  }
+
+  #theme-light:checked ~ .container & label[for="theme-light"] svg {
+    opacity: 1;
+    cursor: default;
+  }
+}
+
 /* LAYOUT */
 
 section > *:not(.margin),
