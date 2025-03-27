@@ -34,7 +34,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .container {
+  :root {
     @include rebase(
       $base03,
       $base02,
@@ -49,7 +49,7 @@
 }
 
 @media (prefers-color-scheme: light) {
-  .container {
+  :root {
     @include rebase(
       $base3,
       $base2,
@@ -84,6 +84,35 @@ body {
   > input {
     display: none;
   }
+
+  &:has(#theme-dark:checked) {
+    @include rebase(
+      $base03,
+      $base02,
+      $base01,
+      $base00,
+      $base0,
+      $base1,
+      $base2,
+      $base3
+    );
+  }
+
+  &:has(#theme-light:checked) {
+    @include rebase(
+      $base3,
+      $base2,
+      $base1,
+      $base0,
+      $base00,
+      $base01,
+      $base02,
+      $base03
+    );
+  }
+
+  background-color: var(--background);
+  color: var(--color);
 }
 
 .container {
@@ -95,8 +124,6 @@ body {
   font-feature-settings: "liga";
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: “liga” on;
-  background-color: var(--background);
-  color: var(--color);
   word-wrap: break-word;
   width: 75%;
   padding-left: 12.5%;
@@ -153,14 +180,6 @@ div {
   min-height: inherit;
   display: grid;
   grid-template: auto 1fr auto / minmax(0, 100%);
-
-  #theme-dark:checked ~ & {
-    @include rebase($base03, $base02, $base01, $base00, $base0, $base1, $base2, $base3);
-  }
-
-  #theme-light:checked ~ & {
-    @include rebase($base3, $base2, $base1, $base0, $base00, $base01, $base02, $base03);
-  }
 }
 
 .archive,
@@ -393,6 +412,7 @@ a {
   color: var(--link);
   text-decoration-style: dotted;
   text-decoration-color: hsl(from currentColor h s l / 0.65);
+  text-decoration-thickness: 2px;
   text-underline-offset: 0.15em;
   transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   box-shadow: 0 0 0 2px transparent;
@@ -799,6 +819,7 @@ input#search:focus {
     text-decoration-line: underline;
     text-decoration-style: dotted;
     text-decoration-color: hsl(from currentColor h s l / 0.65);
+    text-decoration-thickness: 2px;
     text-underline-offset: 0.15em;
   }
 
