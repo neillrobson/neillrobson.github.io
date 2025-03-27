@@ -14,4 +14,27 @@
     <a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a>
     {% endfor %}
   </div>
+  <fieldset id="theme-switcher" class="visible">
+    <legend>Theme</legend>
+    <label for="theme-system">
+    <svg id="icon-system" width="1em" height="1em" viewBox="0 0 32 32" fill="currentColor" role="img">
+      <title>System default theme</title>
+      <path d="M16 9c3.9 0 7 3.1 7 7s-3.1 7-7 7"></path><path d="M16 .5C7.4.5.5 7.4.5 16S7.4 31.5 16 31.5 31.5 24.6 31.5 16 24.6.5 16 .5zm0 28.1V23c-3.9 0-7-3.1-7-7s3.1-7 7-7V3.4C23 3.4 28.6 9 28.6 16S23 28.6 16 28.6z"></path>
+    </svg>
+    </label>
+  
+    <label for="theme-dark">
+    <svg id="icon-moon" width="1em" height="1em" viewBox="0 0 16 16" fill="none" role="img">
+      <title>Dark theme</title>
+      <path d="M2 7.63261C2 11.1492 4.77936 14 8.20787 14C10.8473 14 13.1019 12.3105 14 9.92836C13.2887 10.271 12.4945 10.4626 11.6567 10.4626C8.60912 10.4626 6.13858 7.92853 6.13858 4.80265C6.13858 3.49533 6.5707 2.29154 7.29643 1.33334C4.30002 1.78554 2 4.43357 2 7.63261Z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    </label>
+  
+    <label for="theme-light">
+    <svg id="icon-sun" width="1em" height="1em" viewBox="0 0 16 16" fill="none" role="img">
+      <title>Light theme</title>
+      <path d="M7.99968 13.3333L7.99967 14.6667M7.99968 1.33334L7.99968 2.66668M13.333 8.00001H14.6663M1.33301 8.00001H2.66634M11.9997 11.9997L12.9997 12.9997M2.99967 2.99967L3.99969 3.9997M11.9997 4.00001L12.9997 3.00001M2.99967 13L3.99967 12M11.333 8.00001C11.333 9.84096 9.84062 11.3333 7.99967 11.3333C6.15872 11.3333 4.66634 9.84096 4.66634 8.00001C4.66634 6.15906 6.15872 4.66668 7.99967 4.66668C9.84062 4.66668 11.333 6.15906 11.333 8.00001Z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    </label>
+  </fieldset>
 </div>

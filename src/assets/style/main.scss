@@ -25,40 +25,42 @@
   $rebase2,
   $rebase3
 ) {
-  :root {
-    --background: #{$rebase03};
-    --background-highlight: #{$rebase02};
-    --color: #{$rebase0};
-    --color-emphasis: #{$rebase1};
-    --color-secondary: #{$rebase01};
-    --link: #{$blue};
-  }
+  --background: #{$rebase03};
+  --background-highlight: #{$rebase02};
+  --color: #{$rebase0};
+  --color-emphasis: #{$rebase1};
+  --color-secondary: #{$rebase01};
+  --link: #{$blue};
 }
 
 @media (prefers-color-scheme: dark) {
-  @include rebase(
-    $base03,
-    $base02,
-    $base01,
-    $base00,
-    $base0,
-    $base1,
-    $base2,
-    $base3
-  );
+  .container {
+    @include rebase(
+      $base03,
+      $base02,
+      $base01,
+      $base00,
+      $base0,
+      $base1,
+      $base2,
+      $base3
+    );
+  }
 }
 
 @media (prefers-color-scheme: light) {
-  @include rebase(
-    $base3,
-    $base2,
-    $base1,
-    $base0,
-    $base00,
-    $base01,
-    $base02,
-    $base03
-  );
+  .container {
+    @include rebase(
+      $base3,
+      $base2,
+      $base1,
+      $base0,
+      $base00,
+      $base01,
+      $base02,
+      $base03
+    );
+  }
 }
 
 @view-transition {
@@ -77,6 +79,14 @@ html {
 }
 
 body {
+  min-height: 100vh;
+
+  > input {
+    display: none;
+  }
+}
+
+.container {
   min-height: 100vh;
   line-height: 1.4;
   font-family: var(--sans-serif);
@@ -143,6 +153,14 @@ div {
   min-height: inherit;
   display: grid;
   grid-template: auto 1fr auto / minmax(0, 100%);
+
+  #theme-dark:checked ~ & {
+    @include rebase($base03, $base02, $base01, $base00, $base0, $base1, $base2, $base3);
+  }
+
+  #theme-light:checked ~ & {
+    @include rebase($base3, $base2, $base1, $base0, $base00, $base01, $base02, $base03);
+  }
 }
 
 .archive,
@@ -770,7 +788,7 @@ input#search:focus {
 }
 
 @media screen and (max-width: 50rem) {
-  body {
+  .container {
     width: 84%;
     padding: 0 8%;
   }
