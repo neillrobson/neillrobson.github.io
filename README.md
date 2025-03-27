@@ -77,5 +77,5 @@ Source code for the personal website and blog of Neill Robson.
 - [x] Reduce margins on p.margin
 - [x] Fix projects page
 - [x] Render-blocking to make view transitions smoother (couldn't figure this out)
-- [ ] Light/dark/contrast switches?
+- [x] Light/dark/contrast switches?
 - [x] hr color
