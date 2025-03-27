@@ -177,11 +177,20 @@ div {
 
 #theme-switcher {
   display: flex;
-  gap: 0.5em;
+  gap: 0.3em;
+  border: 0;
+
+  legend {
+    position: absolute;
+    left: -100vw;
+  }
 
   label {
-    width: 1em;
-    height: 1em;
+    width: 1rem;
+    height: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   label svg {
@@ -189,8 +198,8 @@ div {
     transition-property: color, opacity;
     transition-duration: 0.25s;
     transition-timing-function: ease;
-    width: 1em;
-    height: 1em;
+    width: 0.9rem;
+    height: 0.9rem;
     cursor: pointer;
   }
 
@@ -664,7 +673,19 @@ label.margin-toggle:not(.sidenote-number) {
 .nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.1rem 0.75rem;
+  justify-content: space-between;
+  gap: 0.4rem 0.75rem;
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.1rem 0.75rem;
+  }
+
+  .utils {
+    display: flex;
+    gap: 0.75em;
+  }
 }
 
 .nav a {
@@ -693,10 +714,6 @@ label.margin-toggle:not(.sidenote-number) {
     width: 0.88em;
     height: 0.88em;
   }
-}
-
-.nav a[href$="/feed.xml"] {
-  margin-left: auto;
 }
 
 .nav a[href$="/search"] {
