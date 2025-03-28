@@ -15,6 +15,10 @@
   --mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 
+@mixin asides {
+  --aside-width: clamp(0px, calc(20.833% - 83.333px), 12.5%);
+}
+
 @mixin rebase(
   $rebase03,
   $rebase02,
@@ -116,7 +120,7 @@ body {
 }
 
 .container {
-  min-height: 100vh;
+  min-height: inherit;
   line-height: 1.4;
   font-family: var(--sans-serif);
   text-rendering: optimizeLegibility;
@@ -125,12 +129,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: “liga” on;
   word-wrap: break-word;
-  width: 75%;
-  padding-left: 12.5%;
-  padding-right: 12.5%;
-  max-width: 1400px;
+  max-width: 1700px;
   margin: 0 auto;
+  padding-inline: min(8%, 2ch);
   counter-reset: sidenote-counter;
+  display: grid;
+  grid-template: auto 1fr auto / minmax(0, 100%);
 }
 
 .clear {
@@ -174,12 +178,6 @@ div {
 
 .header {
   margin: 48px 0;
-}
-
-.container {
-  min-height: inherit;
-  display: grid;
-  grid-template: auto 1fr auto / minmax(0, 100%);
 }
 
 .archive,
@@ -248,7 +246,9 @@ section > *:not(.margin),
 #disqus_thread,
 .pagination,
 .footer {
-  width: 60%;
+  @include asides;
+  padding-inline-start: var(--aside-width);
+  width: clamp(60%, 60ch, 100%);
   box-sizing: border-box;
 }
 
@@ -293,13 +293,9 @@ section > *:not(.margin),
 }
 
 .left.margin {
-  position: absolute;
-  // Main body is 6x size of left margin (6/8)
-  --width: calc(100% / 6);
-  width: var(--width);
-  left: calc(-1 * var(--width));
-  padding-right: 2ch;
-  padding-left: 2ch;
+  @include asides;
+  width: var(--aside-width);
+  padding-inline-end: 2ch;
   text-align: right;
 
   figure img {
@@ -464,8 +460,6 @@ hr {
 /* CODE */
 
 pre[class*="language-"] {
-  margin: 0;
-  padding: 0;
   font-family: var(--mono);
   background: none;
   overflow: initial;
@@ -834,25 +828,8 @@ input#search:focus {
 /* BREAKPOINTS */
 
 @media screen and (max-width: 80rem) {
-  .entry .margin.left {
-    position: relative;
-    display: block;
-    left: auto;
-    padding-left: 0;
-    padding-right: 2ch;
-    text-align: left;
-  }
-
   .entry .date {
     width: 100%;
-  }
-
-  .entry .margin .caption,
-  .entry .margin figcaption,
-  .entry .margin figure,
-  .entry .margin p {
-    margin-bottom: 6px;
-    text-align: left;
   }
 
   .date {
@@ -861,11 +838,6 @@ input#search:focus {
 }
 
 @media screen and (max-width: 50rem) {
-  .container {
-    width: 84%;
-    padding: 0 8%;
-  }
-
   .header {
     margin-left: 3rem;
     margin-right: 0;
@@ -904,13 +876,6 @@ input#search:focus {
 
   hr {
     width: 100%;
-  }
-
-  section > *:not(.margin),
-  #disqus_thread,
-  .pagination,
-  .footer {
-    width: unset;
   }
 
   .previousEntry,
