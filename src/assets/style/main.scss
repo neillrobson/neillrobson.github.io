@@ -856,10 +856,7 @@ input#search:focus {
   }
 
   .date {
-    position: absolute;
-    left: 0;
-    text-align: left;
-    margin: 0;
+    margin: 0 0 0.35rem;
   }
 }
 
@@ -956,5 +953,18 @@ input#search:focus {
   .header {
     margin-top: 9px;
     margin-bottom: 9px;
+  }
+
+  .main {
+    margin-block-start: 27px;
+  }
+
+  .archive,
+  .entry {
+    margin-block-end: 36px;
+  }
+
+  .pagination {
+    margin-block: 36px;
   }
 }
