@@ -693,18 +693,15 @@ label.margin-toggle:not(.sidenote-number) {
 .nav {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   gap: 0.4rem 0.75rem;
-
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.1rem 0.75rem;
-  }
 
   .utils {
     display: flex;
     gap: 0.75em;
+  }
+
+  *:has(+ .utils) {
+    margin-right: auto;
   }
 }
 

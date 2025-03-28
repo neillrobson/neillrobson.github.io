@@ -10,11 +10,9 @@
     Neill Robson's Website
   </div>
   <div class="nav">
-    <div class="links">
-      {% for link in nav %}
-      <a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a>
-      {% endfor %}
-    </div>
+    {% for link in nav %}
+    <a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a>
+    {% endfor %}
     <div class="utils">
       <a href="/feed.xml" title="RSS">RSS</a>
       <fieldset id="theme-switcher" class="visible">
