@@ -53,7 +53,10 @@ Source code for the personal website and blog of Neill Robson.
 ### CSS Cleanup
 
 - [x] Header
+  - [ ] vw units are bad beyond 1400px
+- [ ] Titles & dates
 - [ ] Right asides/margin
 - [ ] Columns
 - [ ] Bullet spacing
+  - [ ] Maybe align logo img with new left-margin alignment?
 - [ ] Mobile-friendly buttons
