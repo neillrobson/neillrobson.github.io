@@ -52,7 +52,7 @@ Source code for the personal website and blog of Neill Robson.
 
 ### CSS Cleanup
 
-- [ ] Header
+- [x] Header
 - [ ] Right asides/margin
 - [ ] Columns
 - [ ] Bullet spacing

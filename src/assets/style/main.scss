@@ -15,8 +15,14 @@
   --mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 
+@mixin asideVars($max, $breakmax: 1000px, $breakmin: 400px, $min: 0vw) {
+  $v: calc($max * $breakmax / ($breakmax - $breakmin));
+  $p: calc($v / 100vw * $breakmin - $min);
+  --aside-width: clamp(#{$min}, #{$v} - #{$p}, #{$max});
+}
+
 @mixin asides {
-  --aside-width: clamp(0px, calc(20.833% - 83.333px), 12.5%);
+  @include asideVars(10vw);
 }
 
 @mixin rebase(
@@ -177,7 +183,13 @@ div {
 }
 
 .header {
-  margin: 48px 0;
+  @include asides;
+  margin-block: 48px;
+  margin-inline-end: var(--aside-width);
+
+  #title, .nav {
+    margin-inline-start: var(--aside-width);
+  }
 }
 
 .archive,
@@ -670,18 +682,19 @@ label.margin-toggle:not(.sidenote-number) {
 /* NAVIGATION */
 
 #logo {
-  position: absolute;
+  @include asides;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: end;
+  float: left;
+  width: var(--aside-width);
+  min-width: 2.75rem;
   height: 2.75rem;
-  top: 0;
-  left: -3.4rem;
+  padding-inline-end: 1ch;
+}
 
-  &.rounded {
-    border-radius: 50%;
-  }
-
-  &:active {
-    margin-top: 1px;
-  }
+img.rounded {
+  border-radius: 50%;
 }
 
 .nav {
@@ -838,11 +851,6 @@ input#search:focus {
 }
 
 @media screen and (max-width: 50rem) {
-  .header {
-    margin-left: 3rem;
-    margin-right: 0;
-  }
-
   ul ul,
   ol ul,
   ol ol,
