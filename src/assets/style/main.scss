@@ -15,14 +15,14 @@
   --mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 
-@mixin asideVars($max, $breakmax: 1000px, $breakmin: 400px, $min: 0vw) {
+@mixin asideVars($max, $breakmax: 1000px, $breakmin: 400px, $min: 0%) {
   $v: calc($max * $breakmax / ($breakmax - $breakmin));
-  $p: calc($v / 100vw * $breakmin - $min);
+  $p: calc($v / 100% * $breakmin - $min);
   --aside-width: clamp(#{$min}, #{$v} - #{$p}, #{$max});
 }
 
 @mixin asides {
-  @include asideVars(10vw);
+  @include asideVars(10%);
 }
 
 @mixin rebase(
@@ -183,12 +183,11 @@ div {
 }
 
 .header {
-  @include asides;
   margin-block: 48px;
-  margin-inline-end: var(--aside-width);
 
   #title, .nav {
-    margin-inline-start: var(--aside-width);
+    @include asides;
+    margin-inline: var(--aside-width);
   }
 }
 
@@ -772,16 +771,18 @@ input#search:focus {
   color: var(--color-secondary);
 }
 
-.date {
-  line-height: 1;
-  margin-block-start: 0.35rem;
+.entry .title {
+  @include asides;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
 
-  * {
-    vertical-align: bottom;
-  }
-
-  &:empty {
-    display: none;
+  .date {
+    box-sizing: border-box;
+    width: var(--aside-width);
+    line-height: 1;
+    text-align: right;
+    padding-inline-end: 1ch;
   }
 }
 
@@ -841,12 +842,14 @@ input#search:focus {
 /* BREAKPOINTS */
 
 @media screen and (max-width: 80rem) {
-  .entry .date {
-    width: 100%;
-  }
+  .entry .title {
+    @include asides;
+    margin-inline-start: var(--aside-width);
 
-  .date {
-    margin: 0 0 0.35rem;
+    .date {
+      min-width: 100%;
+      text-align: left;
+    }
   }
 }
 
@@ -856,12 +859,6 @@ input#search:focus {
   ol ol,
   ul ol {
     margin-left: 0;
-  }
-
-  .nav .right {
-    clear: both;
-    float: none;
-    margin-top: 3px;
   }
 
   a.search {

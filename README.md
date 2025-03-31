@@ -53,8 +53,9 @@ Source code for the personal website and blog of Neill Robson.
 ### CSS Cleanup
 
 - [x] Header
-  - [ ] vw units are bad beyond 1400px
-- [ ] Titles & dates
+  - [x] vw units are bad beyond 1400px
+- [x] Titles & dates (gave up on media query avoidance)
+- [ ] Header links
 - [ ] Right asides/margin
 - [ ] Columns
 - [ ] Bullet spacing
