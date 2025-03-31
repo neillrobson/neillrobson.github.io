@@ -55,9 +55,10 @@ Source code for the personal website and blog of Neill Robson.
 - [x] Header
   - [x] vw units are bad beyond 1400px
 - [x] Titles & dates (gave up on media query avoidance)
-- [ ] Header links
+- [x] Header links
 - [ ] Right asides/margin
 - [ ] Columns
 - [ ] Bullet spacing
   - [ ] Maybe align logo img with new left-margin alignment?
+  - [ ] Maybe increase mobile margin to accomodate header link buttons
 - [ ] Mobile-friendly buttons
