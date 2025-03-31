@@ -57,6 +57,7 @@ Source code for the personal website and blog of Neill Robson.
 - [x] Titles & dates (gave up on media query avoidance)
 - [x] Header links
 - [ ] Right asides/margin
+  - [ ] Match up with sidenotes
 - [ ] Columns
 - [ ] Bullet spacing
   - [ ] Maybe align logo img with new left-margin alignment?

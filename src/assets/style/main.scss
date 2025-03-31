@@ -253,12 +253,15 @@ div {
 
 /* LAYOUT */
 
+section {
+  @include asides;
+  margin-inline: var(--aside-width);
+}
+
 section > *:not(.margin),
 #disqus_thread,
 .pagination,
 .footer {
-  @include asides;
-  padding-inline-start: var(--aside-width);
   width: clamp(60%, 60ch, 100%);
   box-sizing: border-box;
 }
@@ -306,6 +309,7 @@ section > *:not(.margin),
 .left.margin {
   @include asides;
   width: var(--aside-width);
+  margin-inline-start: calc(-1 * var(--aside-width));
   padding-inline-end: 2ch;
   text-align: right;
 
@@ -315,13 +319,8 @@ section > *:not(.margin),
 }
 
 .right.margin {
-  // Content is 60% width
-  // margin note is half that width
-  // move right margin edge past content,
-  // plus own width,
-  // plus 10% padding
-  right: math.percentage(1 - (0.6 * 1.6));
-  width: math.percentage(math.div(0.6, 2));
+  width: 30%;
+  margin-inline-start: 2ch;
 }
 
 .column {
@@ -866,12 +865,6 @@ input#search:focus {
 
   a.search {
     margin-left: 0;
-  }
-
-  .entry .margin.right {
-    position: relative;
-    right: auto;
-    padding-left: 20px;
   }
 
   .column.two:not(.force),
