@@ -263,7 +263,7 @@ section > *:not(.margin),
 .pagination,
 .footer {
   // width: clamp(60%, 60ch, 100%);
-  width: 60%;
+  width: clamp(60%, 500px - 1vw, 100%);
   box-sizing: border-box;
 }
 
@@ -622,7 +622,11 @@ figure img {
 .marginnote {
   float: right;
   clear: right;
-  margin-right: -60%;
+  // TODO: sync with parent c = a / p
+  // margin-right: -60%;
+  // The px and vw need to be swapped but IDK how to do that
+  // Maybe do an inversion on the outside (100% - x)?
+  margin-right: calc(clamp(0%, 300px - 0.6vw, 60%) * -1);
   width: 50%;
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
@@ -638,7 +642,6 @@ figure img {
 
 .sidenote-number:after,
 .sidenote:before {
-  font-family: et-book-roman-old-style;
   position: relative;
   vertical-align: baseline;
 }
