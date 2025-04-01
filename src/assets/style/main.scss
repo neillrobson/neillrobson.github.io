@@ -262,7 +262,8 @@ section > *:not(.margin),
 #disqus_thread,
 .pagination,
 .footer {
-  width: clamp(60%, 60ch, 100%);
+  // width: clamp(60%, 60ch, 100%);
+  width: 60%;
   box-sizing: border-box;
 }
 
@@ -320,7 +321,7 @@ section > *:not(.margin),
 
 .right.margin {
   width: 30%;
-  margin-inline-start: 2ch;
+  margin-inline: 6% 4%;
 }
 
 .column {
