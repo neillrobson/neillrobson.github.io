@@ -62,9 +62,9 @@ sourceImages$.pipe(
 
 Testing it out yields a result worse than we started with: **the order of the source images is no longer preserved**. We start seeing cat pictures from decades ago, simply because they happened to be the first ones returned by the API.
 
-{|<} ![visualization of parallel pipeline processing]({{site.baseurl}}/assets/images/2024/04/15/rxjs-batched-processing/parallel.png "Every single image is sent to the API in parallel. There were 21 images in the sample dataset, but the fourth cat image was the 17th item: we sent off four unnecessary API requests.")
-
 ## Maintaining Order
+
+{|<} ![visualization of parallel pipeline processing]({{site.baseurl}}/assets/images/2024/04/15/rxjs-batched-processing/parallel.png "Every single image is sent to the API in parallel. There were 21 images in the sample dataset, but the fourth cat image was the 17th item: we sent off four unnecessary API requests.")
 
 As it turns out, the serialization of streams in `concatMap` (only creating a new stream when the previous one has completed) is a feature unique to that operator.
 If we simply split out the "map" part of the operator from the concatenation, we get the best of both worlds:
