@@ -185,12 +185,6 @@ div {
 
 .header {
   margin-block: 48px;
-
-  #title,
-  .nav {
-    @include asides;
-    margin-inline: var(--aside-width);
-  }
 }
 
 .footer {
@@ -250,15 +244,16 @@ div {
 
 /* LAYOUT */
 
-.archive,
-.entry {
+.header,
+.main,
+.footer {
   @include asides;
   margin-inline: var(--aside-width);
-  margin-bottom: 72px;
 }
 
 section > *:not(.margin),
 #disqus_thread,
+.archive,
 .pagination,
 .footer {
   width: clamp(60%, 60ch, 100%);
@@ -691,6 +686,7 @@ label.margin-toggle:not(.sidenote-number) {
   justify-content: end;
   float: left;
   width: var(--aside-width);
+  margin-inline-start: calc(var(--aside-width) * -1);
   min-width: 2.75rem;
   height: 2.75rem;
   padding-inline-end: 1ch;

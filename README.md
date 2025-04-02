@@ -64,3 +64,13 @@ Source code for the personal website and blog of Neill Robson.
   - [ ] Maybe align logo img with new left-margin alignment?
   - [ ] Maybe increase mobile margin to accomodate header link buttons
 - [ ] Mobile-friendly buttons
+- [ ] Audit and fix-up all pages
+  - [ ] About
+  - [ ] Now
+  - [ ] Blog
+    - [ ] Post
+  - [ ] Archive
+  - [ ] Tag
+  - [ ] Projects
+    - [ ] Project
+  - [ ] Contact
