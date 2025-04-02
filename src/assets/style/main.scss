@@ -780,6 +780,7 @@ input#search:focus {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
+  margin-inline-start: calc(var(--aside-width) * -1);
 
   .date {
     box-sizing: border-box;
@@ -825,6 +826,7 @@ input#search:focus {
     font-family: var(--sans-serif);
     line-height: 1.33;
     margin-bottom: 3px;
+    margin-inline-start: 0;
     text-decoration-line: underline;
     text-decoration-style: dotted;
     text-decoration-color: hsl(from currentColor h s l / 0.65);
@@ -848,7 +850,7 @@ input#search:focus {
 @media screen and (max-width: 80rem) {
   .entry .title {
     @include asides;
-    margin-inline-start: var(--aside-width);
+    margin-inline-start: 0;
 
     .date {
       min-width: 100%;
