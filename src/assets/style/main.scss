@@ -15,14 +15,14 @@
   --mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 
-@mixin asideVars($max, $breakmax: 1000px, $breakmin: 400px, $min: 0%) {
+@mixin asideVars($max, $breakmax: 1000px, $breakmin: 400px, $min: 0cqi) {
   $v: calc($max * $breakmax / ($breakmax - $breakmin));
-  $p: calc($v / 100% * $breakmin - $min);
+  $p: calc($v / 100cqi * $breakmin - $min);
   --aside-width: clamp(#{$min}, #{$v} - #{$p}, #{$max});
 }
 
 @mixin asides {
-  @include asideVars(10%);
+  @include asideVars(10cqi);
 }
 
 @mixin rebase(
@@ -141,6 +141,7 @@ body {
   counter-reset: sidenote-counter;
   display: grid;
   grid-template: auto 1fr auto / minmax(0, 100%);
+  container-type: inline-size;
 }
 
 .clear {
@@ -190,11 +191,6 @@ div {
     @include asides;
     margin-inline: var(--aside-width);
   }
-}
-
-.archive,
-.entry {
-  margin-bottom: 72px;
 }
 
 .footer {
@@ -254,10 +250,11 @@ div {
 
 /* LAYOUT */
 
-section {
+.archive,
+.entry {
   @include asides;
   margin-inline: var(--aside-width);
-  container-type: inline-size;
+  margin-bottom: 72px;
 }
 
 section > *:not(.margin),
@@ -271,13 +268,15 @@ section > *:not(.margin),
 .margin {
   min-width: 10ch;
   z-index: 1; // Render above <p> on mobile viewports
+  box-sizing: border-box;
+  font-family: var(--serif);
+  font-size: 0.8rem;
 }
 
 .margin blockquote {
   margin: 3px 0;
   color: var(--color);
   padding: 3px 6px;
-  font-size: 0.8rem;
   line-height: 1.2;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-left: 4px solid rgba(0, 0, 0, 0.2);
@@ -295,8 +294,8 @@ section > *:not(.margin),
 }
 
 .margin figure,
-.margin p {
-  font-size: 0.8rem;
+.margin p,
+.margin figcaption {
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
 }
@@ -313,6 +312,7 @@ section > *:not(.margin),
   margin-inline-start: calc(-1 * var(--aside-width));
   padding-inline-end: 2ch;
   text-align: right;
+  clear: left;
 
   figure img {
     display: inline-block; // right-align
@@ -320,8 +320,8 @@ section > *:not(.margin),
 }
 
 .right.margin {
-  width: 30cqi;
-  margin-inline-start: 2ch;
+  width: 25cqi;
+  padding-inline-start: 2ch;
 }
 
 .column {
@@ -620,10 +620,12 @@ figure img {
 
 .sidenote,
 .marginnote {
+  @include asides;
   float: right;
   clear: right;
-  margin-right: calc(-100cqi + 100%);
-  width: 30cqi;
+  box-sizing: border-box;
+  margin-right: calc(-100cqi + 2 * var(--aside-width) + 100%);
+  width: 25cqi;
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
   padding-inline-start: 2ch;
