@@ -855,6 +855,10 @@ img.rounded {
     width: 100%;
   }
 
+  label.margin-toggle {
+    cursor: pointer;
+  }
+
   label.margin-toggle:not(.sidenote-number) {
     display: inline;
   }
@@ -873,11 +877,6 @@ img.rounded {
     width: 95%;
     margin: 1rem 2.5%;
     position: relative;
-  }
-
-  /* sidenote and marginnote labels */
-  label {
-    cursor: pointer;
   }
 }
 
