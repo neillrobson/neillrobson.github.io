@@ -34,19 +34,21 @@ permalink: "/blog/{{ page.date | utcDate: '%Y/%m/%d' }}/{{ page.fileSlug }}/inde
 
     {% if previousPost.url or nextPost.url %}
         <hr class="full"/>
-    {% endif %}
-    {% if previousPost.url %}
-        <a class="halfWidth left previousEntry" href="{{previousPost.url}}">
-            <h5>Previous post</h5>
-            <span class="title">{{previousPost.data.title}}</span>
-            <span class="summary">{{previousPost.data.page.excerpt | default: previousPost.data.page.rawInput | renderContent: 'md' | strip_html | truncatewords: 100 }}</span>
-        </a>
-    {% endif %}
-    {% if nextPost.url %}
-        <a class="left halfWidth nextEntry" href="{{nextPost.url}}">
-            <h5>Next post</h5>
-            <span class="title">{{nextPost.data.title}}</span>
-            <span class="summary">{{nextPost.data.page.excerpt | default: nextPost.data.page.rawInput | renderContent: 'md' | strip_html | truncatewords: 100 }}</span>
-        </a>
+        <div class="pagination-cards">
+        {% if previousPost.url %}
+            <a href="{{previousPost.url}}">
+                <h5>Previous post</h5>
+                <span class="title">{{previousPost.data.title}}</span>
+                <span class="summary">{{previousPost.data.page.excerpt | default: previousPost.data.page.rawInput | renderContent: 'md' | strip_html | truncatewords: 100 }}</span>
+            </a>
+        {% endif %}
+        {% if nextPost.url %}
+            <a href="{{nextPost.url}}">
+                <h5>Next post</h5>
+                <span class="title">{{nextPost.data.title}}</span>
+                <span class="summary">{{nextPost.data.page.excerpt | default: nextPost.data.page.rawInput | renderContent: 'md' | strip_html | truncatewords: 100 }}</span>
+            </a>
+        {% endif %}
+        </div>
     {% endif %}
 </div>

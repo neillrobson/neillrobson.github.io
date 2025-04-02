@@ -800,15 +800,19 @@ input#search:focus {
   margin: 0 1em;
 }
 
-.previousEntry,
-.nextEntry {
+.pagination-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  margin-block: 1rem 6rem;
+}
+
+.pagination-cards a {
   text-decoration-line: none;
   font-size: 0.88rem;
   line-height: 1.33;
-  width: math.percentage(0.55 * 0.48);
-  margin: 1em 0 6em 1%;
   display: block;
-  float: left;
+  width: 25ch;
 
   h5 {
     margin-block-start: 20px;
@@ -835,10 +839,6 @@ input#search:focus {
     font-size: 0.7rem;
     line-height: 1.2;
   }
-}
-
-.previousEntry {
-  margin: 1em 1% 6em 0;
 }
 
 /* BREAKPOINTS */

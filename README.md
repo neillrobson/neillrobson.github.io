@@ -59,7 +59,7 @@ Source code for the personal website and blog of Neill Robson.
 - [x] Right asides/margin
   - [x] Match up with sidenotes
 - [ ] Columns
-  - [ ] prev/next post
+  - [x] prev/next post
 - [ ] Bullet spacing
   - [ ] Maybe align logo img with new left-margin alignment?
   - [ ] Maybe increase mobile margin to accomodate header link buttons
