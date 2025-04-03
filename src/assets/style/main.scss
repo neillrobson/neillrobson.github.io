@@ -528,7 +528,6 @@ td {
 ul,
 ol {
   margin-left: 0;
-  list-style-position: inside;
   margin-bottom: 24px;
 }
 
@@ -545,7 +544,8 @@ ul ol {
 }
 
 li {
-  margin: 0;
+  transform: translateX(1.33em);
+  margin-inline-end: 1.33em;
 }
 
 /* IMAGES */
