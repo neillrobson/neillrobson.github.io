@@ -5,12 +5,12 @@
     site-level data if necessary.
     {% endcomment %}
 
-    {% capture title %}{% if page.title %}{{ page.title }} | {% endif %}Neill Robson's Website{% endcapture %}
+    {% capture page_title %}{% if title %}{{ title }} | {% endif %}Neill Robson's Website{% endcapture %}
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ title }}</title>
+    <title>{{ page_title }}</title>
 
     <script>
       document.documentElement.classList.remove('no-js');
@@ -36,13 +36,34 @@
 
         if (mode === "light") switchLight();
         if (mode === "dark") switchDark();
+
+        const labels = [
+          "theme-system",
+          "theme-dark",
+          "theme-light",
+        ];
+
+        labels.forEach(label => {
+          const checkbox = document.getElementById(label);
+          const icon = document.querySelector(`label[for="${label}"]`);
+
+          icon.addEventListener('focus', event => {
+            event.preventDefault();
+          });
+
+          icon.addEventListener('keyup', event => {
+            if (event.keyCode == 32) {
+              checkbox.click();
+            }
+          });
+        });
       });
     </script>
 
     <meta name="description" content="The blog and portfolio of a software developer." />
     <meta name="author" content="Neill Robson">
 
-    <meta property="og:title" content="{{ title }}">
+    <meta property="og:title" content="{{ page_title }}">
     <meta property="og:description" content="The blog and portfolio of a software developer.">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
@@ -53,7 +74,7 @@
     <meta property="og:image" content="https://www.mywebsite.com/image.jpg">
     <meta property="og:image:alt" content="Image description">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" property="og:title" itemprop="title name" content="{{ title }}">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="{{ page_title }}">
     <meta name="twitter:description" property="og:description" itemprop="description" content="The blog and portfolio of a software developer.">
     {% endcomment %}
 

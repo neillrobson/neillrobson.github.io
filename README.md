@@ -62,7 +62,7 @@ Source code for the personal website and blog of Neill Robson.
   - [x] prev/next post
 - [x] Bullet spacing
   - [x] Maybe align logo img with new left-margin alignment?
-- [ ] Mobile-friendly buttons
+- [x] Mobile-friendly buttons
 - [ ] Audit and fix-up all pages
   - [ ] About
   - [ ] Now
