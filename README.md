@@ -48,7 +48,7 @@ Source code for the personal website and blog of Neill Robson.
 -   [ ] RSS/Search
     -   [x] Improve styling of RSS/Search buttons
     -   [ ] Implement search bar using frontend-only solution: maybe [lunr](https://lunrjs.com)
--   [ ] Respond smartly to no-js
+-   [x] Respond smartly to no-js
 
 ### CSS Cleanup
 
@@ -63,13 +63,13 @@ Source code for the personal website and blog of Neill Robson.
 - [x] Bullet spacing
   - [x] Maybe align logo img with new left-margin alignment?
 - [x] Mobile-friendly buttons
-- [ ] Audit and fix-up all pages
-  - [ ] About
-  - [ ] Now
-  - [ ] Blog
-    - [ ] Post
-  - [ ] Archive
-  - [ ] Tag
-  - [ ] Projects
-    - [ ] Project
-  - [ ] Contact
+- [x] Audit and fix-up all pages
+  - [x] About
+  - [x] Now
+  - [x] Blog
+    - [x] Post
+  - [x] Archive
+  - [x] Tag
+  - [x] Projects
+    - [x] Project
+  - [x] Contact
