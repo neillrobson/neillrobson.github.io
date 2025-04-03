@@ -8,22 +8,65 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Neill Robson's Website</title>
+    <title>Layout & Typography | Neill Robson's Website</title>
 
-    <script type="module">
+    <script>
       document.documentElement.classList.remove('no-js');
       document.documentElement.classList.add('js');
+
+      function switchLight() {
+        localStorage.setItem("mode", "light");
+        document.getElementById("theme-light").checked = true;
+      }
+
+      function switchDark() {
+        localStorage.setItem("mode", "dark");
+        document.getElementById("theme-dark").checked = true;
+      }
+
+      function switchAuto() {
+        localStorage.removeItem("mode");
+        document.getElementById("theme-system").checked = true;
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const mode = localStorage.getItem("mode");
+
+        if (mode === "light") switchLight();
+        if (mode === "dark") switchDark();
+
+        const labels = [
+          "theme-system",
+          "theme-dark",
+          "theme-light",
+        ];
+
+        labels.forEach(label => {
+          const checkbox = document.getElementById(label);
+          const icon = document.querySelector(`label[for="${label}"]`);
+
+          icon.addEventListener('focus', event => {
+            event.preventDefault();
+          });
+
+          icon.addEventListener('keyup', event => {
+            if (event.keyCode == 32) {
+              checkbox.click();
+            }
+          });
+        });
+      });
     </script>
 
     <meta name="description" content="The blog and portfolio of a software developer." />
     <meta name="author" content="Neill Robson">
 
-    <meta property="og:title" content="Neill Robson's Website">
+    <meta property="og:title" content="Layout & Typography | Neill Robson's Website">
     <meta property="og:description" content="The blog and portfolio of a software developer.">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://neillrobson.com/blog/2025/03/17/layout-test/">
-    <link rel="canonical" href="https://neillrobson.com/blog/2025/03/17/layout-test/">
+    <meta property="og:url" content="https://neillrobson.com/blog/2025/04/03/layout-test/">
+    <link rel="canonical" href="https://neillrobson.com/blog/2025/04/03/layout-test/">
 
     
 
@@ -31,25 +74,29 @@
 
     <link rel="stylesheet" href="/assets/style/main.css">
     <link rel="stylesheet" href="/assets/style/social.css">
+    <link rel="stylesheet" href="/assets/style/code.css">
 </head>
 
 
   <body>
+    <input type="radio" name="color-theme" value="system" checked="" onchange="switchAuto()" id="theme-system">
+    <input type="radio" name="color-theme" value="dark" onchange="switchDark()" id="theme-dark">
+    <input type="radio" name="color-theme" value="light" onchange="switchLight()" id="theme-light">
     <div class="container">
       <div class="header">
+  
+  <picture id="logo">
+    <img
+      class="rounded"
+      src="https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
+      alt="Neill Robson"
+    />
+  </picture>
   <div id="title">
-    
-    <a href="/">
-      <img
-        id="logo"
-        class="rounded"
-        src="https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
-        alt="Neill Robson"
-      />
-      Neill Robson's Website
-    </a>
+    Neill Robson's Website
   </div>
-  <div class="nav">
+  <input type="checkbox" id="menu-toggle" />
+  <label for="menu-toggle" class="nav">
     
     <a href="/" title="About">About</a>
     
@@ -63,17 +110,45 @@
     
     <a href="/contact" title="Contact">Contact</a>
     
-    <a href="/feed.xml" title="RSS">RSS</a>
-    
-  </div>
+    <div class="utils">
+      <a href="/feed.xml" title="RSS">RSS</a>
+      <fieldset id="theme-switcher" class="visible">
+        <legend>Theme</legend>
+        <label for="theme-system" tabindex="0">
+          <svg id="icon-system" viewBox="0 0 32 32" fill="currentColor" role="img">
+            <title>System default theme</title>
+            <path d="M16 9c3.9 0 7 3.1 7 7s-3.1 7-7 7"></path><path d="M16 .5C7.4.5.5 7.4.5 16S7.4 31.5 16 31.5 31.5 24.6 31.5 16 24.6.5 16 .5zm0 28.1V23c-3.9 0-7-3.1-7-7s3.1-7 7-7V3.4C23 3.4 28.6 9 28.6 16S23 28.6 16 28.6z"></path>
+          </svg>
+        </label>
+
+        <label for="theme-dark" tabindex="0">
+          <svg id="icon-moon" viewBox="0 0 16 16" fill="none" role="img">
+            <title>Dark theme</title>
+            <path d="M2 7.63261C2 11.1492 4.77936 14 8.20787 14C10.8473 14 13.1019 12.3105 14 9.92836C13.2887 10.271 12.4945 10.4626 11.6567 10.4626C8.60912 10.4626 6.13858 7.92853 6.13858 4.80265C6.13858 3.49533 6.5707 2.29154 7.29643 1.33334C4.30002 1.78554 2 4.43357 2 7.63261Z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </label>
+
+        <label for="theme-light" tabindex="0">
+          <svg id="icon-sun" viewBox="0 0 16 16" fill="none" role="img">
+            <title>Light theme</title>
+            <path d="M7.99968 13.3333L7.99967 14.6667M7.99968 1.33334L7.99968 2.66668M13.333 8.00001H14.6663M1.33301 8.00001H2.66634M11.9997 11.9997L12.9997 12.9997M2.99967 2.99967L3.99969 3.9997M11.9997 4.00001L12.9997 3.00001M2.99967 13L3.99967 12M11.333 8.00001C11.333 9.84096 9.84062 11.3333 7.99967 11.3333C6.15872 11.3333 4.66634 9.84096 4.66634 8.00001C4.66634 6.15906 6.15872 4.66668 7.99967 4.66668C9.84062 4.66668 11.333 6.15906 11.333 8.00001Z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </label>
+      </fieldset>
+    </div>
+  </label>
 </div>
 
 
       <div class="main">
         
 <div class="entry">
-    <a class="small date left margin" href="/blog/2025/03/17/layout-test/">March 17, 2025</a>
-    <h1>Layout & Typography</h1>
+    <div class="title">
+        <div class="date">
+            <a class="small" href="/blog/2025/04/03/layout-test/">April 3, 2025</a>
+        </div>
+        <h1>Layout & Typography</h1>
+    </div>
 
     <section>
 <div class="margin left"><figure>
@@ -87,8 +162,7 @@ Can I say that, if $$n \geq 3$$, then the problem is intractable?</p>
 $$</p>
 <p>Accents all work perfectly in Georgia. Al­brecht Dürer, François Truf­faut, Plácido Domingo should all render appropriately. Cause célèbre, piña co­lada, Göt­ter­däm­merung straße all work too. Links also are improved: note how the <a href="/">descenders get cleared</a> from the underline stroke. Composing content for the web is complicated because the designer has no control over the dimensions of the screen on which the content will be viewed?</p>
 <p>“Hanging quotes and smart quotes.” Blot will convert primes and basic quotes automatically. All you have to do is type using primes (') and inch marks (&quot;) and “everything” looks lovely. “Better than a 65’6” whale.&quot; – Captain Ahab. “It’s my ‘#1’ choice!” – 12&quot; Foam Finger from '93. You can put acronyms and quotes safely inside code blocks too:</p>
-<pre><code class="language-javascript">foo(&quot;bar&quot;); // Won't have smart quotes or auto ACR...
-</code></pre>
+<pre class="language-javascript"><code class="language-javascript"><span class="token function">foo</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Won't have smart quotes or auto ACR...</span></code></pre>
 <p>While I was in the mood for XML I added a site map to each blog and a text file so Google can index your posts easily. Does out text actually get struck out? Looks like it does. Hello is a designer and writer. Recent work has touched on a range of topics, including the relationship of movement and interaction, the history of visual identity and branding in the arts, and the future of the museum in the digital age. His essay on the rise of graphic design MFA programs, “School Days” was dope?</p>
 <div class="margin right"><p>I can also just hang stuff here and it lines up neatly!</p>
 </div><p>Hello is a designer and writer. Recent work has touched on a range of topics, including the relationship of movement and interaction, the history of visual identity and branding in the arts, and the future of the museum in the digital age. His essay on the rise of graphic design MFA programs, “School Days” was dope. Thank you Twitter and your emoji project. Also, I made the descenders on links more pretty – look how they don’t overlap with the underline. The emoji extractor ignores some unicode characters, like these ones.</p>
@@ -147,21 +221,20 @@ $$</p>
 <img src="http://i.imgur.com/0CkJXx5.gif" alt="Color palette" title="What about a long image"><figcaption>What about a long image</figcaption>
 </figure>
 </div><p>You can pass an options object to influence the type of color it produces. The options object accepts the following properties. Controls the hue of the generated color. You can pass a string representing a color name: <code>red</code>, <code>orange</code>, <code>yellow</code>, <code>green</code>, <code>blue</code>, <code>purple</code>, <code>pink</code> and <code>monochrome</code> are currently supported.</p>
-<pre><code class="language-javascript">// Returns a hex code for an attractive color
-randomColor();
+<pre class="language-javascript"><code class="language-javascript"><span class="token comment">// Returns a hex code for an attractive color</span>
+<span class="token function">randomColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// Returns an array of ten green colors
-randomColor({
-  count: 10,
-  hue: &quot;green&quot;,
-});
+<span class="token comment">// Returns an array of ten green colors</span>
+<span class="token function">randomColor</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">hue</span><span class="token operator">:</span> <span class="token string">"green"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// Returns a hex code for a light blue
-randomColor({
-  luminosity: &quot;dark&quot;,
-  hue: &quot;blue&quot;,
-});
-</code></pre>
+<span class="token comment">// Returns a hex code for a light blue</span>
+<span class="token function">randomColor</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">luminosity</span><span class="token operator">:</span> <span class="token string">"dark"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">hue</span><span class="token operator">:</span> <span class="token string">"blue"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h3>To do</h3>
 <p><em>It might be a good idea to consider using other color models.</em></p>
 <ul>
@@ -283,6 +356,17 @@ it's difficult to remember which is which
 </section>
 
     
+        <br/>
+        <p>
+            
+                
+            
+                
+                    <a class="small tag" href="/tag/drafts">drafts</a>
+                
+            
+        </p>
+    
 
     <div class="clear"></div>
 
@@ -291,8 +375,6 @@ it's difficult to remember which is which
     
     
 
-    
-    
     
 </div>
 
@@ -313,7 +395,5 @@ it's difficult to remember which is which
 </div>
 
     </div>
-    
-
   </body>
 </html>

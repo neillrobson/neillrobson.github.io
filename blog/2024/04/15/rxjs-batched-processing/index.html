@@ -8,17 +8,60 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Neill Robson's Website</title>
+    <title>Batched Processing in RxJS | Neill Robson's Website</title>
 
-    <script type="module">
+    <script>
       document.documentElement.classList.remove('no-js');
       document.documentElement.classList.add('js');
+
+      function switchLight() {
+        localStorage.setItem("mode", "light");
+        document.getElementById("theme-light").checked = true;
+      }
+
+      function switchDark() {
+        localStorage.setItem("mode", "dark");
+        document.getElementById("theme-dark").checked = true;
+      }
+
+      function switchAuto() {
+        localStorage.removeItem("mode");
+        document.getElementById("theme-system").checked = true;
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const mode = localStorage.getItem("mode");
+
+        if (mode === "light") switchLight();
+        if (mode === "dark") switchDark();
+
+        const labels = [
+          "theme-system",
+          "theme-dark",
+          "theme-light",
+        ];
+
+        labels.forEach(label => {
+          const checkbox = document.getElementById(label);
+          const icon = document.querySelector(`label[for="${label}"]`);
+
+          icon.addEventListener('focus', event => {
+            event.preventDefault();
+          });
+
+          icon.addEventListener('keyup', event => {
+            if (event.keyCode == 32) {
+              checkbox.click();
+            }
+          });
+        });
+      });
     </script>
 
     <meta name="description" content="The blog and portfolio of a software developer." />
     <meta name="author" content="Neill Robson">
 
-    <meta property="og:title" content="Neill Robson's Website">
+    <meta property="og:title" content="Batched Processing in RxJS | Neill Robson's Website">
     <meta property="og:description" content="The blog and portfolio of a software developer.">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
@@ -31,25 +74,29 @@
 
     <link rel="stylesheet" href="/assets/style/main.css">
     <link rel="stylesheet" href="/assets/style/social.css">
+    <link rel="stylesheet" href="/assets/style/code.css">
 </head>
 
 
   <body>
+    <input type="radio" name="color-theme" value="system" checked="" onchange="switchAuto()" id="theme-system">
+    <input type="radio" name="color-theme" value="dark" onchange="switchDark()" id="theme-dark">
+    <input type="radio" name="color-theme" value="light" onchange="switchLight()" id="theme-light">
     <div class="container">
       <div class="header">
+  
+  <picture id="logo">
+    <img
+      class="rounded"
+      src="https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
+      alt="Neill Robson"
+    />
+  </picture>
   <div id="title">
-    
-    <a href="/">
-      <img
-        id="logo"
-        class="rounded"
-        src="https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
-        alt="Neill Robson"
-      />
-      Neill Robson's Website
-    </a>
+    Neill Robson's Website
   </div>
-  <div class="nav">
+  <input type="checkbox" id="menu-toggle" />
+  <label for="menu-toggle" class="nav">
     
     <a href="/" title="About">About</a>
     
@@ -63,17 +110,45 @@
     
     <a href="/contact" title="Contact">Contact</a>
     
-    <a href="/feed.xml" title="RSS">RSS</a>
-    
-  </div>
+    <div class="utils">
+      <a href="/feed.xml" title="RSS">RSS</a>
+      <fieldset id="theme-switcher" class="visible">
+        <legend>Theme</legend>
+        <label for="theme-system" tabindex="0">
+          <svg id="icon-system" viewBox="0 0 32 32" fill="currentColor" role="img">
+            <title>System default theme</title>
+            <path d="M16 9c3.9 0 7 3.1 7 7s-3.1 7-7 7"></path><path d="M16 .5C7.4.5.5 7.4.5 16S7.4 31.5 16 31.5 31.5 24.6 31.5 16 24.6.5 16 .5zm0 28.1V23c-3.9 0-7-3.1-7-7s3.1-7 7-7V3.4C23 3.4 28.6 9 28.6 16S23 28.6 16 28.6z"></path>
+          </svg>
+        </label>
+
+        <label for="theme-dark" tabindex="0">
+          <svg id="icon-moon" viewBox="0 0 16 16" fill="none" role="img">
+            <title>Dark theme</title>
+            <path d="M2 7.63261C2 11.1492 4.77936 14 8.20787 14C10.8473 14 13.1019 12.3105 14 9.92836C13.2887 10.271 12.4945 10.4626 11.6567 10.4626C8.60912 10.4626 6.13858 7.92853 6.13858 4.80265C6.13858 3.49533 6.5707 2.29154 7.29643 1.33334C4.30002 1.78554 2 4.43357 2 7.63261Z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </label>
+
+        <label for="theme-light" tabindex="0">
+          <svg id="icon-sun" viewBox="0 0 16 16" fill="none" role="img">
+            <title>Light theme</title>
+            <path d="M7.99968 13.3333L7.99967 14.6667M7.99968 1.33334L7.99968 2.66668M13.333 8.00001H14.6663M1.33301 8.00001H2.66634M11.9997 11.9997L12.9997 12.9997M2.99967 2.99967L3.99969 3.9997M11.9997 4.00001L12.9997 3.00001M2.99967 13L3.99967 12M11.333 8.00001C11.333 9.84096 9.84062 11.3333 7.99967 11.3333C6.15872 11.3333 4.66634 9.84096 4.66634 8.00001C4.66634 6.15906 6.15872 4.66668 7.99967 4.66668C9.84062 4.66668 11.333 6.15906 11.333 8.00001Z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </label>
+      </fieldset>
+    </div>
+  </label>
 </div>
 
 
       <div class="main">
         
 <div class="entry">
-    <a class="small date left margin" href="/blog/2024/04/15/rxjs-batched-processing/">April 15, 2024</a>
-    <h1>Batched Processing in RxJS</h1>
+    <div class="title">
+        <div class="date">
+            <a class="small" href="/blog/2024/04/15/rxjs-batched-processing/">April 15, 2024</a>
+        </div>
+        <h1>Batched Processing in RxJS</h1>
+    </div>
 
     <section>
 <p>When you have a ton of data that all needs to be processed, reactive programming makes the implementation easy to read, terse to write, and efficient to run.
@@ -103,12 +178,11 @@ You want specifically the <em>first four</em> pictures with cats. Not just any f
 <li><code>exhaustMap</code> ignores the source data stream while it waits for each created stream to complete. We want to check every image until we have four cats.</li>
 </ul>
 <p>We really just want concatenation of our API calls, so <code>concatMap</code> seems like a good choice. Our pipeline would look something like:</p>
-<pre><code class="language-javascript">sourceImages$.pipe(
-    concatMap(identifyImage),
-    filter(isCatImage),
-    take(4)
-).subscribe(sendToMyPhone);
-</code></pre>
+<pre class="language-javascript"><code class="language-javascript">sourceImages$<span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>
+    <span class="token function">concatMap</span><span class="token punctuation">(</span>identifyImage<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">filter</span><span class="token punctuation">(</span>isCatImage<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">take</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>sendToMyPhone<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>It’s a clean pipeline! But in practice, this implementation processes the source images serially. Each API call must be returned before the next image is sent off.
 For a slow API, such serial processing is undesirable.</p>
 <figure>
@@ -122,41 +196,39 @@ For a slow API, such serial processing is undesirable.</p>
 <p>We’ve got a fourth member of the <code>*Map</code> family: <code>mergeMap</code>. On the surface, it looks like precisely the operator we need.
 It creates child streams and merges them into the output stream as soon as input data arrives.</p>
 <p>Implementing it yields nearly identical pipeline code:</p>
-<pre><code class="language-javascript">sourceImages$.pipe(
-    mergeMap(identifyImage),
-    filter(isCatImage),
-    take(4)
-).subscribe(sendToMyPhone);
-</code></pre>
+<pre class="language-javascript"><code class="language-javascript">sourceImages$<span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>
+    <span class="token function">mergeMap</span><span class="token punctuation">(</span>identifyImage<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">filter</span><span class="token punctuation">(</span>isCatImage<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">take</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>sendToMyPhone<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Testing it out yields a result worse than we started with: <strong>the order of the source images is no longer preserved</strong>. We start seeing cat pictures from decades ago, simply because they happened to be the first ones returned by the API.</p>
-<div class="margin left"><figure>
-<img src="/assets/images/2024/04/15/rxjs-batched-processing/parallel.png" alt="visualization of parallel pipeline processing" title="Every single image is sent to the API in parallel. There were 21 images in the sample dataset, but the fourth cat image was the 17th item: we sent off four unnecessary API requests."><figcaption>Every single image is sent to the API in parallel. There were 21 images in the sample dataset, but the fourth cat image was the 17th item: we sent off four unnecessary API requests.</figcaption>
-</figure>
-</div></section>
+</section>
 <section>
 <div class="section-link">
 <a class="no-tufte-underline" href="#maintaining-order"></a><h2 id="maintaining-order">Maintaining Order</h2>
 </div>
-<p>As it turns out, the serialization of streams in <code>concatMap</code> (only creating a new stream when the previous one has completed) is a feature unique to that operator.
+<div class="margin left"><figure>
+<img src="/assets/images/2024/04/15/rxjs-batched-processing/parallel.png" alt="visualization of parallel pipeline processing" title="Every single image is sent to the API in parallel. There were 21 images in the sample dataset, but the fourth cat image was the 17th item: we sent off four unnecessary API requests."><figcaption>Every single image is sent to the API in parallel. There were 21 images in the sample dataset, but the fourth cat image was the 17th item: we sent off four unnecessary API requests.</figcaption>
+</figure>
+</div><p>As it turns out, the serialization of streams in <code>concatMap</code> (only creating a new stream when the previous one has completed) is a feature unique to that operator.
 If we simply split out the “map” part of the operator from the concatenation, we get the best of both worlds:</p>
 <ul>
 <li>All of the streams are created up front (in the <code>map</code> operator)</li>
 <li>The order of the streams’ output is preserved</li>
 </ul>
 <div class="margin right"><p>In between map and concatAll, each object in the stream is… itself a stream. Streamception!</p>
-</div><pre><code class="language-javascript">sourceImages$.pipe(
-    map(identifyImage),
-    concatAll(),
-    filter(isCatImage),
-    take(4)
-).subscribe(sendToMyPhone);
-</code></pre>
+</div><pre class="language-javascript"><code class="language-javascript">sourceImages$<span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>
+    <span class="token function">map</span><span class="token punctuation">(</span>identifyImage<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">concatAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">filter</span><span class="token punctuation">(</span>isCatImage<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">take</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>sendToMyPhone<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>This pipeline fixes both our ordering issue, and also runs completely parallelized. We get super excited, until we view our monthly bill from the image recognition service.
 As it turns out, this pipeline sends <em>every single image</em> to the API, as soon as it shows up in our source stream. We might send off thousands of requests before the four cat images are identified, even if the cat images are the first four images in the source stream!</p>
 </section>
 <section>
 <div class="section-link">
-<a class="no-tufte-underline" href="#side-note%3A-hot-vs-cold"></a><h2 id="side-note%3A-hot-vs-cold"><em>Side Note: Hot vs Cold</em></h2>
+<a class="no-tufte-underline" href="#side-note%3A-hot-vs-cold"></a><h2 id="side-note%3A-hot-vs-cold">Side Note: Hot vs Cold</h2>
 </div>
 <p>If you’re trying out this code on your own, you might find that your <code>map</code>/<code>concatAll</code> implementation did not parallelize like you wanted it to. Most likely, it’s a result of implementing <code>identifyImage</code> as a pure RxJS stream, otherwise known as a “cold” observable. The difference between cold and hot observables is simple to state, hard to internalize:</p>
 <ul>
@@ -179,17 +251,16 @@ As it turns out, this pipeline sends <em>every single image</em> to the API, as 
 <p>Returning to our pipeline above: if we <code>map</code> data to a <em>hot</em> observable, the API request goes out immedately (no need for a subscriber). The <code>concatAll</code> <em>does</em> end up subscribing, but the API request is already processing at that point. As each API call returns, <code>concatAll</code> will subscribe to the next one in the stream. Most likely, that latter API call will have already returned, so <code>concatAll</code> receives an immediate value, and continues.</p>
 <p>On the other hand, <code>map</code>ping to a <em>cold</em> observable doesn’t kick off any process at all. The <code>concatAll</code> subscribes to the first observable, and waits for it to complete. Then it subscribes to the second observable, which hasn’t been doing anything up to this point because it’s cold (and had no subscribers)… and the effect is serialization.</p>
 <p>If you want to mimic Promises in your <code>indentifyImage</code> implementation, <strong>use the <code>shareReplay</code> operator</strong> in your pipeline. For example:</p>
-<pre><code class="language-javascript">function identifyImage(img) {
-    const pipeline of(img).pipe(
-        delay(Math.floor(5000 * Math.random())), // simulated delay
-        map((img) =&gt; 'yep this is a cat'),
-        shareReplay()
-    );
-    pipeline.subscribe(); // No argument needed: just kick off processing
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">identifyImage</span><span class="token punctuation">(</span><span class="token parameter">img</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> pipeline <span class="token keyword">of</span><span class="token punctuation">(</span>img<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>
+        <span class="token function">delay</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span><span class="token number">5000</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// simulated delay</span>
+        <span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">img</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token string">'yep this is a cat'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">shareReplay</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    pipeline<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// No argument needed: just kick off processing</span>
 
-    return pipeline;
-}
-</code></pre>
+    <span class="token keyword">return</span> pipeline<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>The <code>shareReplay</code> operator turns your pipeline into a multicast (hot) pipeline, and also replays past events for subscribers who hop on board after data has already arrived.</p>
 </section>
 <section>
@@ -204,49 +275,44 @@ For each batch returned, we can add the cat images to our result dataset, and th
 <p>RxJS provides a <code>bufferCount</code> operator which looks promising, but the buffer size is fixed when the operator is defined. A fancier operator, <code>buffer</code>, uses a second Observable to determine when to cut/emit batches of data. It’s flexible, but also makes our solution dependent on the timing of our source data observable: an extraneous, unimportant factor.</p>
 <p>We’d prefer to suspend our input stream entirely, until we’ve processed a batch of results. The <code>zipWith</code> operator comes in handy here! It’ll emit pairs of values from two Observable streams, <em>only when both of them have a value available</em>.</p>
 <p>For example:</p>
-<pre><code class="language-javascript">const batcher$ = new Subject();
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> batcher$ <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Subject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-sourceImages$.pipe(
-    zipWith(batcher$),  // emits tuples of [image, batcherOutput]
-    map(([img]) =&gt; identifyImage(img)),  // we only care about the image
-    concatAll(),
-    filter(isCatImage),
-    take(4)
-).subscribe(sendToMyPhone);
-</code></pre>
+sourceImages$<span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>
+    <span class="token function">zipWith</span><span class="token punctuation">(</span>batcher$<span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment">// emits tuples of [image, batcherOutput]</span>
+    <span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>img<span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">identifyImage</span><span class="token punctuation">(</span>img<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment">// we only care about the image</span>
+    <span class="token function">concatAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">filter</span><span class="token punctuation">(</span>isCatImage<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">take</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>sendToMyPhone<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>The <code>batcher$</code> stream controls when each source image goes through the pipeline. If we call <code>batcher$.next()</code> four times in succession, four images will immediately go into processing (assuming four images are available to process).</p>
 <p>How do we initialize and manage <code>batcher$</code>?</p>
 <p>We know that, when an image comes through that <em>isn’t</em> a cat, we want to call <code>batcher$.next()</code> to add another image into processing. If an image is a cat, we don’t need to trigger the batcher, because that output “slot” is filled.</p>
 <p>So we now have actions we want to take for both the positives <em>and</em> negatives of our <code>filter</code> operator… meaning that we need something more robust than <code>filter</code>. Enter the <code>partition</code> utility, which splits an Observable stream into two streams for the positive and negative items against a filter!</p>
 <div class="margin right"><p>Since we are creating (and eventually subscribing to) <em>two</em> streams with the same source pipeline, we need to “share()” the pipeline to ensure that we aren’t double-calling the API. See the <a href="#side-note%3A-hot-vs-cold">hot versus cold</a> section for details.</p>
-</div><pre><code class="language-javascript">const batcher$ = new Subject();
+</div><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> batcher$ <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Subject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-const [cats$, notCats$] = partition(
-    sourceImages$.pipe(
-        zipWith(batcher$),
-        map(([img]) =&gt; identifyImage(img)),
-        concatAll(),
-        share()  // To prevent double-processing
-    ),
+<span class="token keyword">const</span> <span class="token punctuation">[</span>cats$<span class="token punctuation">,</span> notCats$<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">partition</span><span class="token punctuation">(</span>
+    sourceImages$<span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>
+        <span class="token function">zipWith</span><span class="token punctuation">(</span>batcher$<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>img<span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">identifyImage</span><span class="token punctuation">(</span>img<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">concatAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">share</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">// To prevent double-processing</span>
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>
     isCatImage
-);
-</code></pre>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>With the <code>cats$</code> stream, we do the same thing we’ve been doing:</p>
-<pre><code class="language-javascript">cats$.pipe(
-    take(4)
-).subscribe(sendToMyPhone);
-</code></pre>
+<pre class="language-javascript"><code class="language-javascript">cats$<span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>
+    <span class="token function">take</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>sendToMyPhone<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>With <code>notCats$</code>, we need to queue another image for processing on each negative value:</p>
-<pre><code class="language-javascript">// No need to pass a value to next().
-// batcher$ is just a sentinel.
+<pre class="language-javascript"><code class="language-javascript"><span class="token comment">// No need to pass a value to next().</span>
+<span class="token comment">// batcher$ is just a sentinel.</span>
 
-notCats$.subscribe(() =&gt; batcher$.next());
-</code></pre>
+notCats$<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> batcher$<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Nothing will run unless <code>batcher$</code> is primed with a few <code>next()</code> calls. The initial number of calls will determine the level of parallelism. Since we need four cat images, we’ll set the parallelism to four as well:</p>
-<pre><code class="language-javascript">// Or, just use a for-loop!
+<pre class="language-javascript"><code class="language-javascript"><span class="token comment">// Or, just use a for-loop!</span>
 
-range(1, 4).subscribe(() =&gt; batcher$.next());
-</code></pre>
+<span class="token function">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> batcher$<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>The initial run will send off four API calls at once. The pipeline will maintain four in-flight API calls until one of them returns with a cat. Each cat received will effectively decrement the parallelism, preventing us from over-querying the API after we’ve already received our four cats.</p>
 <figure>
 <img src="/assets/images/2024/04/15/rxjs-batched-processing/batched.png" alt="visualization of batched pipeline processing" title="Notice how up to four parallel API calls are allowed at first. The number drops to three when the first cat is identified, then down to one when two cats are found in quick succession."><figcaption>Notice how up to four parallel API calls are allowed at first. The number drops to three when the first cat is identified, then down to one when two cats are found in quick succession.</figcaption>
@@ -257,27 +323,26 @@ range(1, 4).subscribe(() =&gt; batcher$.next());
 <a class="no-tufte-underline" href="#conclusion"></a><h2 id="conclusion">Conclusion</h2>
 </div>
 <p>Here’s the final pipeline we created:</p>
-<pre><code class="language-javascript">const NUM_CATS = 4;
-const batcher$ = new Subject();
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token constant">NUM_CATS</span> <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> batcher$ <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Subject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-const [cats$, notCats$] = partition(
-    sourceImages$.pipe(
-        zipWith(batcher$),
-        map(([img]) =&gt; identifyImage(img)),
-        concatAll(),
-        share()
-    ),
+<span class="token keyword">const</span> <span class="token punctuation">[</span>cats$<span class="token punctuation">,</span> notCats$<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">partition</span><span class="token punctuation">(</span>
+    sourceImages$<span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>
+        <span class="token function">zipWith</span><span class="token punctuation">(</span>batcher$<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>img<span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">identifyImage</span><span class="token punctuation">(</span>img<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">concatAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">share</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>
     isCatImage
-);
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-cats$.pipe(
-    take(NUM_CATS)
-).subscribe(sendToMyPhone);
+cats$<span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>
+    <span class="token function">take</span><span class="token punctuation">(</span><span class="token constant">NUM_CATS</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>sendToMyPhone<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-notCats$.subscribe(() =&gt; batcher$.next());
+notCats$<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> batcher$<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-range(1, NUM_CATS).subscribe(() =&gt; batcher$.next());
-</code></pre>
+<span class="token function">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token constant">NUM_CATS</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> batcher$<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Although it got a little unweildy, this architecture does everything we wanted it to: identified and filtered a specific number of cat images out of a large input set, using parallel processing while also being frugal about extraneous API calls.</p>
 <p>This simple problem statement and exercise highlights many key concepts in RxJS:</p>
 <ul>
@@ -336,14 +401,16 @@ s.setAttribute('data-timestamp', +new Date());
 
     
         <hr class="full"/>
-    
-    
-        <a class="halfWidth left previousEntry" href="/blog/2024/01/18/leadership-full/">
-            <h5>Previous post</h5>
-            <span class="title">Small Group Leadership Brunch Speech</span>
-            <span class="summary"> The following is a written draft of a speech I gave to a gathering of small group leaders at my church several months ago. After running across the file, I felt it might be encouraging for others to read. </span>
-        </a>
-    
+        <div class="pagination-cards">
+        
+            <a href="/blog/2024/01/18/leadership-full/">
+                <h5>Previous post</h5>
+                <span class="title">Small Group Leadership Brunch Speech</span>
+                <span class="summary"> The following is a written draft of a speech I gave to a gathering of small group leaders at my church several months ago. After running across the file, I felt it might be encouraging for others to read. </span>
+            </a>
+        
+        
+        </div>
     
 </div>
 
@@ -364,7 +431,5 @@ s.setAttribute('data-timestamp', +new Date());
 </div>
 
     </div>
-    
-
   </body>
 </html>

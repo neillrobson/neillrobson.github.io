@@ -10,9 +10,52 @@
 
     <title>Neill Robson's Website</title>
 
-    <script type="module">
+    <script>
       document.documentElement.classList.remove('no-js');
       document.documentElement.classList.add('js');
+
+      function switchLight() {
+        localStorage.setItem("mode", "light");
+        document.getElementById("theme-light").checked = true;
+      }
+
+      function switchDark() {
+        localStorage.setItem("mode", "dark");
+        document.getElementById("theme-dark").checked = true;
+      }
+
+      function switchAuto() {
+        localStorage.removeItem("mode");
+        document.getElementById("theme-system").checked = true;
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const mode = localStorage.getItem("mode");
+
+        if (mode === "light") switchLight();
+        if (mode === "dark") switchDark();
+
+        const labels = [
+          "theme-system",
+          "theme-dark",
+          "theme-light",
+        ];
+
+        labels.forEach(label => {
+          const checkbox = document.getElementById(label);
+          const icon = document.querySelector(`label[for="${label}"]`);
+
+          icon.addEventListener('focus', event => {
+            event.preventDefault();
+          });
+
+          icon.addEventListener('keyup', event => {
+            if (event.keyCode == 32) {
+              checkbox.click();
+            }
+          });
+        });
+      });
     </script>
 
     <meta name="description" content="The blog and portfolio of a software developer." />
@@ -31,25 +74,29 @@
 
     <link rel="stylesheet" href="/assets/style/main.css">
     <link rel="stylesheet" href="/assets/style/social.css">
+    <link rel="stylesheet" href="/assets/style/code.css">
 </head>
 
 
   <body>
+    <input type="radio" name="color-theme" value="system" checked="" onchange="switchAuto()" id="theme-system">
+    <input type="radio" name="color-theme" value="dark" onchange="switchDark()" id="theme-dark">
+    <input type="radio" name="color-theme" value="light" onchange="switchLight()" id="theme-light">
     <div class="container">
       <div class="header">
+  
+  <picture id="logo">
+    <img
+      class="rounded"
+      src="https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
+      alt="Neill Robson"
+    />
+  </picture>
   <div id="title">
-    
-    <a href="/">
-      <img
-        id="logo"
-        class="rounded"
-        src="https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
-        alt="Neill Robson"
-      />
-      Neill Robson's Website
-    </a>
+    Neill Robson's Website
   </div>
-  <div class="nav">
+  <input type="checkbox" id="menu-toggle" />
+  <label for="menu-toggle" class="nav">
     
     <a href="/" title="About">About</a>
     
@@ -63,9 +110,33 @@
     
     <a href="/contact" title="Contact">Contact</a>
     
-    <a href="/feed.xml" title="RSS">RSS</a>
-    
-  </div>
+    <div class="utils">
+      <a href="/feed.xml" title="RSS">RSS</a>
+      <fieldset id="theme-switcher" class="visible">
+        <legend>Theme</legend>
+        <label for="theme-system" tabindex="0">
+          <svg id="icon-system" viewBox="0 0 32 32" fill="currentColor" role="img">
+            <title>System default theme</title>
+            <path d="M16 9c3.9 0 7 3.1 7 7s-3.1 7-7 7"></path><path d="M16 .5C7.4.5.5 7.4.5 16S7.4 31.5 16 31.5 31.5 24.6 31.5 16 24.6.5 16 .5zm0 28.1V23c-3.9 0-7-3.1-7-7s3.1-7 7-7V3.4C23 3.4 28.6 9 28.6 16S23 28.6 16 28.6z"></path>
+          </svg>
+        </label>
+
+        <label for="theme-dark" tabindex="0">
+          <svg id="icon-moon" viewBox="0 0 16 16" fill="none" role="img">
+            <title>Dark theme</title>
+            <path d="M2 7.63261C2 11.1492 4.77936 14 8.20787 14C10.8473 14 13.1019 12.3105 14 9.92836C13.2887 10.271 12.4945 10.4626 11.6567 10.4626C8.60912 10.4626 6.13858 7.92853 6.13858 4.80265C6.13858 3.49533 6.5707 2.29154 7.29643 1.33334C4.30002 1.78554 2 4.43357 2 7.63261Z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </label>
+
+        <label for="theme-light" tabindex="0">
+          <svg id="icon-sun" viewBox="0 0 16 16" fill="none" role="img">
+            <title>Light theme</title>
+            <path d="M7.99968 13.3333L7.99967 14.6667M7.99968 1.33334L7.99968 2.66668M13.333 8.00001H14.6663M1.33301 8.00001H2.66634M11.9997 11.9997L12.9997 12.9997M2.99967 2.99967L3.99969 3.9997M11.9997 4.00001L12.9997 3.00001M2.99967 13L3.99967 12M11.333 8.00001C11.333 9.84096 9.84062 11.3333 7.99967 11.3333C6.15872 11.3333 4.66634 9.84096 4.66634 8.00001C4.66634 6.15906 6.15872 4.66668 7.99967 4.66668C9.84062 4.66668 11.333 6.15906 11.333 8.00001Z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </label>
+      </fieldset>
+    </div>
+  </label>
 </div>
 
 
@@ -73,8 +144,12 @@
         
 
     <div class="entry">
-        <a class="small date left margin" href="/blog/2020/11/23/grad-school-like-im-five/">November 23, 2020</a>
-        <a href="/blog/2020/11/23/grad-school-like-im-five/"><h1>Grad School Like I'm Five: Buffer Overflow</h1></a>
+        <div class="title">
+            <div class="date">
+                <a class="small" href="/blog/2020/11/23/grad-school-like-im-five/">November 23, 2020</a>
+            </div>
+            <h1><a href="/blog/2020/11/23/grad-school-like-im-five/">Grad School Like I'm Five: Buffer Overflow</a></h1>
+        </div>
         <section>
             <p>
                  According to GitHub, I’ve written approximately 6,000 lines of code over the course of the past four months (welcome to grad school!). The question is, can I explain all of the stuff I wrote? 
@@ -95,8 +170,12 @@
     </div>
 
     <div class="entry">
-        <a class="small date left margin" href="/blog/2018/02/24/book-review-the-circle-by-dave-eggers/">February 24, 2018</a>
-        <a href="/blog/2018/02/24/book-review-the-circle-by-dave-eggers/"><h1>Book Review: The Circle, by Dave Eggers</h1></a>
+        <div class="title">
+            <div class="date">
+                <a class="small" href="/blog/2018/02/24/book-review-the-circle-by-dave-eggers/">February 24, 2018</a>
+            </div>
+            <h1><a href="/blog/2018/02/24/book-review-the-circle-by-dave-eggers/">Book Review: The Circle, by Dave Eggers</a></h1>
+        </div>
         <section>
             <p>
                  For the first time I can remember in a long while, I did not have the endurance to make it through a book. The Circle was patronizing, immature, and (as others have already mentioned) offered nothing new to the conversation. 
@@ -148,7 +227,5 @@
 </div>
 
     </div>
-    
-
   </body>
 </html>

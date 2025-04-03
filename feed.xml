@@ -37,12 +37,11 @@ You want specifically the &lt;em&gt;first four&lt;/em&gt; pictures with cats. No
 &lt;li&gt;&lt;code&gt;exhaustMap&lt;/code&gt; ignores the source data stream while it waits for each created stream to complete. We want to check every image until we have four cats.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;We really just want concatenation of our API calls, so &lt;code&gt;concatMap&lt;/code&gt; seems like a good choice. Our pipeline would look something like:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;sourceImages$.pipe(
-    concatMap(identifyImage),
-    filter(isCatImage),
-    take(4)
-).subscribe(sendToMyPhone);
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;sourceImages$&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;concatMap&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;identifyImage&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;isCatImage&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;take&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sendToMyPhone&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;It’s a clean pipeline! But in practice, this implementation processes the source images serially. Each API call must be returned before the next image is sent off.
 For a slow API, such serial processing is undesirable.&lt;/p&gt;
 &lt;figure&gt;
@@ -56,41 +55,39 @@ For a slow API, such serial processing is undesirable.&lt;/p&gt;
 &lt;p&gt;We’ve got a fourth member of the &lt;code&gt;*Map&lt;/code&gt; family: &lt;code&gt;mergeMap&lt;/code&gt;. On the surface, it looks like precisely the operator we need.
 It creates child streams and merges them into the output stream as soon as input data arrives.&lt;/p&gt;
 &lt;p&gt;Implementing it yields nearly identical pipeline code:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;sourceImages$.pipe(
-    mergeMap(identifyImage),
-    filter(isCatImage),
-    take(4)
-).subscribe(sendToMyPhone);
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;sourceImages$&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;mergeMap&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;identifyImage&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;isCatImage&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;take&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sendToMyPhone&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Testing it out yields a result worse than we started with: &lt;strong&gt;the order of the source images is no longer preserved&lt;/strong&gt;. We start seeing cat pictures from decades ago, simply because they happened to be the first ones returned by the API.&lt;/p&gt;
-&lt;div class=&quot;margin left&quot;&gt;&lt;figure&gt;
-&lt;img src=&quot;https://neillrobson.com/assets/images/2024/04/15/rxjs-batched-processing/parallel.png&quot; alt=&quot;visualization of parallel pipeline processing&quot; title=&quot;Every single image is sent to the API in parallel. There were 21 images in the sample dataset, but the fourth cat image was the 17th item: we sent off four unnecessary API requests.&quot;&gt;&lt;figcaption&gt;Every single image is sent to the API in parallel. There were 21 images in the sample dataset, but the fourth cat image was the 17th item: we sent off four unnecessary API requests.&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;/div&gt;&lt;/section&gt;
+&lt;/section&gt;
 &lt;section&gt;
 &lt;div class=&quot;section-link&quot;&gt;
 &lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2024/04/15/rxjs-batched-processing/#maintaining-order&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;maintaining-order&quot;&gt;Maintaining Order&lt;/h2&gt;
 &lt;/div&gt;
-&lt;p&gt;As it turns out, the serialization of streams in &lt;code&gt;concatMap&lt;/code&gt; (only creating a new stream when the previous one has completed) is a feature unique to that operator.
+&lt;div class=&quot;margin left&quot;&gt;&lt;figure&gt;
+&lt;img src=&quot;https://neillrobson.com/assets/images/2024/04/15/rxjs-batched-processing/parallel.png&quot; alt=&quot;visualization of parallel pipeline processing&quot; title=&quot;Every single image is sent to the API in parallel. There were 21 images in the sample dataset, but the fourth cat image was the 17th item: we sent off four unnecessary API requests.&quot;&gt;&lt;figcaption&gt;Every single image is sent to the API in parallel. There were 21 images in the sample dataset, but the fourth cat image was the 17th item: we sent off four unnecessary API requests.&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/div&gt;&lt;p&gt;As it turns out, the serialization of streams in &lt;code&gt;concatMap&lt;/code&gt; (only creating a new stream when the previous one has completed) is a feature unique to that operator.
 If we simply split out the “map” part of the operator from the concatenation, we get the best of both worlds:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;All of the streams are created up front (in the &lt;code&gt;map&lt;/code&gt; operator)&lt;/li&gt;
 &lt;li&gt;The order of the streams’ output is preserved&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&quot;margin right&quot;&gt;&lt;p&gt;In between map and concatAll, each object in the stream is… itself a stream. Streamception!&lt;/p&gt;
-&lt;/div&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;sourceImages$.pipe(
-    map(identifyImage),
-    concatAll(),
-    filter(isCatImage),
-    take(4)
-).subscribe(sendToMyPhone);
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;sourceImages$&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;identifyImage&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;concatAll&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;isCatImage&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;take&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sendToMyPhone&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This pipeline fixes both our ordering issue, and also runs completely parallelized. We get super excited, until we view our monthly bill from the image recognition service.
 As it turns out, this pipeline sends &lt;em&gt;every single image&lt;/em&gt; to the API, as soon as it shows up in our source stream. We might send off thousands of requests before the four cat images are identified, even if the cat images are the first four images in the source stream!&lt;/p&gt;
 &lt;/section&gt;
 &lt;section&gt;
 &lt;div class=&quot;section-link&quot;&gt;
-&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2024/04/15/rxjs-batched-processing/#side-note%3A-hot-vs-cold&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;side-note%3A-hot-vs-cold&quot;&gt;&lt;em&gt;Side Note: Hot vs Cold&lt;/em&gt;&lt;/h2&gt;
+&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2024/04/15/rxjs-batched-processing/#side-note%3A-hot-vs-cold&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;side-note%3A-hot-vs-cold&quot;&gt;Side Note: Hot vs Cold&lt;/h2&gt;
 &lt;/div&gt;
 &lt;p&gt;If you’re trying out this code on your own, you might find that your &lt;code&gt;map&lt;/code&gt;/&lt;code&gt;concatAll&lt;/code&gt; implementation did not parallelize like you wanted it to. Most likely, it’s a result of implementing &lt;code&gt;identifyImage&lt;/code&gt; as a pure RxJS stream, otherwise known as a “cold” observable. The difference between cold and hot observables is simple to state, hard to internalize:&lt;/p&gt;
 &lt;ul&gt;
@@ -113,17 +110,16 @@ As it turns out, this pipeline sends &lt;em&gt;every single image&lt;/em&gt; to 
 &lt;p&gt;Returning to our pipeline above: if we &lt;code&gt;map&lt;/code&gt; data to a &lt;em&gt;hot&lt;/em&gt; observable, the API request goes out immedately (no need for a subscriber). The &lt;code&gt;concatAll&lt;/code&gt; &lt;em&gt;does&lt;/em&gt; end up subscribing, but the API request is already processing at that point. As each API call returns, &lt;code&gt;concatAll&lt;/code&gt; will subscribe to the next one in the stream. Most likely, that latter API call will have already returned, so &lt;code&gt;concatAll&lt;/code&gt; receives an immediate value, and continues.&lt;/p&gt;
 &lt;p&gt;On the other hand, &lt;code&gt;map&lt;/code&gt;ping to a &lt;em&gt;cold&lt;/em&gt; observable doesn’t kick off any process at all. The &lt;code&gt;concatAll&lt;/code&gt; subscribes to the first observable, and waits for it to complete. Then it subscribes to the second observable, which hasn’t been doing anything up to this point because it’s cold (and had no subscribers)… and the effect is serialization.&lt;/p&gt;
 &lt;p&gt;If you want to mimic Promises in your &lt;code&gt;indentifyImage&lt;/code&gt; implementation, &lt;strong&gt;use the &lt;code&gt;shareReplay&lt;/code&gt; operator&lt;/strong&gt; in your pipeline. For example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function identifyImage(img) {
-    const pipeline of(img).pipe(
-        delay(Math.floor(5000 * Math.random())), // simulated delay
-        map((img) =&amp;gt; &#39;yep this is a cat&#39;),
-        shareReplay()
-    );
-    pipeline.subscribe(); // No argument needed: just kick off processing
+&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;identifyImage&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; pipeline &lt;span class=&quot;token keyword&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;img&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;token function&quot;&gt;delay&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5000&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// simulated delay&lt;/span&gt;
+        &lt;span class=&quot;token function&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;yep this is a cat&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token function&quot;&gt;shareReplay&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    pipeline&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// No argument needed: just kick off processing&lt;/span&gt;
 
-    return pipeline;
-}
-&lt;/code&gt;&lt;/pre&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; pipeline&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The &lt;code&gt;shareReplay&lt;/code&gt; operator turns your pipeline into a multicast (hot) pipeline, and also replays past events for subscribers who hop on board after data has already arrived.&lt;/p&gt;
 &lt;/section&gt;
 &lt;section&gt;
@@ -138,49 +134,44 @@ For each batch returned, we can add the cat images to our result dataset, and th
 &lt;p&gt;RxJS provides a &lt;code&gt;bufferCount&lt;/code&gt; operator which looks promising, but the buffer size is fixed when the operator is defined. A fancier operator, &lt;code&gt;buffer&lt;/code&gt;, uses a second Observable to determine when to cut/emit batches of data. It’s flexible, but also makes our solution dependent on the timing of our source data observable: an extraneous, unimportant factor.&lt;/p&gt;
 &lt;p&gt;We’d prefer to suspend our input stream entirely, until we’ve processed a batch of results. The &lt;code&gt;zipWith&lt;/code&gt; operator comes in handy here! It’ll emit pairs of values from two Observable streams, &lt;em&gt;only when both of them have a value available&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;For example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const batcher$ = new Subject();
+&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; batcher$ &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Subject&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-sourceImages$.pipe(
-    zipWith(batcher$),  // emits tuples of [image, batcherOutput]
-    map(([img]) =&amp;gt; identifyImage(img)),  // we only care about the image
-    concatAll(),
-    filter(isCatImage),
-    take(4)
-).subscribe(sendToMyPhone);
-&lt;/code&gt;&lt;/pre&gt;
+sourceImages$&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;zipWith&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;batcher$&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// emits tuples of [image, batcherOutput]&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;img&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;identifyImage&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;img&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// we only care about the image&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;concatAll&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;isCatImage&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;take&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sendToMyPhone&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The &lt;code&gt;batcher$&lt;/code&gt; stream controls when each source image goes through the pipeline. If we call &lt;code&gt;batcher$.next()&lt;/code&gt; four times in succession, four images will immediately go into processing (assuming four images are available to process).&lt;/p&gt;
 &lt;p&gt;How do we initialize and manage &lt;code&gt;batcher$&lt;/code&gt;?&lt;/p&gt;
 &lt;p&gt;We know that, when an image comes through that &lt;em&gt;isn’t&lt;/em&gt; a cat, we want to call &lt;code&gt;batcher$.next()&lt;/code&gt; to add another image into processing. If an image is a cat, we don’t need to trigger the batcher, because that output “slot” is filled.&lt;/p&gt;
 &lt;p&gt;So we now have actions we want to take for both the positives &lt;em&gt;and&lt;/em&gt; negatives of our &lt;code&gt;filter&lt;/code&gt; operator… meaning that we need something more robust than &lt;code&gt;filter&lt;/code&gt;. Enter the &lt;code&gt;partition&lt;/code&gt; utility, which splits an Observable stream into two streams for the positive and negative items against a filter!&lt;/p&gt;
 &lt;div class=&quot;margin right&quot;&gt;&lt;p&gt;Since we are creating (and eventually subscribing to) &lt;em&gt;two&lt;/em&gt; streams with the same source pipeline, we need to “share()” the pipeline to ensure that we aren’t double-calling the API. See the &lt;a href=&quot;https://neillrobson.com/blog/2024/04/15/rxjs-batched-processing/#side-note%3A-hot-vs-cold&quot;&gt;hot versus cold&lt;/a&gt; section for details.&lt;/p&gt;
-&lt;/div&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const batcher$ = new Subject();
+&lt;/div&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; batcher$ &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Subject&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-const [cats$, notCats$] = partition(
-    sourceImages$.pipe(
-        zipWith(batcher$),
-        map(([img]) =&amp;gt; identifyImage(img)),
-        concatAll(),
-        share()  // To prevent double-processing
-    ),
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;cats$&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; notCats$&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;partition&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    sourceImages$&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;token function&quot;&gt;zipWith&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;batcher$&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token function&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;img&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;identifyImage&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;img&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token function&quot;&gt;concatAll&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token function&quot;&gt;share&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// To prevent double-processing&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
     isCatImage
-);
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;With the &lt;code&gt;cats$&lt;/code&gt; stream, we do the same thing we’ve been doing:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;cats$.pipe(
-    take(4)
-).subscribe(sendToMyPhone);
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;cats$&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;take&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sendToMyPhone&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;With &lt;code&gt;notCats$&lt;/code&gt;, we need to queue another image for processing on each negative value:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// No need to pass a value to next().
-// batcher$ is just a sentinel.
+&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// No need to pass a value to next().&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// batcher$ is just a sentinel.&lt;/span&gt;
 
-notCats$.subscribe(() =&amp;gt; batcher$.next());
-&lt;/code&gt;&lt;/pre&gt;
+notCats$&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; batcher$&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Nothing will run unless &lt;code&gt;batcher$&lt;/code&gt; is primed with a few &lt;code&gt;next()&lt;/code&gt; calls. The initial number of calls will determine the level of parallelism. Since we need four cat images, we’ll set the parallelism to four as well:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// Or, just use a for-loop!
+&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Or, just use a for-loop!&lt;/span&gt;
 
-range(1, 4).subscribe(() =&amp;gt; batcher$.next());
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;token function&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; batcher$&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The initial run will send off four API calls at once. The pipeline will maintain four in-flight API calls until one of them returns with a cat. Each cat received will effectively decrement the parallelism, preventing us from over-querying the API after we’ve already received our four cats.&lt;/p&gt;
 &lt;figure&gt;
 &lt;img src=&quot;https://neillrobson.com/assets/images/2024/04/15/rxjs-batched-processing/batched.png&quot; alt=&quot;visualization of batched pipeline processing&quot; title=&quot;Notice how up to four parallel API calls are allowed at first. The number drops to three when the first cat is identified, then down to one when two cats are found in quick succession.&quot;&gt;&lt;figcaption&gt;Notice how up to four parallel API calls are allowed at first. The number drops to three when the first cat is identified, then down to one when two cats are found in quick succession.&lt;/figcaption&gt;
@@ -191,27 +182,26 @@ range(1, 4).subscribe(() =&amp;gt; batcher$.next());
 &lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2024/04/15/rxjs-batched-processing/#conclusion&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 &lt;/div&gt;
 &lt;p&gt;Here’s the final pipeline we created:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const NUM_CATS = 4;
-const batcher$ = new Subject();
+&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;NUM_CATS&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; batcher$ &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Subject&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-const [cats$, notCats$] = partition(
-    sourceImages$.pipe(
-        zipWith(batcher$),
-        map(([img]) =&amp;gt; identifyImage(img)),
-        concatAll(),
-        share()
-    ),
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;cats$&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; notCats$&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;partition&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    sourceImages$&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;token function&quot;&gt;zipWith&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;batcher$&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token function&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;img&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;identifyImage&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;img&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token function&quot;&gt;concatAll&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token function&quot;&gt;share&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
     isCatImage
-);
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-cats$.pipe(
-    take(NUM_CATS)
-).subscribe(sendToMyPhone);
+cats$&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;take&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;NUM_CATS&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sendToMyPhone&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-notCats$.subscribe(() =&amp;gt; batcher$.next());
+notCats$&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; batcher$&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-range(1, NUM_CATS).subscribe(() =&amp;gt; batcher$.next());
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;token function&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;NUM_CATS&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; batcher$&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Although it got a little unweildy, this architecture does everything we wanted it to: identified and filtered a specific number of cat images out of a large input set, using parallel processing while also being frugal about extraneous API calls.&lt;/p&gt;
 &lt;p&gt;This simple problem statement and exercise highlights many key concepts in RxJS:&lt;/p&gt;
 &lt;ul&gt;
@@ -510,26 +500,24 @@ plastic sheets in my mouth!&lt;/p&gt;
 &lt;div class=&quot;margin right&quot;&gt;&lt;p&gt;In case the introduction didn’t make the fact clear, this post will be pretty technical. Be forewarned!&lt;/p&gt;
 &lt;/div&gt;&lt;p&gt;First, we’ll need a bit of background on how types can be combined in Typescript to create new, more complicated types. The rules take after formal logic and set theory, but the end result is still pretty intuitive.&lt;/p&gt;
 &lt;p&gt;Let’s pretend we have two plain object types, &lt;code&gt;Vehicle&lt;/code&gt; and &lt;code&gt;Animal&lt;/code&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;interface Vehicle {
-    speed: number;
-    name: string;
-}
+&lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Vehicle&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    speed&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
-interface Animal {
-    name: string;
-    legs: number;
-}
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;token keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Animal&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    legs&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/section&gt;
 &lt;section&gt;
 &lt;div class=&quot;section-link&quot;&gt;
 &lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2022/11/01/typescripts-skeleton-key/#union&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;union&quot;&gt;Union&lt;/h2&gt;
 &lt;/div&gt;
 &lt;p&gt;Perhaps we also want a function that accepts either a &lt;code&gt;Vehicle&lt;/code&gt; or &lt;code&gt;Animal&lt;/code&gt; and returns its name. How would we write that function and its signature?&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;function getName(entity: Vehicle | Animal): string {
-    return entity.name;
-}
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;entity&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Vehicle &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; Animal&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; entity&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;name&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Notice a few things about this function:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -546,16 +534,14 @@ interface Animal {
 &lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2022/11/01/typescripts-skeleton-key/#intersection&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;intersection&quot;&gt;Intersection&lt;/h2&gt;
 &lt;/div&gt;
 &lt;p&gt;Now, we could also have an object (one that is currently untyped) called “horse”:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;const horse = {
-    speed: 23,
-    legs: 4,
-    name: &amp;quot;Spirit&amp;quot;,
-};
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; horse &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    speed&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    legs&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Spirit&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The horse is both a &lt;code&gt;Vehicle&lt;/code&gt; and an &lt;code&gt;Animal&lt;/code&gt;, because it literally has all of the fields necessary for both types. We can declare that using the following syntax:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;type Steed = Vehicle &amp;amp; Animal;
-const horse: Steed;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Steed&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Vehicle &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt; Animal&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; horse&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Steed&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;A &lt;code&gt;Steed&lt;/code&gt; can be passed into the &lt;code&gt;getName&lt;/code&gt; function, and indeed, it can be used anywhere anyone asks for just a &lt;code&gt;Vehicle&lt;/code&gt;, or just an &lt;code&gt;Animal&lt;/code&gt;, because a &lt;code&gt;Steed&lt;/code&gt; is truly both. That said, any variable defined as a &lt;code&gt;Steed&lt;/code&gt; must have all the fields of both component types: we couldn’t assign “just” an &lt;code&gt;Animal&lt;/code&gt; to a variable of the &lt;code&gt;Steed&lt;/code&gt; type.&lt;/p&gt;
 &lt;p&gt;The &lt;strong&gt;intersection&lt;/strong&gt; type operator &lt;code&gt;&amp;amp;&lt;/code&gt; is used when we want instances that can serve as &lt;em&gt;any&lt;/em&gt; of the component types specified at &lt;em&gt;all&lt;/em&gt; times.&lt;/p&gt;
 &lt;/section&gt;
@@ -586,14 +572,13 @@ const horse: Steed;
 &lt;/div&gt;
 &lt;p&gt;This little operator has a pretty simple use: it creates a type consisting of a &lt;em&gt;union&lt;/em&gt; of the possible keys for an object.&lt;/p&gt;
 &lt;p&gt;Some code is worth a thousand words:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;interface Animal {
-    name: string;
-    legs: number;
-}
+&lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Animal&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    legs&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
-// Equivalent to (&#39;name&#39; | &#39;legs&#39;)
-type AnimalKey = keyof Animal;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;token comment&quot;&gt;// Equivalent to (&#39;name&#39; | &#39;legs&#39;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;AnimalKey&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;keyof&lt;/span&gt; Animal&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The union won’t always just be of strings, either: an array (for example) could yield numeric keys in that union.&lt;/p&gt;
 &lt;/section&gt;
 &lt;section&gt;
