@@ -90,6 +90,8 @@ html {
 
 body {
   min-height: 100vh;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 
   > input {
     display: none;
@@ -864,6 +866,8 @@ img.rounded {
     opacity: 0;
     transition: visibility 0s 0.25s, opacity 0.25s ease-in-out;
     position: fixed;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     top: 0;
     left: 0;
     width: 100vi;
