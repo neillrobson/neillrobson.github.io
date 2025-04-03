@@ -629,6 +629,7 @@ img.rounded {
 #menu-toggle {
   display: none;
   appearance: none;
+  float: left;
   position: relative;
   width: 1.5rem;
   height: 1.5rem;
