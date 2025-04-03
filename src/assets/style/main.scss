@@ -703,6 +703,10 @@ img.rounded {
   border-radius: 50%;
 }
 
+#menu-toggle {
+  display: none;
+}
+
 .nav {
   display: flex;
   flex-wrap: wrap;
@@ -711,6 +715,8 @@ img.rounded {
 
   .utils {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0.75em;
   }
 
@@ -822,7 +828,14 @@ img.rounded {
 /* MOBILE */
 
 @media screen and (max-width: 760px) {
+  #menu-toggle {
+    display: block;
+  }
+
   .nav {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.25s, opacity 0.25s ease-in-out;
     position: fixed;
     top: 0;
     left: 0;
@@ -835,6 +848,12 @@ img.rounded {
     justify-content: center;
     gap: 1rem;
     font-size: 1.5rem;
+
+    #menu-toggle:checked ~ & {
+      visibility: visible;
+      opacity: 1;
+      transition: visibility 0s, opacity 0.25s ease-in-out;
+    }
 
     *:has(+ .utils) {
       margin-right: 0;
