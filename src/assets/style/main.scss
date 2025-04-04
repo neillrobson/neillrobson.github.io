@@ -258,9 +258,13 @@ section > *:not(.margin),
 #disqus_thread,
 .archive,
 .pagination,
-.footer {
+.footer > * {
   width: clamp(60%, 60ch, 100%);
   box-sizing: border-box;
+}
+
+.footer p {
+  margin-block: 0;
 }
 
 .archive,
@@ -860,6 +864,10 @@ img.rounded {
 @media screen and (max-width: 760px) {
   #menu-toggle {
     display: block;
+  }
+
+  html:has(#menu-toggle:checked) {
+    overflow: hidden;
   }
 
   .nav {
