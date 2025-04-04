@@ -112,7 +112,7 @@ figcaption,
 .caption {
   line-height: 1.2;
   display: block;
-  margin: 9px 0 24px;
+  margin: 0.6rem 0 1.5rem;
   max-width: 600px;
   font-style: normal;
 }
@@ -131,7 +131,16 @@ div {
 }
 
 .header {
-  margin-block: 48px;
+  margin-block: clamp(10px, 6.3333333333vi + -15.3333333333px, 48px);
+}
+
+.main {
+  margin-block-start: clamp(0px, -4vi + 40px, 24px);
+}
+
+.archive,
+.entry {
+  margin-block-end: clamp(24px, 4vi + 8px, 48px);
 }
 
 .footer {
@@ -190,18 +199,21 @@ div {
   margin-inline: var(--aside-width);
 }
 
+section + section {
+  margin-block-start: 3rem;
+}
+
 section > *:not(.margin),
 #disqus_thread,
 .archive,
 .pagination,
-.footer {
+.footer > * {
   width: clamp(60%, 60ch, 100%);
   box-sizing: border-box;
 }
 
-.archive,
-.entry {
-  margin-block-end: 4rem;
+.footer p {
+  margin-block: 0;
 }
 
 .margin {
@@ -312,14 +324,21 @@ ol,
 li {
   font-family: var(--serif);
   position: relative;
-  margin: 24px 0;
+  margin-block: 1rem;
+}
+figure:first-child,
+p:first-child,
+ul:first-child,
+ol:first-child,
+li:first-child {
+  margin-block-start: 0;
 }
 
 h1 {
   font-size: 1.1rem;
   line-height: 1.5;
   font-weight: bold;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   color: var(--color-emphasis);
 }
 h1 a {
@@ -333,13 +352,21 @@ h5,
 h6 {
   font-size: 0.8rem;
   font-weight: bold;
-  margin: 48px 0 24px;
+  margin: 3rem 0 1.5rem;
   color: var(--color-emphasis);
 }
 
 blockquote {
   padding: 0 0 0 12px;
   color: var(--color-secondary);
+  font-style: italic;
+}
+blockquote footer {
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: normal;
+  font-family: var(--serif);
+  text-align: right;
 }
 
 big {
@@ -392,7 +419,7 @@ a.tag::before {
 
 /* RULE */
 hr {
-  margin: 24px 0 -1px;
+  margin: 1.5rem 0 -1px;
   border: none;
   border-bottom: 3px double var(--color-secondary);
   padding-bottom: 1.4em;
@@ -457,19 +484,11 @@ td {
 ul,
 ol {
   margin-left: 0;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 ul {
   list-style-type: circle;
-}
-
-ul ul,
-ol ul,
-ol ol,
-ul ol {
-  margin-left: 1.33em;
-  margin-bottom: 0;
 }
 
 li {
@@ -717,7 +736,7 @@ img.rounded {
 /* Pagination */
 .pagination {
   text-align: center;
-  margin: 72px 0;
+  margin-block: clamp(24px, 8vi + -8px, 72px);
   font-size: 0.8rem;
   color: var(--color-secondary);
 }
@@ -769,6 +788,9 @@ img.rounded {
   #menu-toggle {
     display: block;
   }
+  html:has(#menu-toggle:checked) {
+    overflow: hidden;
+  }
   .nav {
     visibility: hidden;
     opacity: 0;
@@ -808,12 +830,6 @@ img.rounded {
   }
 }
 @media screen and (max-width: 50rem) {
-  ul ul,
-  ol ul,
-  ol ol,
-  ul ol {
-    margin-left: 0;
-  }
   .column.two:not(.force),
   .column.three:not(.force),
   .column.four:not(.force) {
@@ -843,21 +859,5 @@ img.rounded {
     width: 95%;
     margin: 1rem 2.5%;
     position: relative;
-  }
-}
-@media screen and (max-width: 30rem) {
-  .header {
-    margin-top: 9px;
-    margin-bottom: 9px;
-  }
-  .main {
-    margin-block-start: 27px;
-  }
-  .archive,
-  .entry {
-    margin-block-end: 2rem;
-  }
-  .pagination {
-    margin-block: 2rem;
   }
 }

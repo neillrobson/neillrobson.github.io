@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+    
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Lamp of the Body | Neill Robson's Website</title>
+
+    <script>
+      document.documentElement.classList.remove('no-js');
+      document.documentElement.classList.add('js');
+
+      function switchLight() {
+        localStorage.setItem("mode", "light");
+        document.getElementById("theme-light").checked = true;
+      }
+
+      function switchDark() {
+        localStorage.setItem("mode", "dark");
+        document.getElementById("theme-dark").checked = true;
+      }
+
+      function switchAuto() {
+        localStorage.removeItem("mode");
+        document.getElementById("theme-system").checked = true;
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const mode = localStorage.getItem("mode");
+
+        if (mode === "light") switchLight();
+        if (mode === "dark") switchDark();
+
+        const labels = [
+          "theme-system",
+          "theme-dark",
+          "theme-light",
+        ];
+
+        labels.forEach(label => {
+          const checkbox = document.getElementById(label);
+          const icon = document.querySelector(`label[for="${label}"]`);
+
+          icon.addEventListener('focus', event => {
+            event.preventDefault();
+          });
+
+          icon.addEventListener('keyup', event => {
+            if (event.keyCode == 32) {
+              checkbox.click();
+            }
+          });
+        });
+      });
+    </script>
+
+    <meta name="description" content="The blog and portfolio of a software developer." />
+    <meta name="author" content="Neill Robson">
+
+    <meta property="og:title" content="Lamp of the Body | Neill Robson's Website">
+    <meta property="og:description" content="The blog and portfolio of a software developer.">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neillrobson.com/blog/2025/04/04/lamp-of-the-body/">
+    <link rel="canonical" href="https://neillrobson.com/blog/2025/04/04/lamp-of-the-body/">
+
+    
+
+    <link rel="shortcut icon" href="/assets/icon/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/assets/style/main.css">
+    <link rel="stylesheet" href="/assets/style/social.css">
+    <link rel="stylesheet" href="/assets/style/code.css">
+</head>
+
+
+  <body>
+    <input type="radio" name="color-theme" value="system" checked="" onchange="switchAuto()" id="theme-system">
+    <input type="radio" name="color-theme" value="dark" onchange="switchDark()" id="theme-dark">
+    <input type="radio" name="color-theme" value="light" onchange="switchLight()" id="theme-light">
+    <div class="container">
+      <div class="header">
+  
+  <picture id="logo">
+    <img
+      class="rounded"
+      src="https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
+      alt="Neill Robson"
+    />
+  </picture>
+  <div id="title">
+    Neill Robson's Website
+  </div>
+  <input type="checkbox" id="menu-toggle" />
+  <label for="menu-toggle" class="nav">
+    
+    <a href="/" title="About">About</a>
+    
+    <a href="/now" title="Now">Now</a>
+    
+    <a href="/blog" title="Blog">Blog</a>
+    
+    <a href="/archive" title="Archive">Archive</a>
+    
+    <a href="/projects" title="Projects">Projects</a>
+    
+    <a href="/contact" title="Contact">Contact</a>
+    
+    <div class="utils">
+      <a href="/feed.xml" title="RSS">RSS</a>
+      <fieldset id="theme-switcher" class="visible">
+        <legend>Theme</legend>
+        <label for="theme-system" tabindex="0">
+          <svg id="icon-system" viewBox="0 0 32 32" fill="currentColor" role="img">
+            <title>System default theme</title>
+            <path d="M16 9c3.9 0 7 3.1 7 7s-3.1 7-7 7"></path><path d="M16 .5C7.4.5.5 7.4.5 16S7.4 31.5 16 31.5 31.5 24.6 31.5 16 24.6.5 16 .5zm0 28.1V23c-3.9 0-7-3.1-7-7s3.1-7 7-7V3.4C23 3.4 28.6 9 28.6 16S23 28.6 16 28.6z"></path>
+          </svg>
+        </label>
+
+        <label for="theme-dark" tabindex="0">
+          <svg id="icon-moon" viewBox="0 0 16 16" fill="none" role="img">
+            <title>Dark theme</title>
+            <path d="M2 7.63261C2 11.1492 4.77936 14 8.20787 14C10.8473 14 13.1019 12.3105 14 9.92836C13.2887 10.271 12.4945 10.4626 11.6567 10.4626C8.60912 10.4626 6.13858 7.92853 6.13858 4.80265C6.13858 3.49533 6.5707 2.29154 7.29643 1.33334C4.30002 1.78554 2 4.43357 2 7.63261Z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </label>
+
+        <label for="theme-light" tabindex="0">
+          <svg id="icon-sun" viewBox="0 0 16 16" fill="none" role="img">
+            <title>Light theme</title>
+            <path d="M7.99968 13.3333L7.99967 14.6667M7.99968 1.33334L7.99968 2.66668M13.333 8.00001H14.6663M1.33301 8.00001H2.66634M11.9997 11.9997L12.9997 12.9997M2.99967 2.99967L3.99969 3.9997M11.9997 4.00001L12.9997 3.00001M2.99967 13L3.99967 12M11.333 8.00001C11.333 9.84096 9.84062 11.3333 7.99967 11.3333C6.15872 11.3333 4.66634 9.84096 4.66634 8.00001C4.66634 6.15906 6.15872 4.66668 7.99967 4.66668C9.84062 4.66668 11.333 6.15906 11.333 8.00001Z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </label>
+      </fieldset>
+    </div>
+  </label>
+</div>
+
+
+      <div class="main">
+        
+<div class="entry">
+    <div class="title">
+        <div class="date">
+            <a class="small" href="/blog/2025/04/04/lamp-of-the-body/">April 4, 2025</a>
+        </div>
+        <h1>Lamp of the Body</h1>
+    </div>
+
+    <section>
+<p>Speculative fiction about the life of a member of the MPAA.</p>
+<blockquote>
+<p>I wrote the first draft of this short story in the autumn of 2019, for a college creative writing course.
+Although my writing style has changed as I’ve aged,
+the themes of this story still haunt me from time to time.</p>
+<footer>Neill Robson</footer>
+</blockquote>
+<hr>
+</section>
+<section>
+<p><span class="newthought" id="%E2%80%9Cdavid.-thank-you"><a class="no-tufte-underline" href="#%E2%80%9Cdavid.-thank-you"></a>“David. Thank you</span> for coming in on such short notice.”</p>
+<p>“It certainly isn’t a problem, sir.”</p>
+<p>David lowered himself into the couch before Valenti’s desk. The leather upholstery was
+warm against his slacks.</p>
+<p>“Let me cut to the chase. We have an opening on the Board.”</p>
+<p>David frowned.</p>
+<p>“Now, you have been with us for… three years?”</p>
+<p>“Well, sir, it will be three years in May. And that’s only if you count my time doing
+contract work through Pulse Informatics. Really, my history has been more in data analytics—”</p>
+<p>“Hell if I care about your C.V. Point is, you’ve been a damn good auditor. People respect
+your opinion. They listen.”</p>
+<p>“Thank you, sir.”</p>
+<p>Valenti removed a folder from his desk and pushed the cabinet closed along silent ball
+bearings. He held up a handful of documents.</p>
+<p>“Confidentiality and liability. Same stuff you’ve already signed getting employed here in
+the first place—mostly. You’ll have the privilege of watching this crap before it’s released. Don’t
+go squealing at parties, taking bribes, being generally stupid. In return, we stay silent about your
+position.”</p>
+<p>David took the papers and scanned them. <em>Terrence Valenti, Chairman.</em></p>
+<p>“Sir, if I may be completely candid, I… there are many others who would like a seat on
+the ratings board, more than me. The classification process takes time, and with Abigail’s baby
+on the way, it just wouldn’t be wise—this transition…”</p>
+<p>Valenti held his gaze.</p>
+<p>“We don’t need any more auditors, David.”</p>
+<p>The couch enveloped David. Struggling to return to his feet, he reached toward Valenti’s
+desk to grab a pen and sign the papers.</p>
+</section>
+<section>
+<p><span class="newthought" id="cold-air-blasted"><a class="no-tufte-underline" href="#cold-air-blasted"></a>Cold air blasted</span> out of the bus doors, dissipating into the sweltering Hollywood summer.
+Only a couple of spaces remained unoccupied within. A blonde woman in athletic gear contorted
+herself in her seat to retain body heat amid the relentless air conditioning. Standing in the aisle, a
+younger Hispanic girl wrapped her blazer tighter around her blouse. David made his way to the
+back of the bus, where a sun-burnt man with gray dreadlocks and faded tank top occupied two
+seats. The bus jolted forward as David sat down across from him. Taking out a baby blue
+notebook and pen from his satchel, David began to write.</p>
+<p>“Golly, that’s some fine handwriting you’ve got there.”</p>
+<p>David glanced at the man with dreads and raised the corners of his lips.</p>
+<p>“Wait, wait, let me guess. You do design or something?”</p>
+<p>“No.”</p>
+<p>David kept his focus downward. The man in dreads leaned across the isle and stared at
+David’s right thigh, where his identification card dangled.</p>
+<p>“Son of a biscuit! A goonie from the Motion Picture Association! What’re they paying
+you for? Letter addressing?” A burst of laughter—or hiccups, David wasn’t sure which—erupted
+from the man’s mouth.</p>
+<p>“No, I’m actually— I’m just an auditor.” David closed his notebook and stared through
+the bus window at the department stores passing by.</p>
+<p>“Audio-what? You mean like music? Soundtracks? Man, what a joke. Working the suits
+in Hollywood and you get stuck with the marching band dropouts and a Walkman. Must suck
+trying to sleaze your wa—”</p>
+<p>“He didn’t say anything about audio. If I had to guess, auditors are around to keep the
+‘sleazy’ types out of the industry.”</p>
+<p>David’s head whipped toward the source of this new voice. The Hispanic woman had
+turned to face them.</p>
+<p>“I’m also with the MPAA: public relations department.”</p>
+<p>The man in dreads snorted. “What luck! I’m on a truck of toadies.” He pulled the bus’s
+bell cord on the corner of Tampa and Topham. As he left, he shot a wink at the blonde woman up
+front, receiving the finger in return. David covered his face with his hands. The bus lurched
+forward.</p>
+<p>“I’m Beth, by the way.” She had moved into the vacant seat left behind.</p>
+<p>“Thank you, Beth.” David couldn’t bring himself to look at his colleague. “Really, thank
+you.”</p>
+<p>“Um. If you don’t mind me asking. I think that I recognize… What is that written on the
+front of your notebook there?”</p>
+<p>David moved his hand to reveal the silver lettering embossed on the book’s cover. He re-read the
+text of the Bible verse in his mind: <em>The light of the body is the eye. If therefore thine eye
+be single, thy whole body shall be full of light.</em></p>
+<p>“That’s a beautiful verse: one of Jesus’s teachings, right?” Beth glanced between the
+notebook and David’s face. “It’s unusual to see Scripture out here. I mean, not <em>bad</em> unusual,
+but…”</p>
+<p>David caught Beth’s gaze for a moment. “Yeah. I know.”</p>
+<p>The bus approached Sherman Way. Beth reached for the bell cord and picked up her bag
+to leave. David sprung out of his seat as well.</p>
+<p>“David! My name is David. I forgot to say that. I— It was good talking— nice to meet
+you. Thank you. Again.”</p>
+<p>Beth turned, smiled. “Of course, David! I’m glad we met. We’ll see each other again, I’m
+sure.”</p>
+<p>David nodded and watched her walk into the hot, dry evening.</p>
+<p>“Get out of the doorway, sonny! You getting off the bus or not?”</p>
+<p>David started at the driver’s call. “Right. Uh. Sorry.”</p>
+<p>He sat back down and let the bus pull him through the streets.</p>
+</section>
+<section>
+<p><span class="newthought" id="greasy-yellow-city-light"><a class="no-tufte-underline" href="#greasy-yellow-city-light"></a>Greasy yellow city light</span> made its way through the window blinds, falling on a baby blue
+notebook atop a coffee table. On the floor nearby, David rifled through the satchel of VHS tapes.</p>
+<p>Some of that week’s films were obvious. <em>Piecemeal</em> wasn’t going to fall below NC-17.
+Not with that much blood. The child’s death was overkill. That scene had to be cut, at a
+minimum, if the producers hoped to get down to R. And those severed limbs, sorted in Ziploc—</p>
+<p>A fit of coughs erupted from David’s throat, as he choked on his own held breath. He
+tossed that tape aside and continued his search, lingering at <em>Last Spring</em>. What was Valenti
+thinking? Some lines were blurry, sure. Adultery was not one of them. Affairs were never PG.
+The child’s birthday, the celebration, the singing and cake, did nothing to disguise the moaning
+behind the wall.</p>
+<p>Valenti’s cold eyes drilled into David’s vision: “You aren’t here to climb inference
+ladders.” “Do not be the reason why this project is delayed.” “You are wasting millions of
+dollars.” “Get your head out of your ass.”</p>
+<p>The images continued to molest David’s mind, each more crooked than the last. Needles
+and money and fire and flesh and…</p>
+<p>“Honey, is everything okay?”</p>
+<p>Abigail slipped into the living room and switched on a lamp. David winced at the dim
+light flooding his eyes.</p>
+<p>“Not now, Abby. I’m working.”</p>
+<p>“David, it’s Friday. You have all weekend to watch… what is it?” She tiptoed over to the
+nearest tape and peered at the label. David snatched the box back and put it in his satchel.</p>
+<p>“Abigail, please. These aren’t for public distribution. You know better than to look.
+Where’s Ben?”</p>
+<p>Abigail stared at her husband’s hunched back. She swallowed. “He’s all tucked in. We
+just said prayers.”</p>
+<p>David glanced at the clock on the mantelpiece: 10:26 PM. “Kind of past his bedtime, isn’t
+it?”</p>
+<p>“He was waiting for you.”</p>
+<p>No response came from David. Abigail crossed to the couch next to the pile of tapes and
+sat, her hand rubbing her belly’s slight bulge.</p>
+<p>“David, do you think—do you like this? This ratings job?”</p>
+<p>“Of course.” He still refused to look at her.</p>
+<p>“I just feel like you’re consumed by it. I’m not sure how good this is for our family—”</p>
+<p>“Abby, there are families all over the country that rely on these ratings. This is about
+more than protecting us. Okay?”</p>
+<p>“Oh honey, I respect that, you know I do…”</p>
+<p>David found his weekend assignment, <em>Chicken Wire</em>, in the pile. He scooted over to the
+VHS player, tape in hand. Abigail slid to the floor next to him and grabbed his arm, and for the
+first time that evening they looked face to face. She reached to his empty hand and brought it to
+her chest.</p>
+<p>“David, not tonight. Come to bed. I miss you.”</p>
+<p>He gazed into her eyes, then to his hand resting on her. A heartbeat passed. David looked
+back to the tape in his grasp.</p>
+<p>“I’m not in the mood tonight.” He moved his hand to her abdomen. “I don’t think you
+are, either.”</p>
+<p>Abigail climbed to her feet, turned, and made her way to the bedroom alone. David fired
+up the television and inserted his tape.</p>
+<p>“And Abby, could you get the light? Thanks.”</p>
+<p>“Yeah.” The warmth of the lamp evaporated, and she left David in the flickering glow of
+the screen.</p>
+</section>
+<section>
+<p><span class="newthought" id="%E2%80%9Ci%E2%80%99m-glad-we"><a class="no-tufte-underline" href="#%E2%80%9Ci%E2%80%99m-glad-we"></a>“I’m glad we</span> came to a consensus there, David. It took a bit, but I think you’re warming
+up to this role.”</p>
+<p>“Thank you, Mr. Valenti.”</p>
+<p>The remaining board members trickled out of the conference room, and David finished
+packing his satchel. The two of them made their way to the elevators and out into the lobby.</p>
+<p>“Listen, David. On Thursday a few representatives from back east will be in the area to
+discuss next season’s release priorities. I think you’d do well getting this run-down straight from
+the horse’s mouth. You can join us for dinner on Thursday.” Valenti looked askance at David.
+“That is, unless something with your family gets—”</p>
+<p>“No, that won’t be a problem.”</p>
+<p>“Good.” Valenti strode toward the parking deck while David turned to the waiting bus.
+“See you tomorrow.”</p>
+<p>“Yes, sir.”</p>
+<p>David stepped onto the bus and saw Beth in her usual position by the back door. Her skirt
+revealed unblemished legs and outlined the curve of her hips. As she turned, David snapped his
+gaze to her face.</p>
+<p>“Hey, Beth.”</p>
+<p>“Hi, David!”</p>
+<p>David took a seat nearby. As the bus pulled away, David located his notebook, cover
+sleek and black as midnight, and began his usual evening journal.</p>
+</section>
+
+    
+        <br/>
+        <p>
+            
+                
+            
+                
+                    <a class="small tag" href="/tag/personal">personal</a>
+                
+            
+                
+                    <a class="small tag" href="/tag/college">college</a>
+                
+            
+                
+                    <a class="small tag" href="/tag/fiction">fiction</a>
+                
+            
+        </p>
+    
+
+    <div class="clear"></div>
+
+    
+        <div id="disqus_thread"></div>
+<script>
+/**
+ *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+ */
+var disqus_config = function () {
+
+this.page.url = "https://neillrobson.com/blog/2025/04/04/lamp-of-the-body/";  // Your page's canonical URL variable
+this.page.identifier = "/blog/2025/04/04/lamp-of-the-body"; // Your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://neillrobson.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+
+    
+    
+
+    
+        <hr class="full"/>
+        <div class="pagination-cards">
+        
+            <a href="/blog/2024/04/15/rxjs-batched-processing/">
+                <h5>Previous post</h5>
+                <span class="title">Batched Processing in RxJS</span>
+                <span class="summary"> When you have a ton of data that all needs to be processed, reactive programming makes the implementation easy to read, terse to write, and efficient to run. But when the data isn’t all needed, and processing the full stream is prohibitively expensive, more esoteric methods are necessary. </span>
+            </a>
+        
+        
+        </div>
+    
+</div>
+
+
+        <div class="clear"></div>
+      </div>
+
+      <div class="footer">
+  <p>
+    <small class="copyright">
+      &copy; 2025 Neill Robson. Layout inspired by
+      <a href="https://blot.im/" target="_blank">Blot</a>.
+      <br />
+      This site is hosted on
+      <a href="https://github.com" target="_blank">GitHub</a> and built with
+      <a href="https://www.11ty.dev/" target="_blank">Eleventy</a>. Icons by
+      <a href="https://icons8.com" target="_blank">Icons8</a>.
+    </small>
+  </p>
+</div>
+
+    </div>
+  </body>
+</html>
