@@ -1,5 +1,7 @@
 ---
+title: Peter and the Wolf Brainstorming
 layout: post
+eleventyExcludeFromCollections: true
 ---
 
 # Peter and the Wolf Brainstorming

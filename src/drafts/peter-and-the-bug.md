@@ -1,4 +1,5 @@
 ---
+title: Peter and the Bug
 layout: post
 ---
 
