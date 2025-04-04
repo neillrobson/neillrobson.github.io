@@ -397,7 +397,7 @@ ol,
 li {
   font-family: var(--serif);
   position: relative;
-  margin-block: 1.5rem;
+  margin-block: 1rem;
 
   &:first-child {
     margin-block-start: 0;
@@ -430,6 +430,15 @@ h6 {
 blockquote {
   padding: 0 0 0 12px;
   color: var(--color-secondary);
+  font-style: italic;
+
+  footer {
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: normal;
+    font-family: var(--serif);
+    text-align: right;
+  }
 }
 
 big {
