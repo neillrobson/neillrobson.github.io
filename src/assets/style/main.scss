@@ -174,7 +174,7 @@ figcaption,
 .caption {
   line-height: 1.2;
   display: block;
-  margin: 9px 0 24px;
+  margin: 0.6rem 0 1.5rem;
   max-width: 600px;
   font-style: normal;
 }
@@ -267,6 +267,10 @@ div {
 .footer {
   @include asides;
   margin-inline: var(--aside-width);
+}
+
+section + section {
+  margin-block-start: 3rem;
 }
 
 section > *:not(.margin),
@@ -404,7 +408,7 @@ h1 {
   font-size: 1.1rem;
   line-height: 1.5;
   font-weight: bold;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   color: var(--color-emphasis);
 
   a {
@@ -419,7 +423,7 @@ h5,
 h6 {
   font-size: 0.8rem;
   font-weight: bold;
-  margin: 48px 0 24px;
+  margin: 3rem 0 1.5rem;
   color: var(--color-emphasis);
 }
 
@@ -482,7 +486,7 @@ a.tag {
 /* RULE */
 
 hr {
-  margin: 24px 0 -1px;
+  margin: 1.5rem 0 -1px;
   border: none;
   border-bottom: 3px double var(--color-secondary);
   padding-bottom: 1.4em;
@@ -549,7 +553,7 @@ td {
 ul,
 ol {
   margin-left: 0;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 ul {
