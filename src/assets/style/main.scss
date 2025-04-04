@@ -15,6 +15,12 @@
   --mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 
+@mixin responsive($property, $min, $max, $breakpoint-min: 400px, $breakpoint-max: 1000px) {
+  $v: ($max - $min) / ($breakpoint-max - $breakpoint-min);
+  $p: $min - $v * $breakpoint-min;
+  #{$property}: clamp(#{$min}, calc(#{$v * 100}vi + #{$p}), #{$max});
+}
+
 @mixin asideVars($max, $breakmax: 1000px, $breakmin: 400px, $min: 0cqi) {
   $v: calc($max * $breakmax / ($breakmax - $breakmin));
   $p: calc($v / 100cqi * $breakmin - $min);
@@ -186,7 +192,16 @@ div {
 }
 
 .header {
-  margin-block: 48px;
+  @include responsive(margin-block, 10px, 48px);
+}
+
+.main {
+  @include responsive(margin-block-start, 0px, 24px, 1000px, 400px);
+}
+
+.archive,
+.entry {
+  @include responsive(margin-block-end, 24px, 48px);
 }
 
 .footer {
@@ -265,11 +280,6 @@ section > *:not(.margin),
 
 .footer p {
   margin-block: 0;
-}
-
-.archive,
-.entry {
-  margin-block-end: 4rem;
 }
 
 .margin {
@@ -383,7 +393,11 @@ ol,
 li {
   font-family: var(--serif);
   position: relative;
-  margin: 24px 0;
+  margin-block: 1.5rem;
+
+  &:first-child {
+    margin-block-start: 0;
+  }
 }
 
 h1 {
@@ -540,14 +554,6 @@ ol {
 
 ul {
   list-style-type: circle;
-}
-
-ul ul,
-ol ul,
-ol ol,
-ul ol {
-  margin-left: 1.33em;
-  margin-bottom: 0;
 }
 
 li {
@@ -809,7 +815,7 @@ img.rounded {
 
 .pagination {
   text-align: center;
-  margin: 72px 0;
+  @include responsive(margin-block, 24px, 72px);
   font-size: 0.8rem;
   color: var(--color-secondary);
 }
@@ -915,13 +921,6 @@ img.rounded {
 }
 
 @media screen and (max-width: 50rem) {
-  ul ul,
-  ol ul,
-  ol ol,
-  ul ol {
-    margin-left: 0;
-  }
-
   .column.two:not(.force),
   .column.three:not(.force),
   .column.four:not(.force) {
@@ -956,25 +955,5 @@ img.rounded {
     width: 95%;
     margin: 1rem 2.5%;
     position: relative;
-  }
-}
-
-@media screen and (max-width: 30rem) {
-  .header {
-    margin-top: 9px;
-    margin-bottom: 9px;
-  }
-
-  .main {
-    margin-block-start: 27px;
-  }
-
-  .archive,
-  .entry {
-    margin-block-end: 2rem;
-  }
-
-  .pagination {
-    margin-block: 2rem;
   }
 }
