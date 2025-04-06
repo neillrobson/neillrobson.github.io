@@ -360,13 +360,16 @@ blockquote {
   padding: 0 0 0 12px;
   color: var(--color-secondary);
   font-style: italic;
+  font-family: var(--serif);
 }
-blockquote footer {
+blockquote p:has(cite) {
+  text-align: right;
+}
+blockquote cite {
   font-size: 0.8rem;
   font-style: normal;
   font-weight: normal;
   font-family: var(--serif);
-  text-align: right;
 }
 
 big {
@@ -419,6 +422,7 @@ a.tag::before {
 
 /* RULE */
 hr {
+  font-family: var(--serif);
   margin: 1.5rem 0 -1px;
   border: none;
   border-bottom: 3px double var(--color-secondary);
