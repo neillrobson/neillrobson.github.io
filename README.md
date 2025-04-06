@@ -30,6 +30,9 @@ Source code for the personal website and blog of Neill Robson.
     npm start
     ```
 
+    > [!NOTE]
+    > If you want drafts to be rendered, put `ELEVENTY_ENV=development` into a file named `.env` in the root directory of the project.
+
 5. Access via http://localhost:8080/
 
 6. Check production build
@@ -44,32 +47,8 @@ Source code for the personal website and blog of Neill Robson.
 
 ## Todo
 
--   [x] Restyling to take advantage of Tufte sidenotes
--   [ ] RSS/Search
-    -   [x] Improve styling of RSS/Search buttons
-    -   [ ] Implement search bar using frontend-only solution: maybe [lunr](https://lunrjs.com)
--   [x] Respond smartly to no-js
+- [ ] Implement search bar
 
-### CSS Cleanup
+  - [ ] using frontend-only solution: maybe [lunr](https://lunrjs.com)
 
-- [x] Header
-  - [x] vw units are bad beyond 1400px
-- [x] Titles & dates (gave up on media query avoidance)
-- [x] Header links
-- [x] Right asides/margin
-  - [x] Match up with sidenotes
-- [x] Columns
-  - [x] prev/next post
-- [x] Bullet spacing
-  - [x] Maybe align logo img with new left-margin alignment?
-- [x] Mobile-friendly buttons
-- [x] Audit and fix-up all pages
-  - [x] About
-  - [x] Now
-  - [x] Blog
-    - [x] Post
-  - [x] Archive
-  - [x] Tag
-  - [x] Projects
-    - [x] Project
-  - [x] Contact
+- [ ] Switch to [Giscus](https://github.com/giscus/giscus) for comments
