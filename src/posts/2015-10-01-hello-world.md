@@ -14,7 +14,9 @@ What is this blog about? Who is Neill Robson? *The Rattle*?! I'll try to cover s
 
 ## Who and What
 
->Starting a conversation is trivial. Holding one, on the other hand... <cite>Neill Robson</cite>
+> Starting a conversation is trivial. Holding one, on the other hand...
+>
+> <cite>Neill Robson</cite>
 
 Hi! I'm Neill Robson: the guy sitting on the other side of the Internet from you, trying to spark a conversation. Among other things, I am an aspiring software developer, college student, Christian, actor, musician, and reader; I suppose I'm adding "blogger" to that list now.
 
@@ -30,7 +32,9 @@ As can be clearly seen, I can often be quite obtuse when writing my thoughts; th
 
 ## Objectives
 
->If you have built castles in the air, your work need not be lost; that is where they should be. Now put the foundations under them. <cite>Henry David Thoreau</cite>
+> If you have built castles in the air, your work need not be lost; that is where they should be. Now put the foundations under them.
+>
+> <cite>Henry David Thoreau</cite>
 
 Defining clear objectives is one of my great weaknesses. Even so, here are a few starting points--stakes in the ground, if you will--that will hopefully give purpose to the thoughts outlined in this blog:
 
@@ -48,7 +52,9 @@ Defining clear objectives is one of my great weaknesses. Even so, here are a few
 
 ## The Rattle
 
->Rattlesnakes would be a lot more dangerous if they didn't have the rattle. <cite>Louis Sachar</cite>
+> Rattlesnakes would be a lot more dangerous if they didn't have the rattle.
+>
+> <cite>Louis Sachar</cite>
 
 Before the post is tied up, I'll go ahead and note the origin of this blog's name.
 

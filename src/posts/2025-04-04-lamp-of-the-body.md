@@ -14,7 +14,7 @@ Speculative fiction about the life of a member of the MPAA.<!--more-->
 Although my writing style has changed as I've aged,
 the themes of this story still haunt me from time to time.
 >
-> <footer>Neill Robson</footer>
+> <cite>Neill Robson</cite>
 
 ---
 

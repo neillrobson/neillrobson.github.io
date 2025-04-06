@@ -15,7 +15,9 @@ Who would have guessed that one day I would be saying hello from China?
 
 Over the next few weeks, I'll be doing my best to chronicle my journey through a Study Abroad experience in Hangzhou, across the world from my Raleigh hometown. <!--more--> As my first experience truly "out of the country," it's quite a giant leap from the comfortable North Carolina home I'm used to. But how much of the place we call our home floats beyond our consciousness until we are separated from it (and thereby made aware of it) by another way of life? That idea is what we put to the test when we embark on a journey such as this. As the famous Chinese-American geographer said,
 
-> To identify wholly with the ambiance of a place is to lose the sense of its unique identity, which is revealed only when one can also see it from the outside. ...The sense of place is perhaps never more acute than when one is homesick, and one can only be homesick when one is no longer at home. <cite>Yi-Fu Tuan</cite>
+> To identify wholly with the ambiance of a place is to lose the sense of its unique identity, which is revealed only when one can also see it from the outside. ...The sense of place is perhaps never more acute than when one is homesick, and one can only be homesick when one is no longer at home.
+>
+> <cite>Yi-Fu Tuan</cite>
 
 ## The Capital
 
