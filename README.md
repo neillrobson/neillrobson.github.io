@@ -48,7 +48,6 @@ Source code for the personal website and blog of Neill Robson.
 ## Todo
 
 - [ ] Implement search bar
-
   - [ ] using frontend-only solution: maybe [lunr](https://lunrjs.com)
-
-- [ ] Switch to [Giscus](https://github.com/giscus/giscus) for comments
+- [x] Switch to [Giscus](https://github.com/giscus/giscus) for comments
+  - [ ] Maybe: migrate old Disqus comments to Giscus?

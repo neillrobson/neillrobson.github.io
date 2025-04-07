@@ -26,7 +26,7 @@ permalink: "/blog/{{ page.date | utcDate: '%Y/%m/%d' }}/{{ page.fileSlug }}/inde
     <div class="clear"></div>
 
     {% if comments %}
-        {% include "disqus.html" %}
+        {% include "giscus.html" %}
     {% endif %}
 
     {% assign previousPost = collections.posts | getPreviousCollectionItem %}
