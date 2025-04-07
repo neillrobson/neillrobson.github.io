@@ -84,7 +84,6 @@ body:has(#theme-light:checked) {
   max-width: 1700px;
   margin: 0 auto;
   padding-inline: min(8%, 2ch);
-  counter-reset: sidenote-counter;
   display: grid;
   grid-template: auto 1fr auto/minmax(0, 100%);
   container-type: inline-size;
@@ -136,6 +135,7 @@ div {
 
 .main {
   margin-block-start: clamp(0px, -4vi + 40px, 24px);
+  counter-reset: sidenote-counter;
 }
 
 .archive,
@@ -435,7 +435,7 @@ hr {
 
 /* CODE */
 pre[class*=language-] {
-  font-family: var(--mono);
+  font-family: var(--serif);
   background: none;
   overflow: initial;
 }
