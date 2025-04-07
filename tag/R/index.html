@@ -14,19 +14,36 @@
       document.documentElement.classList.remove('no-js');
       document.documentElement.classList.add('js');
 
+      function changeGiscusTheme (theme = 'preferred_color_scheme') {
+        function sendMessage(message) {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+
+        sendMessage({
+          setConfig: {
+            theme: theme
+          }
+        });
+      }
+
       function switchLight() {
         localStorage.setItem("mode", "light");
         document.getElementById("theme-light").checked = true;
+        changeGiscusTheme('light');
       }
 
       function switchDark() {
         localStorage.setItem("mode", "dark");
         document.getElementById("theme-dark").checked = true;
+        changeGiscusTheme('dark');
       }
 
       function switchAuto() {
         localStorage.removeItem("mode");
         document.getElementById("theme-system").checked = true;
+        changeGiscusTheme('preferred_color_scheme');
       }
 
       document.addEventListener('DOMContentLoaded', function () {
@@ -144,7 +161,7 @@
         <h1>Entries tagged “R”</h1>
 <div class="archives">
 
-    <a href="/projects/diversity-decorum/">Diversity and Decorum in Open Source Communities</a>&nbsp;<span class="small">April 6, 2025</span>
+    <a href="/projects/diversity-decorum/">Diversity and Decorum in Open Source Communities</a>&nbsp;<span class="small">April 7, 2025</span>
     <br />
 
 </div>

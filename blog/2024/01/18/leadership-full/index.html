@@ -14,19 +14,36 @@
       document.documentElement.classList.remove('no-js');
       document.documentElement.classList.add('js');
 
+      function changeGiscusTheme (theme = 'preferred_color_scheme') {
+        function sendMessage(message) {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+
+        sendMessage({
+          setConfig: {
+            theme: theme
+          }
+        });
+      }
+
       function switchLight() {
         localStorage.setItem("mode", "light");
         document.getElementById("theme-light").checked = true;
+        changeGiscusTheme('light');
       }
 
       function switchDark() {
         localStorage.setItem("mode", "dark");
         document.getElementById("theme-dark").checked = true;
+        changeGiscusTheme('dark');
       }
 
       function switchAuto() {
         localStorage.removeItem("mode");
         document.getElementById("theme-system").checked = true;
+        changeGiscusTheme('preferred_color_scheme');
       }
 
       document.addEventListener('DOMContentLoaded', function () {
@@ -239,26 +256,23 @@ he’s glad we’re taking a part in it.</p>
     <div class="clear"></div>
 
     
-        <div id="disqus_thread"></div>
-<script>
-/**
- *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
- *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
- */
-var disqus_config = function () {
-
-this.page.url = "https://neillrobson.com/blog/2024/01/18/leadership-full/";  // Your page's canonical URL variable
-this.page.identifier = "/blog/2024/01/18/leadership-full"; // Your page's unique identifier variable
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://neillrobson.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
+        <script src="https://giscus.app/client.js"
+        data-repo="neillrobson/neillrobson.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTYxODUyNzA="
+        data-category="Giscus"
+        data-category-id="DIC_kwDOBuzYts4Co3Ec"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/neillrobson/neillrobson.github.io/discussions">comments</a> powered by <a href="https://giscus.app/">Giscus.</a></noscript>
 
     
 

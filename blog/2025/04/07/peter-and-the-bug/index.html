@@ -14,19 +14,36 @@
       document.documentElement.classList.remove('no-js');
       document.documentElement.classList.add('js');
 
+      function changeGiscusTheme (theme = 'preferred_color_scheme') {
+        function sendMessage(message) {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+
+        sendMessage({
+          setConfig: {
+            theme: theme
+          }
+        });
+      }
+
       function switchLight() {
         localStorage.setItem("mode", "light");
         document.getElementById("theme-light").checked = true;
+        changeGiscusTheme('light');
       }
 
       function switchDark() {
         localStorage.setItem("mode", "dark");
         document.getElementById("theme-dark").checked = true;
+        changeGiscusTheme('dark');
       }
 
       function switchAuto() {
         localStorage.removeItem("mode");
         document.getElementById("theme-system").checked = true;
+        changeGiscusTheme('preferred_color_scheme');
       }
 
       document.addEventListener('DOMContentLoaded', function () {
@@ -65,8 +82,8 @@
     <meta property="og:description" content="The blog and portfolio of a software developer.">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://neillrobson.com/blog/2025/04/06/peter-and-the-bug/">
-    <link rel="canonical" href="https://neillrobson.com/blog/2025/04/06/peter-and-the-bug/">
+    <meta property="og:url" content="https://neillrobson.com/blog/2025/04/07/peter-and-the-bug/">
+    <link rel="canonical" href="https://neillrobson.com/blog/2025/04/07/peter-and-the-bug/">
 
     
 
@@ -145,7 +162,7 @@
 <div class="entry">
     <div class="title">
         <div class="date">
-            <a class="small" href="/blog/2025/04/06/peter-and-the-bug/">April 6, 2025</a>
+            <a class="small" href="/blog/2025/04/07/peter-and-the-bug/">April 7, 2025</a>
         </div>
         <h1>Peter and the Bug</h1>
     </div>
