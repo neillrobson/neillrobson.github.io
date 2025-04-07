@@ -51,3 +51,4 @@ Source code for the personal website and blog of Neill Robson.
   - [ ] using frontend-only solution: maybe [lunr](https://lunrjs.com)
 - [x] Switch to [Giscus](https://github.com/giscus/giscus) for comments
   - [ ] Maybe: migrate old Disqus comments to Giscus?
+  - [x] Set a per-page og:description for better top-level thread bodies.

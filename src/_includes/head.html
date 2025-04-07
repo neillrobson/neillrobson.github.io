@@ -1,11 +1,6 @@
 <head>
-    {% comment %}
-    Prioritize page-level data. Provide a reasonable default if the current
-    location is a page, but doesn't have the given data specified. Default to
-    site-level data if necessary.
-    {% endcomment %}
-
     {% capture page_title %}{% if title %}{{ title }} | {% endif %}Neill Robson's Website{% endcapture %}
+    {% capture page_description %}{{ page.excerpt | default: 'The blog and portfolio of a software developer.' | renderContent: 'md' | strip_html | truncatewords: 30 | strip }}{% endcapture %}
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -77,11 +72,11 @@
       });
     </script>
 
-    <meta name="description" content="The blog and portfolio of a software developer." />
+    <meta name="description" content="{{ page_description }}">
     <meta name="author" content="Neill Robson">
 
     <meta property="og:title" content="{{ page_title }}">
-    <meta property="og:description" content="The blog and portfolio of a software developer.">
+    <meta property="og:description" content="{{ page_description }}">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://neillrobson.com{{ page.url | replace:'index.html','' }}">
@@ -92,7 +87,7 @@
     <meta property="og:image:alt" content="Image description">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" property="og:title" itemprop="title name" content="{{ page_title }}">
-    <meta name="twitter:description" property="og:description" itemprop="description" content="The blog and portfolio of a software developer.">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="{{ page_description }}">
     {% endcomment %}
 
     <link rel="shortcut icon" href="/assets/icon/favicon.ico" type="image/x-icon">
