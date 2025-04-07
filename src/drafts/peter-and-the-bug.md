@@ -1,6 +1,7 @@
 ---
 title: Peter and the Bug
 layout: post
+eleventyExcludeFromCollections: true
 ---
 
 Early one morning, Peter walked across the office to his team's standup meeting.
