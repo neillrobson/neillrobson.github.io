@@ -148,12 +148,103 @@ and still tightly coupled with pixels.
 I would set my `:root` font size to `10px`, such that `0.1rem === 1px`,
 and simply do mental math to convert my pixel dimensions to the "better" units.
 
-**I missed the point.**
+I missed the point.
 
 Browsers that scale text often override the `:root` font size anyhow,
 so my mental math is rendered completely wrong.
+The base font size should be controllable by the end user,
+to match their accessibility needs.
 
-## Container Units
+How could I define styles that suit whatever font size the user sets?
+
+Rather than fitting `em` to my fixed-pixel size preference,
+I could let it sit at the browser's (or user's) default,
+and assign dimensions _relative to their preference_.
+
+For example, my website's font size is set to the following:
+
+```css
+html {
+    font-size: clamp(1rem, 0.8rem + 0.9vi, 1.5rem);
+}
+```
+
+**I have no idea what pixel size 1rem might equal.**
+I just know that, on large screens, I want all text to have a slight (50%) boost at most,
+while never falling below whatever dimension the user set even on the smallest screens.
+The scaling factors, `0.8rem + 0.9vi`, were truly just chosen based on gut feel
+while I shifted the viewport in a variety of ways.
+
+A surprising amount of layout dimensions can be defined using these relative units,
+implicitly aligning them with typographic best practices.
+Body text is generally most readable with a line length of 45-90 characters[^butterick],
+so the following style is a solid baseline:
+
+[^butterick]: [Butterick's Practical Typography](https://practicaltypography.com/line-length.html) gives this recommendation along with many other excellent guidelines.
+
+```css
+p {
+    /* 1ch =~ width of a "0" character */
+    width: clamp(60%, 60ch, 100%);
+    max-width: 900px;
+}
+```
+
+Wide viewports have a pleasant 40% right margin; narrow viewports use the whole screen;
+the total paragraph width has a fixed upper bound; when all other constraints are satisfied,
+prefer to keep the width around 60 characters.
+
+With a single selector and two declarations,
+we've expressed a standard with universal applicability.
+
+## Container Queries
+
+Keeping with the theme of relative content-centric styling,
+[container query units](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries#container_query_length_units)
+are an exciting recent addition to the CSS toolkit.
+
+Their definitions are consistent with viewport units (`1cqw` is 1% of the queried container's width),
+but rather than being relative to the entire viewport,
+they are relative to a bounding box that you define in CSS.
+
+```css
+.container {
+    container-type: inline-size;
+}
+
+.container .margin {
+    /*
+        cqi: "container query inline"
+        equivalent to width in most languages
+    */
+    width: 25cqi;
+}
+```
+
+No matter how deeply nested `.margin` elements are,
+they will always have a width equal to 25% _of the ancestor `.container` size_.
+
+Declaring elements as containers is not free of consequences:
+
+- The queryable axes must have _extrinsic_ (or explicit) dimensions set.[^extrinsic]
+- Each container defines a new "containment context," preventing layout flows between containers.
+  - Subsequent content is forced to clear floating elements in previous containers.
+  - CSS counter state[^counter] is reset in each container.
+
+[^extrinsic]: The limitation is somewhat intuitive.
+If children will be sized based on the parent width,
+the parent _cannot_ "shrink-wrap" to its contents without creating a recursive definition.
+Fortunately, block elements stretch the full width (inline size) by default,
+so an `inline-size` container type usually doesn't cause issues.
+A container type of just `size` **will shrink to zero height** if height is not explicitly set, though.
+
+[^counter]: CSS counters are how sidenotes (like this one!) are automatically numbered.
+If each `<p>` or `<section>` were declared a container,
+every sidenote would reset to 1.
+
+However, when used carefully, some incredible formatting can be achieved.
+For example, my sidenotes (on desktop screens) are evenly aligned to the right margin
+regardless of their relative position in the body text.
 
 ## Keeping JS at a Minimum
 
