@@ -30,7 +30,7 @@
     "js-yaml": "^4.1.0",
     "luxon": "^3.5.0",
     "markdown-it": "^14.1.0",
-    "markdown-it-tufte": "^1.0.0",
+    "markdown-it-tufte": "^1.0.1",
     "rimraf": "^6.0.1",
     "strftime": "^0.10.3"
   },

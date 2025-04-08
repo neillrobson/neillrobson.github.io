@@ -141,13 +141,12 @@ users may attempt to scale the _text_ to increase visibility.
 If a given layout is tied to the body text being set at 16px,
 sufficient font scaling can still make the site unreadable.
 
-The `em` and `rem`[^rem] units have been historically used to address this concern.
+The `em` and `rem`^["em" and "root em," referring to the width of an em-dash. Like this one---see?]
+units have been historically used to address this concern.
 Even so, my usage of those units was quite a cargo-cult practice,
 and still tightly coupled with pixels.
 I would set my `:root` font size to `10px`, such that `0.1rem === 1px`,
 and simply do mental math to convert my pixel dimensions to the "better" units.
-
-[^rem]: "em" and "root em," referring to the width of an em-dash. Like this one---see?
 
 **I missed the point.**
 
