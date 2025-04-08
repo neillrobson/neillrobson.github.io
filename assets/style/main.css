@@ -334,6 +334,13 @@ ol:first-child,
 li:first-child {
   margin-block-start: 0;
 }
+li > figure:first-child,
+li > p:first-child,
+li > ul:first-child,
+li > ol:first-child,
+li > li:first-child {
+  margin-block-start: 1rem;
+}
 
 h1 {
   font-size: 1.1rem;
@@ -497,8 +504,7 @@ ul {
 }
 
 li {
-  transform: translateX(1.33em);
-  margin-inline-end: 1.33em;
+  margin-inline-start: 1rem;
 }
 
 /* IMAGES */
@@ -578,10 +584,18 @@ figure img {
   width: 25cqi;
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
-  padding-inline-start: 2ch;
+  padding-inline-start: 1rem;
   font-size: 0.8rem;
   vertical-align: baseline;
   position: relative;
+}
+li > .sidenote,
+li > .marginnote {
+  margin-right: calc(-100cqi + 2 * var(--aside-width) + 100% + 1rem);
+}
+li li > .sidenote,
+li li > .marginnote {
+  margin-right: calc(-100cqi + 2 * var(--aside-width) + 100% + 2rem);
 }
 
 .sidenote-number {
