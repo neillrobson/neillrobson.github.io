@@ -408,6 +408,10 @@ li {
 
   &:first-child {
     margin-block-start: 0;
+
+    li > & {
+      margin-block-start: 1rem;
+    }
   }
 }
 
@@ -582,8 +586,12 @@ ul {
 }
 
 li {
-  transform: translateX(1.33em);
-  margin-inline-end: 1.33em;
+  // margin-inline doesn't play well with left-floating elements.
+  // The bullets intersect the float.
+  // transform positioning just shifts the overlap issue to
+  // the right-aligned floats.
+  // left-floating elements are rare, so we'll just use a margin.
+  margin-inline-start: 1rem;
 }
 
 /* IMAGES */
@@ -667,10 +675,18 @@ figure img {
   width: 25cqi;
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
-  padding-inline-start: 2ch;
+  padding-inline-start: 1rem;
   font-size: 0.8rem;
   vertical-align: baseline;
   position: relative;
+
+  li > & {
+    margin-right: calc(-100cqi + 2 * var(--aside-width) + 100% + 1rem);
+  }
+
+  li li > & {
+    margin-right: calc(-100cqi + 2 * var(--aside-width) + 100% + 2rem);
+  }
 }
 
 .sidenote-number {
