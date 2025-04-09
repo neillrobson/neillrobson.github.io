@@ -17,7 +17,7 @@ created a joyful design experience that I'm excited to share.
 
 ## Break Away from Breakpoints
 
-> Be the browser’s mentor, not its micromanager.
+> Be the browser's mentor, not its micromanager.
 >
 > <cite>Andy Bell, <a href="https://buildexcellentwebsit.es/">Build Excellent Websites</a></cite>
 
