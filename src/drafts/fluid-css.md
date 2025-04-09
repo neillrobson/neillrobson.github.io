@@ -352,6 +352,14 @@ So, why did I include JS at all?
 The script serves a few purposes, in order of decreasing importance:
 
 0. The color scheme selector is not keyboard-accessible by default.
-By 
+Label elements can be clicked to activate their corresponding input controls,
+but keyboard interactions don't work---even when including `tabindex`.
+A few event listeners override the default behavior for focusing and the space bar,
+causing the labels to behave a bit more like buttons or anchors.
+
+1. The color scheme preference does not persist across page navigation.
+Javascript is necessary to read or write any form of browser storage.
+Without that persistence, the color scheme choice resets to the browser default
+(read from the `@media` query) on every new page visited.
 
 ## Conclusion
