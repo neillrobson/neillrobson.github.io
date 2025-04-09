@@ -5,14 +5,14 @@ title: Fluid CSS
 
 During a recent website re-design, I was delighted by the robust and flexible interface provided by modern CSS.<!--more-->
 
-I've historically felt rather cold toward CSS,
-due to my impression that it was a disjointed "bag of tricks" for styling websites.
-Developers had to throw arbitrary solutions out until something stuck,
-even if the resulting pile of declarations made no intuitive sense.
+I've historically felt rather cold toward CSS.
+I felt it was a disjointed "bag of tricks" for styling websites.
+Developers throw arbitrary solutions out until something sticks,
+even if the resulting pile of declarations make no intuitive sense.
 
-In truth, my perspective was due to my own ignorance more than the early CSS specification.
+My perspective was largely due to my own ignorance.
 Shifting my mindset away from breakpoint-based designs,
-while learning some recent^[and well-supported!] features introduced to CSS,
+while learning some new^[and well-supported!] CSS features,
 created a joyful design experience that I'm excited to share.
 
 ## Break Away from Breakpoints
@@ -23,8 +23,8 @@ created a joyful design experience that I'm excited to share.
 
 Prior to the current site design, my main CSS file had about [eighty-four lines of `@media` queries](https://github.com/neillrobson/neillrobson.github.io/blob/ad6585eb78cad9ebe744ac8882834cf5994d426b/webpack/style.scss#L666).
 While the rest of the stylesheet defined the look and feel of my site on a large desktop screen,
-the media-query styles overrode large portions of those styles to make the site palatable on mobile viewports.
-The overrides would trigger at three distinct screen width breakpoints.
+the media-query styles overrode those rules to make the site palatable on mobile viewports.
+The overrides triggered at three distinct screen width breakpoints.
 
 Nothing is inherently wrong with media queries,
 but I found them a hassle to maintain.
@@ -55,18 +55,18 @@ div {
 }
 ```
 
-I was essentially juggling four distinct website designs in my mind,
+I was juggling four distinct website designs in my mind,
 each only suited for a certain viewport width.
-None of them looked good near the breakpoints.
+None of them looked good near the breakpoint widths.
 
-An unstyled paragraph on an otherwise blank webpage will reflow perfectly for any viewport size.
+An _unstyled_ paragraph on an otherwise blank webpage reflows for any viewport.
 Isn't it ironic that **adding styles makes the design less flexible**?
 
 Andy Bell advocates for writing stylesheets that work at _any_ width.
-Even if you envision a few distinct layouts for desktop versus mobile viewports,
+Even if you envision a few distinct layouts for different devices,
 write style rules that scale fluidly between those two layouts.
-Although the upfront effort creating those rules is higher,
-it results in only a single design to maintain down the line.
+The upfront effort creating those rules is higher,
+but it results in a single design to maintain down the line.
 
 ## The Scaling Recipe
 
@@ -88,7 +88,7 @@ this scaling might get out of hand.
 
 Fortunately, CSS also has a `clamp` function!
 If the font size should scale between `16px` and `24px`,
-we could twiddle with the middle values to find scaling that feels good:
+we could twiddle the fluid values to find scaling that feels good:
 
 ```css
 p {
@@ -100,7 +100,7 @@ Drag-resize the viewport in the browser, and the font scales nicely!
 
 It would be nice for the middle quantities to be determined by something more than a gut check, though.
 If I still have two ideal viewport widths in mind for mobile versus desktop styling,
-a bit of algebra (and CSS pre-processing in SASS) can go a long way[^derivation]:
+a bit of algebra (and CSS pre-processing in SASS) can go a long way:[^derivation]
 
 ```scss
 @mixin responsive(
@@ -138,20 +138,19 @@ Your designs will scale smoothly in every viewport without a single explicit `@m
 Basing layout on static pixel dimensions can be brittle, however.
 Even on small viewports,
 users may attempt to scale the _text_ to increase visibility.
-If a given layout is tied to the body text being set at 16px,
-sufficient font scaling can still make the site unreadable.
+If my layout depends on 16-pixel body text,
+enough font scaling can still make the site unreadable.
 
 The `em` and `rem`^["em" and "root em," referring to the width of an em-dash. Like this one---see?]
-units have been historically used to address this concern.
-Even so, my usage of those units was quite a cargo-cult practice,
-and still tightly coupled with pixels.
+units can be used to address this concern.
+Even so, I hardly used those units in a productive manner.
 I would set my `:root` font size to `10px`, such that `0.1rem === 1px`,
 and simply do mental math to convert my pixel dimensions to the "better" units.
 
 I missed the point.
 
 Browsers that scale text often override the `:root` font size anyhow,
-so my mental math is rendered completely wrong.
+so my mental math was wrong.
 The base font size should be controllable by the end user,
 to match their accessibility needs.
 
@@ -172,15 +171,14 @@ html {
 **I have no idea what pixel size 1rem might equal.**
 I just know that, on large screens, I want all text to have a slight (50%) boost at most,
 while never falling below whatever dimension the user set even on the smallest screens.
-The scaling factors, `0.8rem + 0.9vi`, were truly just chosen based on gut feel
-while I shifted the viewport in a variety of ways.
+The scaling factors, `0.8rem + 0.9vi`, were chosen based on gut feel
+while I shifted the viewport around.
 
-A surprising amount of layout dimensions can be defined using these relative units,
-implicitly aligning them with typographic best practices.
-Body text is generally most readable with a line length of 45-90 characters[^butterick],
+Using relative units in this way often aligns your layout with typographic best practices.
+For example, body text is generally most readable with a line length of 45-90 characters,[^butterick]
 so the following style is a solid baseline:
 
-[^butterick]: [Butterick's Practical Typography](https://practicaltypography.com/line-length.html) gives this recommendation along with many other excellent guidelines.
+[^butterick]: [Butterick's Practical Typography](https://practicaltypography.com/line-length.html) gives this recommendation, along with many other excellent guidelines.
 
 ```css
 p {
@@ -190,12 +188,14 @@ p {
 }
 ```
 
-Wide viewports have a pleasant 40% right margin; narrow viewports use the whole screen;
-the total paragraph width has a fixed upper bound; when all other constraints are satisfied,
-prefer to keep the width around 60 characters.
-
 With a single selector and two declarations,
-we've expressed a standard with universal applicability.
+we've expressed a standard with universal applicability:
+
+- Wide viewports have a pleasant 40% right margin;
+- narrow viewports use the whole screen;
+- the total paragraph width has a fixed upper bound;
+- when all other constraints are satisfied,
+prefer to keep the width around 60 characters.
 
 ## Container Queries
 
@@ -203,8 +203,9 @@ Keeping with the theme of relative content-centric styling,
 [container query units](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries#container_query_length_units)
 are an exciting recent addition to the CSS toolkit.
 
-Their definitions are consistent with viewport units (`1cqw` is 1% of the queried container's width),
-but rather than being relative to the entire viewport,
+Their definitions are consistent with viewport units:
+`1cqw` is 1% of the Queried Container's Width.
+But rather than being relative to the entire viewport,
 they are relative to a bounding box that you define in CSS.
 
 ```css
@@ -224,10 +225,10 @@ they are relative to a bounding box that you define in CSS.
 No matter how deeply nested `.margin` elements are,
 they will always have a width equal to 25% _of the ancestor `.container` size_.
 
-Declaring elements as containers is not free of consequences:
+Declaring elements as containers has consequences:
 
 - The queryable axes must have _extrinsic_ (or explicit) dimensions set.[^extrinsic]
-- Each container defines a new "containment context," preventing layout flows between containers.
+- Each container defines a new "containment context," preventing layout flows between containers:
   - Subsequent content is forced to clear floating elements in previous containers.
   - CSS counter state[^counter] is reset in each container.
 
@@ -236,14 +237,14 @@ If children will be sized based on the parent width,
 the parent _cannot_ "shrink-wrap" to its contents without creating a recursive definition.
 Fortunately, block elements stretch the full width (inline size) by default,
 so an `inline-size` container type usually doesn't cause issues.
-A container type of just `size` **will shrink to zero height** if height is not explicitly set, though.
+A container type of just `size` _will shrink to zero height_ if height is not explicitly set, though.
 
 [^counter]: CSS counters are how sidenotes (like this one!) are automatically numbered.
 If each `<p>` or `<section>` were declared a container,
 every sidenote would reset to 1.
 
 However, when used carefully, some incredible formatting can be achieved.
-For example, my sidenotes (on desktop screens) are evenly aligned to the right margin
+For example, my sidenotes (on desktop screens) are evenly aligned to the right margin,
 regardless of their relative position in the body text.
 
 ## Color Scheme Switcher
@@ -252,7 +253,7 @@ regardless of their relative position in the body text.
 >
 > <cite><a href="https://danlj.org/mkj/">Michael Johnson</a></cite>
 
-I tend to use light color schemes at low monitor-brightness settings for day to day work.
+I tend to use light color schemes at a low monitor brightness for daily work.
 My preference is purely personal, and I appreciate designs that function equivalently
 with both light and dark color schemes.
 
@@ -268,7 +269,7 @@ CSS offers a media query for the user's preferred color scheme:
 But not everyone knows how to switch the preference for their browser,
 or has the patience to navigate through all those menus.
 I wanted a way for my site to respect the browser default,
-and also provide controls to override and preview both color schemes.
+and also provide a way to force applying either color scheme.
 
 With some creative markup (and a few accessibility caveats),
 a solution with only HTML and CSS is possible!
@@ -297,8 +298,8 @@ body:has(#theme-dark:checked) {
 ```
 
 But I didn't want unstyled radio buttons sitting at the top of every page.
-As it turns out, HTML forms support clicking `<label>` elements to select the corresponding input field,[^label]
-and the input control doesn't need to be located anywhere near the label!
+HTML forms support clicking `<label>` elements to select the corresponding input field,[^label]
+and the input control doesn't need to be located anywhere near the label.
 
 [^label]: This functionality is particularly useful when filling out forms
 on extremely small viewports, where tapping the tiny checkboxes is infeasible.
@@ -332,18 +333,18 @@ It has some limitations---discussed in the [following section](#keeping-js-at-a-
 > <cite>Tantek Çelik, <a href="https://tantek.com/2025/069/t1/ten-years-jsdr-javascript-required-didnt-read">JavaScript Required; Didn't Read</a></cite>
 
 As a software engineer with a focus on front-end web development,
-I have nothing against Javascript and the related web frameworks.
+I have nothing against Javascript and related web frameworks.
 Those technologies are how I make a living.
 
 However, I also know that web technologies and patterns shift at a blistering pace.
-The rapids are unavoidable when developing a web-hosted _application_,
-but a site focused on static _content delivery_ doesn't necessarily need such infrastructure.
+Javascript is unavoidable when developing a web-hosted _application_,
+but a site focused on static _content delivery_ doesn't need such infrastructure.
 Given the impressive capabilities that modern HTML and CSS afford,
-I initially set out to redesign this portfolio site with no Javascript whatsoever.
+I initially set out to redesign this site with no Javascript at all.
 
 The goal of purging JS was... mostly achieved.
 
-There is only one, inline `<script>` in the head of the site's document.
+I left a single inline `<script>` in the head of the site's document.
 Crucially, if you disable JS in your browser or delete the script entirely,
 **the content and styling of the site is identical.**
 In other words, the site is not _dependent_ on Javascript to display anything authored by me.
@@ -353,9 +354,9 @@ The script serves a few purposes, in order of decreasing importance:
 
 0. The color scheme selector is not keyboard-accessible by default.
 Label elements can be clicked to activate their corresponding input controls,
-but keyboard interactions don't work---even when including `tabindex`.
+but keyboard interactions don't work.
 A few event listeners override the default behavior for focusing and the space bar,
-causing the labels to behave a bit more like buttons or anchors.
+and the labels behave a bit more like buttons or links.
 
 1. The color scheme preference does not persist across page navigation.
 Javascript is necessary to read or write any form of browser storage.
@@ -373,26 +374,25 @@ all of the content will still be rendered in a reasonable manner.
 
 ## Giscus
 
-Previously, this blog used Disqus to support the comment system.
+This blog used to run the Disqus comment system.
 While I personally had no issues with Disqus
 (and I had less than ten comments in the blog at the time of migration!),
 I was made aware of some [data privacy concerns](https://www.logora.com/blog-posts/data-privacy-concerns-disqus)
 with the company.
 
 Even for a site as innocuous as my own,
-I didn't want contributors to feel uncomfortable with where their comments may be going (or sold to).
-Since the site is maintained on GitHub and deployed with GitHub Pages,
+I didn't want contributors to feel uncomfortable with where their data may be stored (or sold to).
+Since my site is maintained on GitHub and deployed with GitHub Pages,
 keeping the comments on GitHub seemed to be a natural choice.
 
 The biggest downside is the need for contributors to have a GitHub account---perhaps
 a deterrent for non-technical readers.
-Fortunately, once an account is created, _no technical knowledge is necessary_ to comment:
-the widget UI works just like any other comment system.
+Fortunately, once an account is created, _no technical knowledge is necessary_ to comment.
+The widget UI works just like any other comment system.
 
 ## Conclusion
 
-As usual, I spent much more time refining the infrastructure of my website
-rather than contributing content to it.
-The project was insightful and incredibly fun, even so.
+As usual, I spent more time refining my site's infrastructure than writing content.
+Even so, the project was insightful and fun.
 Side projects don't always have to be lucrative or illustrious.
-The rejuvenating effect of simply building something beautiful is a reward of its own!
+The rejuvenating effect of simply building something beautiful is its own reward!
