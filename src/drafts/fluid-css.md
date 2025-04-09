@@ -362,4 +362,37 @@ Javascript is necessary to read or write any form of browser storage.
 Without that persistence, the color scheme choice resets to the browser default
 (read from the `@media` query) on every new page visited.
 
+2. The comment system, [Giscus](https://giscus.app/),
+needs a notification to match its color scheme with the main site.
+Giscus itself also uses some Javascript of its own---but it is all contained
+in an iframe.
+
+Notice that all of these features relate purely to the controls of an aesthetic aspect of the site.
+Even if none of the Javascript persists in an archive,
+all of the content will still be rendered in a reasonable manner.
+
+## Giscus
+
+Previously, this blog used Disqus to support the comment system.
+While I personally had no issues with Disqus
+(and I had less than ten comments in the blog at the time of migration!),
+I was made aware of some [data privacy concerns](https://www.logora.com/blog-posts/data-privacy-concerns-disqus)
+with the company.
+
+Even for a site as innocuous as my own,
+I didn't want contributors to feel uncomfortable with where their comments may be going (or sold to).
+Since the site is maintained on GitHub and deployed with GitHub Pages,
+keeping the comments on GitHub seemed to be a natural choice.
+
+The biggest downside is the need for contributors to have a GitHub account---perhaps
+a deterrent for non-technical readers.
+Fortunately, once an account is created, _no technical knowledge is necessary_ to comment:
+the widget UI works just like any other comment system.
+
 ## Conclusion
+
+As usual, I spent much more time refining the infrastructure of my website
+rather than contributing content to it.
+The project was insightful and incredibly fun, even so.
+Side projects don't always have to be lucrative or illustrious.
+The rejuvenating effect of simply building something beautiful is a reward of its own!
