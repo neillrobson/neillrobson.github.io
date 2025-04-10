@@ -6,9 +6,9 @@ title: Fluid CSS
 During a recent website re-design, I was delighted by the robust and flexible interface provided by modern CSS.<!--more-->
 
 I've historically felt rather cold toward CSS.
-I felt it was a disjointed "bag of tricks" for styling websites.
-Developers throw arbitrary solutions out until something sticks,
-even if the resulting pile of declarations make no intuitive sense.
+I considered it a disjointed "bag of tricks" for styling websites.
+Developers throw arbitrary solutions out until something works,
+even if the resulting code is not intuitive.
 
 My perspective was largely due to my own ignorance.
 Shifting my mindset away from breakpoint-based designs,
@@ -22,13 +22,13 @@ created a joyful design experience that I'm excited to share.
 > <cite>Andy Bell, <a href="https://buildexcellentwebsit.es/">Build Excellent Websites</a></cite>
 
 Prior to the current site design, my main CSS file had about [eighty-four lines of `@media` queries](https://github.com/neillrobson/neillrobson.github.io/blob/ad6585eb78cad9ebe744ac8882834cf5994d426b/webpack/style.scss#L666).
-While the rest of the stylesheet defined the look and feel of my site on a large desktop screen,
+While the rest of the stylesheet defined my site's layout on a large desktop screen,
 the media-query styles overrode those rules to make the site palatable on mobile viewports.
 The overrides triggered at three distinct screen width breakpoints.
 
 Nothing is inherently wrong with media queries,
 but I found them a hassle to maintain.
-Every time I wanted to adjust the layout or style of an element on my page,
+Every time I wanted to adjust an element's style,
 I had to think about what CSS to change in _four different locations_:
 
 ```css
@@ -64,14 +64,14 @@ Isn't it ironic that **adding styles makes the design less flexible**?
 
 Andy Bell advocates for writing stylesheets that work at _any_ width.
 Even if you envision a few distinct layouts for different devices,
-write style rules that scale fluidly between those two layouts.
+write style rules that scale smoothly between those two layouts.
 The upfront effort creating those rules is higher,
 but it results in a single design to maintain down the line.
 
 ## The Scaling Recipe
 
-We want to scale our measurements by the viewport width:
-the `vw` unit is a perfect fit.
+We want to scale our measurements by the viewport width.
+The `vw` unit is perfect for the task.
 A measurement of `1vw` is equal to 1% of the viewport width.
 
 A _very_ simple scaling font size might be:
@@ -82,13 +82,15 @@ p {
 }
 ```
 
+The math is simple:
+`font size = 16px + (0.01 * screen width)`.
 Nineteen pixels at a 300px viewport, twenty-six pixels at a 1000px viewport...
 Granted, for folks with ultra-wide 8K monitors,
 this scaling might get out of hand.
 
 Fortunately, CSS also has a `clamp` function!
 If the font size should scale between `16px` and `24px`,
-we could twiddle the fluid values to find scaling that feels good:
+we could twiddle with the values to find scaling that feels good:
 
 ```css
 p {
@@ -96,7 +98,7 @@ p {
 }
 ```
 
-Drag-resize the viewport in the browser, and the font scales nicely!
+The font scales nicely, no matter how the viewport is resized.
 
 It would be nice for the middle quantities to be determined by something more than a gut check, though.
 If I still have two ideal viewport widths in mind for mobile versus desktop styling,
@@ -116,6 +118,9 @@ a bit of algebra (and CSS pre-processing in SASS) can go a long way:[^derivation
 }
 
 p {
+    // Font size is 16px when viewport falls below 400px
+    // and is 24px when viewport expands beyond 1000px
+    // with linear scaling between those breakpoints
     @include responsive(font-size, 16px, 24px, 400px, 1000px);
 }
 ```
@@ -170,7 +175,7 @@ html {
 
 **I have no idea what pixel size 1rem might equal.**
 I just know that, on large screens, I want all text to have a slight (50%) boost at most,
-while never falling below whatever dimension the user set even on the smallest screens.
+while never falling below whatever dimension the user set.
 The scaling factors, `0.8rem + 0.9vi`, were chosen based on gut feel
 while I shifted the viewport around.
 
@@ -216,7 +221,7 @@ they are relative to a bounding box that you define in CSS.
 .container .margin {
     /*
         cqi: "container query inline"
-        equivalent to width in most languages
+        "inline" is equivalent to "width" in most languages
     */
     width: 25cqi;
 }
@@ -234,8 +239,8 @@ Declaring elements as containers has consequences:
 
 [^extrinsic]: The limitation is somewhat intuitive.
 If children will be sized based on the parent width,
-the parent _cannot_ "shrink-wrap" to its contents without creating a recursive definition.
-Fortunately, block elements stretch the full width (inline size) by default,
+the parent _cannot_ "shrink-wrap" to its contents without creating an unresolvable self-reference.
+Fortunately, block elements stretch to fill the available width (inline size) by default,
 so an `inline-size` container type usually doesn't cause issues.
 A container type of just `size` _will shrink to zero height_ if height is not explicitly set, though.
 
@@ -254,8 +259,7 @@ regardless of their relative position in the body text.
 > <cite><a href="https://danlj.org/mkj/">Michael Johnson</a></cite>
 
 I tend to use light color schemes at a low monitor brightness for daily work.
-My preference is purely personal, and I appreciate designs that function equivalently
-with both light and dark color schemes.
+My preference is purely personal, and I appreciate designs that support both light and dark color schemes.
 
 CSS offers a media query for the user's preferred color scheme:
 
@@ -266,10 +270,10 @@ CSS offers a media query for the user's preferred color scheme:
 }
 ```
 
-But not everyone knows how to switch the preference for their browser,
-or has the patience to navigate through all those menus.
+But not everyone knows how to switch the preference for their browser.
+Others lack the patience to navigate through all those menus.
 I wanted a way for my site to respect the browser default,
-and also provide a way to force applying either color scheme.
+and also provide a means to quickly switch the color scheme.
 
 With some creative markup (and a few accessibility caveats),
 a solution with only HTML and CSS is possible!
@@ -288,7 +292,7 @@ The first proof-of-concept consisted of adding radio control as a child of the b
 </body>
 ```
 
-and then adding CSS color variables similar to the media queries:
+and then adding CSS color variables:
 
 ```css
 body:has(#theme-dark:checked) {
@@ -340,7 +344,7 @@ However, I also know that web technologies and patterns shift at a blistering pa
 Javascript is unavoidable when developing a web-hosted _application_,
 but a site focused on static _content delivery_ doesn't need such infrastructure.
 Given the impressive capabilities that modern HTML and CSS afford,
-I initially set out to redesign this site with no Javascript at all.
+I set out to redesign this site with no Javascript at all.
 
 The goal of purging JS was... mostly achieved.
 
@@ -349,23 +353,23 @@ Crucially, if you disable JS in your browser or delete the script entirely,
 **the content and styling of the site is identical.**
 In other words, the site is not _dependent_ on Javascript to display anything authored by me.
 
-So, why did I include JS at all?
+Why did I include JS at all?
 The script serves a few purposes, in order of decreasing importance:
 
 0. The color scheme selector is not keyboard-accessible by default.
 Label elements can be clicked to activate their corresponding input controls,
 but keyboard interactions don't work.
-A few event listeners override the default behavior for focusing and the space bar,
-and the labels behave a bit more like buttons or links.
+A few event listeners override the default behavior for tab-focus and the space bar,
+causing the labels behave more like buttons or links.
 
 1. The color scheme preference does not persist across page navigation.
 Javascript is necessary to read or write any form of browser storage.
 Without that persistence, the color scheme choice resets to the browser default
-(read from the `@media` query) on every new page visited.
+on every new page visited.
 
 2. The comment system, [Giscus](https://giscus.app/),
 needs a notification to match its color scheme with the main site.
-Giscus itself also uses some Javascript of its own---but it is all contained
+Giscus itself also uses some Javascript of its own---but it's all contained
 in an iframe.
 
 Notice that all of these features relate purely to the controls of an aesthetic aspect of the site.
@@ -374,16 +378,16 @@ all of the content will still be rendered in a reasonable manner.
 
 ## Giscus
 
-This blog used to run the Disqus comment system.
+This blog previously used the Disqus comment system.
 While I personally had no issues with Disqus
-(and I had less than ten comments in the blog at the time of migration!),
+(and the blog had under ten comments at the time of migration!),
 I was made aware of some [data privacy concerns](https://www.logora.com/blog-posts/data-privacy-concerns-disqus)
 with the company.
 
 Even for a site as innocuous as my own,
 I didn't want contributors to feel uncomfortable with where their data may be stored (or sold to).
 Since my site is maintained on GitHub and deployed with GitHub Pages,
-keeping the comments on GitHub seemed to be a natural choice.
+keeping the comments on GitHub was a natural choice.
 
 The biggest downside is the need for contributors to have a GitHub account---perhaps
 a deterrent for non-technical readers.
