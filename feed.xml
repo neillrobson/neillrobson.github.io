@@ -7,6 +7,356 @@
     <description>The blog and portfolio of a software developer.</description>
     <language>en</language>
     <item>
+      <title>Fluid CSS</title>
+      <link>https://neillrobson.com/blog/2025/04/10/fluid-css/</link>
+      <description>&lt;section&gt;
+&lt;p&gt;During a recent website re-design, I was delighted by the robust and flexible interface provided by modern CSS.&lt;/p&gt;
+&lt;p&gt;I’ve historically felt rather cold toward CSS.
+I considered it a disjointed “bag of tricks” for styling websites.
+Developers throw arbitrary solutions out until something works,
+even if the resulting code is not intuitive.&lt;/p&gt;
+&lt;p&gt;My perspective was largely due to my own ignorance.
+Shifting my mindset away from breakpoint-based designs,
+while learning some new&lt;label for=&quot;sn-5&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input id=&quot;sn-5&quot; type=&quot;checkbox&quot; class=&quot;margin-toggle&quot;&gt;&lt;span class=&quot;sidenote&quot;&gt;and well-supported!&lt;/span&gt; CSS features,
+created a joyful design experience that I’m excited to share.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;div class=&quot;section-link&quot;&gt;
+&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2025/04/10/fluid-css/#break-away-from-breakpoints&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;break-away-from-breakpoints&quot;&gt;Break Away from Breakpoints&lt;/h2&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Be the browser’s mentor, not its micromanager.&lt;/p&gt;
+&lt;p&gt;&lt;cite&gt;Andy Bell, &lt;a href=&quot;https://buildexcellentwebsit.es/&quot;&gt;Build Excellent Websites&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Prior to the current site design, my main CSS file had about &lt;a href=&quot;https://github.com/neillrobson/neillrobson.github.io/blob/ad6585eb78cad9ebe744ac8882834cf5994d426b/webpack/style.scss#L666&quot;&gt;eighty-four lines of &lt;code&gt;@media&lt;/code&gt; queries&lt;/a&gt;.
+While the rest of the stylesheet defined my site’s layout on a large desktop screen,
+the media-query styles overrode those rules to make the site palatable on mobile viewports.
+The overrides triggered at three distinct screen width breakpoints.&lt;/p&gt;
+&lt;p&gt;Nothing is inherently wrong with media queries,
+but I found them a hassle to maintain.
+Every time I wanted to adjust an element’s style,
+I had to think about what CSS to change in &lt;em&gt;four different locations&lt;/em&gt;:&lt;/p&gt;
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token selector&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;/* here, */&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token atrule&quot;&gt;&lt;span class=&quot;token rule&quot;&gt;@media&lt;/span&gt; screen &lt;span class=&quot;token keyword&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token property&quot;&gt;max-width&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 976px&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token selector&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token comment&quot;&gt;/* and here, */&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token atrule&quot;&gt;&lt;span class=&quot;token rule&quot;&gt;@media&lt;/span&gt; screen &lt;span class=&quot;token keyword&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token property&quot;&gt;max-width&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 760px&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token selector&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token comment&quot;&gt;/* and here, */&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token atrule&quot;&gt;&lt;span class=&quot;token rule&quot;&gt;@media&lt;/span&gt; screen &lt;span class=&quot;token keyword&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token property&quot;&gt;max-width&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 400px&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token selector&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token comment&quot;&gt;/* and here, too. */&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I was juggling four distinct website designs in my mind,
+each only suited for a certain viewport width.
+None of them looked good near the breakpoint widths.&lt;/p&gt;
+&lt;p&gt;An &lt;em&gt;unstyled&lt;/em&gt; paragraph on an otherwise blank webpage reflows for any viewport.
+Isn’t it ironic that &lt;strong&gt;adding styles makes the design less flexible&lt;/strong&gt;?&lt;/p&gt;
+&lt;p&gt;Andy Bell advocates for writing stylesheets that work at &lt;em&gt;any&lt;/em&gt; width.
+Even if you envision a few distinct layouts for different devices,
+write style rules that scale smoothly between those two layouts.
+The upfront effort creating those rules is higher,
+but it results in a single design to maintain down the line.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;div class=&quot;section-link&quot;&gt;
+&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2025/04/10/fluid-css/#the-scaling-recipe&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;the-scaling-recipe&quot;&gt;The Scaling Recipe&lt;/h2&gt;
+&lt;/div&gt;
+&lt;p&gt;We want to scale our measurements by the viewport width.
+The &lt;code&gt;vw&lt;/code&gt; unit is perfect for the task.
+A measurement of &lt;code&gt;1vw&lt;/code&gt; is equal to 1% of the viewport width.&lt;/p&gt;
+&lt;p&gt;A &lt;em&gt;very&lt;/em&gt; simple scaling font size might be:&lt;/p&gt;
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token selector&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;calc&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;16px + 1vw&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The math is simple:
+&lt;code&gt;font size = 16px + (0.01 * screen width)&lt;/code&gt;.
+Nineteen pixels at a 300px viewport, twenty-six pixels at a 1000px viewport…
+Granted, for folks with ultra-wide 8K monitors,
+this scaling might get out of hand.&lt;/p&gt;
+&lt;p&gt;Fortunately, CSS also has a &lt;code&gt;clamp&lt;/code&gt; function!
+If the font size should scale between &lt;code&gt;16px&lt;/code&gt; and &lt;code&gt;24px&lt;/code&gt;,
+we could twiddle with the values to find scaling that feels good:&lt;/p&gt;
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token selector&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;clamp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;16px&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;calc&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;13px + 0.9vw&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 24px&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The font scales nicely, no matter how the viewport is resized.&lt;/p&gt;
+&lt;p&gt;It would be nice for the middle quantities to be determined by something more than a gut check, though.
+If I still have two ideal viewport widths in mind for mobile versus desktop styling,
+a bit of algebra (and CSS pre-processing in SASS) can go a long way:&lt;label for=&quot;sn-derivation&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input id=&quot;sn-derivation&quot; type=&quot;checkbox&quot; class=&quot;margin-toggle&quot;&gt;&lt;span class=&quot;sidenote&quot;&gt;The variables &lt;code&gt;$v&lt;/code&gt; and &lt;code&gt;$p&lt;/code&gt; boil down to the variables in a two-degree system of linear equations.
+Or, for the more geometrically-minded,
+the solution is finding the equation for the line connecting two points &lt;code&gt;&amp;lt;$breakpoint-min, $min&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;$breakpoint-max, $max&amp;gt;&lt;/code&gt;.
+The slope is &lt;code&gt;$v&lt;/code&gt; and the y-intercept is &lt;code&gt;$p&lt;/code&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&quot;language-scss&quot;&gt;&lt;code class=&quot;language-scss&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;@mixin&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;responsive&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;token variable&quot;&gt;$property&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token variable&quot;&gt;$min&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token variable&quot;&gt;$max&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token variable&quot;&gt;$breakpoint-min&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token variable&quot;&gt;$breakpoint-max&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$v&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; math.&lt;span class=&quot;token function&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$max&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$min&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$breakpoint-max&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$breakpoint-min&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$p&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$min&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$v&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$breakpoint-min&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;#{$property}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;clamp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;#{$min}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;calc&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;#&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$v&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; 100&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;vi &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;#{$p}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;#{$max}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token selector&quot;&gt;p &lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// Font size is 16px when viewport falls below 400px&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// and is 24px when viewport expands beyond 1000px&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// with linear scaling between those breakpoints&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;@include&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;responsive&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;font-size&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 16px&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 24px&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 400px&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 1000px&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Once the recipe is derived, this scaling strategy can be applied to &lt;em&gt;any measurement&lt;/em&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;font size&lt;/li&gt;
+&lt;li&gt;paragraph margins&lt;/li&gt;
+&lt;li&gt;sidebar width&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Your designs will scale smoothly in every viewport without a single explicit &lt;code&gt;@media&lt;/code&gt; breakpoint.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;div class=&quot;section-link&quot;&gt;
+&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2025/04/10/fluid-css/#inside-out-units&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;inside-out-units&quot;&gt;Inside-Out Units&lt;/h2&gt;
+&lt;/div&gt;
+&lt;p&gt;Basing layout on static pixel dimensions can be brittle, however.
+Even on small viewports,
+users may attempt to scale the &lt;em&gt;text&lt;/em&gt; to increase visibility.
+If my layout depends on 16-pixel body text,
+enough font scaling can still make the site unreadable.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;em&lt;/code&gt; and &lt;code&gt;rem&lt;/code&gt;&lt;label for=&quot;sn-6&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input id=&quot;sn-6&quot; type=&quot;checkbox&quot; class=&quot;margin-toggle&quot;&gt;&lt;span class=&quot;sidenote&quot;&gt;“em” and “root em,” referring to the width of an em-dash. Like this one—see?&lt;/span&gt;
+units can be used to address this concern.
+Even so, I hardly used those units in a productive manner.
+I would set my &lt;code&gt;:root&lt;/code&gt; font size to &lt;code&gt;10px&lt;/code&gt;, such that &lt;code&gt;0.1rem === 1px&lt;/code&gt;,
+and simply do mental math to convert my pixel dimensions to the “better” units.&lt;/p&gt;
+&lt;p&gt;I missed the point.&lt;/p&gt;
+&lt;p&gt;Browsers that scale text often override the &lt;code&gt;:root&lt;/code&gt; font size anyhow,
+so my mental math was wrong.
+The base font size should be controllable by the end user,
+to match their accessibility needs.&lt;/p&gt;
+&lt;p&gt;How could I define styles that suit whatever font size the user sets?&lt;/p&gt;
+&lt;p&gt;Rather than fitting &lt;code&gt;em&lt;/code&gt; to my fixed-pixel size preference,
+I could let it sit at the browser’s (or user’s) default,
+and assign dimensions &lt;em&gt;relative to their preference&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;For example, my website’s font size is set to the following:&lt;/p&gt;
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token selector&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;clamp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;1rem&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 0.8rem + 0.9vi&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 1.5rem&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;I have no idea what pixel size 1rem might equal.&lt;/strong&gt;
+I just know that, on large screens, I want all text to have a slight (50%) boost at most,
+while never falling below whatever dimension the user set.
+The scaling factors, &lt;code&gt;0.8rem + 0.9vi&lt;/code&gt;, were chosen based on gut feel
+while I shifted the viewport around.&lt;/p&gt;
+&lt;p&gt;Using relative units in this way often aligns your layout with typographic best practices.
+For example, body text is generally most readable with a line length of 45-90 characters,&lt;label for=&quot;sn-butterick&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input id=&quot;sn-butterick&quot; type=&quot;checkbox&quot; class=&quot;margin-toggle&quot;&gt;&lt;span class=&quot;sidenote&quot;&gt;&lt;a href=&quot;https://practicaltypography.com/line-length.html&quot;&gt;Butterick’s Practical Typography&lt;/a&gt; gives this recommendation, along with many other excellent guidelines.&lt;/span&gt;
+so the following style is a solid baseline:&lt;/p&gt;
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token selector&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;/* 1ch =~ width of a &quot;0&quot; character */&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;clamp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;60%&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 60ch&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 100%&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;max-width&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 900px&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With a single selector and two declarations,
+we’ve expressed a standard with universal applicability:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Wide viewports have a pleasant 40% right margin;&lt;/li&gt;
+&lt;li&gt;narrow viewports use the whole screen;&lt;/li&gt;
+&lt;li&gt;the total paragraph width has a fixed upper bound;&lt;/li&gt;
+&lt;li&gt;when all other constraints are satisfied,
+prefer to keep the width around 60 characters.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;div class=&quot;section-link&quot;&gt;
+&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2025/04/10/fluid-css/#container-queries&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;container-queries&quot;&gt;Container Queries&lt;/h2&gt;
+&lt;/div&gt;
+&lt;p&gt;Keeping with the theme of relative content-centric styling,
+&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries#container_query_length_units&quot;&gt;container query units&lt;/a&gt;
+are an exciting recent addition to the CSS toolkit.&lt;/p&gt;
+&lt;p&gt;Their definitions are consistent with viewport units:
+&lt;code&gt;1cqw&lt;/code&gt; is 1% of the Queried Container’s Width.
+But rather than being relative to the entire viewport,
+they are relative to a bounding box that you define in CSS.&lt;/p&gt;
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token selector&quot;&gt;.container&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;container-type&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; inline-size&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token selector&quot;&gt;.container .margin&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;/*
+        cqi: &quot;container query inline&quot;
+        &quot;inline&quot; is equivalent to &quot;width&quot; in most languages
+    */&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 25cqi&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;No matter how deeply nested &lt;code&gt;.margin&lt;/code&gt; elements are,
+they will always have a width equal to 25% &lt;em&gt;of the ancestor &lt;code&gt;.container&lt;/code&gt; size&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Declaring elements as containers has consequences:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The queryable axes must have &lt;em&gt;extrinsic&lt;/em&gt; (or explicit) dimensions set.&lt;label for=&quot;sn-extrinsic&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input id=&quot;sn-extrinsic&quot; type=&quot;checkbox&quot; class=&quot;margin-toggle&quot;&gt;&lt;span class=&quot;sidenote&quot;&gt;The limitation is somewhat intuitive.
+If children will be sized based on the parent width,
+the parent &lt;em&gt;cannot&lt;/em&gt; “shrink-wrap” to its contents without creating an unresolvable self-reference.
+Fortunately, block elements stretch to fill the available width (inline size) by default,
+so an &lt;code&gt;inline-size&lt;/code&gt; container type usually doesn’t cause issues.
+A container type of just &lt;code&gt;size&lt;/code&gt; &lt;em&gt;will shrink to zero height&lt;/em&gt; if height is not explicitly set, though.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Each container defines a new “containment context,” preventing layout flows between containers:
+&lt;ul&gt;
+&lt;li&gt;Subsequent content is forced to clear floating elements in previous containers.&lt;/li&gt;
+&lt;li&gt;CSS counter state&lt;label for=&quot;sn-counter&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input id=&quot;sn-counter&quot; type=&quot;checkbox&quot; class=&quot;margin-toggle&quot;&gt;&lt;span class=&quot;sidenote&quot;&gt;CSS counters are how sidenotes (like this one!) are automatically numbered.
+If each &lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt; or &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; were declared a container,
+every sidenote would reset to 1.&lt;/span&gt; is reset in each container.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;However, when used carefully, some incredible formatting can be achieved.
+For example, my sidenotes (on desktop screens) are evenly aligned to the right margin,
+regardless of their relative position in the body text.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;div class=&quot;section-link&quot;&gt;
+&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2025/04/10/fluid-css/#color-scheme-switcher&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;color-scheme-switcher&quot;&gt;Color Scheme Switcher&lt;/h2&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Yet another Internet site adds “unreadable mode.” Got it.&lt;/p&gt;
+&lt;p&gt;&lt;cite&gt;&lt;a href=&quot;https://danlj.org/mkj/&quot;&gt;Michael Johnson&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I tend to use light color schemes at a low monitor brightness for daily work.
+My preference is purely personal, and I appreciate designs that support both light and dark color schemes.&lt;/p&gt;
+&lt;p&gt;CSS offers a media query for the user’s preferred color scheme:&lt;/p&gt;
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token atrule&quot;&gt;&lt;span class=&quot;token rule&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token property&quot;&gt;prefers-color-scheme&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; dark&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; black&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; white&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But not everyone knows how to switch the preference for their browser.
+Others lack the patience to navigate through all those menus.
+I wanted a way for my site to respect the browser default,
+and also provide a means to quickly switch the color scheme.&lt;/p&gt;
+&lt;p&gt;With some creative markup (and a few accessibility caveats),
+a solution with only HTML and CSS is possible!&lt;/p&gt;
+&lt;p&gt;CSS provides a &lt;code&gt;:checked&lt;/code&gt; pseudo-class for checkboxes and radio inputs that are selected.
+The first proof-of-concept consisted of adding radio control as a child of the body tag:&lt;/p&gt;
+&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;body&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;radio&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;color-theme&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;system&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;checked&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;theme-system&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;radio&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;color-theme&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;dark&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;theme-dark&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;radio&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;color-theme&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;light&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;theme-light&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;div&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;container&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+        &lt;span class=&quot;token comment&quot;&gt;&amp;lt;!-- content --&gt;&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;div&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;body&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and then adding CSS color variables:&lt;/p&gt;
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token selector&quot;&gt;body:has(#theme-dark:checked)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;--background-color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; black&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;--color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; white&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But I didn&#39;t want unstyled radio buttons sitting at the top of every page.
+HTML forms support clicking &lt;code&gt;&amp;lt;label&amp;gt;&lt;/code&gt; elements to select the corresponding input field,&lt;label for=&quot;sn-label&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input id=&quot;sn-label&quot; type=&quot;checkbox&quot; class=&quot;margin-toggle&quot;&gt;&lt;span class=&quot;sidenote&quot;&gt;This functionality is particularly useful when filling out forms
+on extremely small viewports, where tapping the tiny checkboxes is infeasible.&lt;/span&gt;
+and the input control doesn’t need to be located anywhere near the label.&lt;/p&gt;
+&lt;p&gt;So I put some labels into my navigation bar as such:&lt;/p&gt;
+&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;fieldset&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;theme-switcher&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;visible&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;legend&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;Theme&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;legend&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;label&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;theme-system&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;tabindex&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;0&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+        &lt;span class=&quot;token comment&quot;&gt;&amp;lt;!-- system icon --&gt;&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;label&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;label&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;theme-dark&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;tabindex&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;0&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+        &lt;span class=&quot;token comment&quot;&gt;&amp;lt;!-- moon icon --&gt;&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;label&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;label&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;theme-light&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;tabindex&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;0&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+        &lt;span class=&quot;token comment&quot;&gt;&amp;lt;!-- sun icon --&gt;&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;label&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;fieldset&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I could style them however I wished.
+It has some limitations—discussed in the &lt;a href=&quot;https://neillrobson.com/blog/2025/04/10/fluid-css/#keeping-js-at-a-minimum&quot;&gt;following section&lt;/a&gt;—but the base functionality operates without a lick of Javascript!&lt;/p&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;div class=&quot;section-link&quot;&gt;
+&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2025/04/10/fluid-css/#keeping-js-at-a-minimum&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;keeping-js-at-a-minimum&quot;&gt;Keeping JS at a Minimum&lt;/h2&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In 5 years nothing you (personally, not a publicly traded company)
+build today that depends on Javascript in the browser to display content will be available,
+visible, or archived anywhere on the web.&lt;/p&gt;
+&lt;p&gt;&lt;cite&gt;Tantek Çelik, &lt;a href=&quot;https://tantek.com/2025/069/t1/ten-years-jsdr-javascript-required-didnt-read&quot;&gt;JavaScript Required; Didn’t Read&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As a software engineer with a focus on front-end web development,
+I have nothing against Javascript and related web frameworks.
+Those technologies are how I make a living.&lt;/p&gt;
+&lt;p&gt;However, I also know that web technologies and patterns shift at a blistering pace.
+Javascript is unavoidable when developing a web-hosted &lt;em&gt;application&lt;/em&gt;,
+but a site focused on static &lt;em&gt;content delivery&lt;/em&gt; doesn’t need such infrastructure.
+Given the impressive capabilities that modern HTML and CSS afford,
+I set out to redesign this site with no Javascript at all.&lt;/p&gt;
+&lt;p&gt;The goal of purging JS was… mostly achieved.&lt;/p&gt;
+&lt;p&gt;I left a single inline &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; in the head of the site’s document.
+Crucially, if you disable JS in your browser or delete the script entirely,
+&lt;strong&gt;the content and styling of the site is identical.&lt;/strong&gt;
+In other words, the site is not &lt;em&gt;dependent&lt;/em&gt; on Javascript to display anything authored by me.&lt;/p&gt;
+&lt;p&gt;Why did I include JS at all?
+The script serves a few purposes, in order of decreasing importance:&lt;/p&gt;
+&lt;ol start=&quot;0&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;The color scheme selector is not keyboard-accessible by default.
+Label elements can be clicked to activate their corresponding input controls,
+but keyboard interactions don’t work.
+A few event listeners override the default behavior for tab-focus and the space bar,
+causing the labels behave more like buttons or links.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The color scheme preference does not persist across page navigation.
+Javascript is necessary to read or write any form of browser storage.
+Without that persistence, the color scheme choice resets to the browser default
+on every new page visited.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The comment system, &lt;a href=&quot;https://giscus.app/&quot;&gt;Giscus&lt;/a&gt;,
+needs a notification to match its color scheme with the main site.
+Giscus itself also uses some Javascript of its own—but it’s all contained
+in an iframe.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Notice that all of these features relate purely to the controls of an aesthetic aspect of the site.
+Even if none of the Javascript persists in an archive,
+all of the content will still be rendered in a reasonable manner.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;div class=&quot;section-link&quot;&gt;
+&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2025/04/10/fluid-css/#giscus&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;giscus&quot;&gt;Giscus&lt;/h2&gt;
+&lt;/div&gt;
+&lt;p&gt;This blog previously used the Disqus comment system.
+While I personally had no issues with Disqus
+(and the blog had under ten comments at the time of migration!),
+I was made aware of some &lt;a href=&quot;https://www.logora.com/blog-posts/data-privacy-concerns-disqus&quot;&gt;data privacy concerns&lt;/a&gt;
+with the company.&lt;/p&gt;
+&lt;p&gt;Even for a site as innocuous as my own,
+I didn’t want contributors to feel uncomfortable with where their data may be stored (or sold to).
+Since my site is maintained on GitHub and deployed with GitHub Pages,
+keeping the comments on GitHub was a natural choice.&lt;/p&gt;
+&lt;p&gt;The biggest downside is the need for contributors to have a GitHub account—perhaps
+a deterrent for non-technical readers.
+Fortunately, once an account is created, &lt;em&gt;no technical knowledge is necessary&lt;/em&gt; to comment.
+The widget UI works just like any other comment system.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;div class=&quot;section-link&quot;&gt;
+&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2025/04/10/fluid-css/#conclusion&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;/div&gt;
+&lt;p&gt;As usual, I spent more time refining my site’s infrastructure than writing content.
+Even so, the project was insightful and fun.
+Side projects don’t always have to be lucrative or illustrious.
+The rejuvenating effect of simply building something beautiful is its own reward!&lt;/p&gt;
+&lt;/section&gt;
+</description>
+      <pubDate>Thu, 10 Apr 2025 00:00:00 GMT</pubDate>
+      <dc:creator>Neill Robson</dc:creator>
+      <guid>https://neillrobson.com/blog/2025/04/10/fluid-css/</guid>
+    </item>
+    <item>
       <title>Lamp of the Body</title>
       <link>https://neillrobson.com/blog/2025/04/04/lamp-of-the-body/</link>
       <description>&lt;section&gt;
@@ -1269,107 +1619,6 @@ below.&lt;/p&gt;
       <pubDate>Mon, 29 May 2017 00:00:00 GMT</pubDate>
       <dc:creator>Neill Robson</dc:creator>
       <guid>https://neillrobson.com/blog/2017/05/29/access-versus-ownership/</guid>
-    </item>
-    <item>
-      <title>The Tea</title>
-      <link>https://neillrobson.com/blog/2016/06/15/the-tea/</link>
-      <description>&lt;section&gt;
-&lt;blockquote&gt;
-&lt;p&gt;When in China, drink like the Chinese drink.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;That’s the goal, and the beverage of choice over here is, as you probably know, tea.&lt;/p&gt;
-&lt;p&gt;Tea is one aspect of Chinese culture that cannot be exaggerated by even the most embarrassingly inaccurate caricatures. It truly is everywhere: tea is served at nearly every restaurant and cafeteria you enter, you receive boiling water and teabags every morning in your dorm room, and you’ll more often see thermoses than water bottles in people’s hands on the street. Honestly, the unofficial adoption of tea as the national drink of China is (in my humble opinion) an excellent decision. After all, while tap water is risky and alcohol doesn’t quench one’s thirst, boiling water is bacteria-free, offers no health risks (other than burning oneself, of course) and, on the contrary, is allegedly healthier to drink than cold beverages! Furthermore, tea comes in so many forms and varieties (from the medicinal stuff to the nasty wannabe Starbucks knockoffs) that, like wine, one will never run out of new varieties and subtleties to discover.  The wine analogy is accurate on a cultural level, too, insofar as China’s attitude toward tea mirrors the wine aficionados of the West.&lt;/p&gt;
-&lt;p&gt;During my time here in China, I had the wonderful opportunity to visit both a tea museum and tea plantation. And of all the experiences I’ve had, I do believe that nowhere was the culture shock more pronounced than in experiencing China’s devotion to tea. There aren’t as many pictures in this post as usual (for reasons you will shortly understand), but hopefully the narratives I’m coming home with will do at least some justice to the experience! I’ll try a slightly different post format this time, where the story will go along independently of the images, which will have separate captions describing them.&lt;/p&gt;
-&lt;p&gt;In any case, without further ado…&lt;/p&gt;
-&lt;/section&gt;
-&lt;section&gt;
-&lt;div class=&quot;section-link&quot;&gt;
-&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2016/06/15/the-tea/#the-plantation&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;the-plantation&quot;&gt;The Plantation&lt;/h2&gt;
-&lt;/div&gt;
-&lt;p&gt;The most famous tea in China is without a doubt Longjing (龙井: “dragon well”) green tea. The only place in the world that it is grown is in the rural villages around West Lake in the city of Hangzhou, Zhejiang, China. Tea labeled “Longjing” from any other location (Sichuan, Yunan, etc.) is considered fake. Hangzhou takes their status as the sole producer of authentic Longjing tea very seriously; to visit one of these fabled tea plantations to get firsthand experience of the substance is only natural for any tourist in the area.&lt;/p&gt;
-&lt;figure&gt;
-&lt;img src=&quot;https://neillrobson.com/assets/images/2016/06/P_20160608_161804_HDR.jpg&quot; alt=&quot;Rolling hills of tea bushes&quot; title=&quot;The rolling hills of tea bushes.&quot;&gt;&lt;figcaption&gt;The rolling hills of tea bushes.&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;As the bus drove into the countryside, several relatively large houses slid past our view.&lt;/p&gt;
-&lt;p&gt;“Tea farmers,” explained our tour guide, “is one of most rich people in China. Actually only some business men more money than Longjing farmers.”&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;How much do they sell this stuff for?&lt;/em&gt; I wondered. &lt;em&gt;In restaurants, tea seems to be too cheap to charge for!&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Oh, how ignorant I was.&lt;/p&gt;
-&lt;p&gt;Arriving at the location where we were to be given a tour of the farming and processing procedures, we stepped off the bus into a humid gray day and meandered over to the nearest Longjing tea bush. They weren’t by any means in short supply; these bushes were about chest high on average and lined every hill and valley we drove through. Seeing the luscious, deep green leaves on the bush we were examining, I wondered why this one hadn’t yet been stripped clean.&lt;/p&gt;
-&lt;figure&gt;
-&lt;img src=&quot;https://neillrobson.com/assets/images/2016/06/P_20160603_150529.jpg&quot; alt=&quot;Tourists picking tea leaves&quot; title=&quot;Tourists love to pretend that they know how to pick tea leaves.&quot;&gt;&lt;figcaption&gt;Tourists love to pretend that they know how to pick tea leaves.&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;“Actually this one already harvested by farmers,” our guide corrected us. “Good quality Longjing tea, only sprout leaves used, maybe one or two on a twig.”&lt;/p&gt;
-&lt;p&gt;We were shown a recently harvested leaf and realized that they were hardly more than sprouts. Leaves any longer than your pinky toe were already too mature, and would be left on the bush until the next season. The ideal Longjing tea leaves, the guide informed us, should look like a small bird’s tongue protruding from its mouth. Me being the pragmatic guy I am, I naturally assumed that this was just a bunch of snobbish talk. However, further research revealed that such picky harvests are in fact vital to creating a tea with the proper chemical balance: extended exposure to the elements produces oxidation which ruins many of the precious nutrients within the leaves.&lt;/p&gt;
-&lt;p&gt;Naturally, to pick just the sprouting leaves on an individual or two-by-two basis, no machines are suitable for the task: only hand-picking will do the trick. There are three harvest times–one in Spring, Summer, and Autumn–and each harvest is supposedly of a “lower quality” than the previous one.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Okay,&lt;/em&gt; I thought, &lt;em&gt;that imposes a bit of a limit on how much of this stuff is actually produced. How many kilograms of tea are harvested per bush?&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;That answer depends on when during processing you are measuring the weight. Harvested leaves must be dry-fired in a large iron pan almost immediately upon separation from their host bush, so as to avoid the dreaded effects of oxidation. The first firing evaporates external moisture, and the second firing yields leaves in their final, dry (but not yet shriveled), sterile state. To avoid defacing the bird-tongue-like beauty of these little Longjing sprouts, the firing process must also be done by hand. I do not exaggerate when I say that these tea farmers stick bare palms into pans of roasting iron and spread the tea leaves around the bottom without so much as a blister appearing on their own fingers. Either those farmers’ hands are made of rubber, or those Longjing tea leaves should be used as insulation in fire-safe buildings. Holy cow.&lt;/p&gt;
-&lt;p&gt;So, the amount of tea per bush? Let’s just say it’s not measured in kilos, but in &lt;em&gt;grams&lt;/em&gt;. And we were standing in the only plantation officially recognized by China as producing this product.&lt;/p&gt;
-&lt;p&gt;Oh, and by the way, 1.3 billion people want to buy this stuff. So it’s pretty valuable.&lt;/p&gt;
-&lt;/section&gt;
-&lt;section&gt;
-&lt;div class=&quot;section-link&quot;&gt;
-&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2016/06/15/the-tea/#the-demonstration&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;the-demonstration&quot;&gt;The Demonstration&lt;/h2&gt;
-&lt;/div&gt;
-&lt;p&gt;After strolling around the plantation for a little while, we were escorted into a small building with simple, traditional Chinese architecture, and then through some sliding doors into what looks like a conference room. A long oval table stretches the length of the room, and on one end are situated several dozen bound paper packages and green cans. The group is seated and everyone is given an empty glass.&lt;/p&gt;
-&lt;p&gt;A smartly-dressed young woman enters the room and closes the doors behind her. Taking her place at the head of the conference table with the packages and cans, she proceeds to explain to the group where and how Longjing tea is enjoyed. At the same time, her hands, moving seemingly independent of her mind, begin unwrapping one of the packages and depositing a pinch of the contents into each of our glasses. Boiling water is added, and the Longjing tea in front of each of us begins to steep.&lt;/p&gt;
-&lt;figure&gt;
-&lt;img src=&quot;https://neillrobson.com/assets/images/2016/06/P_20160603_154723.jpg&quot; alt=&quot;A kettle of purple Yixing clay&quot; title=&quot;The taste profile of Longjing tea is supposedly diminished if the beverage is not first steeped in a kettle of purple Yixing clay.&quot;&gt;&lt;figcaption&gt;The taste profile of Longjing tea is supposedly diminished if the beverage is not first steeped in a kettle of purple Yixing clay.&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;Typically, the highest quality Longjing tea (the first pickings) are reserved specifically for government officials and for gifts distributed by Chinese foreign ambassadors. The little that remains is often auctioned off, yielding prices up to thousands of US dollars for a single gram (hardly enough to make a single glass). Because of its value, a person typically re-uses the same tea leaves in a given glass or thermos for an entire working day, refilling it with boiling water whenever necessary.&lt;/p&gt;
-&lt;p&gt;“Okay, time to begin appreciating Longjing tea,” announces our lecturer. We raise the glasses to our lips, but she scolds us and tells us first to swirl the tea in our glasses and then inhale the steam. …So this stuff really &lt;em&gt;is&lt;/em&gt; supposed to be consumed like wine.&lt;/p&gt;
-&lt;p&gt;Okay, we’ve sniffed it and it smells like collard greens. Now we flex our lips in preparation to consume the liquid and–&lt;/p&gt;
-&lt;p&gt;“Stop, you first need to look at Longjing tea. Hold glass like this and open wide eyes.”&lt;/p&gt;
-&lt;p&gt;She cups her hand over the glass and directs the steam from the cup into her left eye. Reluctantly, we all follow suit, and switch eyes on her command.&lt;/p&gt;
-&lt;p&gt;“This cures cataract,” explained our guide. “After look at computer for all day, you should look at Longjing tea instead.”&lt;/p&gt;
-&lt;p&gt;Okay, now it’s definitely time to start drinking it. After blowing the leaves out of the way, we take some tiny sips of the scalding hot liquid and, well, it tastes pretty good! “Collard greens” is still the first thought that comes to my mind, but that isn’t to say that the gustatory experience was unsatisfactory–on the contrary, I greatly enjoy collard greens, and I was perfectly fine drinking collard green broth if that’s what they do here in China.&lt;/p&gt;
-&lt;figure&gt;
-&lt;img src=&quot;https://neillrobson.com/assets/images/2016/06/P_20160603_154144.jpg&quot; alt=&quot;A teacup of pure white jade&quot; title=&quot;If you don&#39;t consume tea from a glass of pure white jade, you&#39;re obviously not worthy of it gracing your lips.&quot;&gt;&lt;figcaption&gt;If you don’t consume tea from a glass of pure white jade, you’re obviously not worthy of it gracing your lips.&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;Little did I know how much more this liquid was than simply “collard green broth.”&lt;/p&gt;
-&lt;p&gt;While we were sipping away, our lecturer was busy filling up a glass with her own mixture of substances, while talking away at a pace that would make Mr. Shamwow proud. Beginning with a healthy spoonful of rice, she explained that she was mixing together a scaled-down chemical equivalent of a person’s typical daily diet. She proceeded to add various oils and syrups, ranging from soy sauce to peanut oil to lard to molasses, and mixed the glass’s contents together into a brown mush.&lt;/p&gt;
-&lt;p&gt;“Some are people who drink water cleanse out diet,” she informed us as she poured a glass of water into the mush and swirled it around. “But not very effective.” The water was poured out again, much more turbid after the treatment, but leaving just as much mush in the original glass.&lt;/p&gt;
-&lt;p&gt;“Now we try same thing, but with Longjing tea.” She poured more water into the glass, then produced a small pill from one of the boxes on the table. “This same as ten cup of Longjing tea. You can also buy here and take, like vitamin.”&lt;/p&gt;
-&lt;p&gt;Into the glass the pill was thrown, and the mixture was carefully swirled once more.&lt;/p&gt;
-&lt;p&gt;“Now we empty again.” The disposal container received the second batch of dirty water–this time pitch black as it was poured away. A collective gasp went up from those who looked into the original glass of mush.&lt;/p&gt;
-&lt;p&gt;All that remained were fresh, white grains of rice.&lt;/p&gt;
-&lt;p&gt;“So you see, very good for body!”&lt;/p&gt;
-&lt;/section&gt;
-&lt;section&gt;
-&lt;div class=&quot;section-link&quot;&gt;
-&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2016/06/15/the-tea/#the-sale&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;the-sale&quot;&gt;The Sale&lt;/h2&gt;
-&lt;/div&gt;
-&lt;p&gt;Now, I don’t actually know how healthy it is to be drinking a liquid that is capable of extracting any visible presence of salt, sugar, and fat from one’s intestines. On the other hand, we just witnessed what seemed like pure witchcraft, and not one of us could claim to be left unaffected by the dramatic performance.&lt;/p&gt;
-&lt;figure&gt;
-&lt;img src=&quot;https://neillrobson.com/assets/images/2016/06/P_20160603_154323.jpg&quot; alt=&quot;An opulent tea room&quot; title=&quot;How I imagine the Count of Monte Cristo&#39;s tea room is decorated.&quot;&gt;&lt;figcaption&gt;How I imagine the Count of Monte Cristo’s tea room is decorated.&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;Our presenter, seeing our wide eyes and gaping mouths, knew it was time to make her strike.&lt;/p&gt;
-&lt;p&gt;An assistant was called in and the two women began throwing open the brown paper packages, revealing every shade of green Longjing leaves imaginable. The now mystical scent of collard greens filled the locked, windowless conference room. The orchestrator of the presentation slipped on a pair of skin-tight white gloves and picked up one of the green canisters.&lt;/p&gt;
-&lt;p&gt;“The leaves still fresh from roasting, not packaged for you yet,” we were informed, as the lid of the canister was popped off by those anonymous gloved hands and the empty, stainless inside was presented to the audience. “We package here for you now.”&lt;/p&gt;
-&lt;p&gt;A white glove dove into the mounds of Longjing leaves and pulled out a few handfuls, depositing them one by one into the canister until tea was piled to the top.&lt;/p&gt;
-&lt;p&gt;“This look full, but be assured,” warned our saleswoman, with rising urgency, “some settlement may occur.”&lt;/p&gt;
-&lt;p&gt;Placing a gloved hand over the top of the can, she bashed the bottom of the can into the table several times. While the sound was still ringing in our ears the hand was removed, revealing a can only two-thirds full.&lt;/p&gt;
-&lt;p&gt;“Is why we pack here, so you see we pack actually very full.”&lt;/p&gt;
-&lt;p&gt;Again and again she scooped up tea leaves, packing them into the can with force that must have rivaled the vacuum bags some of us used to bring our clothes to China. The lid was finally crammed onto the top, and the can was passed to the assistant who mechanically sealed it closed and rested it upon her hand.&lt;/p&gt;
-&lt;p&gt;“So you see, very full. If you doubt, please pack yourself.”&lt;/p&gt;
-&lt;p&gt;Other products were set out on display before us, from Longjing tea cakes to the ultra-concentrated colon-cleansing pills that sterilized the rice. After everything had been presented and positioned with care, the statement that everyone had been waiting for was uttered.&lt;/p&gt;
-&lt;p&gt;“You not barter here, we set fix price. For high-quality Longjing tea, one canister, regular price 600 yuan. We give to you half price, 300 yuan. You may pay RMB, USD, or the credit card.”&lt;/p&gt;
-&lt;p&gt;We all began to cast sidelong glances at each other as we shuffled through our wallets. This stuff obviously wasn’t the “first picking” seen at auctions–the price was too unbelievably low for that–but nonetheless, we had just seen with our eyes and tasted with our tongues the substance that was now being packaged before us, so we had little excuse to object to the trade.&lt;/p&gt;
-&lt;figure&gt;
-&lt;img src=&quot;https://neillrobson.com/assets/images/2016/06/P_20160603_164655.jpg&quot; alt=&quot;Compressed tea cakes&quot; title=&quot;Compressed tea cakes, with price tags running around $240-250.&quot;&gt;&lt;figcaption&gt;Compressed tea cakes, with price tags running around $240-250.&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;Large stacks of bills started trading hands. As I watched my peers, my only thought was how illicit this whole process seemed to be: sitting around a conference table in a locked room with no decor, hungrily observing gloved hands pack mysterious dried leaves into sealed canisters to be passed along to a customer for a large sum. When we were finally released into the open air again, hardly anybody carried their purchases in their bare hands: the vast majority left these goods tucked away with care in the bottom of a purse or backpack. Some people could be observed absentmindedly tapping their bags occasionally to reassure themselves that their purchase had not left them.&lt;/p&gt;
-&lt;p&gt;I only hope that we are not caught in customs returning home.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;And that’s the story of my experience with the culture of tea in China. Needless to say, the process left quite a significant impression on me, and I definitely believe that, regardless of its mystical and prodigious alleged properties, it will take a much more extensive role in my diet back home in the United States!&lt;/p&gt;
-&lt;figure&gt;
-&lt;img src=&quot;https://neillrobson.com/assets/images/2016/06/P_20160603_151658.jpg&quot; alt=&quot;Historic tea garden advertisement&quot; title=&quot;Hongchow&#39;s Mur Kee Tea Gardens: drinks so good, they&#39;ll make you wanna slap yo&#39; momma.&quot;&gt;&lt;figcaption&gt;Hongchow’s Mur Kee Tea Gardens: drinks so good, they’ll make you wanna slap yo’ momma.&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;So far, I’ve located green tea popsicles, green tea toothpaste, and green tea ice cream here in China. There’s no doubt that I’ll be paying premium to get my hands on the stuff back home. Say goodbye to my poor wallet…&lt;/p&gt;
-&lt;/section&gt;
-</description>
-      <pubDate>Wed, 15 Jun 2016 08:16:38 GMT</pubDate>
-      <dc:creator>Neill Robson</dc:creator>
-      <guid>https://neillrobson.com/blog/2016/06/15/the-tea/</guid>
     </item>
   </channel>
 </rss>

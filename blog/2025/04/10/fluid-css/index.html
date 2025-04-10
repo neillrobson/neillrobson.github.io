@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+    
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Fluid CSS | Neill Robson's Website</title>
+
+    <script>
+      document.documentElement.classList.remove('no-js');
+      document.documentElement.classList.add('js');
+
+      function changeGiscusTheme (theme = 'preferred_color_scheme') {
+        function sendMessage(message) {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+
+        sendMessage({
+          setConfig: {
+            theme: theme
+          }
+        });
+      }
+
+      function switchLight() {
+        localStorage.setItem("mode", "light");
+        document.getElementById("theme-light").checked = true;
+        changeGiscusTheme('light');
+      }
+
+      function switchDark() {
+        localStorage.setItem("mode", "dark");
+        document.getElementById("theme-dark").checked = true;
+        changeGiscusTheme('dark');
+      }
+
+      function switchAuto() {
+        localStorage.removeItem("mode");
+        document.getElementById("theme-system").checked = true;
+        changeGiscusTheme('preferred_color_scheme');
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const mode = localStorage.getItem("mode");
+
+        if (mode === "light") switchLight();
+        if (mode === "dark") switchDark();
+
+        const labels = [
+          "theme-system",
+          "theme-dark",
+          "theme-light",
+        ];
+
+        labels.forEach(label => {
+          const checkbox = document.getElementById(label);
+          const icon = document.querySelector(`label[for="${label}"]`);
+
+          icon.addEventListener('focus', event => {
+            event.preventDefault();
+          });
+
+          icon.addEventListener('keyup', event => {
+            if (event.keyCode == 32) {
+              checkbox.click();
+            }
+          });
+        });
+      });
+    </script>
+
+    <meta name="description" content="During a recent website re-design, I was delighted by the robust and flexible interface provided by modern CSS.">
+    <meta name="author" content="Neill Robson">
+
+    <meta property="og:title" content="Fluid CSS | Neill Robson's Website">
+    <meta property="og:description" content="During a recent website re-design, I was delighted by the robust and flexible interface provided by modern CSS.">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neillrobson.com/blog/2025/04/10/fluid-css/">
+    <link rel="canonical" href="https://neillrobson.com/blog/2025/04/10/fluid-css/">
+
+    
+
+    <link rel="shortcut icon" href="/assets/icon/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/assets/style/main.css">
+    <link rel="stylesheet" href="/assets/style/social.css">
+    <link rel="stylesheet" href="/assets/style/code.css">
+</head>
+
+
+  <body>
+    <input type="radio" name="color-theme" value="system" checked="" onchange="switchAuto()" id="theme-system">
+    <input type="radio" name="color-theme" value="dark" onchange="switchDark()" id="theme-dark">
+    <input type="radio" name="color-theme" value="light" onchange="switchLight()" id="theme-light">
+    <div class="container">
+      <div class="header">
+  
+  <picture id="logo">
+    <img
+      class="rounded"
+      src="https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d=https%3A%2F%2Fneillrobson.com%2Fassets%2Fimages%2F2023-profile.jpg"
+      alt="Neill Robson"
+    />
+  </picture>
+  <div id="title">
+    Neill Robson's Website
+  </div>
+  <input type="checkbox" id="menu-toggle" />
+  <label for="menu-toggle" class="nav">
+    
+    <a href="/" title="About">About</a>
+    
+    <a href="/now" title="Now">Now</a>
+    
+    <a href="/blog" title="Blog">Blog</a>
+    
+    <a href="/archive" title="Archive">Archive</a>
+    
+    <a href="/projects" title="Projects">Projects</a>
+    
+    <a href="/contact" title="Contact">Contact</a>
+    
+    <div class="utils">
+      <a href="/feed.xml" title="RSS">RSS</a>
+      <fieldset id="theme-switcher" class="visible">
+        <legend>Theme</legend>
+        <label for="theme-system" tabindex="0">
+          <svg id="icon-system" viewBox="0 0 32 32" fill="currentColor" role="img">
+            <title>System default theme</title>
+            <path d="M16 9c3.9 0 7 3.1 7 7s-3.1 7-7 7"></path><path d="M16 .5C7.4.5.5 7.4.5 16S7.4 31.5 16 31.5 31.5 24.6 31.5 16 24.6.5 16 .5zm0 28.1V23c-3.9 0-7-3.1-7-7s3.1-7 7-7V3.4C23 3.4 28.6 9 28.6 16S23 28.6 16 28.6z"></path>
+          </svg>
+        </label>
+
+        <label for="theme-dark" tabindex="0">
+          <svg id="icon-moon" viewBox="0 0 16 16" fill="none" role="img">
+            <title>Dark theme</title>
+            <path d="M2 7.63261C2 11.1492 4.77936 14 8.20787 14C10.8473 14 13.1019 12.3105 14 9.92836C13.2887 10.271 12.4945 10.4626 11.6567 10.4626C8.60912 10.4626 6.13858 7.92853 6.13858 4.80265C6.13858 3.49533 6.5707 2.29154 7.29643 1.33334C4.30002 1.78554 2 4.43357 2 7.63261Z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </label>
+
+        <label for="theme-light" tabindex="0">
+          <svg id="icon-sun" viewBox="0 0 16 16" fill="none" role="img">
+            <title>Light theme</title>
+            <path d="M7.99968 13.3333L7.99967 14.6667M7.99968 1.33334L7.99968 2.66668M13.333 8.00001H14.6663M1.33301 8.00001H2.66634M11.9997 11.9997L12.9997 12.9997M2.99967 2.99967L3.99969 3.9997M11.9997 4.00001L12.9997 3.00001M2.99967 13L3.99967 12M11.333 8.00001C11.333 9.84096 9.84062 11.3333 7.99967 11.3333C6.15872 11.3333 4.66634 9.84096 4.66634 8.00001C4.66634 6.15906 6.15872 4.66668 7.99967 4.66668C9.84062 4.66668 11.333 6.15906 11.333 8.00001Z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </label>
+      </fieldset>
+    </div>
+  </label>
+</div>
+
+
+      <div class="main">
+        
+<div class="entry">
+    <div class="title">
+        <div class="date">
+            <a class="small" href="/blog/2025/04/10/fluid-css/">April 10, 2025</a>
+        </div>
+        <h1>Fluid CSS</h1>
+    </div>
+
+    <section>
+<p>During a recent website re-design, I was delighted by the robust and flexible interface provided by modern CSS.</p>
+<p>I’ve historically felt rather cold toward CSS.
+I considered it a disjointed “bag of tricks” for styling websites.
+Developers throw arbitrary solutions out until something works,
+even if the resulting code is not intuitive.</p>
+<p>My perspective was largely due to my own ignorance.
+Shifting my mindset away from breakpoint-based designs,
+while learning some new<label for="sn-5" class="margin-toggle sidenote-number"></label><input id="sn-5" type="checkbox" class="margin-toggle"><span class="sidenote">and well-supported!</span> CSS features,
+created a joyful design experience that I’m excited to share.</p>
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#break-away-from-breakpoints"></a><h2 id="break-away-from-breakpoints">Break Away from Breakpoints</h2>
+</div>
+<blockquote>
+<p>Be the browser’s mentor, not its micromanager.</p>
+<p><cite>Andy Bell, <a href="https://buildexcellentwebsit.es/">Build Excellent Websites</a></cite></p>
+</blockquote>
+<p>Prior to the current site design, my main CSS file had about <a href="https://github.com/neillrobson/neillrobson.github.io/blob/ad6585eb78cad9ebe744ac8882834cf5994d426b/webpack/style.scss#L666">eighty-four lines of <code>@media</code> queries</a>.
+While the rest of the stylesheet defined my site’s layout on a large desktop screen,
+the media-query styles overrode those rules to make the site palatable on mobile viewports.
+The overrides triggered at three distinct screen width breakpoints.</p>
+<p>Nothing is inherently wrong with media queries,
+but I found them a hassle to maintain.
+Every time I wanted to adjust an element’s style,
+I had to think about what CSS to change in <em>four different locations</em>:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">div</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* here, */</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@media</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 976px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">div</span> <span class="token punctuation">{</span>
+        <span class="token comment">/* and here, */</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@media</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 760px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">div</span> <span class="token punctuation">{</span>
+        <span class="token comment">/* and here, */</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@media</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">div</span> <span class="token punctuation">{</span>
+        <span class="token comment">/* and here, too. */</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>I was juggling four distinct website designs in my mind,
+each only suited for a certain viewport width.
+None of them looked good near the breakpoint widths.</p>
+<p>An <em>unstyled</em> paragraph on an otherwise blank webpage reflows for any viewport.
+Isn’t it ironic that <strong>adding styles makes the design less flexible</strong>?</p>
+<p>Andy Bell advocates for writing stylesheets that work at <em>any</em> width.
+Even if you envision a few distinct layouts for different devices,
+write style rules that scale smoothly between those two layouts.
+The upfront effort creating those rules is higher,
+but it results in a single design to maintain down the line.</p>
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#the-scaling-recipe"></a><h2 id="the-scaling-recipe">The Scaling Recipe</h2>
+</div>
+<p>We want to scale our measurements by the viewport width.
+The <code>vw</code> unit is perfect for the task.
+A measurement of <code>1vw</code> is equal to 1% of the viewport width.</p>
+<p>A <em>very</em> simple scaling font size might be:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>16px + 1vw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The math is simple:
+<code>font size = 16px + (0.01 * screen width)</code>.
+Nineteen pixels at a 300px viewport, twenty-six pixels at a 1000px viewport…
+Granted, for folks with ultra-wide 8K monitors,
+this scaling might get out of hand.</p>
+<p>Fortunately, CSS also has a <code>clamp</code> function!
+If the font size should scale between <code>16px</code> and <code>24px</code>,
+we could twiddle with the values to find scaling that feels good:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token function">clamp</span><span class="token punctuation">(</span>16px<span class="token punctuation">,</span> <span class="token function">calc</span><span class="token punctuation">(</span>13px + 0.9vw<span class="token punctuation">)</span><span class="token punctuation">,</span> 24px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The font scales nicely, no matter how the viewport is resized.</p>
+<p>It would be nice for the middle quantities to be determined by something more than a gut check, though.
+If I still have two ideal viewport widths in mind for mobile versus desktop styling,
+a bit of algebra (and CSS pre-processing in SASS) can go a long way:<label for="sn-derivation" class="margin-toggle sidenote-number"></label><input id="sn-derivation" type="checkbox" class="margin-toggle"><span class="sidenote">The variables <code>$v</code> and <code>$p</code> boil down to the variables in a two-degree system of linear equations.
+Or, for the more geometrically-minded,
+the solution is finding the equation for the line connecting two points <code>&lt;$breakpoint-min, $min&gt;</code>, <code>&lt;$breakpoint-max, $max&gt;</code>.
+The slope is <code>$v</code> and the y-intercept is <code>$p</code>.</span></p>
+<pre class="language-scss"><code class="language-scss"><span class="token keyword">@mixin</span> <span class="token function">responsive</span><span class="token punctuation">(</span>
+  <span class="token variable">$property</span><span class="token punctuation">,</span>
+  <span class="token variable">$min</span><span class="token punctuation">,</span>
+  <span class="token variable">$max</span><span class="token punctuation">,</span>
+  <span class="token variable">$breakpoint-min</span><span class="token punctuation">,</span>
+  <span class="token variable">$breakpoint-max</span>
+<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token property"><span class="token variable">$v</span></span><span class="token punctuation">:</span> math.<span class="token function">div</span><span class="token punctuation">(</span><span class="token variable">$max</span> <span class="token operator">-</span> <span class="token variable">$min</span><span class="token punctuation">,</span> <span class="token variable">$breakpoint-max</span> <span class="token operator">-</span> <span class="token variable">$breakpoint-min</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property"><span class="token variable">$p</span></span><span class="token punctuation">:</span> <span class="token variable">$min</span> <span class="token operator">-</span> <span class="token variable">$v</span> <span class="token operator">*</span> <span class="token variable">$breakpoint-min</span><span class="token punctuation">;</span>
+  <span class="token property"><span class="token variable">#{$property}</span></span><span class="token punctuation">:</span> <span class="token function">clamp</span><span class="token punctuation">(</span><span class="token variable">#{$min}</span><span class="token punctuation">,</span> <span class="token function">calc</span><span class="token punctuation">(</span>#<span class="token punctuation">{</span><span class="token variable">$v</span> <span class="token operator">*</span> 100<span class="token punctuation">}</span>vi <span class="token operator">+</span> <span class="token variable">#{$p}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token variable">#{$max}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">p </span><span class="token punctuation">{</span>
+    <span class="token comment">// Font size is 16px when viewport falls below 400px</span>
+    <span class="token comment">// and is 24px when viewport expands beyond 1000px</span>
+    <span class="token comment">// with linear scaling between those breakpoints</span>
+    <span class="token keyword">@include</span> <span class="token function">responsive</span><span class="token punctuation">(</span>font-size<span class="token punctuation">,</span> 16px<span class="token punctuation">,</span> 24px<span class="token punctuation">,</span> 400px<span class="token punctuation">,</span> 1000px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Once the recipe is derived, this scaling strategy can be applied to <em>any measurement</em>:</p>
+<ul>
+<li>font size</li>
+<li>paragraph margins</li>
+<li>sidebar width</li>
+</ul>
+<p>Your designs will scale smoothly in every viewport without a single explicit <code>@media</code> breakpoint.</p>
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#inside-out-units"></a><h2 id="inside-out-units">Inside-Out Units</h2>
+</div>
+<p>Basing layout on static pixel dimensions can be brittle, however.
+Even on small viewports,
+users may attempt to scale the <em>text</em> to increase visibility.
+If my layout depends on 16-pixel body text,
+enough font scaling can still make the site unreadable.</p>
+<p>The <code>em</code> and <code>rem</code><label for="sn-6" class="margin-toggle sidenote-number"></label><input id="sn-6" type="checkbox" class="margin-toggle"><span class="sidenote">“em” and “root em,” referring to the width of an em-dash. Like this one—see?</span>
+units can be used to address this concern.
+Even so, I hardly used those units in a productive manner.
+I would set my <code>:root</code> font size to <code>10px</code>, such that <code>0.1rem === 1px</code>,
+and simply do mental math to convert my pixel dimensions to the “better” units.</p>
+<p>I missed the point.</p>
+<p>Browsers that scale text often override the <code>:root</code> font size anyhow,
+so my mental math was wrong.
+The base font size should be controllable by the end user,
+to match their accessibility needs.</p>
+<p>How could I define styles that suit whatever font size the user sets?</p>
+<p>Rather than fitting <code>em</code> to my fixed-pixel size preference,
+I could let it sit at the browser’s (or user’s) default,
+and assign dimensions <em>relative to their preference</em>.</p>
+<p>For example, my website’s font size is set to the following:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">html</span> <span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token function">clamp</span><span class="token punctuation">(</span>1rem<span class="token punctuation">,</span> 0.8rem + 0.9vi<span class="token punctuation">,</span> 1.5rem<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p><strong>I have no idea what pixel size 1rem might equal.</strong>
+I just know that, on large screens, I want all text to have a slight (50%) boost at most,
+while never falling below whatever dimension the user set.
+The scaling factors, <code>0.8rem + 0.9vi</code>, were chosen based on gut feel
+while I shifted the viewport around.</p>
+<p>Using relative units in this way often aligns your layout with typographic best practices.
+For example, body text is generally most readable with a line length of 45-90 characters,<label for="sn-butterick" class="margin-toggle sidenote-number"></label><input id="sn-butterick" type="checkbox" class="margin-toggle"><span class="sidenote"><a href="https://practicaltypography.com/line-length.html">Butterick’s Practical Typography</a> gives this recommendation, along with many other excellent guidelines.</span>
+so the following style is a solid baseline:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* 1ch =~ width of a "0" character */</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token function">clamp</span><span class="token punctuation">(</span>60%<span class="token punctuation">,</span> 60ch<span class="token punctuation">,</span> 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">max-width</span><span class="token punctuation">:</span> 900px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>With a single selector and two declarations,
+we’ve expressed a standard with universal applicability:</p>
+<ul>
+<li>Wide viewports have a pleasant 40% right margin;</li>
+<li>narrow viewports use the whole screen;</li>
+<li>the total paragraph width has a fixed upper bound;</li>
+<li>when all other constraints are satisfied,
+prefer to keep the width around 60 characters.</li>
+</ul>
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#container-queries"></a><h2 id="container-queries">Container Queries</h2>
+</div>
+<p>Keeping with the theme of relative content-centric styling,
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries#container_query_length_units">container query units</a>
+are an exciting recent addition to the CSS toolkit.</p>
+<p>Their definitions are consistent with viewport units:
+<code>1cqw</code> is 1% of the Queried Container’s Width.
+But rather than being relative to the entire viewport,
+they are relative to a bounding box that you define in CSS.</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.container</span> <span class="token punctuation">{</span>
+    <span class="token property">container-type</span><span class="token punctuation">:</span> inline-size<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.container .margin</span> <span class="token punctuation">{</span>
+    <span class="token comment">/*
+        cqi: "container query inline"
+        "inline" is equivalent to "width" in most languages
+    */</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 25cqi<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>No matter how deeply nested <code>.margin</code> elements are,
+they will always have a width equal to 25% <em>of the ancestor <code>.container</code> size</em>.</p>
+<p>Declaring elements as containers has consequences:</p>
+<ul>
+<li>The queryable axes must have <em>extrinsic</em> (or explicit) dimensions set.<label for="sn-extrinsic" class="margin-toggle sidenote-number"></label><input id="sn-extrinsic" type="checkbox" class="margin-toggle"><span class="sidenote">The limitation is somewhat intuitive.
+If children will be sized based on the parent width,
+the parent <em>cannot</em> “shrink-wrap” to its contents without creating an unresolvable self-reference.
+Fortunately, block elements stretch to fill the available width (inline size) by default,
+so an <code>inline-size</code> container type usually doesn’t cause issues.
+A container type of just <code>size</code> <em>will shrink to zero height</em> if height is not explicitly set, though.</span></li>
+<li>Each container defines a new “containment context,” preventing layout flows between containers:
+<ul>
+<li>Subsequent content is forced to clear floating elements in previous containers.</li>
+<li>CSS counter state<label for="sn-counter" class="margin-toggle sidenote-number"></label><input id="sn-counter" type="checkbox" class="margin-toggle"><span class="sidenote">CSS counters are how sidenotes (like this one!) are automatically numbered.
+If each <code>&lt;p&gt;</code> or <code>&lt;section&gt;</code> were declared a container,
+every sidenote would reset to 1.</span> is reset in each container.</li>
+</ul>
+</li>
+</ul>
+<p>However, when used carefully, some incredible formatting can be achieved.
+For example, my sidenotes (on desktop screens) are evenly aligned to the right margin,
+regardless of their relative position in the body text.</p>
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#color-scheme-switcher"></a><h2 id="color-scheme-switcher">Color Scheme Switcher</h2>
+</div>
+<blockquote>
+<p>Yet another Internet site adds “unreadable mode.” Got it.</p>
+<p><cite><a href="https://danlj.org/mkj/">Michael Johnson</a></cite></p>
+</blockquote>
+<p>I tend to use light color schemes at a low monitor brightness for daily work.
+My preference is purely personal, and I appreciate designs that support both light and dark color schemes.</p>
+<p>CSS offers a media query for the user’s preferred color scheme:</p>
+<pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">prefers-color-scheme</span><span class="token punctuation">:</span> dark<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>But not everyone knows how to switch the preference for their browser.
+Others lack the patience to navigate through all those menus.
+I wanted a way for my site to respect the browser default,
+and also provide a means to quickly switch the color scheme.</p>
+<p>With some creative markup (and a few accessibility caveats),
+a solution with only HTML and CSS is possible!</p>
+<p>CSS provides a <code>:checked</code> pseudo-class for checkboxes and radio inputs that are selected.
+The first proof-of-concept consisted of adding radio control as a child of the body tag:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>color-theme<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>system<span class="token punctuation">"</span></span> <span class="token attr-name">checked</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>theme-system<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>color-theme<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dark<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>theme-dark<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>color-theme<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>light<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>theme-light<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token comment">&lt;!-- content --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></code></pre>
+<p>and then adding CSS color variables:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">body:has(#theme-dark:checked)</span> <span class="token punctuation">{</span>
+    <span class="token property">--background-color</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span>
+    <span class="token property">--color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>But I didn't want unstyled radio buttons sitting at the top of every page.
+HTML forms support clicking <code>&lt;label&gt;</code> elements to select the corresponding input field,<label for="sn-label" class="margin-toggle sidenote-number"></label><input id="sn-label" type="checkbox" class="margin-toggle"><span class="sidenote">This functionality is particularly useful when filling out forms
+on extremely small viewports, where tapping the tiny checkboxes is infeasible.</span>
+and the input control doesn’t need to be located anywhere near the label.</p>
+<p>So I put some labels into my navigation bar as such:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fieldset</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>theme-switcher<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>visible<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>legend</span><span class="token punctuation">></span></span>Theme<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>legend</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>theme-system<span class="token punctuation">"</span></span> <span class="token attr-name">tabindex</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token comment">&lt;!-- system icon --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>theme-dark<span class="token punctuation">"</span></span> <span class="token attr-name">tabindex</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token comment">&lt;!-- moon icon --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>theme-light<span class="token punctuation">"</span></span> <span class="token attr-name">tabindex</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token comment">&lt;!-- sun icon --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fieldset</span><span class="token punctuation">></span></span></code></pre>
+<p>I could style them however I wished.
+It has some limitations—discussed in the <a href="#keeping-js-at-a-minimum">following section</a>—but the base functionality operates without a lick of Javascript!</p>
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#keeping-js-at-a-minimum"></a><h2 id="keeping-js-at-a-minimum">Keeping JS at a Minimum</h2>
+</div>
+<blockquote>
+<p>In 5 years nothing you (personally, not a publicly traded company)
+build today that depends on Javascript in the browser to display content will be available,
+visible, or archived anywhere on the web.</p>
+<p><cite>Tantek Çelik, <a href="https://tantek.com/2025/069/t1/ten-years-jsdr-javascript-required-didnt-read">JavaScript Required; Didn’t Read</a></cite></p>
+</blockquote>
+<p>As a software engineer with a focus on front-end web development,
+I have nothing against Javascript and related web frameworks.
+Those technologies are how I make a living.</p>
+<p>However, I also know that web technologies and patterns shift at a blistering pace.
+Javascript is unavoidable when developing a web-hosted <em>application</em>,
+but a site focused on static <em>content delivery</em> doesn’t need such infrastructure.
+Given the impressive capabilities that modern HTML and CSS afford,
+I set out to redesign this site with no Javascript at all.</p>
+<p>The goal of purging JS was… mostly achieved.</p>
+<p>I left a single inline <code>&lt;script&gt;</code> in the head of the site’s document.
+Crucially, if you disable JS in your browser or delete the script entirely,
+<strong>the content and styling of the site is identical.</strong>
+In other words, the site is not <em>dependent</em> on Javascript to display anything authored by me.</p>
+<p>Why did I include JS at all?
+The script serves a few purposes, in order of decreasing importance:</p>
+<ol start="0">
+<li>
+<p>The color scheme selector is not keyboard-accessible by default.
+Label elements can be clicked to activate their corresponding input controls,
+but keyboard interactions don’t work.
+A few event listeners override the default behavior for tab-focus and the space bar,
+causing the labels behave more like buttons or links.</p>
+</li>
+<li>
+<p>The color scheme preference does not persist across page navigation.
+Javascript is necessary to read or write any form of browser storage.
+Without that persistence, the color scheme choice resets to the browser default
+on every new page visited.</p>
+</li>
+<li>
+<p>The comment system, <a href="https://giscus.app/">Giscus</a>,
+needs a notification to match its color scheme with the main site.
+Giscus itself also uses some Javascript of its own—but it’s all contained
+in an iframe.</p>
+</li>
+</ol>
+<p>Notice that all of these features relate purely to the controls of an aesthetic aspect of the site.
+Even if none of the Javascript persists in an archive,
+all of the content will still be rendered in a reasonable manner.</p>
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#giscus"></a><h2 id="giscus">Giscus</h2>
+</div>
+<p>This blog previously used the Disqus comment system.
+While I personally had no issues with Disqus
+(and the blog had under ten comments at the time of migration!),
+I was made aware of some <a href="https://www.logora.com/blog-posts/data-privacy-concerns-disqus">data privacy concerns</a>
+with the company.</p>
+<p>Even for a site as innocuous as my own,
+I didn’t want contributors to feel uncomfortable with where their data may be stored (or sold to).
+Since my site is maintained on GitHub and deployed with GitHub Pages,
+keeping the comments on GitHub was a natural choice.</p>
+<p>The biggest downside is the need for contributors to have a GitHub account—perhaps
+a deterrent for non-technical readers.
+Fortunately, once an account is created, <em>no technical knowledge is necessary</em> to comment.
+The widget UI works just like any other comment system.</p>
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#conclusion"></a><h2 id="conclusion">Conclusion</h2>
+</div>
+<p>As usual, I spent more time refining my site’s infrastructure than writing content.
+Even so, the project was insightful and fun.
+Side projects don’t always have to be lucrative or illustrious.
+The rejuvenating effect of simply building something beautiful is its own reward!</p>
+</section>
+
+    
+        <br/>
+        <p>
+            
+                
+            
+                
+                    <a class="small tag" href="/tag/software">software</a>
+                
+            
+        </p>
+    
+
+    <div class="clear"></div>
+
+    
+        <script src="https://giscus.app/client.js"
+        data-repo="neillrobson/neillrobson.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTYxODUyNzA="
+        data-category="Giscus"
+        data-category-id="DIC_kwDOBuzYts4Co3Ec"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/neillrobson/neillrobson.github.io/discussions">comments</a> powered by <a href="https://giscus.app/">Giscus.</a></noscript>
+
+    
+
+    
+    
+
+    
+        <hr class="full"/>
+        <div class="pagination-cards">
+        
+            <a href="/blog/2025/04/04/lamp-of-the-body/">
+                <h5>Previous post</h5>
+                <span class="title">Lamp of the Body</span>
+                <span class="summary"> Speculative fiction about the life of a member of the MPAA. </span>
+            </a>
+        
+        
+        </div>
+    
+</div>
+
+
+        <div class="clear"></div>
+      </div>
+
+      <div class="footer">
+  <p>
+    <small class="copyright">
+      &copy; 2025 Neill Robson. Layout inspired by
+      <a href="https://blot.im/" target="_blank">Blot</a>.
+      <br />
+      This site is hosted on
+      <a href="https://github.com" target="_blank">GitHub</a> and built with
+      <a href="https://www.11ty.dev/" target="_blank">Eleventy</a>. Icons by
+      <a href="https://icons8.com" target="_blank">Icons8</a>.
+    </small>
+  </p>
+</div>
+
+    </div>
+  </body>
+</html>

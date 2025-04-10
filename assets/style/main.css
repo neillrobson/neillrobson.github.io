@@ -504,7 +504,7 @@ ul {
 }
 
 li {
-  margin-inline-start: 1rem;
+  margin-inline-start: 1.2rem;
 }
 
 /* IMAGES */
@@ -591,11 +591,11 @@ figure img {
 }
 li > .sidenote,
 li > .marginnote {
-  margin-right: calc(-100cqi + 2 * var(--aside-width) + 100% + 1rem);
+  margin-right: calc(-100cqi + 2 * var(--aside-width) + 100% + 1.2rem);
 }
 li li > .sidenote,
 li li > .marginnote {
-  margin-right: calc(-100cqi + 2 * var(--aside-width) + 100% + 2rem);
+  margin-right: calc(-100cqi + 2 * var(--aside-width) + 100% + 2.4rem);
 }
 
 .sidenote-number {
