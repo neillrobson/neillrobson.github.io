@@ -52,3 +52,12 @@ Source code for the personal website and blog of Neill Robson.
 - [x] Switch to [Giscus](https://github.com/giscus/giscus) for comments
   - [ ] Maybe: migrate old Disqus comments to Giscus?
   - [x] Set a per-page og:description for better top-level thread bodies.
+
+### Accessibility
+
+- [ ] Header links
+  - [ ] Add scroll-margin-top
+  - [ ] Add screen-reader explanatory text
+  - [ ] Positioning enhancements
+    - [ ] Container padding: max(2ch, 24px)
+    - [ ] Button: 24px square, 16px icon (hash?)
