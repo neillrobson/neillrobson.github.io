@@ -55,9 +55,9 @@ Source code for the personal website and blog of Neill Robson.
 
 ### Accessibility
 
-- [ ] Header links
-  - [ ] Add scroll-margin-top
-  - [ ] Add screen-reader explanatory text
-  - [ ] Positioning enhancements
-    - [ ] Container padding: max(2ch, 24px)
-    - [ ] Button: 24px square, 16px icon (hash?)
+- [x] Header links
+  - [x] Add scroll-margin-top
+  - [ ] Add screen-reader explanatory text: decided not to do unless we put it into the markdown-it-tufte lib.
+  - [x] Positioning enhancements
+    - [x] Container padding: max(2ch, 24px)
+    - [x] Button: 24px square, 16px icon (hash?)

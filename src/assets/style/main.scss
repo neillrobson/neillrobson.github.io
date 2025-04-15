@@ -151,7 +151,7 @@ body {
   word-wrap: break-word;
   max-width: 1700px;
   margin: 0 auto;
-  padding-inline: min(8%, 2ch);
+  padding-inline: max(8%, 24px);
   display: grid;
   grid-template: auto 1fr auto / minmax(0, 100%);
   container-type: inline-size;
@@ -615,6 +615,23 @@ figure img {
   position: relative;
 }
 
+[id] {
+  // Add a gap to the top of the page when linking to an element.
+  scroll-margin-top: 3rem;
+}
+
+.section-link {
+  display: grid;
+  grid-template-columns: min-content auto;
+  align-items: center;
+  gap: 2px;
+  margin-block: 3rem 1.5rem;
+
+  h2 {
+    margin-block: 0;
+  }
+}
+
 .section-link,
 .newthought {
   position: relative;
@@ -624,22 +641,12 @@ figure img {
 .newthought > a:first-child {
   z-index: 1;
   position: relative;
-  float: left;
   display: block;
-  width: 1.5em;
-  height: 1.5em;
-  margin-inline-start: -1.5em;
-  opacity: 0;
+  float: left;
+  width: max(24px, 1.25em);
+  height: max(24px, 1.25em);
+  margin-inline-start: calc(-1 * (max(24px, 1.25em) + 2px));
   box-shadow: none;
-}
-
-.section-link > a:first-child {
-  margin-block-start: -0.2em;
-}
-
-.section-link:hover > a:first-child,
-.newthought:hover > a:first-child {
-  opacity: 1;
 }
 
 .section-link > a:first-child::before,
@@ -652,8 +659,8 @@ figure img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 0.8em;
-  height: 0.8em;
+  width: min(0.8em, 16px);
+  height: min(0.8em, 16px);
 }
 
 /* New Thoughts */
