@@ -151,7 +151,7 @@ body {
   word-wrap: break-word;
   max-width: 1700px;
   margin: 0 auto;
-  padding-inline: max(8%, 24px);
+  padding-inline: 24px;
   display: grid;
   grid-template: auto 1fr auto / minmax(0, 100%);
   container-type: inline-size;
@@ -299,6 +299,7 @@ section > *:not(.margin),
   box-sizing: border-box;
   font-family: var(--serif);
   font-size: 0.8rem;
+  hyphens: auto;
 }
 
 .margin blockquote {
@@ -338,7 +339,7 @@ section > *:not(.margin),
   @include asides;
   width: var(--aside-width);
   margin-inline-start: calc(-1 * var(--aside-width));
-  padding-inline-end: 2ch;
+  padding-inline-end: calc(max(24px, 1.25rem) + 2px);
   text-align: right;
   clear: left;
 
@@ -624,7 +625,6 @@ figure img {
   display: grid;
   grid-template-columns: min-content auto;
   align-items: center;
-  gap: 2px;
   margin-block: 3rem 1.5rem;
 
   h2 {
@@ -643,9 +643,9 @@ figure img {
   position: relative;
   display: block;
   float: left;
-  width: max(24px, 1.25em);
-  height: max(24px, 1.25em);
-  margin-inline-start: calc(-1 * (max(24px, 1.25em) + 2px));
+  width: max(24px, 1.25rem);
+  height: max(24px, 1.25rem);
+  margin-inline-start: calc(-1 * (max(24px, 1.25rem) + 2px));
   box-shadow: none;
 }
 
