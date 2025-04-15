@@ -83,7 +83,7 @@ body:has(#theme-light:checked) {
   word-wrap: break-word;
   max-width: 1700px;
   margin: 0 auto;
-  padding-inline: min(8%, 2ch);
+  padding-inline: 24px;
   display: grid;
   grid-template: auto 1fr auto/minmax(0, 100%);
   container-type: inline-size;
@@ -223,6 +223,7 @@ section > *:not(.margin),
   box-sizing: border-box;
   font-family: var(--serif);
   font-size: 0.8rem;
+  hyphens: auto;
 }
 
 .margin blockquote {
@@ -262,7 +263,7 @@ section > *:not(.margin),
   --aside-width: clamp(0cqi, 16.6666666667cqi - calc(66.6666666667px - 0cqi), 10cqi);
   width: var(--aside-width);
   margin-inline-start: calc(-1 * var(--aside-width));
-  padding-inline-end: 2ch;
+  padding-inline-end: calc(max(24px, 1.25rem) + 2px);
   text-align: right;
   clear: left;
 }
@@ -526,6 +527,20 @@ figure img {
   position: relative;
 }
 
+[id] {
+  scroll-margin-top: 3rem;
+}
+
+.section-link {
+  display: grid;
+  grid-template-columns: min-content auto;
+  align-items: center;
+  margin-block: 3rem 1.5rem;
+}
+.section-link h2 {
+  margin-block: 0;
+}
+
 .section-link,
 .newthought {
   position: relative;
@@ -535,22 +550,12 @@ figure img {
 .newthought > a:first-child {
   z-index: 1;
   position: relative;
-  float: left;
   display: block;
-  width: 1.5em;
-  height: 1.5em;
-  margin-inline-start: -1.5em;
-  opacity: 0;
+  float: left;
+  width: max(24px, 1.25rem);
+  height: max(24px, 1.25rem);
+  margin-inline-start: calc(-1 * (max(24px, 1.25rem) + 2px));
   box-shadow: none;
-}
-
-.section-link > a:first-child {
-  margin-block-start: -0.2em;
-}
-
-.section-link:hover > a:first-child,
-.newthought:hover > a:first-child {
-  opacity: 1;
 }
 
 .section-link > a:first-child::before,
@@ -563,8 +568,8 @@ figure img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 0.8em;
-  height: 0.8em;
+  width: min(0.8em, 16px);
+  height: min(0.8em, 16px);
 }
 
 /* New Thoughts */
