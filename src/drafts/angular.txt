@@ -1,0 +1,44 @@
+I remember when you broke prod_
+the first time
+Hogging all the RAM on my machine_
+But, like
+We hadn't added features for a month_
+When you said you're out of space (what?)
+
+Then you come around again and say
+"maybe
+the data binding's garbage anyway
+trust me"
+Remember how that lasted for a day?
+You say,
+"New version!" we update, you crash and, we panic
+
+Oooh
+We rolled back a deploy last night, but
+Oooh
+This time, I'm telling you, I'm telling you
+
+We are never ever ever using Angular
+We are never ever ever using Angular
+Bindings call directives call decrepit factories
+No we are never ever ever ever using Angular
+
+Like, ever
+
+I'm gonna miss you ruining my site
+parsing
+Trojans hacked together by some guy
+farming
+every insecurity they find
+In your
+binding strategy that's much safer than mine
+
+Oooh
+You leaked our session keys tonight, and
+Oooh
+This time, I'm telling you I'm telling you
+
+We are never ever ever using Angular
+We are never ever ever using Angular
+Bindings call directives call decrepit factories
+No we are never ever ever ever using Angular
