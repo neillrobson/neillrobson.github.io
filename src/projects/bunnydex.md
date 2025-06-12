@@ -14,11 +14,23 @@ application development. <!--more-->
 
 ---
 
-The details of this page will be updated in the coming weeks. For the moment, it
-simply hosts the no-tracking Privacy Policy for the app. Keep an eye on this
-space for updates!
+## Support
 
----
+Bunnydex is independently developed by me, Neill Robson,
+as a service to the community and a fun hobby project.
+I am more than happy to answer any questions and provide support!
+
+General questions and issue reporting may be directed to [bunnydex.visor308@passmail.net](mailto:bunnydex.visor308@passmail.net).
+
+If you spot a specific bug and are comfortable communicating on a technical platform,
+I also monitor this project's [GitHub Issues page](https://github.com/neillrobson/bunnydex/issues).
+Feel free to leave a bug report on that site.
+
+Finally, if you have any feedback or critiques,
+please don't hesitate to leave reviews on the App Store.
+I cannot promise I will respond to issues reported solely in reviews,
+but I will gladly take any feedback and criticism into consideration.
+All of it will help me grow as an iOS developer!
 
 ## Privacy Policy
 
