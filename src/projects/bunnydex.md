@@ -11,6 +11,7 @@ year: 2025
 
 A reference app for the Killer Bunnies card game, and my first foray into iOS
 application development. <!--more-->
+Bunnydex is available for iPhone and iPad on the [Apple App Store](https://apps.apple.com/us/app/bunnydex/id6747143155)!
 
 ---
 
