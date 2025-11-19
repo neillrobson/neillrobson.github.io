@@ -48,8 +48,6 @@ body {
   min-height: 100vh;
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  background-color: var(--background);
-  color: var(--color);
 }
 body > input {
   display: none;
@@ -69,6 +67,10 @@ body:has(#theme-light:checked) {
   --color-emphasis: #586e75;
   --color-secondary: #93a1a1;
   --link: #268bd2;
+}
+body {
+  background-color: var(--background);
+  color: var(--color);
 }
 
 .container {
