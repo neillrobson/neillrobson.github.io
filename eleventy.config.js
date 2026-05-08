@@ -5,6 +5,7 @@ import eleventyPluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight
 import { EleventyRenderPlugin, EleventyHtmlBasePlugin } from "@11ty/eleventy";
 import strftime from "strftime";
 import MarkdownItTufte from "markdown-it-tufte";
+import MarkdownItMathjax3 from "markdown-it-mathjax3";
 import pullsPlugin from "./src/_plugins/pulls.js";
 
 export default async function (eleventyConfig) {
@@ -12,7 +13,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.setLayoutsDirectory("_layouts");
 
   eleventyConfig.addDataExtension("yml,yaml", (contents) =>
-    yaml.load(contents)
+    yaml.load(contents),
   );
 
   eleventyConfig.setFrontMatterParsingOptions({
@@ -21,13 +22,14 @@ export default async function (eleventyConfig) {
   });
 
   eleventyConfig.amendLibrary("md", (mdLib) => {
+    mdLib.use(MarkdownItMathjax3);
     mdLib.use(MarkdownItTufte);
     mdLib.use(pullsPlugin);
     mdLib.set({ html: true, typographer: true });
   });
 
   eleventyConfig.addFilter("utcDate", (date, format) =>
-    strftime(format, new Date(date.toUTCString().substr(0, 25)))
+    strftime(format, new Date(date.toUTCString().substr(0, 25))),
   );
 
   eleventyConfig.addPlugin(EleventyRenderPlugin);
