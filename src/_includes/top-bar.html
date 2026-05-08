@@ -1,9 +1,10 @@
 <div class="header">
-  {% assign backup_url = "https://neillrobson.com/assets/images/2023-profile.jpg" | url_encode %}
+  {% assign backup_url = "https://neillrobson.com/assets/images/2023-profile.jpg" %}
+  {% assign gravatar_url = "https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d={{ backup_url | url_encode }}" %}
   <picture id="logo">
     <img
       class="rounded"
-      src="https://gravatar.com/avatar/5264adfae13785676b4228ce2784dc92?s=64&d={{ backup_url }}"
+      src="https://neillrobson.com/assets/images/2023-profile.jpg"
       alt="Neill Robson"
     />
   </picture>
