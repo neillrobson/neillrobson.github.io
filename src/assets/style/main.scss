@@ -7,10 +7,12 @@
  */
 
 :root {
-  --serif: Iowan Old Style, Apple Garamond, Baskerville, Georgia,
-    Times New Roman, Droid Serif, Times, Source Serif Pro, serif,
-    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-  --sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+  --serif:
+    Iowan Old Style, Apple Garamond, Baskerville, Georgia, Times New Roman,
+    Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol;
+  --sans-serif:
+    -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
     helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
   --mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
@@ -473,7 +475,9 @@ a {
   text-decoration-color: hsl(from currentColor h s l / 0.65);
   text-decoration-thickness: 2px;
   text-underline-offset: 0.15em;
-  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition:
+    background-color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
   box-shadow: 0 0 0 2px transparent;
   box-decoration-break: clone;
   border-radius: 8px;
@@ -772,7 +776,9 @@ img.rounded {
   height: 1.5rem;
   border-radius: 0.25rem;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition:
+    background-color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
 
   &::before {
     content: "";
@@ -927,7 +933,9 @@ img.rounded {
   .nav {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s 0.25s, opacity 0.25s ease-in-out;
+    transition:
+      visibility 0s 0.25s,
+      opacity 0.25s ease-in-out;
     position: fixed;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -946,7 +954,9 @@ img.rounded {
     #menu-toggle:checked ~ & {
       visibility: visible;
       opacity: 1;
-      transition: visibility 0s, opacity 0.25s ease-in-out;
+      transition:
+        visibility 0s,
+        opacity 0.25s ease-in-out;
     }
 
     *:has(+ .utils) {
@@ -1003,5 +1013,6 @@ img.rounded {
     width: 95%;
     margin: 1rem 2.5%;
     position: relative;
+    z-index: 1;
   }
 }
