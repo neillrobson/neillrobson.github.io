@@ -4,10 +4,12 @@
  * Default font stack found at https://systemfontstack.com/
  */
 :root {
-  --serif: Iowan Old Style, Apple Garamond, Baskerville, Georgia,
-    Times New Roman, Droid Serif, Times, Source Serif Pro, serif,
-    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-  --sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+  --serif:
+    Iowan Old Style, Apple Garamond, Baskerville, Georgia, Times New Roman,
+    Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol;
+  --sans-serif:
+    -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
     helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
   --mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
@@ -885,5 +887,6 @@ img.rounded {
     width: 95%;
     margin: 1rem 2.5%;
     position: relative;
+    z-index: 1;
   }
 }
