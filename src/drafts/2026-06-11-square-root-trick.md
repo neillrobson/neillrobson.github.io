@@ -49,6 +49,56 @@ given more complicated terms and $n=10\,000\,000\,000$, the computation overhead
 has been cut from ten billion items to two hundred thousand---a significant
 improvement.
 
+Some practical examples of this optimization follow.
+
 ## Floor as a Function Argument
+
+Choose a relatively complicated function to compute, such as the
+[totient summatory function](https://en.wikipedia.org/wiki/Totient_summatory_function).[^why-totient]
+Assuming each call naively factorizes each number from $1$ to $n$ and sums the
+totient values, running billions of these calls serially is infeasible. But say
+the expression to reduce looks more like:
+
+[^why-totient]:
+    The summation about to be discussed actually appears in a recursive
+    definition of the totient summatory function. The derivation of that
+    definition is outside the scope of this post.
+
+$$
+\sum_{k=1}^n \Phi \left\lfloor \frac{n}{k} \right\rfloor
+$$
+
+Large stretches of that sequence for higher $k$ are constant. Using $n=100$
+again for illustration, the latter half (!) of terms can be computed with a
+single call to $\Phi$:
+
+$$
+\begin{align*}
+\sum_{k=1}^{100} \Phi \left\lfloor \frac{n}{k} \right\rfloor &= \sum_{k=1}^{50} \Phi \left\lfloor \frac{n}{k} \right\rfloor + 50 * \Phi \left\lfloor \frac{100}{51} \right\rfloor \\
+&= \sum_{k=1}^{50} \Phi \left\lfloor \frac{n}{k} \right\rfloor + 50 * \Phi(1)
+\end{align*}
+$$
+
+The same concept can collapse many of the terms for $k > \sqrt{n}$.
+
+### Computing the Coefficient
+
+The coefficients are easily computed in any programming language with integer
+division. Consider the following loop:
+
+```c
+int n = 100;
+int total = 0;
+
+for (int i = 1, j; i < n; i = j) {
+    j = n / (n / i) + 1;
+    total += (j - i) * phisum(n / i);
+}
+```
+
+The key is the `j` assignment. The expression `n / i` is the floor, and input to
+the expensive function. Then `n / (n / i)` yields the _maximum `i` value_
+leading to the same floor (confirm this using `n = 100, i = 51` and some mental
+math). The further the loop progresses, the larger the jumps get.
 
 ## Floor as a Factor
