@@ -102,3 +102,11 @@ leading to the same floor (confirm this using `n = 100, i = 51` and some mental
 math). The further the loop progresses, the larger the jumps get.
 
 ## Floor as a Factor
+
+The trick isn't limited to having the floor value as a function parameter. Say
+the sum being analyzed is the following, with $\phi$ representing the standard
+(not summatory) totient:
+
+$$
+\sum_{k=1}^n \left\lfloor \frac{n}{k} \right\rfloor \phi(k)
+$$
