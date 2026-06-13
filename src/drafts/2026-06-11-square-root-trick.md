@@ -81,7 +81,7 @@ $$
 
 The same concept can collapse many of the terms for $k > \sqrt{n}$.
 
-### Computing the Coefficient
+## Computing the Coefficient
 
 The coefficients are easily computed in any programming language with integer
 division. Consider the following loop:
@@ -110,3 +110,30 @@ the sum being analyzed is the following, with $\phi$ representing the standard
 $$
 \sum_{k=1}^n \left\lfloor \frac{n}{k} \right\rfloor \phi(k)
 $$
+
+Here, the summatory totient comes into play again, but this time it'll be used
+to compute partial sums over ranges of $k$. Using $n=100$ and looking at the
+$51 \leq k \leq 100$ range again, the floor is just $1$ and the sum becomes
+$\sum_{k=51}^{100} \phi(k)$. The summatory totient can be used in place of the
+iterative sum:
+
+$$
+\sum_{k=51}^{100} \phi(k) = \Phi(100) - \Phi(50)
+$$
+
+The floor dropped out of that range entirely. To make its contribution a bit
+clearer, consider the next lower range of constant floor, $34 \leq k \leq 50$:
+
+$$
+\begin{align*}
+\sum_{k=34}^{50} \left\lfloor \frac{100}{k} \right\rfloor \phi(k) &= \sum_{k=34}^{50} 2 * \phi(k) \\
+&= 2 * \sum_{k=34}^{50} \phi(k) \\
+&= 2(\Phi(50) - \Phi(33))
+\end{align*}
+$$
+
+Is the summatory form of a function any easier to calculate than the regular
+function? For the totient, the answer turns out to be "yes" in certain cases. So
+long as a summatory formula exists that doesn't include a sigma, the square root
+trick can help drastically decrease the amount of grunt work in computing these
+sums.
