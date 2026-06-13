@@ -1,7 +1,10 @@
 ---
 layout: post
 title: The Square Root Trick for Fast Summations
-comments: false
+comments: true
+tags:
+  - math
+  - LaTeX
 ---
 
 Computing sums or products of billions of terms can cripple even modern
