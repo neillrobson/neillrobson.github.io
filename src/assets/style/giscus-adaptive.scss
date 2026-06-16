@@ -1,0 +1,7 @@
+@use "giscus" as *;
+
+@include giscusLight;
+
+@media (prefers-color-scheme: dark) {
+  @include giscusDark;
+}
