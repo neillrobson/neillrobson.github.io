@@ -49,4 +49,4 @@ Source code for the personal website and blog of Neill Robson.
 
 - [ ] Implement search bar using frontend-only solution, e.g.
       [lunr](https://lunrjs.com)
-- [ ] Re-skin Giscus to match the rest of the site
+- [x] Re-skin Giscus to match the rest of the site
