@@ -134,4 +134,27 @@ instance (KnownNat m) => Num (Mod m) where
 
 The declarations may feel redundant, but they serve different purposes. The
 `KnownNat` typeclass specifically unlocks the ability to pull the type-level
-`Nat` val into a data-level `Natural`.
+`Nat` val into a data-level `Natural`. It does so via a Haskell programming
+construct called _singletons_.
+
+The fascinating details of singletons are far beyond the scope of this
+post[^le]. In short, however, singletons can be thought of as a collection of
+related Types, each with only a single term inhabiting it. For natural numbers,
+each numeric value is a different _type_ under the singleton umbrella, and
+there's only one _term_ associated with each type. In the `TypeNat` source code:
+
+[^le]:
+    Check out Justin Le's excellent
+    [Introduction to Singletons](https://blog.jle.im/entry/introduction-to-singletons-1.html)
+    series for a deep dive into singletons.
+
+```haskell
+class KnownNat (n :: Nat) where
+  natSing :: SNat n
+```
+
+The singleton type is written as `SNat n`, and the singleton value/term is
+`natSing`. Neither of those concepts will commonly appear outside library code,
+and the library itself is quite inscrutable to read. But the `KnownNat`
+definition hints at how that typeclass could provide pattern-matching bridges
+between type-level and term-level natural numbers.
