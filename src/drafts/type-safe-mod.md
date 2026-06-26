@@ -229,3 +229,16 @@ wackyAddition (Mod x) (Mod y) = x + y -- Pulling values with pattern matching
 ```
 
 ## Limitations and Next Steps
+
+As mentioned way back in the section on [manual residue](#manual-residue),
+overflow is a non-trivial problem to solve when using bounded integral types. To
+keep the focus on the type system, the unbounded `Integer` type was used for
+value storage in this outline. However, a more memory-efficient implementation
+would use a bounded type and careful overflow handling.
+
+On the type-safety side of the discussion, there are many fascinating ways the
+`Mod` type's functionality could be expanded now that natural numbers exist at
+the type level. Division, for example, isn't generally applicable under a
+modulus, but given certain coprimality conditions division can be meaningful.
+Detection of a prime modulus, along with special supported functions, is
+possible now.
