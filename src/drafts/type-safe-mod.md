@@ -197,3 +197,35 @@ relatively easy to derive using the tools above. They are left as an exercise to
 the reader.
 
 ## Mod in Use
+
+At long last, the type-safe modular number interface proposed at the beginning
+of this article is possible:
+
+```haskell
+type MyMod = Mod 1000000007
+
+-- | Sum of y*x^2 for the tuples (x, y), under modulus.
+manual :: [(MyMod, MyMod)] -> MyMod
+manual = sum . map (\(x, y) -> x * x * y)
+```
+
+Crucially, another number of type, say, `Mod 13` would not add or multiply
+directly with the `MyMod` values. The error would be caught _at compile time_.
+
+Getting into and out of the modular world is surprisingly simple.
+
+```haskell
+type MyMod = Mod 1000000007
+type SmallMod = Mod 13
+
+toMod :: Integer -> MyMod
+toMod = Mod -- It's just the data constructor!
+
+fromMod :: MyMod -> Integer
+fromMod = unMod -- Again, just a field from the definition.
+
+wackyAddition :: MyMod -> SmallMod -> Integer
+wackyAddition (Mod x) (Mod y) = x + y -- Pulling values with pattern matching
+```
+
+## Limitations and Next Steps
