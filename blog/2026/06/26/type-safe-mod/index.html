@@ -243,7 +243,7 @@ manipulated in various expressions. To go any further, we need:</p>
 <li>A way to pull that natural number from the “type” program space to the “data”
 program space</li>
 </ul>
-<p>Fortunately, GHC provides the <code>TypeLits</code><label for="sn-3" class="margin-toggle sidenote-number"></label><input id="sn-3" type="checkbox" class="margin-toggle"><span class="sidenote">i.e. “type literals”</span> package for this
+<p>Fortunately, GHC provides the <code>TypeLits</code><label for="sn-4" class="margin-toggle sidenote-number"></label><input id="sn-4" type="checkbox" class="margin-toggle"><span class="sidenote">i.e. “type literals”</span> package for this
 exact purpose.</p>
 </section>
 <section>
@@ -273,6 +273,7 @@ gives it kind <code>*</code>. It needs to be <code>Nat</code>.</p>
 <code>KnownNat</code> typeclass specifically unlocks the ability to pull the type-level
 <code>Nat</code> val into a data-level <code>Natural</code>. It does so via a Haskell programming
 construct called <em>singletons</em>.</p>
+<h3>Singletons</h3>
 <p>The fascinating details of singletons are far beyond the scope of this
 post<label for="sn-le" class="margin-toggle sidenote-number"></label><input id="sn-le" type="checkbox" class="margin-toggle"><span class="sidenote">Check out Justin Le’s excellent
 <a href="https://blog.jle.im/entry/introduction-to-singletons-1.html">Introduction to Singletons</a>
@@ -287,6 +288,39 @@ there’s only one <em>term</em> associated with each type. In the <code>TypeNat
 and the library itself is quite inscrutable to read. But the <code>KnownNat</code>
 definition hints at how that typeclass could provide pattern-matching bridges
 between type-level and term-level natural numbers.</p>
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#the-num-instance"></a><h2 id="the-num-instance">The Num Instance</h2>
+</div>
+<p>With all the fancy type-dancing taken care of, implementing the <code>Num</code> instance
+becomes a bit more straightforward:</p>
+<pre class="language-haskell"><code class="language-haskell"><span class="token keyword">instance</span> <span class="token punctuation">(</span><span class="token constant">KnownNat</span> <span class="token hvariable">m</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token constant">Num</span> <span class="token punctuation">(</span><span class="token constant">Mod</span> <span class="token hvariable">m</span><span class="token punctuation">)</span> <span class="token keyword">where</span>
+  <span class="token hvariable">mx</span><span class="token operator">@</span><span class="token punctuation">(</span><span class="token constant">Mod</span> <span class="token hvariable">x</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token constant">Mod</span> <span class="token hvariable">y</span> <span class="token operator">=</span> <span class="token constant">Mod</span> <span class="token operator">$</span> <span class="token hvariable">x</span> <span class="token operator">*</span> <span class="token hvariable">y</span> <span class="token operator">`mod`</span> <span class="token hvariable">natVal</span> <span class="token hvariable">mx</span>
+  <span class="token hvariable">mx</span><span class="token operator">@</span><span class="token punctuation">(</span><span class="token constant">Mod</span> <span class="token hvariable">x</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token constant">Mod</span> <span class="token hvariable">y</span> <span class="token operator">=</span> <span class="token constant">Mod</span> <span class="token operator">$</span> <span class="token keyword">if</span> <span class="token hvariable">xy</span> <span class="token operator">></span> <span class="token hvariable">m</span> <span class="token keyword">then</span> <span class="token hvariable">xy</span> <span class="token operator">-</span> <span class="token hvariable">m</span> <span class="token keyword">else</span> <span class="token hvariable">xy</span>
+    <span class="token keyword">where</span>
+      <span class="token hvariable">xy</span> <span class="token operator">=</span> <span class="token hvariable">x</span> <span class="token operator">+</span> <span class="token hvariable">y</span>
+      <span class="token hvariable">m</span> <span class="token operator">=</span> <span class="token hvariable">natVal</span> <span class="token hvariable">x</span>
+  <span class="token comment">-- ...and so on</span></code></pre>
+<p>The trickiest part of reading this code is differentiating between the <code>Mod</code>
+type constructor and <code>Mod</code> data constructor. Keep in mind that the <code>m</code> in
+<code>Num (Mod m)</code> refers to the <em>modulus</em>, while the <code>x</code> and <code>y</code> in the
+pattern-matches <code>Mod x</code> and <code>Mod y</code> refer to the <em>values being manipulated</em>
+under the modulus.</p>
+<p>The <code>natVal</code> function takes advantace of the <code>KnownNat</code> typeclass to pull the
+type-level <code>Nat</code> value down to a term-level integer. It needs the entire <code>Mod</code>
+term (captured with the name <code>mx</code>) passed to it, because the data constructor
+has no reference to the modulus <code>Nat</code> value.<label for="sn-proxy" class="margin-toggle sidenote-number"></label><input id="sn-proxy" type="checkbox" class="margin-toggle"><span class="sidenote">The actual type signature for <code>natVal</code> specifies the argument as type
+<code>Proxy# n</code>, with <code>n</code> constrained as a <code>KnownNat</code>. The proxy simply provides
+the type-level structure to conveniently access the type <code>n</code>.</span></p>
+<p>A full <code>Num</code> instance requires a few more function definitions, but they are all
+relatively easy to derive using the tools above. They are left as an exercise to
+the reader.</p>
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#mod-in-use"></a><h2 id="mod-in-use">Mod in Use</h2>
+</div>
 </section>
 
     
