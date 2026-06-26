@@ -321,6 +321,43 @@ the reader.</p>
 <div class="section-link">
 <a class="no-tufte-underline" href="#mod-in-use"></a><h2 id="mod-in-use">Mod in Use</h2>
 </div>
+<p>At long last, the type-safe modular number interface proposed at the beginning
+of this article is possible:</p>
+<pre class="language-haskell"><code class="language-haskell"><span class="token keyword">type</span> <span class="token constant">MyMod</span> <span class="token operator">=</span> <span class="token constant">Mod</span> <span class="token number">1000000007</span>
+
+<span class="token comment">-- | Sum of y*x^2 for the tuples (x, y), under modulus.</span>
+<span class="token hvariable">manual</span> <span class="token operator">::</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token constant">MyMod</span><span class="token punctuation">,</span> <span class="token constant">MyMod</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">-></span> <span class="token constant">MyMod</span>
+<span class="token hvariable">manual</span> <span class="token operator">=</span> <span class="token builtin">sum</span> <span class="token operator">.</span> <span class="token builtin">map</span> <span class="token punctuation">(</span><span class="token operator">\</span><span class="token punctuation">(</span><span class="token hvariable">x</span><span class="token punctuation">,</span> <span class="token hvariable">y</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token hvariable">x</span> <span class="token operator">*</span> <span class="token hvariable">x</span> <span class="token operator">*</span> <span class="token hvariable">y</span><span class="token punctuation">)</span></code></pre>
+<p>Crucially, another number of type, say, <code>Mod 13</code> would not add or multiply
+directly with the <code>MyMod</code> values. The error would be caught <em>at compile time</em>.</p>
+<p>Getting into and out of the modular world is surprisingly simple.</p>
+<pre class="language-haskell"><code class="language-haskell"><span class="token keyword">type</span> <span class="token constant">MyMod</span> <span class="token operator">=</span> <span class="token constant">Mod</span> <span class="token number">1000000007</span>
+<span class="token keyword">type</span> <span class="token constant">SmallMod</span> <span class="token operator">=</span> <span class="token constant">Mod</span> <span class="token number">13</span>
+
+<span class="token hvariable">toMod</span> <span class="token operator">::</span> <span class="token constant">Integer</span> <span class="token operator">-></span> <span class="token constant">MyMod</span>
+<span class="token hvariable">toMod</span> <span class="token operator">=</span> <span class="token constant">Mod</span> <span class="token comment">-- It's just the data constructor!</span>
+
+<span class="token hvariable">fromMod</span> <span class="token operator">::</span> <span class="token constant">MyMod</span> <span class="token operator">-></span> <span class="token constant">Integer</span>
+<span class="token hvariable">fromMod</span> <span class="token operator">=</span> <span class="token hvariable">unMod</span> <span class="token comment">-- Again, just a field from the definition.</span>
+
+<span class="token hvariable">wackyAddition</span> <span class="token operator">::</span> <span class="token constant">MyMod</span> <span class="token operator">-></span> <span class="token constant">SmallMod</span> <span class="token operator">-></span> <span class="token constant">Integer</span>
+<span class="token hvariable">wackyAddition</span> <span class="token punctuation">(</span><span class="token constant">Mod</span> <span class="token hvariable">x</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token constant">Mod</span> <span class="token hvariable">y</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token hvariable">x</span> <span class="token operator">+</span> <span class="token hvariable">y</span> <span class="token comment">-- Pulling values with pattern matching</span></code></pre>
+</section>
+<section>
+<div class="section-link">
+<a class="no-tufte-underline" href="#limitations-and-next-steps"></a><h2 id="limitations-and-next-steps">Limitations and Next Steps</h2>
+</div>
+<p>As mentioned way back in the section on <a href="#manual-residue">manual residue</a>,
+overflow is a non-trivial problem to solve when using bounded integral types. To
+keep the focus on the type system, the unbounded <code>Integer</code> type was used for
+value storage in this outline. However, a more memory-efficient implementation
+would use a bounded type and careful overflow handling.</p>
+<p>On the type-safety side of the discussion, there are many fascinating ways the
+<code>Mod</code> type’s functionality could be expanded now that natural numbers exist at
+the type level. Division, for example, isn’t generally applicable under a
+modulus, but given certain coprimality conditions division can be meaningful.
+Detection of a prime modulus, along with special supported functions, is
+possible now.</p>
 </section>
 
     
