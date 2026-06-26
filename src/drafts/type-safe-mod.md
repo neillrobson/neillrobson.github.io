@@ -137,6 +137,8 @@ The declarations may feel redundant, but they serve different purposes. The
 `Nat` val into a data-level `Natural`. It does so via a Haskell programming
 construct called _singletons_.
 
+### Singletons
+
 The fascinating details of singletons are far beyond the scope of this
 post[^le]. In short, however, singletons can be thought of as a collection of
 related Types, each with only a single term inhabiting it. For natural numbers,
