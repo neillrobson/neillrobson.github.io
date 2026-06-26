@@ -160,3 +160,40 @@ The singleton type is written as `SNat n`, and the singleton value/term is
 and the library itself is quite inscrutable to read. But the `KnownNat`
 definition hints at how that typeclass could provide pattern-matching bridges
 between type-level and term-level natural numbers.
+
+## The Num Instance
+
+With all the fancy type-dancing taken care of, implementing the `Num` instance
+becomes a bit more straightforward:
+
+```haskell
+instance (KnownNat m) => Num (Mod m) where
+  mx@(Mod x) * Mod y = Mod $ x * y `mod` natVal mx
+  mx@(Mod x) + Mod y = Mod $ if xy > m then xy - m else xy
+    where
+      xy = x + y
+      m = natVal x
+  -- ...and so on
+```
+
+The trickiest part of reading this code is differentiating between the `Mod`
+type constructor and `Mod` data constructor. Keep in mind that the `m` in
+`Num (Mod m)` refers to the _modulus_, while the `x` and `y` in the
+pattern-matches `Mod x` and `Mod y` refer to the _values being manipulated_
+under the modulus.
+
+The `natVal` function takes advantace of the `KnownNat` typeclass to pull the
+type-level `Nat` value down to a term-level integer. It needs the entire `Mod`
+term (captured with the name `mx`) passed to it, because the data constructor
+has no reference to the modulus `Nat` value.[^proxy]
+
+[^proxy]:
+    The actual type signature for `natVal` specifies the argument as type
+    `Proxy# n`, with `n` constrained as a `KnownNat`. The proxy simply provides
+    the type-level structure to conveniently access the type `n`.
+
+A full `Num` instance requires a few more function definitions, but they are all
+relatively easy to derive using the tools above. They are left as an exercise to
+the reader.
+
+## Mod in Use
