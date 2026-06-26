@@ -81,8 +81,8 @@
     <meta property="og:description" content="Keeping up with remainders in modular arithmetic is tedious whether working by hand or in a programming language. Fortunately, Haskell’s robust type system provides a way to abstract away...">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://neillrobson.com/blog/2026/06/18/type-safe-mod/">
-    <link rel="canonical" href="https://neillrobson.com/blog/2026/06/18/type-safe-mod/">
+    <meta property="og:url" content="https://neillrobson.com/blog/2026/06/26/type-safe-mod/">
+    <link rel="canonical" href="https://neillrobson.com/blog/2026/06/26/type-safe-mod/">
 
     
 
@@ -163,7 +163,7 @@
 <div class="entry">
     <div class="title">
         <div class="date">
-            <a class="small" href="/blog/2026/06/18/type-safe-mod/">June 18, 2026</a>
+            <a class="small" href="/blog/2026/06/26/type-safe-mod/">June 26, 2026</a>
         </div>
         <h1>Type-Safe Modular Arithmetic in Haskell</h1>
     </div>
@@ -243,7 +243,7 @@ manipulated in various expressions. To go any further, we need:</p>
 <li>A way to pull that natural number from the “type” program space to the “data”
 program space</li>
 </ul>
-<p>Fortunately, GHC provides the <code>TypeLits</code><label for="sn-2" class="margin-toggle sidenote-number"></label><input id="sn-2" type="checkbox" class="margin-toggle"><span class="sidenote">i.e. “type literals”</span> package for this
+<p>Fortunately, GHC provides the <code>TypeLits</code><label for="sn-3" class="margin-toggle sidenote-number"></label><input id="sn-3" type="checkbox" class="margin-toggle"><span class="sidenote">i.e. “type literals”</span> package for this
 exact purpose.</p>
 </section>
 <section>
@@ -271,7 +271,22 @@ gives it kind <code>*</code>. It needs to be <code>Nat</code>.</p>
 <span class="token keyword">instance</span> <span class="token punctuation">(</span><span class="token constant">KnownNat</span> <span class="token hvariable">m</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token constant">Num</span> <span class="token punctuation">(</span><span class="token constant">Mod</span> <span class="token hvariable">m</span><span class="token punctuation">)</span> <span class="token keyword">where</span></code></pre>
 <p>The declarations may feel redundant, but they serve different purposes. The
 <code>KnownNat</code> typeclass specifically unlocks the ability to pull the type-level
-<code>Nat</code> val into a data-level <code>Natural</code>.</p>
+<code>Nat</code> val into a data-level <code>Natural</code>. It does so via a Haskell programming
+construct called <em>singletons</em>.</p>
+<p>The fascinating details of singletons are far beyond the scope of this
+post<label for="sn-le" class="margin-toggle sidenote-number"></label><input id="sn-le" type="checkbox" class="margin-toggle"><span class="sidenote">Check out Justin Le’s excellent
+<a href="https://blog.jle.im/entry/introduction-to-singletons-1.html">Introduction to Singletons</a>
+series for a deep dive into singletons.</span>. In short, however, singletons can be thought of as a collection of
+related Types, each with only a single term inhabiting it. For natural numbers,
+each numeric value is a different <em>type</em> under the singleton umbrella, and
+there’s only one <em>term</em> associated with each type. In the <code>TypeNat</code> source code:</p>
+<pre class="language-haskell"><code class="language-haskell"><span class="token keyword">class</span> <span class="token constant">KnownNat</span> <span class="token punctuation">(</span><span class="token hvariable">n</span> <span class="token operator">::</span> <span class="token constant">Nat</span><span class="token punctuation">)</span> <span class="token keyword">where</span>
+  <span class="token hvariable">natSing</span> <span class="token operator">::</span> <span class="token constant">SNat</span> <span class="token hvariable">n</span></code></pre>
+<p>The singleton type is written as <code>SNat n</code>, and the singleton value/term is
+<code>natSing</code>. Neither of those concepts will commonly appear outside library code,
+and the library itself is quite inscrutable to read. But the <code>KnownNat</code>
+definition hints at how that typeclass could provide pattern-matching bridges
+between type-level and term-level natural numbers.</p>
 </section>
 
     
