@@ -242,3 +242,9 @@ the type level. Division, for example, isn't generally applicable under a
 modulus, but given certain coprimality conditions division can be meaningful.
 Detection of a prime modulus, along with special supported functions, is
 possible now.
+
+Ironically, while I started this journey to develop a more intuitive and safe
+strategy for handling modular arithmetic in Haskell, I wound up becoming
+fascinated by singletons. The jury is out on whether I come back around to the
+mathematical problems I was wrestling with, or fall into a rabbit hole of
+theoretical computer science.
