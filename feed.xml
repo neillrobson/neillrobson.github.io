@@ -7,6 +7,210 @@
     <description>The blog and portfolio of a software developer.</description>
     <language>en</language>
     <item>
+      <title>Type-Safe Modular Arithmetic in Haskell</title>
+      <link>https://neillrobson.com/blog/2026/06/29/type-safe-mod/</link>
+      <description>&lt;section&gt;
+&lt;p&gt;Keeping up with remainders in modular arithmetic is tedious whether working by
+hand or in a programming language. Fortunately, Haskell’s robust type system
+provides a way to abstract away the complexity and check for correctness at
+compile time.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;div class=&quot;section-link&quot;&gt;
+&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2026/06/29/type-safe-mod/#manual-residue&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;manual-residue&quot;&gt;Manual Residue&lt;/h2&gt;
+&lt;/div&gt;
+&lt;p&gt;Without any special utilities, modular arithmetic in Haskell is easy enough to
+write.&lt;/p&gt;
+&lt;pre class=&quot;language-haskell&quot;&gt;&lt;code class=&quot;language-haskell&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;-- | Large prime modulus.&lt;/span&gt;
+&lt;span class=&quot;token hvariable&quot;&gt;modulus&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Integer&lt;/span&gt;
+&lt;span class=&quot;token hvariable&quot;&gt;modulus&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1000000007&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;-- | Sum of y*x^2 for the tuples (x, y), under modulus.&lt;/span&gt;
+&lt;span class=&quot;token hvariable&quot;&gt;manual&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Integer&lt;/span&gt;
+&lt;span class=&quot;token hvariable&quot;&gt;manual&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;`mod`&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;modulus&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;map&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&#92;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Granted, the unbounded numeric type &lt;code&gt;Integer&lt;/code&gt; is carrying a lot of weight. The
+computation could certainly be executed with a bounded type, but avoiding
+overflows adds verbosity:&lt;/p&gt;
+&lt;pre class=&quot;language-haskell&quot;&gt;&lt;code class=&quot;language-haskell&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;-- | Large prime modulus (but not too large).&lt;/span&gt;
+&lt;span class=&quot;token hvariable&quot;&gt;modulus&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Word&lt;/span&gt;
+&lt;span class=&quot;token hvariable&quot;&gt;modulus&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1000000007&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;-- | Sum of y*x^2 for the tuples (x, y), under modulus.&lt;/span&gt;
+&lt;span class=&quot;token hvariable&quot;&gt;manual&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;Word&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Word&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Word&lt;/span&gt;
+&lt;span class=&quot;token hvariable&quot;&gt;manual&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;foldl&lt;/span&gt;&#39; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&#92;&lt;/span&gt;&lt;span class=&quot;token hvariable&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token hvariable&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;`mod`&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;modulus&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;map&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;fn&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;where&lt;/span&gt;
+    &lt;span class=&quot;token hvariable&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;`mod`&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;modulus&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;`mod`&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;modulus&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Even this solution can lead to overflows for modulus values greater than the
+square root of &lt;code&gt;Word&lt;/code&gt;’s maximum value. If the modulus allows for values, say,
+three-quarters the size of &lt;code&gt;Word&lt;/code&gt;, the expression &lt;code&gt;a + b&lt;/code&gt; could overflow the
+space before the &lt;code&gt;mod&lt;/code&gt; operator has a chance to trim it back down.&lt;label for=&quot;sn-overflow&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input id=&quot;sn-overflow&quot; type=&quot;checkbox&quot; class=&quot;margin-toggle&quot;&gt;&lt;span class=&quot;sidenote&quot;&gt;Detecting overflows in additions would require checking if &lt;code&gt;a + b &amp;lt; a&lt;/code&gt; and,
+if so, subtracting &lt;code&gt;m&lt;/code&gt; from the result (underflowing back to the answer).
+Multiplication could be handled with the
+&lt;a href=&quot;https://en.wikipedia.org/wiki/Ancient_Egyptian_multiplication&quot;&gt;Ancient Egyptian algorithm&lt;/a&gt;.
+It’s all possible, but also all terribly verbose.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;And the overflow-handling boilerplate is all for naught if a caller decides to
+send in &lt;code&gt;Word&lt;/code&gt; values that haven’t been pre-processed with the modulus. Or
+&lt;code&gt;Word&lt;/code&gt; values that have been pre-processed with a &lt;em&gt;different&lt;/em&gt; modulus. The
+&lt;code&gt;Word&lt;/code&gt; data type doesn’t contain any information about modular arithmetic,
+leaving a wealth of type-level benefits of the Haskell language on the table.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;div class=&quot;section-link&quot;&gt;
+&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2026/06/29/type-safe-mod/#type-level-residue&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;type-level-residue&quot;&gt;Type-level Residue&lt;/h2&gt;
+&lt;/div&gt;
+&lt;p&gt;A preferrable Haskell interface for modular arithmetic might look like the
+following:&lt;/p&gt;
+&lt;pre class=&quot;language-haskell&quot;&gt;&lt;code class=&quot;language-haskell&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;MyMod&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1000000007&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;-- | Sum of y*x^2 for the tuples (x, y), under modulus.&lt;/span&gt;
+&lt;span class=&quot;token hvariable&quot;&gt;manual&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;MyMod&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;MyMod&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;MyMod&lt;/span&gt;
+&lt;span class=&quot;token hvariable&quot;&gt;manual&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;map&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&#92;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;No &lt;code&gt;mod&lt;/code&gt; in sight, and callers are required to pass in instances of &lt;code&gt;MyMod&lt;/code&gt;
+rather than arbitrary integers. It looks good on the surface. The question is
+how to define the &lt;code&gt;Mod&lt;/code&gt; type—and how to specify a numeric constant &lt;em&gt;as a type
+argument&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Without any extensions, a partial skeleton can be written:&lt;/p&gt;
+&lt;pre class=&quot;language-haskell&quot;&gt;&lt;code class=&quot;language-haskell&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;-- Wrapping an unbounded Integer, for the privilege of ignoring overflow&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;newtype&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token hvariable&quot;&gt;unMod&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;deriving&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;Eq&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Ord&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Num&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;where&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;undefined&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;undefined&lt;/span&gt;
+  &lt;span class=&quot;token builtin&quot;&gt;negate&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;-- ...and so on&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the definition, &lt;code&gt;m&lt;/code&gt; is the modulus, and &lt;code&gt;unMod&lt;/code&gt; is the data value being
+manipulated in various expressions. To go any further, we need:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A way to tell Haskell that &lt;code&gt;m&lt;/code&gt; should be a natural number&lt;/li&gt;
+&lt;li&gt;A way to pull that natural number from the “type” program space to the “data”
+program space&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Fortunately, GHC provides the &lt;code&gt;TypeLits&lt;/code&gt;&lt;label for=&quot;sn-4&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input id=&quot;sn-4&quot; type=&quot;checkbox&quot; class=&quot;margin-toggle&quot;&gt;&lt;span class=&quot;sidenote&quot;&gt;i.e. “type literals”&lt;/span&gt; package for this
+exact purpose.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;div class=&quot;section-link&quot;&gt;
+&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2026/06/29/type-safe-mod/#type-literals&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;type-literals&quot;&gt;Type Literals&lt;/h2&gt;
+&lt;/div&gt;
+&lt;p&gt;Constraints on types are specified via type classes in Haskell. In the case of a
+type-level natural number, the &lt;code&gt;KnownNat&lt;/code&gt; type class is used:&lt;/p&gt;
+&lt;pre class=&quot;language-haskell&quot;&gt;&lt;code class=&quot;language-haskell&quot;&gt;&lt;span class=&quot;token import-statement&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; GHC&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;TypeLits&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;KnownNat&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;newtype&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token hvariable&quot;&gt;unMod&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;deriving&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;Eq&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Ord&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;KnownNat&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Num&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;where&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Simply adding that type class in will yield a compilation error: “Expected a
+type, but &lt;code&gt;m&lt;/code&gt; has kind &lt;code&gt;Nat&lt;/code&gt;.” The only “kind” that is typically encountered in
+everyday Haskell is &lt;code&gt;*&lt;/code&gt; (or &lt;code&gt;Type&lt;/code&gt;), and compositions using the function arrow
+&lt;code&gt;-&amp;gt;&lt;/code&gt;.&lt;label for=&quot;sn-maybe&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input id=&quot;sn-maybe&quot; type=&quot;checkbox&quot; class=&quot;margin-toggle&quot;&gt;&lt;span class=&quot;sidenote&quot;&gt;For example, &lt;code&gt;Maybe&lt;/code&gt; has the kind &lt;code&gt;* -&amp;gt; *&lt;/code&gt;: it takes a type to yield a type.&lt;/span&gt; Kinds are, by default, derived automatically by the compiler. The
+&lt;code&gt;newtype Mod m&lt;/code&gt; declaration doesn’t imply anything special, so the compiler
+gives it kind &lt;code&gt;*&lt;/code&gt;. It needs to be &lt;code&gt;Nat&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&quot;language-haskell&quot;&gt;&lt;code class=&quot;language-haskell&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;{-# LANGUAGE KindSignatures #-}&lt;/span&gt;
+&lt;span class=&quot;token import-statement&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; GHC&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;TypeLits&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;KnownNat&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Nat&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;newtype&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token hvariable&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Nat&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token hvariable&quot;&gt;unMod&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;deriving&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;Eq&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Ord&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;KnownNat&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Num&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;where&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The declarations may feel redundant, but they serve different purposes. The
+&lt;code&gt;KnownNat&lt;/code&gt; typeclass specifically unlocks the ability to pull the type-level
+&lt;code&gt;Nat&lt;/code&gt; val into a data-level &lt;code&gt;Natural&lt;/code&gt;. It does so via a Haskell programming
+construct called &lt;em&gt;singletons&lt;/em&gt;.&lt;/p&gt;
+&lt;h3&gt;Singletons&lt;/h3&gt;
+&lt;p&gt;The fascinating details of singletons are far beyond the scope of this
+post&lt;label for=&quot;sn-le&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input id=&quot;sn-le&quot; type=&quot;checkbox&quot; class=&quot;margin-toggle&quot;&gt;&lt;span class=&quot;sidenote&quot;&gt;Check out Justin Le’s excellent
+&lt;a href=&quot;https://blog.jle.im/entry/introduction-to-singletons-1.html&quot;&gt;Introduction to Singletons&lt;/a&gt;
+series for a deep dive into singletons.&lt;/span&gt;. In short, however, singletons can be thought of as a collection of
+related Types, each with only a single term inhabiting it. For natural numbers,
+each numeric value is a different &lt;em&gt;type&lt;/em&gt; under the singleton umbrella, and
+there’s only one &lt;em&gt;term&lt;/em&gt; associated with each type. In the &lt;code&gt;TypeNat&lt;/code&gt; source code:&lt;/p&gt;
+&lt;pre class=&quot;language-haskell&quot;&gt;&lt;code class=&quot;language-haskell&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;KnownNat&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token hvariable&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Nat&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;where&lt;/span&gt;
+  &lt;span class=&quot;token hvariable&quot;&gt;natSing&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;SNat&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;n&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The singleton type is written as &lt;code&gt;SNat n&lt;/code&gt;, and the singleton value/term is
+&lt;code&gt;natSing&lt;/code&gt;. Neither of those concepts will commonly appear outside library code,
+and the library itself is quite inscrutable to read. But the &lt;code&gt;KnownNat&lt;/code&gt;
+definition hints at how that typeclass could provide pattern-matching bridges
+between type-level and term-level natural numbers.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;div class=&quot;section-link&quot;&gt;
+&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2026/06/29/type-safe-mod/#the-num-instance&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;the-num-instance&quot;&gt;The Num Instance&lt;/h2&gt;
+&lt;/div&gt;
+&lt;p&gt;With all the fancy type-dancing taken care of, implementing the &lt;code&gt;Num&lt;/code&gt; instance
+becomes a bit more straightforward:&lt;/p&gt;
+&lt;pre class=&quot;language-haskell&quot;&gt;&lt;code class=&quot;language-haskell&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;KnownNat&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Num&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;where&lt;/span&gt;
+  &lt;span class=&quot;token hvariable&quot;&gt;mx&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;`mod`&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;natVal&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;mx&lt;/span&gt;
+  &lt;span class=&quot;token hvariable&quot;&gt;mx&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;xy&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;xy&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;xy&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;where&lt;/span&gt;
+      &lt;span class=&quot;token hvariable&quot;&gt;xy&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;y&lt;/span&gt;
+      &lt;span class=&quot;token hvariable&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;natVal&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;-- ...and so on&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The trickiest part of reading this code is differentiating between the &lt;code&gt;Mod&lt;/code&gt;
+type constructor and &lt;code&gt;Mod&lt;/code&gt; data constructor. Keep in mind that the &lt;code&gt;m&lt;/code&gt; in
+&lt;code&gt;Num (Mod m)&lt;/code&gt; refers to the &lt;em&gt;modulus&lt;/em&gt;, while the &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt; in the
+pattern-matches &lt;code&gt;Mod x&lt;/code&gt; and &lt;code&gt;Mod y&lt;/code&gt; refer to the &lt;em&gt;values being manipulated&lt;/em&gt;
+under the modulus.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;natVal&lt;/code&gt; function takes advantace of the &lt;code&gt;KnownNat&lt;/code&gt; typeclass to pull the
+type-level &lt;code&gt;Nat&lt;/code&gt; value down to a term-level integer. It needs the entire &lt;code&gt;Mod&lt;/code&gt;
+term (captured with the name &lt;code&gt;mx&lt;/code&gt;) passed to it, because the data constructor
+has no reference to the modulus &lt;code&gt;Nat&lt;/code&gt; value.&lt;label for=&quot;sn-proxy&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input id=&quot;sn-proxy&quot; type=&quot;checkbox&quot; class=&quot;margin-toggle&quot;&gt;&lt;span class=&quot;sidenote&quot;&gt;The actual type signature for &lt;code&gt;natVal&lt;/code&gt; specifies the argument as type
+&lt;code&gt;Proxy# n&lt;/code&gt;, with &lt;code&gt;n&lt;/code&gt; constrained as a &lt;code&gt;KnownNat&lt;/code&gt;. The proxy simply provides
+the type-level structure to conveniently access the type &lt;code&gt;n&lt;/code&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;A full &lt;code&gt;Num&lt;/code&gt; instance requires a few more function definitions, but they are all
+relatively easy to derive using the tools above. They are left as an exercise to
+the reader.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;div class=&quot;section-link&quot;&gt;
+&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2026/06/29/type-safe-mod/#mod-in-use&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;mod-in-use&quot;&gt;Mod in Use&lt;/h2&gt;
+&lt;/div&gt;
+&lt;p&gt;At long last, the type-safe modular number interface proposed at the beginning
+of this article is possible:&lt;/p&gt;
+&lt;pre class=&quot;language-haskell&quot;&gt;&lt;code class=&quot;language-haskell&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;MyMod&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1000000007&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;-- | Sum of y*x^2 for the tuples (x, y), under modulus.&lt;/span&gt;
+&lt;span class=&quot;token hvariable&quot;&gt;manual&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;MyMod&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;MyMod&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;MyMod&lt;/span&gt;
+&lt;span class=&quot;token hvariable&quot;&gt;manual&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;map&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&#92;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Crucially, another number of type, say, &lt;code&gt;Mod 13&lt;/code&gt; would not add or multiply
+directly with the &lt;code&gt;MyMod&lt;/code&gt; values. The error would be caught &lt;em&gt;at compile time&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Getting into and out of the modular world is surprisingly simple.&lt;/p&gt;
+&lt;pre class=&quot;language-haskell&quot;&gt;&lt;code class=&quot;language-haskell&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;MyMod&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1000000007&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;SmallMod&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;13&lt;/span&gt;
+
+&lt;span class=&quot;token hvariable&quot;&gt;toMod&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;MyMod&lt;/span&gt;
+&lt;span class=&quot;token hvariable&quot;&gt;toMod&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;-- It&#39;s just the data constructor!&lt;/span&gt;
+
+&lt;span class=&quot;token hvariable&quot;&gt;fromMod&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;MyMod&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Integer&lt;/span&gt;
+&lt;span class=&quot;token hvariable&quot;&gt;fromMod&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;unMod&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;-- Again, just a field from the definition.&lt;/span&gt;
+
+&lt;span class=&quot;token hvariable&quot;&gt;wackyAddition&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;MyMod&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;SmallMod&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Integer&lt;/span&gt;
+&lt;span class=&quot;token hvariable&quot;&gt;wackyAddition&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;Mod&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token hvariable&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;-- Pulling values with pattern matching&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;div class=&quot;section-link&quot;&gt;
+&lt;a class=&quot;no-tufte-underline&quot; href=&quot;https://neillrobson.com/blog/2026/06/29/type-safe-mod/#limitations-and-next-steps&quot;&gt;&lt;/a&gt;&lt;h2 id=&quot;limitations-and-next-steps&quot;&gt;Limitations and Next Steps&lt;/h2&gt;
+&lt;/div&gt;
+&lt;p&gt;As mentioned way back in the section on &lt;a href=&quot;https://neillrobson.com/blog/2026/06/29/type-safe-mod/#manual-residue&quot;&gt;manual residue&lt;/a&gt;,
+overflow is a non-trivial problem to solve when using bounded integral types. To
+keep the focus on the type system, the unbounded &lt;code&gt;Integer&lt;/code&gt; type was used for
+value storage in this outline. However, a more memory-efficient implementation
+would use a bounded type and careful overflow handling.&lt;/p&gt;
+&lt;p&gt;On the type-safety side of the discussion, there are many fascinating ways the
+&lt;code&gt;Mod&lt;/code&gt; type’s functionality could be expanded now that natural numbers exist at
+the type level. Division, for example, isn’t generally applicable under a
+modulus, but given certain coprimality conditions division can be meaningful.
+Detection of a prime modulus, along with special supported functions, is
+possible now.&lt;/p&gt;
+&lt;p&gt;Ironically, while I started this journey to develop a more intuitive and safe
+strategy for handling modular arithmetic in Haskell, I wound up becoming
+fascinated by singletons. The jury is out on whether I come back around to the
+mathematical problems I was wrestling with, or fall into a rabbit hole of
+theoretical computer science.&lt;/p&gt;
+&lt;/section&gt;
+</description>
+      <pubDate>Mon, 29 Jun 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Neill Robson</dc:creator>
+      <guid>https://neillrobson.com/blog/2026/06/29/type-safe-mod/</guid>
+    </item>
+    <item>
       <title>The Square Root Trick for Fast Summations</title>
       <link>https://neillrobson.com/blog/2026/06/13/square-root-trick/</link>
       <description>&lt;section&gt;
@@ -1568,23 +1772,6 @@ I cannot yet release my own code to the public for viewing, as grades for the cl
       <pubDate>Mon, 23 Nov 2020 20:25:00 GMT</pubDate>
       <dc:creator>Neill Robson</dc:creator>
       <guid>https://neillrobson.com/blog/2020/11/23/grad-school-like-im-five/</guid>
-    </item>
-    <item>
-      <title>Book Review: The Circle, by Dave Eggers</title>
-      <link>https://neillrobson.com/blog/2018/02/24/book-review-the-circle-by-dave-eggers/</link>
-      <description>&lt;section&gt;
-&lt;p&gt;For the first time I can remember in a long while, I did not have the endurance to make it through a book. &lt;em&gt;The Circle&lt;/em&gt; was patronizing, immature, and (as others have already mentioned) offered nothing new to the conversation.  Halfway through the book, I could not recall a single plot development that could not be recreated precisely (often down to the phrasing of the words) from current news or social media. Some speculative literature provides an insightful reflection on human nature; others grant an escape from the world’s worries; Eggers manages to to neither in his work, using such an explicit and leaden pen that one might draw parallels to reading one’s own social media feed.&lt;/p&gt;
-&lt;p&gt;The third-person limited point of view tries desperately to inspire the reader’s empathy towards the protagonist, but the narrative thrashes between vapid predictability and deplorable decision-making. Typically, a character’s weaknesses and vulnerabilities evoke some measure of compassion from the audience, but I found no such sympathy for a protagonist so passive and malleable to her own surroundings.&lt;/p&gt;
-&lt;p&gt;Far from edifying or subtly cautionary, the mature content smacked of pretentious gossip and schoolboy fantasies. Was Eggers’s intention to copy the fatuous desires and half-baked relationships of modern society to further condemn the digital age? He only managed to add a veneer of erotic language to lessons that anyone mature enough to read his book could glean just as easily from turning on the television.&lt;/p&gt;
-&lt;p&gt;In submission, the portion of this book that I forced down my gullet did resonate with my own past experience. The fears and fascinations, challenges and trials that the fictional community faces are present with glaring radiance in my history, and I am by no means worthy of denouncing the lifestyle that this book attempts to critique. But if &lt;em&gt;The Circle&lt;/em&gt; wanted to be a parable, it failed miserably: those of us who would benefit from the perspective this book attempts to provide would more likely find the reading experience an act of navel-gazing, while those capable of gleaning the moral by and large have already discovered it from reflection and experience.&lt;/p&gt;
-&lt;p&gt;Maybe I did not represent the intended audience for Eggers, but to dismiss oneself as inappropriate to judge a work that one found repulsive is a self-pitying cop-out. Dave, I want to receive the message you are trying to express, but please instruct me as an adult would exhort an ignorant child: the sources from which I can revel in darkness with fellow miscreants are, as you say, already far to prevalent.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Have you read the book? Watched the movie? (I haven’t yet… should I?) Whether you loved it, hated it, or fall anywhere in between, I would enjoy hearing your opinions in the comments below!&lt;/p&gt;
-&lt;/section&gt;
-</description>
-      <pubDate>Sat, 24 Feb 2018 15:13:00 GMT</pubDate>
-      <dc:creator>Neill Robson</dc:creator>
-      <guid>https://neillrobson.com/blog/2018/02/24/book-review-the-circle-by-dave-eggers/</guid>
     </item>
   </channel>
 </rss>

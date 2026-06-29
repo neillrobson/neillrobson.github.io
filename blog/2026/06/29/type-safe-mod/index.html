@@ -81,8 +81,8 @@
     <meta property="og:description" content="Keeping up with remainders in modular arithmetic is tedious whether working by hand or in a programming language. Fortunately, Haskell’s robust type system provides a way to abstract away...">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://neillrobson.com/blog/2026/06/26/type-safe-mod/">
-    <link rel="canonical" href="https://neillrobson.com/blog/2026/06/26/type-safe-mod/">
+    <meta property="og:url" content="https://neillrobson.com/blog/2026/06/29/type-safe-mod/">
+    <link rel="canonical" href="https://neillrobson.com/blog/2026/06/29/type-safe-mod/">
 
     
 
@@ -163,7 +163,7 @@
 <div class="entry">
     <div class="title">
         <div class="date">
-            <a class="small" href="/blog/2026/06/26/type-safe-mod/">June 26, 2026</a>
+            <a class="small" href="/blog/2026/06/29/type-safe-mod/">June 29, 2026</a>
         </div>
         <h1>Type-Safe Modular Arithmetic in Haskell</h1>
     </div>
@@ -358,6 +358,11 @@ the type level. Division, for example, isn’t generally applicable under a
 modulus, but given certain coprimality conditions division can be meaningful.
 Detection of a prime modulus, along with special supported functions, is
 possible now.</p>
+<p>Ironically, while I started this journey to develop a more intuitive and safe
+strategy for handling modular arithmetic in Haskell, I wound up becoming
+fascinated by singletons. The jury is out on whether I come back around to the
+mathematical problems I was wrestling with, or fall into a rabbit hole of
+theoretical computer science.</p>
 </section>
 
     
@@ -367,7 +372,15 @@ possible now.</p>
                 
             
                 
-                    <a class="small tag" href="/tag/drafts">drafts</a>
+                    <a class="small tag" href="/tag/software">software</a>
+                
+            
+                
+                    <a class="small tag" href="/tag/math">math</a>
+                
+            
+                
+                    <a class="small tag" href="/tag/haskell">haskell</a>
                 
             
         </p>
@@ -376,10 +389,41 @@ possible now.</p>
     <div class="clear"></div>
 
     
+        <script src="https://giscus.app/client.js"
+        data-repo="neillrobson/neillrobson.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTYxODUyNzA="
+        data-category="Giscus"
+        data-category-id="DIC_kwDOBuzYts4Co3Ec"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://neillrobson.com/assets/style/giscus-adaptive.css"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/neillrobson/neillrobson.github.io/discussions">comments</a> powered by <a href="https://giscus.app/">Giscus.</a></noscript>
+
+    
 
     
     
 
+    
+        <hr class="full"/>
+        <div class="pagination-cards">
+        
+            <a href="/blog/2026/06/13/square-root-trick/">
+                <h5>Previous post</h5>
+                <span class="title">The Square Root Trick for Fast Summations</span>
+                <span class="summary"> Computing sums or products of billions of terms can cripple even modern machines. For sequences that round terms to integers, a simple trick can reduce the workload to a sublinear runtime complexity. </span>
+            </a>
+        
+        
+        </div>
     
 </div>
 
