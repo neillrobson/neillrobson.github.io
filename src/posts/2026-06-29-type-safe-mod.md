@@ -1,7 +1,11 @@
 ---
 layout: post
 title: Type-Safe Modular Arithmetic in Haskell
-comments: false
+comments: true
+tags:
+  - software
+  - math
+  - haskell
 ---
 
 Keeping up with remainders in modular arithmetic is tedious whether working by
